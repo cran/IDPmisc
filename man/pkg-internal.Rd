@@ -8,7 +8,6 @@
 }
 \usage{
 h.LegendAndTitle(main, cex.main, border, colramp, zmax)
-h.inf.omit(x)
 }
 
 \author{Rene Locher}

@@ -22,7 +22,8 @@ ipairs(x,
   \item{zmax}{Maximum counts per Pixel to be plotted. When NULL each
     scatter plot has its individual scale. If a number >= maximum number of
     counts per pixel is supplied, the scale will be identical for all
-    scatter plots. The maximum of the number per pixel is delivered by the return vallue.}
+    scatter plots. The maximum of the number per pixel is delivered by
+    the return value.} 
   \item{colramp}{Color ramp to encode the density of the points within a
     pixel.}
   \item{border}{Shall border be drawn between the colors in the legend:

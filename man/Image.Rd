@@ -1,7 +1,7 @@
 \name{Image}
 \alias{Image}
 
-\title{Plots the Density of Points in Scatter Plots as Image}
+\title{Plots the Density of Points in Scatter Plot as Image}
 \description{
   The density of points in a scatter plot is encoded by color.
 }

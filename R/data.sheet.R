@@ -5,7 +5,7 @@ function(x){
   ##
   ## Author: Thomas Unternaehrer
   ## Version 18.1.05
-  if (!is.list(x)) stop(paste(deparse(x),"must be of type list"))
+  if (!is.list(x)) stop("'x' must be of type list")
   return(sapply(x, function(y) {length(y) <- max(sapply(x,length));y}))
 }
 

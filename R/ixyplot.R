@@ -7,22 +7,26 @@ function(x,
                     border=FALSE,
                     xlab=NULL,
                     ylab=NULL,
+                    nx.lab=5,
+                    ny.lab=5,
                     main=NULL,
                     cex.main=par("cex.main"))
   ## Produces an image scatter plot of a large 2d dataset.
   
   ## based on R function lag.plot V1.7
   ## Authors: Andreas Ruckstuhl, refined by René Locher
-  ## Version 25-01-05
+  ## Version 16-03-05
 {
   xy <- xy.coords(x,y)
-  x <- xy$x
-  y <- xy$y
   if(is.null(xlab)) xlab <- xy$xlab
   if(is.null(ylab)) ylab <- xy$ylab
+  
+  xy <- inf.omit(data.frame(x=xy$x,y=xy$y))
+  x <- xy$x
+  y <- xy$y
 
-  mar.orig <- (par.orig <- par(c("mar", "las", "mfrow")))$mar
-  on.exit(par(par.orig))
+  mar.orig <- (par.old <- par(c("mar", "las", "mfrow")))$mar
+  on.exit(par(par.old))
   w <- (3 + mar.orig[2]) * par("csi") * 2.54
   nf <- layout(matrix(c(1, 2), nc = 2), widths = c(1, lcm(w)))
   x.old <- x
@@ -51,7 +55,7 @@ function(x,
        cex.main=cex.main)
 
   ## drawing axes
-  at <- pretty(x,n=5)
+  at <- pretty(x,n=nx.lab)
 
   if(is.factor(x.old)) {
     at <- at[(signif(at,dig=1)-at)<1e-3]
@@ -63,7 +67,7 @@ function(x,
     axis(1, at=at, xpd = NA)
   }
 
-  at <- pretty(y,n=5)
+  at <- pretty(y,n=ny.lab)
   if(is.factor(y.old)) {
     at <- at[(signif(at,dig=1)-at)<1e-3]
     axis(2,

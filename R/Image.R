@@ -1,8 +1,7 @@
 "Image" <-
 function(x, y, pixs=1, zmax=NULL, colramp=IDPcolorRamp)
-  ## pixs = Pixelsize in mm
-  ## zmax = Maximum number of points per pixel
   ## Author: Andreas Ruckstuhl, refined by Rene Locher
+  ## Version: 2005-01-18
 {
   xy <- na.omit(data.frame(x=x,y=y))
   pixs <- (pixs/10)/2.54
