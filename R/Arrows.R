@@ -1,7 +1,7 @@
 "Arrows" <-
 function (x1, y1, x2, y2,
                     size= 1,     
-                    width= 1.2/4/cin, ##(sqrt(5) - 1)/4/cin,
+                    width= 1.2/4/cin,
                     open=TRUE,
                     sh.adj=0.1, 
                     sh.lwd=1,
@@ -10,7 +10,8 @@ function (x1, y1, x2, y2,
                     h.col=sh.col,
                     h.col.bo=sh.col,
                     h.lwd=1,
-                    h.lty=1)
+                    h.lty=1,
+                    verbose=FALSE)
   ## Author: Andreas Ruckstuhl, refined by Rene Locher
   ## Version: 2005-01-31
 {
@@ -43,5 +44,6 @@ function (x1, y1, x2, y2,
   th.seg <- theta + rep(atan(0, -cin), lx)
   segments(x1, y1, x2+r.seg*cos(th.seg)/uin[1], y2+r.seg*sin(th.seg)/uin[2], 
            lwd=sh.lwd, col=sh.col, lty=sh.lty)
+  if(verbose) return(list(width=width))
 } # Arrows
 

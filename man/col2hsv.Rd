@@ -1,12 +1,12 @@
 \name{col2hsv}
 \alias{col2hsv}
-%- Also NEED an '\alias' for EACH other topic documented here.
+
 \title{
-  Color to HSV Conversion
+  Converting Color to hsv Code
 }
 
 \description{
-  Converts color names to hsv code
+  Converts color names or values to hsv code.
 }
 
 \usage{
@@ -30,5 +30,7 @@ col2hsv(col)
 \examples{
 col2hsv(c("blue","green","red"))
 }
+
 \keyword{color}
+\keyword{dplot}
 

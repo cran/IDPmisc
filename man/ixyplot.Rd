@@ -1,11 +1,12 @@
 \name{ixyplot}
 \alias{ixyplot}
+
 \concept{large dataset}
 \concept{huge dataset}
 
-\title{Image Scatter Plot of Large 2d Datasets}
+\title{Image Scatter Plot for Large Datasets}
 \description{
-  Produces an image scatter plot of large 2d datasets where the colors
+  Produces an image scatter plot of large datasets where the colors
   encode the density of the points in the scatter plot. Works also with factors.
 }
 \usage{
@@ -47,7 +48,7 @@ ixyplot(x, y = NULL,
   are out of range!" you must run the function again without specifying
   zmax. The value returned gives you the minimum value allowed for zmax.}
 
-\seealso{\code{\link{ilagplot}}, \code{\link{ipairs}}}
+\seealso{\code{\link{ilagplot}}, \code{\link{ipairs}}, \code{\link{Image}}}
 
 \examples{
 x <-  rnorm(100000)

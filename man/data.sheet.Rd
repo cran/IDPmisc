@@ -1,14 +1,14 @@
 \name{data.sheet}
 \alias{data.sheet}
 
-\title{Coercing of a list to a data.frame}
+\title{Coercing a list to a data.frame}
 \description{
   Coerces a list with vectors of different length into a data.frame. Fills the shorter vectors with NA.
 }
 \usage{
 data.sheet(x)
 }
-%- maybe also 'usage' for other objects documented here.
+
 \arguments{
   \item{x}{List to be converted.}
 }

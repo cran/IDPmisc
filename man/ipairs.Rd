@@ -1,9 +1,10 @@
 \name{ipairs}
 \alias{ipairs}
+
 \concept{large dataset}
 \concept{huge dataset}
 
-\title{Image Scatter Plot Matrix of Large Datasets}
+\title{Image Scatter Plot Matrix for Large Datasets}
 \description{
   Produces an image scatter plot matrix of large datasets where the colors
   encode the density of the points in the scatter plots.
@@ -12,12 +13,12 @@
 ipairs(x,
        pixs = 1, zmax = NULL, colramp = IDPcolorRamp,
        border = FALSE, labels, cex.lab = NULL, nlab = 5, pty = "s",
-       main = NULL, cex.main = par("cex.main"), ...)
+       main = NULL, cex.main = par("cex.main"), verbose = FALSE, ...)
 }
 
 \arguments{
   \item{x}{data.frame or matrix}
-  \item{pixs}{Pixel size in mm}
+  \item{pixs}{Pixel size in mm on the plotting device.}
   \item{zmax}{Maximum counts per Pixel to be plotted. When NULL each
     scatter plot has its individual scale. If a number >= maximum number of
     counts per pixel is supplied, the scale will be identical for all
@@ -32,6 +33,8 @@ ipairs(x,
   \item{pty}{See Argument \code{pty} in \code{\link{par}}.}
   \item{main}{Titel.}
   \item{cex.main}{Size of title.}
+  \item{verbose}{When \code{verbose == TRUE}, the values for
+    \code{cex.main} and \code{cex.lab} are returned in addition to \code{zmax}.}
   \item{\dots}{Additional arguments to \code{\link{plot.default}}}
 }
 \details{
@@ -45,7 +48,8 @@ ipairs(x,
 }
 
 \value{
-  Maximum number of counts per Pixel found.
+  Maximum number of counts per Pixel found. Additional elements are
+  returned when \code{verbose == TRUE}.
 }
 
 \author{Andreas Ruckstuhl, refined by Rene Locher}
@@ -54,7 +58,7 @@ ipairs(x,
   are out of range!" you must run the function again without specifying
   zmax. The value returned gives you the minimum value allowed for zmax.}
 
-\seealso{\code{\link{ilagplot}}, \code{\link{ixyplot}}}
+\seealso{\code{\link{ilagplot}}, \code{\link{ixyplot}}, \code{\link{Image}}}
 
 \examples{
 zmax <- ipairs(airquality,pixs=2,main="Air Quality")

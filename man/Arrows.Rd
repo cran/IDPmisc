@@ -16,15 +16,15 @@ Arrows(x1, y1, x2, y2,
        sh.adj = 0.1, sh.lwd = 1,
        sh.col = if (is.R()) par("fg") else 1, sh.lty = 1,
        h.col = sh.col, h.col.bo = sh.col,
-       h.lwd = 1, h.lty = 1)
+       h.lwd = 1, h.lty = 1, verbose = FALSE)
 }
 
 \arguments{
-  \item{x1, y1}{coordinates of points \bold{from} which to draw.}
-  \item{x2, y2}{coordinates of points \bold{to} which to draw.}
-  \item{size}{head size as a fraction of a character height.}
-  \item{width}{width of the arrow head.}
-  \item{open}{defines if arrows are open or closed.}
+  \item{x1, y1}{Coordinates of points \bold{from} which to draw.}
+  \item{x2, y2}{Coordinates of points \bold{to} which to draw.}
+  \item{size}{Head size as a fraction of a character height.}
+  \item{width}{Width of the arrow head. See argument \code{verbose}.}
+  \item{open}{Defines if arrows are open or closed.}
   \item{sh.adj}{Defines gap between end of the shaft and the top of the
     head of the arrow (see details)}
   \item{sh.lwd}{Thickness of shaft. cf. \code{\link{par}}}
@@ -34,6 +34,7 @@ Arrows(x1, y1, x2, y2,
   \item{h.col.bo}{Color of border of head.}
   \item{h.lwd}{Line width of border of head.}
   \item{h.lty}{Line type of border of head.}
+  \item{verbose}{When TRUE, the width used is returned.}
 }
 
 \details{
@@ -44,6 +45,11 @@ Arrows(x1, y1, x2, y2,
     \item{>1}{Gap between shaft and head,}
     \item{<0}{Head is on the shaft.}}
 }
+
+\value{
+A value is only returned, when \code{verbose == TRUE}.
+}
+
 
 \author{
   Andreas Ruckstuhl, refined by René Locher

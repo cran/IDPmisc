@@ -1,29 +1,32 @@
-"h.image" <-
+"Image" <-
 function(x, y, pixs=1, zmax=NULL, colramp=IDPcolorRamp)
-  ## internal functions for iplot, ilagplot, ixyplot  
   ## pixs = Pixelsize in mm
-  ## zmax = Maximale Anzahl Punkte pro Rasterquadrat
+  ## zmax = Maximum number of points per pixel
+  ## Author: Andreas Ruckstuhl, refined by Rene Locher
 {
+  xy <- na.omit(data.frame(x=x,y=y))
   pixs <- (pixs/10)/2.54
   npix <- round(par("pin")/pixs)
   usr <- par("usr")
   bx <- seq(usr[1],usr[2], length=npix[1]+1)
   by <- seq(usr[3],usr[4], length=npix[2]+1)
-  zz <- table(cut(x,b=bx), cut(y, b=by))
+  zz <- table(cut(xy$x,b=bx), cut(xy$y, b=by))
   zzmax <- max(zz)
+
   if(is.null(zmax)) zmax <- zzmax
-  ## bg color for 0
   if(zmax<1) {
     zmax <- 1
     par
-    warning("zmax must be >= 1. zmax set to 1")
+    stop("\nzmax must be >= 1 and
+          plot(x,y,...) must have been called before calling this function!")
   }
   if(zzmax>zmax)
-    stop("Zmax too small! Densiest aereas are out of range!",call. = FALSE)
+    stop("\nZmax too small! Densiest aereas are out of range!",call. = FALSE)
 
+  ## bg color for 0
   image(x=bx, y=by, zz, col=colramp(zmax),
         breaks=seq(0.5,zmax+1,1),  xaxs="r", yaxs="r", add=TRUE)
   box()
   return(zzmax)
-} # h.image
+} # Image
 

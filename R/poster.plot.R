@@ -44,5 +44,6 @@ function(x, y=NULL,  type="p", col=col.fg,
   points(x,y, type=type, col=col); box()
   if(axes) {axis(1); axis(2, las=1)}
   title(main=main,xlab=xlab, ylab=ylab)
+  invisible()
 } ## poster.plot
 

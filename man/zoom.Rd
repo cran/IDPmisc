@@ -1,7 +1,7 @@
 \name{zoom}
 \alias{zoom}
 
-\title{Zoom in and out in a 2d-Plot}
+\title{Zooming in and out in a 2d-Plot}
 \description{
  Function to zoom in and out in a 2D-plot.
 }
@@ -36,6 +36,6 @@ y <- c(rev(y),y)
 if(dev.interactive())
    zoom(fun=plot, ty="l", x=y)
 }
-\keyword{hplot}
+\keyword{iplot}
 \keyword{dynamic}
 

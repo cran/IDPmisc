@@ -1,7 +1,7 @@
 \name{poster.plot}
 \alias{poster.plot}
 
-\title{Convenient xyplot with Colored Background.}
+\title{Convenient xyplot with Differently Colored Margin and Plot Region}
 \description{
   Convenient xyplot with Colored Background. Background of margin may be
   chosen independently from background in plot region.

@@ -10,6 +10,7 @@ function(x,
                    pty="s",
                    main=NULL,         
                    cex.main=par("cex.main"),
+                   verbose=FALSE,
                    ...)
   ## Produces an image scatter plot matrix of largee datasets
   
@@ -18,8 +19,12 @@ function(x,
   ## Version: 2005-02-01
 
 {
-  if(is.null(dim(x))) stop("x must be a data.frame or a matrix")
-     
+  if (!(is.data.frame(x)||is.matrix(x)))
+    stop("x must be a data.frame or a matrix")
+  
+  if(!all(sapply(x,
+                 function(x) any(is.element(is(x),c("numeric","factor"))))))
+    stop("\nAll columns in data.frame must be either pure numerics or factors!")
   opar <- par(no.readonly = TRUE)
   on.exit(par(opar))
   nc <- ncol(x)
@@ -56,24 +61,20 @@ function(x,
   h.LegendAndTitle(main,max(cex.lab,cex.main),border,colramp,zmax)
   
   cntsmax <- 0
-  if (is.null(cex.lab)) {
-    l.wid <- strwidth(labels, "user")
-    cex.lab <- max(0.8, min(2, 0.9/max(l.wid)))
-  }
 
   ## drawing scatterplots and axes  
   par(mar=rep(1,4), las=1)
   for (i in 1:nc){
     for (j in 1:nc) {
-      plot(if(is.f[i]) range(x[, i],na.rm=TRUE)+0.5*c(-1,1) else
-           range(x[, i],na.rm=TRUE),
-           if(is.f[j]) range(x[, j],na.rm=TRUE)+0.5*c(-1,1) else
-           range(x[, j],na.rm=TRUE),
+      plot(if(is.f[i]) range(h.inf.omit(x[, i]))+0.5*c(-1,1) else
+           range(h.inf.omit(x[, i])),
+           if(is.f[j]) range(h.inf.omit(x[, j]))+0.5*c(-1,1) else
+           range(h.inf.omit(x[, j])),
            xlab="", ylab="", axes=FALSE, type="n", ...)
       box()
 
       if (i == 1 && (!(j%%2))) {## draw axes
-        at <- pretty(x[, j],n=nlab)
+        at <- pretty(h.inf.omit(x[, j]),n=nlab)
         if(is.f[j]) {
           at <- at[(signif(at,dig=1)-at)<1e-3]
           axis(2, at=at,
@@ -84,7 +85,7 @@ function(x,
       }
 
       if (i == nc && (j%%2 )) {## draw axes
-        at <- pretty(x[, j],n=nlab)
+        at <- pretty(h.inf.omit(x[, j]),n=nlab)
         if(is.f[j]) {
           at <- at[(signif(at,dig=1)-at)<1e-3]
           axis(4, at=at,
@@ -95,7 +96,7 @@ function(x,
       }
 
       if (j == 1 && (!(i%%2))) {## draw axes
-        at <- pretty(x[, i],n=nlab)
+        at <- pretty(h.inf.omit(x[, i]),n=nlab)
         if(is.f[i]) {
           at <- at[(signif(at,dig=1)-at)<1e-3]
           axis(3, at=at,
@@ -106,7 +107,7 @@ function(x,
       }
 
       if (j == nc && (i%%2 ))  {## draw axes
-        at <- pretty(x[, i],n=nlab)
+        at <- pretty(h.inf.omit(x[, i]),n=nlab)
         if(is.f[i]) {
           at <- at[(signif(at,dig=1)-at)<1e-3]
           axis(1, at=at,
@@ -118,18 +119,23 @@ function(x,
       
       if(i!=j){## do scatter plot
         cntsmax <- max(cntsmax,
-                       h.image(x=x[, i], y=x[, j],
+                       Image(x=x[, i], y=x[, j],
                                pixs=pixs, zmax=zmax,
                                colramp=colramp))  
       }
       
       else{## fill text into diagonal
         par(usr = c(0, 1, 0, 1))
+        if (is.null(cex.lab)) {
+          l.wid <- strwidth(labels, "user")
+          cex.lab <- min(1.2*par("cex.axis"),0.8/max(l.wid))
+        }
         text(x=0.5, y=0.5, labels=labels[i], cex = cex.lab, font = 1)
       }
     }
   }
 
-  return(cntsmax)
+  if(verbose) return(c(cntsmax=cntsmax,cex.main=cex.main,cex.lab=cex.lab)) else
+                     return(c(cntsmax=cntsmax))
 } # ipairs
 

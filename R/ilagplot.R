@@ -14,6 +14,9 @@ function (x,
   ## Authors: Andreas Ruckstuhl, refined by Rene Locher
   ## Version 31-01-05
 {
+  if (!(is.vector(x)|is.ts(x))) stop("\nx must be a vector or ts")
+  if(!is.numeric(x)) stop("\nx must be numeric or ts")
+     
   opar <- par(no.readonly = TRUE)
   on.exit(par(opar))
   tot.lags <- length(set.lags)
@@ -45,7 +48,7 @@ function (x,
                  mgp=c(3,1, 0), type="n", las=1, ...)
     mtext(side=3, line=0.5, text=paste("lag",ll))
     cntsmax <- max(cntsmax,
-                   h.image(x=xx, y=xy, pixs=pixs, zmax=zmax, colramp=colramp)) 
+                   Image(x=xx, y=xy, pixs=pixs, zmax=zmax, colramp=colramp)) 
   }
   
   return(cntsmax)

@@ -1,9 +1,10 @@
 \name{ilagplot}
 \alias{ilagplot}
+
 \concept{large dataset}
 \concept{huge dataset}
 
-\title{Image Lag Plot Matrix of Large Time Series}
+\title{Image Lag Plot Matrix for Large Time Series}
 \description{
   Produces an image lag plot matrix of large timeseries where the colors
   encode the density of the points in the lag plots.
@@ -48,7 +49,9 @@ ilagplot(x, set.lags = 1,
   are out of range!" you must run the function again without specifying
   zmax. The value returned gives you the minimum value allowed for zmax.}
 
-\seealso{\code{\link{ipairs}}, \code{\link{ixyplot}}}
+\seealso{\code{\link{ipairs}}, \code{\link{ixyplot}},
+    \code{\link{Image}}}
+  
 \examples{
 zmax <- ilagplot(sunspot.month, pixs=2, set.lags=1:9,
                  mfrow=c(3,3),border=FALSE,main="Test")

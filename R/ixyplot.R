@@ -15,27 +15,11 @@ function(x,
   ## Authors: Andreas Ruckstuhl, refined by René Locher
   ## Version 25-01-05
 {
-  if(is.null(xlab)) xlab <- deparse(substitute(x))
-  if(is.null(ylab)) ylab <- deparse(substitute(y))
-
-  xdim <- dim(x)
-  ydim <- dim(y)
-  ## coercing 1d matrix into vector
-  if(!is.null(xdim)&&xdim[2]==1) x <- as.vector(x)
-  if(!is.null(ydim)&&ydim[2]==1) y <- as.vector(y)
-
-  if(is.null(y)&is.vector(x)) {
-    x.old <- x
-    x <- 1:length(x)
-    y <- x.old
-    ylab <- xlab
-    xlab <- "Index"
-  } else if(is.null(y)&length(dim(x))==2) {
-    y<-x[,2]
-    x <- x[,1]
-    xlab="x"
-    ylab="y"
-  }
+  xy <- xy.coords(x,y)
+  x <- xy$x
+  y <- xy$y
+  if(is.null(xlab)) xlab <- xy$xlab
+  if(is.null(ylab)) ylab <- xy$ylab
 
   mar.orig <- (par.orig <- par(c("mar", "las", "mfrow")))$mar
   on.exit(par(par.orig))
