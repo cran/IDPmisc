@@ -17,11 +17,34 @@ function(x,
   ## Authors: Andreas Ruckstuhl, refined by René Locher
   ## Version 16-03-05
 {
-  xy <- xy.coords(x,y)
-  if(is.null(xlab)) xlab <- xy$xlab
-  if(is.null(ylab)) ylab <- xy$ylab
+  no.xlab <- is.null(xlab)
+  no.ylab <- is.null(ylab)
+  no.y <- is.null(y)
+
+  if(no.xlab) xlab <- deparse(substitute(x))
+  if(no.ylab) ylab <- deparse(substitute(y))
+
+  if(is.data.frame(x)|is.matrix(x)){
+    if(ncol(x)>1) {
+      if(!no.y) stop("'y' must be NULL when x is a matrix or data.frame with more than 1 column!")
+      if (no.xlab) xlab <- colnames(x)[1]
+      if (no.ylab) ylab <- colnames(x)[2]
+      no.y <- FALSE
+      y <- x[,2]
+      x <- x[,1]
+    } else if(ncol(x)==1) {
+      if (no.xlab) xlab <- colnames(x)[1]
+      x <- x[,1]
+    } else stop("Matrix has no columns!")
+  }
+     if(no.y) {
+       ylab <- xlab
+       xlab <- "Index"
+       y <- x
+       x <- 1:length(y)
+     }
   
-  xy <- inf.omit(data.frame(x=xy$x,y=xy$y))
+  xy <- NaRV.omit(data.frame(x,y=y))
   x <- xy$x
   y <- xy$y
 
@@ -32,13 +55,16 @@ function(x,
   x.old <- x
   y.old <- y
 
-  if(is.factor(x.old)) {
+  xfac <- is.factor(x.old)
+  yfac <- is.factor(y.old)
+    
+  if(xfac) {
     x <- as.integer(x.old)
   }
-  if(is.factor(y.old)) {
+  if(yfac) {
     y <- as.integer(y.old)
   }
-  
+
   if(!(is.vector(x)&is.vector(y)))
     stop("x must be a vector, matrix or data.frame and y must be a vector if present")
   
@@ -46,7 +72,13 @@ function(x,
   mar <- mar.orig
   mar[4] <- 1
   par(mar = mar)
-  plot(range(x),range(y),
+
+  ## drawing labels at
+  at.x <- pretty(x,n=nx.lab)
+  at.y <- pretty(y,n=ny.lab)
+
+  plot(if (xfac) range(at.x)+0.5*c(-1,+1) else range(at.x),
+       if (yfac) range(at.y)+0.5*c(-1,+1) else range(at.y),
        xlab=xlab,
        ylab=ylab,
        type="n",
@@ -54,43 +86,30 @@ function(x,
        main=main,
        cex.main=cex.main)
 
-  ## drawing axes
-  at <- pretty(x,n=nx.lab)
-
   if(is.factor(x.old)) {
-    at <- at[(signif(at,dig=1)-at)<1e-3]
+
+    at.x <- at.x[(signif(at.x,dig=1)-at.x)<1e-5]
     axis(1,
-         at=at,
-         labels=abbreviate(levels(x.old),minl=2),
+         at=at.x,
+         labels=abbreviate(levels(x.old)[at.x],minl=2),
          xpd = NA)
   } else {
-    axis(1, at=at, xpd = NA)
+    axis(1, at=at.x, xpd = NA)
   }
 
-  at <- pretty(y,n=ny.lab)
   if(is.factor(y.old)) {
-    at <- at[(signif(at,dig=1)-at)<1e-3]
+    at.y <- at.y[(signif(at.y,dig=1)-at.y)<1e-5]
     axis(2,
-         at=at,
-         labels=abbreviate(levels(y.old),minl=2),
+         at=at.y,
+         labels=abbreviate(levels(y.old)[at.y],minl=2),
          xpd = NA)
   } else {
-    axis(2, at=at, xpd = NA)
+    axis(2, at=at.y, xpd = NA)
   }
-  
-  pixs <- (pixs/10)/2.54
-  npix <- round(par("pin")/pixs)
-  usr <- par("usr")
-  bx <- seq(usr[1],usr[2], length=npix[1]+1)
-  by <- seq(usr[3],usr[4], length=npix[2]+1)
-  zz <- table(cut(x,b=bx), cut(y, b=by))
 
-  zzmax <- max(zz)
-  if(is.null(zmax)) zmax <- zzmax else
-  if(zmax>=zzmax) stop("Zmax too small! Densiest aereas are out of range!")
-  image(x=bx, y=by, zz, col=colramp(zmax),
-        breaks=seq(0.5,zmax+1,1),
-        xaxs="r", yaxs="r", add=TRUE)
+  zzmax <- Image(x,y,pixs=pixs,zmax=zmax,colramp=colramp, factors=c(xfac,yfac))
+  if(is.null(zmax)) zmax <- zzmax
+  zmax <- max(zmax,2)
   box()
 
   ## plotting legend
@@ -98,23 +117,8 @@ function(x,
   mar[4] <- mar[2]
   mar[2] <- 1
   par(mar = mar)
-  mycol <- {if(is.null(zmax)) {
-               c(par("bg"),colramp(zmax))
-               if(zmax<1) {
-                 zmax <- 1
-                 warning("zmax must be >= 1. zmax set to 1")
-               }
-             }
-            else {
-               if(zmax<1) {
-                 zmax <- 1
-                 warning("zmax must be >= 1. zmax set to 1")
-               }
-               if(zzmax>zmax)
-                 warning("Zmax too small! Densiest aereas are uncolored!")
-               c(par("bg"),colramp(zmax))
-            }
-          }
+  mycol <- c(par("bg"),colramp(zmax))
+  
   lev <- 0:length(mycol)
   plot.new()
   plot.window(xlim=c(0, 1), ylim=range(lev,na.rm=TRUE), xaxs="i", yaxs="i")
@@ -125,6 +129,6 @@ function(x,
   box()
   ap <- pretty(lev)
   axis(side=4, at=ap+0.5, labels=paste(ap))
-  return(zzmax)
+  invisible(zmax)
 } ## ixyplot
 

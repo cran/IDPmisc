@@ -1,6 +1,5 @@
 "ok" <-
 function(x) {
-  ## sets all NA-values to FALSE
   ## Author: Rene Locher
   ## Version: 2005-03-01
   if (is.logical(x)) {

@@ -66,15 +66,15 @@ function(x,
   par(mar=rep(1,4), las=1)
   for (i in 1:nc){
     for (j in 1:nc) {
-      plot(if(is.f[i]) range(inf.omit(x[, i]))+0.5*c(-1,1) else
-           range(inf.omit(x[, i])),
-           if(is.f[j]) range(inf.omit(x[, j]))+0.5*c(-1,1) else
-           range(inf.omit(x[, j])),
+      plot(if(is.f[i]) range(NaRV.omit(x[, i]))+0.5*c(-1,1) else
+           range(NaRV.omit(x[, i])),
+           if(is.f[j]) range(NaRV.omit(x[, j]))+0.5*c(-1,1) else
+           range(NaRV.omit(x[, j])),
            xlab="", ylab="", axes=FALSE, type="n", ...)
       box()
 
       if (i == 1 && (!(j%%2))) {## draw axes
-        at <- pretty(inf.omit(x[, j]),n=nlab)
+        at <- pretty(NaRV.omit(x[, j]),n=nlab)
         if(is.f[j]) {
           at <- at[(signif(at,dig=1)-at)<1e-3]
           axis(2, at=at,
@@ -85,7 +85,7 @@ function(x,
       }
 
       if (i == nc && (j%%2 )) {## draw axes
-        at <- pretty(inf.omit(x[, j]),n=nlab)
+        at <- pretty(NaRV.omit(x[, j]),n=nlab)
         if(is.f[j]) {
           at <- at[(signif(at,dig=1)-at)<1e-3]
           axis(4, at=at,
@@ -96,9 +96,9 @@ function(x,
       }
 
       if (j == 1 && (!(i%%2))) {## draw axes
-        at <- pretty(inf.omit(x[, i]),n=nlab)
+        at <- pretty(NaRV.omit(x[, i]),n=nlab)
         if(is.f[i]) {
-          at <- at[(signif(at,dig=1)-at)<1e-3]
+          at <- at[(signif(at,dig=1)-at)<1e-5]
           axis(3, at=at,
                labels=abbreviate(lev.list[[i-nc+nf]][at],minl=2),
                xpd = NA)
@@ -107,9 +107,9 @@ function(x,
       }
 
       if (j == nc && (i%%2 ))  {## draw axes
-        at <- pretty(inf.omit(x[, i]),n=nlab)
+        at <- pretty(NaRV.omit(x[, i]),n=nlab)
         if(is.f[i]) {
-          at <- at[(signif(at,dig=1)-at)<1e-3]
+          at <- at[(signif(at,dig=1)-at)<1e-5]
           axis(1, at=at,
                labels=abbreviate(lev.list[[i-nc+nf]][at],minl=2),
                xpd = NA)
@@ -121,7 +121,7 @@ function(x,
         cntsmax <- max(cntsmax,
                        Image(x=x[, i], y=x[, j],
                                pixs=pixs, zmax=zmax,
-                               colramp=colramp))  
+                               colramp=colramp, factors=c(is.f[i],is.f[j])))  
       }
       
       else{## fill text into diagonal
@@ -136,6 +136,6 @@ function(x,
   }
 
   if(verbose) return(c(cntsmax=cntsmax,cex.main=cex.main,cex.lab=cex.lab)) else
-                     return(c(cntsmax=cntsmax))
+                     invisible(c(cntsmax=cntsmax))
 } # ipairs
 

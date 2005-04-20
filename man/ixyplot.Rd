@@ -20,9 +20,10 @@ ixyplot(x, y = NULL,
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{x}{Object of dimension (n,1) or (n,2) when y not present.
-    \crVector of length(n) when y present.}
-  \item{y}{Vector of length n or \code{NULL}.}
+  \item{x,y}{Coordinates of points whose density should be plotted. If
+    \code{x} ist a matrix or a data.frame, the first two column are used as x
+    and y respectively. \code{y} must be in this case NULL. \code{x} and
+    \code{y} may be numeric or factor variable. }
   \item{pixs}{Pixelsize in mm.}
   \item{zmax}{Maximum counts per pixel to be plotted. \code{zmax} must
     be >= maximum number of counts per pixel.}
@@ -39,6 +40,10 @@ ixyplot(x, y = NULL,
 }
 
 \details{
+  When there are factors present in the data.frame, the variables are
+  reordered so that the factors are plotted in the left corner of the
+  bottom.\cr
+  
   The idea is similar to \code{\link[hexbin]{plot.hexbin}}. The hexagons are
   better suited to reflect the density of points in a plane than the
   squares used here. Nevertheless squares are, contrary to hexagons,

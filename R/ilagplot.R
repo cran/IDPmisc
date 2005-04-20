@@ -51,6 +51,6 @@ function (x,
                    Image(x=xx, y=xy, pixs=pixs, zmax=zmax, colramp=colramp)) 
   }
   
-  return(cntsmax)
+  invisible(cntsmax)
 } # ilagplot
 
