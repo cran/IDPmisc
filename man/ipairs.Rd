@@ -11,8 +11,8 @@
 }
 \usage{
 ipairs(x,
-       pixs = 1, zmax = NULL, colramp = IDPcolorRamp,
-       border = FALSE, labels, cex.lab = NULL, nlab = 5, pty = "s",
+       pixs = 1, zmax = NULL, colramp = IDPcolorRamp, border = FALSE, 
+       labels, cex.lab = NULL, nlab = 5, minL.lab = 2, pty = "s", 
        main = NULL, cex.main = par("cex.main"), verbose = FALSE, ...)
 }
 
@@ -29,6 +29,8 @@ ipairs(x,
   \item{border}{Shall border be drawn between the colors in the legend:
     \code{TRUE} / \code{FALSE}.}  
   \item{labels}{Labels of columns. If NULL the names of x are used.}
+  \item{minL.lab}{The minimum length of the abbreviations of factor
+    levels, used to label the axes.}
   \item{cex.lab}{Size of the labels. If NULL they are calculated automatically.}
   \item{nlab}{Approximate number of labels on axes.}
   \item{pty}{See Argument \code{pty} in \code{\link{par}}.}

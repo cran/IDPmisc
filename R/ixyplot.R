@@ -9,6 +9,7 @@ function(x,
                     ylab=NULL,
                     nx.lab=5,
                     ny.lab=5,
+                    minL.lab=3,
                     main=NULL,
                     cex.main=par("cex.main"))
   ## Produces an image scatter plot of a large 2d dataset.
@@ -91,7 +92,7 @@ function(x,
     at.x <- at.x[(signif(at.x,dig=1)-at.x)<1e-5]
     axis(1,
          at=at.x,
-         labels=abbreviate(levels(x.old)[at.x],minl=2),
+         labels=abbreviate(levels(x.old)[at.x],minl=minL.lab),
          xpd = NA)
   } else {
     axis(1, at=at.x, xpd = NA)
@@ -101,7 +102,7 @@ function(x,
     at.y <- at.y[(signif(at.y,dig=1)-at.y)<1e-5]
     axis(2,
          at=at.y,
-         labels=abbreviate(levels(y.old)[at.y],minl=2),
+         labels=abbreviate(levels(y.old)[at.y],minl=minL.lab),
          xpd = NA)
   } else {
     axis(2, at=at.y, xpd = NA)

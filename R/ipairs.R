@@ -6,7 +6,8 @@ function(x,
                    border=FALSE,     
                    labels,            
                    cex.lab = NULL,
-                   nlab=5,   
+                   nlab=5,
+                   minL.lab=2,
                    pty="s",
                    main=NULL,         
                    cex.main=par("cex.main"),
@@ -23,8 +24,8 @@ function(x,
     stop("x must be a data.frame or a matrix")
   
   if(!all(sapply(x,
-                 function(x) any(is.element(is(x),c("numeric","factor"))))))
-    stop("\nAll columns in data.frame must be either pure numerics or factors!")
+      function(x) any(is.element(is(x),c("numeric","factor","logical"))))))
+    stop("\nAll columns in data.frame must be either pure numerics, logicals or factors!")
   opar <- par(no.readonly = TRUE)
   on.exit(par(opar))
   nc <- ncol(x)
@@ -34,6 +35,12 @@ function(x,
       labels <- paste("var", 1:nc)
   }
 
+  ## logicals are coerced into factors
+  is.l <- sapply(x,is.logical)
+  if (sum(is.l)>0) {
+    for (i in which(is.l)) x[,i] <- as.factor(x[,i])
+  }
+  
   ## factors are sorted and coerced into integers
   is.f <- sapply(x,is.factor)
   nf <- sum(is.f)
@@ -73,48 +80,52 @@ function(x,
            xlab="", ylab="", axes=FALSE, type="n", ...)
       box()
 
-      if (i == 1 && (!(j%%2))) {## draw axes
-        at <- pretty(NaRV.omit(x[, j]),n=nlab)
+      if (i == 1 && (!(j%%2))) {## draw axes at top
         if(is.f[j]) {
-          at <- at[(signif(at,dig=1)-at)<1e-3]
+          xmin <- min(x[, j],na.rm=TRUE)
+          xmax <- max(x[, j],na.rm=TRUE)
+          at <- seq(xmin, xmax, by=max(floor((xmax-xmin)/(max(nlab-1,1))),1))
           axis(2, at=at,
-               labels=abbreviate(lev.list[[j-nc+nf]][at],minl=2),
+               labels=abbreviate(lev.list[[j-nc+nf]][at],minl=minL.lab),
                xpd = NA)
         } else
-        axis(2, at=at, xpd = NA)
+        axis(2, at=pretty(NaRV.omit(x[, j]),n=nlab), xpd = NA)
       }
 
-      if (i == nc && (j%%2 )) {## draw axes
-        at <- pretty(NaRV.omit(x[, j]),n=nlab)
+      if (i == nc && (j%%2 )) {## draw axes at bottom
         if(is.f[j]) {
-          at <- at[(signif(at,dig=1)-at)<1e-3]
+          xmin <- min(x[, j],na.rm=TRUE)
+          xmax <- max(x[, j],na.rm=TRUE)
+          at <- seq(xmin, xmax, by=max(floor((xmax-xmin)/(max(nlab-1,1))),1))
           axis(4, at=at,
-               labels=abbreviate(lev.list[[j-nc+nf]][at],minl=2),
+               labels=abbreviate(lev.list[[j-nc+nf]][at],minl=minL.lab),
                xpd = NA)
         } else
-        axis(4, at=at, xpd = NA, adj=1)
+        axis(4, at=pretty(NaRV.omit(x[, j]),n=nlab), xpd = NA, adj=1)
       }
 
-      if (j == 1 && (!(i%%2))) {## draw axes
-        at <- pretty(NaRV.omit(x[, i]),n=nlab)
+      if (j == 1 && (!(i%%2))) {## draw axes at right side
         if(is.f[i]) {
-          at <- at[(signif(at,dig=1)-at)<1e-5]
+          xmin <- min(x[, i],na.rm=TRUE)
+          xmax <- max(x[, i],na.rm=TRUE)
+          at <- seq(xmin, xmax, by=max(floor((xmax-xmin)/(max(nlab-1,1))),1))
           axis(3, at=at,
-               labels=abbreviate(lev.list[[i-nc+nf]][at],minl=2),
+               labels=abbreviate(lev.list[[i-nc+nf]][at],minl=minL.lab),
                xpd = NA)
         } else
-        axis(3, at=at, xpd = NA)
+        axis(3, at=pretty(NaRV.omit(x[, i]),n=nlab), xpd = NA)
       }
 
-      if (j == nc && (i%%2 ))  {## draw axes
-        at <- pretty(NaRV.omit(x[, i]),n=nlab)
+      if (j == nc && (i%%2 ))  {## draw axes at left side
         if(is.f[i]) {
-          at <- at[(signif(at,dig=1)-at)<1e-5]
+          xmin <- min(x[, i],na.rm=TRUE)
+          xmax <- max(x[, i],na.rm=TRUE)
+          at <- seq(xmin, xmax, by=max(floor((xmax-xmin)/(max(nlab-1,1))),1))
           axis(1, at=at,
-               labels=abbreviate(lev.list[[i-nc+nf]][at],minl=2),
+               labels=abbreviate(lev.list[[i-nc+nf]][at],minl=minL.lab),
                xpd = NA)
         } else
-        axis(1, at=at, xpd = NA)
+        axis(1, at=pretty(NaRV.omit(x[, i]),n=nlab), xpd = NA)
       }
       
       if(i!=j){## do scatter plot

@@ -1,6 +1,5 @@
 \name{internals}
 \alias{h.LegendAndTitle}
-\alias{h.inf.omit}
 
 \title{Internal Functions}
 \description{

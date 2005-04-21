@@ -78,7 +78,7 @@ axis(2)
 Image(iris$Species,iris$Petal.Width,pixs=3)
 
 ## The above can be merged to
-ixyplot(iris$Species,iris$Petal.Width,pixs=3)
+ixyplot(iris$Species,iris$Petal.Width,pixs=3, minL.lab=10)
 
 }
 

@@ -15,7 +15,7 @@
 \usage{
 ixyplot(x, y = NULL,
         pixs = 1, zmax = NULL, colramp = IDPcolorRamp, border = FALSE,
-        xlab = NULL, ylab = NULL, nx.lab = 5, ny.lab = 5,
+        xlab = NULL, ylab = NULL, nx.lab = 5, ny.lab = 5, minL.lab = 3,
         main = NULL, cex.main = par("cex.main"))
 }
 %- maybe also 'usage' for other objects documented here.
@@ -35,6 +35,8 @@ ixyplot(x, y = NULL,
   \item{ylab}{Label for y-axis.}
   \item{nx.lab}{Approximate number of labeled ticks on x-axis.}
   \item{ny.lab}{Approximate number of labeled ticks on y-axis.}
+  \item{minL.lab}{The minimum length of the abbreviations of factor
+        levels, used to label the axes.}
   \item{main}{Title.}
   \item{cex.main}{Size of title relative to \code{par("cex")}}
 }
