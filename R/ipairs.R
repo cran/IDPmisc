@@ -38,7 +38,8 @@ function(x,
   ## logicals are coerced into factors
   is.l <- sapply(x,is.logical)
   if (sum(is.l)>0) {
-    for (i in which(is.l)) x[,i] <- as.factor(x[,i])
+    for (i in which(is.l))
+      x[,i] <- factor(x[,i],levels=c(FALSE,TRUE),labels=c("F","T"))
   }
   
   ## factors are sorted and coerced into integers

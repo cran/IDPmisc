@@ -88,24 +88,25 @@ function(x,
        cex.main=cex.main)
 
   if(is.factor(x.old)) {
-
-    at.x <- at.x[(signif(at.x,dig=1)-at.x)<1e-5]
-    axis(1,
-         at=at.x,
-         labels=abbreviate(levels(x.old)[at.x],minl=minL.lab),
+    xmin <- min(x,na.rm=TRUE)
+    xmax <- max(x,na.rm=TRUE)
+    at <- seq(xmin, xmax, by=max(floor((xmax-xmin)/(max(nx.lab-1,1))),1))
+    axis(1, at=at,
+         labels=abbreviate(levels(x.old)[at],minl=minL.lab),
          xpd = NA)
   } else {
-    axis(1, at=at.x, xpd = NA)
+    axis(1, at = at.x, xpd = NA)
   }
 
   if(is.factor(y.old)) {
-    at.y <- at.y[(signif(at.y,dig=1)-at.y)<1e-5]
-    axis(2,
-         at=at.y,
-         labels=abbreviate(levels(y.old)[at.y],minl=minL.lab),
+    ymin <- min(y,na.rm=TRUE)
+    ymax <- max(y,na.rm=TRUE)
+    at <- seq(ymin, ymax, by=max(floor((ymax-ymin)/(max(ny.lab-1,1))),1))
+    axis(2, at=at,
+         labels=abbreviate(levels(y.old)[at],minl=minL.lab),
          xpd = NA)
   } else {
-    axis(2, at=at.y, xpd = NA)
+    axis(2, at = at.y, xpd = NA)
   }
 
   zzmax <- Image(x,y,pixs=pixs,zmax=zmax,colramp=colramp, factors=c(xfac,yfac))
