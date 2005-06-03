@@ -1,5 +1,5 @@
 "zoom" <-
-function(fun = usa, zoom.col="red", delay=3, ...){
+function(fun = plot, zoom.col="red", delay=3, ...){
   ## 
   ## fun       plotting function
   ## zoom.col  color of clicked points
@@ -9,33 +9,33 @@ function(fun = usa, zoom.col="red", delay=3, ...){
   ##
   ##
   ## Author: Rene Locher
-  ## Version 25.01.05
+  ## Version 03.06.05
   
   oldpar <- par(no.readonly = TRUE)
   on.exit(par(oldpar))
 
   options(locatorBell=FALSE)
-  cat("Click mouse at corners of zoom area.\nRight click to stop zooming")
+  cat("Click mouse at corners of zoom area.\nRight click to stop zooming\n\n")
 
   fun(...)
   while(TRUE) {
     par(xpd=NA)
-
     p1 <- locator(n = 1, ty="p", col=zoom.col)
+
     if(is.null(p1$x)){
       cat("\n")
       break
     }
-    print(abline(v=p1$x,col=zoom.col))
-    print(abline(h=p1$y,col=zoom.col))
+    abline(v=p1$x,col=zoom.col)
+    abline(h=p1$y,col=zoom.col)
     
     p2 <- locator(n = 1, ty="p", col=zoom.col)
     if(is.null(p2$x)){
       cat("\n")
       break
     }
-    print(abline(v=p2$x,col=zoom.col))
-    print(abline(h=p2$y,col=zoom.col))
+    abline(v=p2$x,col=zoom.col)
+    abline(h=p2$y,col=zoom.col)
     Sys.sleep(delay)
 
     xx <- sort(c(p1$x,p2$x))
@@ -58,7 +58,9 @@ function(fun = usa, zoom.col="red", delay=3, ...){
     
     xlim <- range(xx)
     ylim <- range(yy)
-    cat("xlim=", xlim, "ylim=", ylim, "\n")
+    print(t(data.frame(xlim,ylim)))
+    cat("\n")
+    
     par(xpd=FALSE)
     fun(..., xlim = xlim, ylim = ylim)
   }
