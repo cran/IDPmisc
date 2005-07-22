@@ -78,8 +78,8 @@ function(x,
   at.x <- pretty(x,n=nx.lab)
   at.y <- pretty(y,n=ny.lab)
 
-  plot(if (xfac) range(at.x)+0.5*c(-1,+1) else range(at.x),
-       if (yfac) range(at.y)+0.5*c(-1,+1) else range(at.y),
+  plot(if (xfac) range(at.x)+0.5*c(-1,+1) else range(x), #range(at.x),
+       if (yfac) range(at.y)+0.5*c(-1,+1) else range(y), #range(at.y),
        xlab=xlab,
        ylab=ylab,
        type="n",

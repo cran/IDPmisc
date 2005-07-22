@@ -38,8 +38,9 @@ i <- 1:100
 y <- i*sin(i*(pi/16))
 y <- c(rev(y),y)
 
-## comment next line out to run the example
-## zoom(fun=plot, zoom.col="red", x=1:200, y=y, ty="l", xlab="index")
+## Not run:
+zoom(fun=plot, zoom.col="red", x=1:200, y=y, ty="l", xlab="index")
+## End( Not run)
 }
 
 \keyword{iplot}

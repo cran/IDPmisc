@@ -3,7 +3,7 @@ function(x, y=NULL,  type="p", col=col.fg,
                         col.axis=col.fg, col.lab=col.fg, col.fg="blue",
                         col.bg="lavender",col.box="cornsilk",
                         xlim=NULL, ylim=NULL,
-                        xlab=NULL, ylab=NULL,main="",cex=1.2,
+                        xlab=NULL, ylab=NULL, main="", cex=1.2,
                         axes=TRUE, ...){
   ## Convenient xyplot with colored background.
   ##
