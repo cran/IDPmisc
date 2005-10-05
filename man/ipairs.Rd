@@ -11,7 +11,8 @@
 }
 \usage{
 ipairs(x,
-       pixs = 1, zmax = NULL, colramp = IDPcolorRamp, border = FALSE, 
+       pixs = 1, zmax = NULL, ztrans=function(x){x},
+       colramp = IDPcolorRamp, border = FALSE, 
        labels, cex.lab = NULL, nlab = 5, minL.lab = 2, pty = "s", 
        main = NULL, cex.main = par("cex.main"), verbose = FALSE, ...)
 }
@@ -23,7 +24,10 @@ ipairs(x,
     scatter plot has its individual scale. If a number >= maximum number of
     counts per pixel is supplied, the scale will be identical for all
     scatter plots. The maximum of the number per pixel is delivered by
-    the return value.} 
+    the return value.}
+  \item{ztrans}{Function to transform the counts. The user has to make
+    sure that the transformed counts lie in the range [0,zmax], where
+    zmax is any positive number (>=2).}  
   \item{colramp}{Color ramp to encode the density of the points within a
     pixel.}
   \item{border}{Shall border be drawn between the colors in the legend:
@@ -67,8 +71,31 @@ ipairs(x,
 zmax <- ipairs(airquality,pixs=2,main="Air Quality")
 ipairs(airquality,pixs=2,zmax=zmax,border=TRUE)
 
+## example with factors
 zmax <- ipairs(iris,pixs=2)
 ipairs(iris,pixs=2,zmax=zmax)
+
+## a really huge dataset
+if(require(SwissAir)) {
+  data(AirQual)
+
+  ## low correlation
+  ipairs(AirQual[,c("ad.O3","lu.O3","sz.O3")],
+         ztrans=function(x){x[x<1] <- 1; log2(x)*10})
+  
+  ipairs(AirQual[,c("ad.NO","lu.NO","sz.NO")],
+         ztrans=function(x){x[x<1] <- 1; log2(x)*10})
+
+  ## high correlation
+  Ox <- AirQual[,c("ad.O3","lu.O3","sz.O3")]+
+    AirQual[,c("ad.NOx","lu.NOx","sz.NOx")]-
+      AirQual[,c("ad.NO","lu.NO","sz.NO")]
+  names(Ox) <- c("ad","lu","sz")
+  ipairs(Ox,cex.lab=2, ztrans=function(x){x[x<1] <- 1; log2(x)*10})
+
+  ## cf. ?AirQual for the explanation of the physical and chemical background
+} else print("Package SwissAir is not available")
+
 }
 
 \keyword{hplot}

@@ -14,7 +14,8 @@
 
 \usage{
 ixyplot(x, y = NULL,
-        pixs = 1, zmax = NULL, colramp = IDPcolorRamp, border = FALSE,
+        pixs = 1, zmax = NULL, ztrans = function(x){x},
+        colramp = IDPcolorRamp, border = FALSE,
         xlab = NULL, ylab = NULL, nx.lab = 5, ny.lab = 5, minL.lab = 3,
         main = NULL, cex.main = par("cex.main"))
 }
@@ -27,6 +28,9 @@ ixyplot(x, y = NULL,
   \item{pixs}{Pixelsize in mm.}
   \item{zmax}{Maximum counts per pixel to be plotted. \code{zmax} must
     be >= maximum number of counts per pixel.}
+  \item{ztrans}{Function to transform the counts. The user has to make
+    sure that the transformed counts lie in the range [0,zmax], where
+    zmax is any positive number (>=2).}  
   \item{colramp}{Color ramp to encode the density of the points within a
     pixel.}
   \item{border}{Shall border be drawn between the colors in the legend:

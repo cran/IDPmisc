@@ -3,6 +3,7 @@ function(x,
                     y=NULL,
                     pixs=1,
                     zmax=NULL,
+                    ztrans=function(x){x},
                     colramp=IDPcolorRamp,
                     border=FALSE,
                     xlab=NULL,
@@ -109,7 +110,8 @@ function(x,
     axis(2, at = at.y, xpd = NA)
   }
 
-  zzmax <- Image(x,y,pixs=pixs,zmax=zmax,colramp=colramp, factors=c(xfac,yfac))
+  zzmax <- Image(x,y,pixs=pixs,zmax=zmax,ztrans=ztrans,
+                 colramp=colramp, factors=c(xfac,yfac))
   if(is.null(zmax)) zmax <- zzmax
   zmax <- max(zmax,2)
   box()

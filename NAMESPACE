@@ -1,3 +1,9 @@
-## all functions starting with "." are internal
-exportPattern("^[^h\\.]")
+##import(grid,lattice)
+export(Arrows,poster.plot,zoom)
+export(data.sheet,inf.omit,NaRV.omit,ok)
+export(col2hsv,IDPcolorRamp,showColors)
+export(Image,ixyplot,ipairs,ilagplot)
+##export(RhoDir2xy,xy2RhoDir)
 
+##exportClasses("rose")
+##exportMethods("plot")

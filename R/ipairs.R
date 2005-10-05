@@ -1,7 +1,8 @@
 "ipairs" <-
 function(x,                 
                    pixs=1,            
-                   zmax=NULL,         
+                   zmax=NULL,
+                   ztrans=function(x){x},
                    colramp=IDPcolorRamp,            
                    border=FALSE,     
                    labels,            
@@ -66,7 +67,7 @@ function(x,
   ## layout.show(lo)
   ## return()
 
-  h.LegendAndTitle(main,max(cex.lab,cex.main),border,colramp,zmax)
+  LegendAndTitle(main,max(cex.lab,cex.main),border,colramp,zmax)
   
   cntsmax <- 0
 
@@ -132,7 +133,7 @@ function(x,
       if(i!=j){## do scatter plot
         cntsmax <- max(cntsmax,
                        Image(x=x[, i], y=x[, j],
-                               pixs=pixs, zmax=zmax,
+                               pixs=pixs, zmax=zmax, ztrans=ztrans,
                                colramp=colramp, factors=c(is.f[i],is.f[j])))  
       }
       

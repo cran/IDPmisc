@@ -12,7 +12,8 @@
 
 \usage{
 ilagplot(x, set.lags = 1,
-         pixs = 1, zmax = NULL, colramp = IDPcolorRamp,
+         pixs = 1, zmax = NULL, ztrans = function(x){x},
+         colramp = IDPcolorRamp,
          mfrow = NULL, border = FALSE,
          main = NULL, cex.main = 2 * par("cex.main"), ...)
 }
@@ -24,7 +25,11 @@ ilagplot(x, set.lags = 1,
   \item{zmax}{Maximum counts per Pixel to be plotted. When NULL each
     lag plot has its individual scale. If a number >= maximum number of
     counts per pixel is supplied, the scale will be identical for all
-    lag plots. The maximum of the number per pixel is delivered by the return vallue.}
+    lag plots. The maximum of the number per pixel is delivered by the
+    return vallue.}
+  \item{ztrans}{Function to transform the counts. The user has to make
+    sure that the transformed counts lie in the range [0,zmax], where
+    zmax is any positive number (>=2).}
   \item{colramp}{Color ramp to encode the density of the points within a
   pixel}
   \item{mfrow}{See Argument \code{mfrow} in \code{\link{par}}}
@@ -52,15 +57,24 @@ ilagplot(x, set.lags = 1,
 \seealso{\code{\link{ipairs}}, \code{\link{ixyplot}},
     \code{\link{Image}}}
   
-\examples{
-zmax <- ilagplot(sunspot.month, pixs=2, set.lags=1:9,
-                 mfrow=c(3,3),border=FALSE,main="Test")
-ilagplot(sunspot.month, pixs=2, zmax=zmax, set.lags=1:6,
-         mfrow=c(2,3), border=FALSE)
+  \examples{
+if(require(SwissAir)) {
+  data(AirQual)
 
-x <-  rnorm(100000)
-ilagplot(x+c(x[-1],0)+c(x[-(1:2)],0,0)+c(x[-(1:3)],0,0,0),
-         set.lags=1:4)
+  ## low correlation
+  ilagplot(AirQual[,c("ad.O3")],set.lags = 1:9,
+         ztrans=function(x){x[x<1] <- 1; log2(x)*10})
+
+  ## high correlation
+  Ox <- AirQual[,c("ad.O3","lu.O3","sz.O3")]+
+    AirQual[,c("ad.NOx","lu.NOx","sz.NOx")]-
+      AirQual[,c("ad.NO","lu.NO","sz.NO")]
+  names(Ox) <- c("ad","lu","sz")
+  ilagplot(Ox$ad,set.lags = 1:9,
+           ztrans=function(x){x[x<1] <- 1; log2(x)*10})
+
+  ## cf. ?AirQual for the explanation of the physical and chemical background
+} else print("Package SwissAir is not available")
 }
 
 \keyword{hplot}

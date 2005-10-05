@@ -1,8 +1,8 @@
 "Image" <-
-function(x, y=NULL, pixs=1, zmax=NULL, colramp=IDPcolorRamp,
-                  factors=c(FALSE,FALSE))
-  ## Author: Andreas Ruckstuhl, refined by Rene Locher
-  ## Version: 2005-04-19
+function(x, y=NULL, pixs=1, zmax=NULL, ztrans=function(x){x},
+                  colramp=IDPcolorRamp, factors=c(FALSE,FALSE))
+  ## Authors: Andreas Ruckstuhl, Rene Locher
+  ## Version: 2005-10-05
 {
   if (is.matrix(x) | is.data.frame(x)) {
     if (ncol(x)>1) {
@@ -39,7 +39,7 @@ function(x, y=NULL, pixs=1, zmax=NULL, colramp=IDPcolorRamp,
      by <- seq(usr[3],usr[4], length=round(par("pin")/pixs)[2]+1)
    }
   
-  zz <- table(cut(xy[,1],b=bx), cut(xy[,2], b=by))
+  zz <- ztrans(table(cut(xy[,1],b=bx), cut(xy[,2], b=by)))
   zzmax <- max(zz)
 
   if(is.null(zmax)) zmax <- zzmax
@@ -51,7 +51,7 @@ function(x, y=NULL, pixs=1, zmax=NULL, colramp=IDPcolorRamp,
   if(zzmax>zmax)
     stop("\nzmax too small! Densiest aereas are out of range!",call. = FALSE)
 
-  zmax <- max(zmax,2) ## zmax must not be smaller than 2!
+  zmax <- ceiling(max(zmax,2)) ## zmax must not be smaller than 2!
 
   ## bg color for 0
   lbx <- length(bx)

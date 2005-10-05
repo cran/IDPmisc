@@ -1,4 +1,4 @@
-"h.LegendAndTitle" <-
+"LegendAndTitle" <-
 function(main,cex.main,border,colramp,zmax)
   ## internal functions for iplot and ilagplot
 {
@@ -38,5 +38,5 @@ function(main,cex.main,border,colramp,zmax)
     ap <- pretty(lev)
     axis(side=4, at=ap+0.5, labels=paste(ap))
   } 
-} # h.LegendAndTitle
+} # LegendAndTitle
 

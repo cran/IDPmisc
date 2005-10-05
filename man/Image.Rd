@@ -6,8 +6,8 @@
   The density of points in a scatter plot is encoded by color.
 }
 \usage{
-Image(x, y = NULL, pixs = 1, zmax = NULL, colramp = IDPcolorRamp,
-      factors = c(FALSE, FALSE))
+Image(x, y = NULL, pixs = 1, zmax = NULL, ztrans = function(x){x},
+      colramp = IDPcolorRamp, factors = c(FALSE, FALSE))
 }
 
 \arguments{
@@ -25,7 +25,11 @@ Image(x, y = NULL, pixs = 1, zmax = NULL, colramp = IDPcolorRamp,
   \item{zmax}{Maximum counts per Pixel to be plotted. When \code{NULL}
     the density in the scatter plot is encoded from 0 pixel to maximum
     number of pixels found. \code{zmax} must be equal or larger than
-    maximum counts found.} 
+    maximum counts found.}
+  \item{ztrans}{Function to transform the counts. The user has to make
+    sure that the transformed counts lie in the range [0,zmax], where
+    zmax is any positive number (>=2). For examples see
+    \code{\link{ipairs}} and \code{\link{ilagplot}}}  
   \item{colramp}{Color ramp to encode the density of the points within a
     pixel by color.}
   \item{factors}{Vector of logicals indicating whether \code{x} and / or

@@ -2,7 +2,8 @@
 function (x,
                       set.lags=1,
                       pixs=1,           
-                      zmax=NULL,       
+                      zmax=NULL,
+                      ztrans=function(x){x},
                       colramp=IDPcolorRamp,  
                       mfrow=NULL,
                       border=FALSE,
@@ -34,7 +35,7 @@ function (x,
                respect=TRUE)
   ## layout.show(lo)
   ## return()
-  h.LegendAndTitle(main,cex.main,border,colramp,zmax)
+  LegendAndTitle(main,cex.main,border,colramp,zmax)
    
   cntsmax <- 0
   n <- length(x)
@@ -48,7 +49,8 @@ function (x,
                  mgp=c(3,1, 0), type="n", las=1, ...)
     mtext(side=3, line=0.5, text=paste("lag",ll))
     cntsmax <- max(cntsmax,
-                   Image(x=xx, y=xy, pixs=pixs, zmax=zmax, colramp=colramp)) 
+                   Image(x=xx, y=xy, pixs=pixs, zmax=zmax, ztrans=ztrans,
+                         colramp=colramp)) 
   }
   
   invisible(cntsmax)
