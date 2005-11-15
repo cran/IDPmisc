@@ -54,7 +54,7 @@ Image(x, y = NULL, pixs = 1, zmax = NULL, ztrans = function(x){x},
   x- and y-direction are defined. \code{Image} works on ordinary plots
   whereas  \code{image.count} needs the special plotting
   function \code{\link[fields]{image.plot}}. In addition, \code{Image}
-  also works with factors as x- and / or y-coordinates
+  also works with factors as x- and / or y-coordinates.
 }
 
 \value{

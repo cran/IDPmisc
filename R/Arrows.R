@@ -24,9 +24,9 @@ function (x1, y1, x2, y2,
   x.arr <- c(-rev(x), -x)
   wx2 <- width * x^2
   y.arr <- c(-rev(wx2 + delta), wx2 + delta)
-  deg.arr <- c(atan(y.arr, x.arr), NA)
+  deg.arr <- c(atan2(y.arr, x.arr), NA)
   r.arr <- c(sqrt(x.arr^2 + y.arr^2), NA)
-  theta <- atan((y2 - y1) * uin[2], (x2 - x1) * uin[1])
+  theta <- atan2((y2 - y1) * uin[2], (x2 - x1) * uin[1])
   lx <- length(x1)
   Rep <- rep(length(deg.arr), lx)
   p.x2 <- rep(x2, Rep)
@@ -41,7 +41,7 @@ function (x1, y1, x2, y2,
           col = h.col, lwd=h.lwd,
           border=h.col.bo, lty=h.lty)
   r.seg <- rep(cin*sh.adj, lx)
-  th.seg <- theta + rep(atan(0, -cin), lx)
+  th.seg <- theta + rep(atan2(0, -cin), lx)
   segments(x1, y1, x2+r.seg*cos(th.seg)/uin[1], y2+r.seg*sin(th.seg)/uin[2], 
            lwd=sh.lwd, col=sh.col, lty=sh.lty)
   if(verbose) return(list(width=width))
