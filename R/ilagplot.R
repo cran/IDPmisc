@@ -3,7 +3,7 @@ function (x,
                       set.lags=1,
                       pixs=1,           
                       zmax=NULL,
-                      ztrans=function(x){x},
+                      ztransf=function(x){x},
                       colramp=IDPcolorRamp,  
                       mfrow=NULL,
                       border=FALSE,
@@ -12,11 +12,11 @@ function (x,
                       ...) 
   
   ## based on R function lag.plot V1.7
-  ## Authors: Andreas Ruckstuhl, refined by Rene Locher
+  ## Authors: Andreas Ruckstuhl, Rene Locher
   ## Version 31-01-05
 {
-  if (!(is.vector(x)|is.ts(x))) stop("\nx must be a vector or ts")
-  if(!is.numeric(x)) stop("\nx must be numeric or ts")
+  if (!(is.vector(x)|is.ts(x))) stop("x must be a vector or ts\n")
+  if(!is.numeric(x)) stop("x must be numeric or ts\n")
      
   opar <- par(no.readonly = TRUE)
   on.exit(par(opar))
@@ -49,7 +49,7 @@ function (x,
                  mgp=c(3,1, 0), type="n", las=1, ...)
     mtext(side=3, line=0.5, text=paste("lag",ll))
     cntsmax <- max(cntsmax,
-                   Image(x=xx, y=xy, pixs=pixs, zmax=zmax, ztrans=ztrans,
+                   Image(x=xx, y=xy, pixs=pixs, zmax=zmax, ztransf=ztransf,
                          colramp=colramp)) 
   }
   

@@ -2,7 +2,7 @@
 function(x,                 
                    pixs=1,            
                    zmax=NULL,
-                   ztrans=function(x){x},
+                   ztransf=function(x){x},
                    colramp=IDPcolorRamp,            
                    border=FALSE,     
                    labels,            
@@ -17,16 +17,16 @@ function(x,
   ## Produces an image scatter plot matrix of largee datasets
   
   ## based on R function pairs V1.7
-  ## Authors: Andreas Ruckstuhl and René Locher
-  ## Version: 2005-02-01
+  ## Authors: Andreas Ruckstuhl, René Locher
+  ## Version: 2005-10-17
 
 {
   if (!(is.data.frame(x)||is.matrix(x)))
-    stop("x must be a data.frame or a matrix")
+    stop("x must be a data.frame or a matrix\n")
   
   if(!all(sapply(x,
       function(x) any(is.element(is(x),c("numeric","factor","logical"))))))
-    stop("\nAll columns in data.frame must be either pure numerics, logicals or factors!")
+    stop("All columns in data.frame must be either pure numerics, logicals or factors!\n")
   opar <- par(no.readonly = TRUE)
   on.exit(par(opar))
   nc <- ncol(x)
@@ -52,7 +52,7 @@ function(x,
     for (i in which(is.f)) x[,i] <- as.integer(x[,i])
     x <- cbind(x[,!is.f],x[,is.f])
     labels <- c(labels[!is.f],labels[is.f])
-    ## warning("factors have been put to the end and coerced into integers!")
+    ## warning("factors have been put to the end and coerced into integers!\n")
   }
 
   is.f <- c(rep(FALSE,nc-nf),rep(TRUE,nf))
@@ -133,7 +133,7 @@ function(x,
       if(i!=j){## do scatter plot
         cntsmax <- max(cntsmax,
                        Image(x=x[, i], y=x[, j],
-                               pixs=pixs, zmax=zmax, ztrans=ztrans,
+                               pixs=pixs, zmax=zmax, ztransf=ztransf,
                                colramp=colramp, factors=c(is.f[i],is.f[j])))  
       }
       

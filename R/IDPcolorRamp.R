@@ -7,16 +7,16 @@ function (n,
                           fr     = c(0.27, 0.27, 0.27, 0))
 
   ## Author: René Locher
-  ## Version: 2005-01-20
+  ## Version: 2005-10-17
 {
-  if(!is.vector(n)) stop("n must be a single value")
-  if(length(n)!=1) stop("n must be a single value")
+  if(!is.vector(n)) stop("n must be a single value\n")
+  if(length(n)!=1) stop("n must be a single value\n")
   nsr <- length(fr)+1
   if(sum(fr)<=0 | sum(fr)>1 | any(fr<0))
-    stop("fr must sum to x with  0 < x < 1 where all fr are positive")
+    stop("fr must sum to x with  0 < x < 1 where all fr are positive\n")
   if(nrow(colInt)!=nsr+1)
-    stop("nrow(colInt) must be equal to length(fr)+2")
-  if (nsr<2) stop("Number of Color Subramps must be at least 2")
+    stop("nrow(colInt) must be equal to length(fr)+2\n")
+  if (nsr<2) stop("Number of Color Subramps must be at least 2\n")
 
   col <- data.frame(srn=1:nsr,ncol=rep(0,nsr),mod=rep(0,nsr))
   col$ncol[-nsr] <- trunc(fr*n)

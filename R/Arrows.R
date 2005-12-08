@@ -13,7 +13,7 @@ function (x1, y1, x2, y2,
                     h.lty=1,
                     verbose=FALSE)
   ## Author: Andreas Ruckstuhl, refined by Rene Locher
-  ## Version: 2005-01-31
+  ## Version: 2005-10-17
 {
   cin <- size * par("cin")[2]
   uin <- if (is.R()) 

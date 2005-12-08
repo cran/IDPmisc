@@ -1,0 +1,91 @@
+2005-02-16 Rene Locher
+ 	IDPmisc V0.2.3
+
+2005-03-22 Rene Locher
+	IDPmisc V0.3.1
+	* inf.omit, ok added
+
+2005-04-20  Rene Locher
+	IDPmisc V0.3.2
+	* inf.omit deprecated
+	* inf.omit renamed to the more precise name NaRV.omit.
+	  NaRV = Not A Regular Value
+	* ipairs, iplot, image: densities are now displayed centered over 
+	  the corresponding factor levels
+
+2005-04-21 Rene Locher	
+	IDPmisc V0.3.3
+	* ipairs: factor levels are now correctely labeled
+	* Image, ipairs, ilagplot: argument ztrans renamed to ztransf
+	
+
+2005-04-27 Rene Locher
+	IDPmisc V0.3.4
+	* iplot: factor levels are now correctely labeled
+
+2005-06-03 Rene Locher	
+	IDPmisc V0.3.5
+	* zoom: example in help and text output of zoom are improved
+
+2005-07-22 Rene Locher
+	IDPmisc V0.3.6
+	* zoom: example in help further improved
+	* ixyplot: limits for nonfactors minimized
+
+2005-10-05 Rene Locher
+	IDPmisc V0.4.1 not published
+
+2005-10-05
+	IDPmisc V0.4.2
+	* ipairs, ilagplot: additional examples on dataset AirQual{SwissAir}
+	* Image, ipairs, ilagplot, ixyplot: additional argument "ztrans", which 
+	  allows transformation of counts by a user defined function.
+
+2005-11-15 Rene Locher
+	Quick fix for CRAN because version 0.5 is not yet ready to be 
+	  published
+	* Arrows: 'atan(y,x)' replaced by 'atan2(y,x)'
+	
+2005-10-12 Rene Locher
+	IDPmisc V0.5.0, not published
+	* draw.leg: new function
+	* rose-class: new class
+	* rose: new function
+	* plot: new S4-Method for class rose
+	* RhoPhi2xy: new function
+	* xy2RhoPhi: new function
+
+2005-10-12 Rene Locher
+	IDPmisc V0.5.1, not published
+	* plot: S4-Method, argument 'del.vp' removed
+
+2005-10-17 Rene Locher
+	IDPmisc V0.5.2, not published
+	* plot: S4-Method, help to argument 'stacked' and 
+	  corresponding error message in code updated.
+	  Interpretation of argument 'rev.col' changed, so that stacked 
+	  and unstacked roses have now the same order in the legend.
+	* rose: new argument 'right'
+	  'na.warning=TRUE': warns now also for x values out of breaks range
+
+2005-10-18 Rene Locher
+	IDPmisc V0.5.3, not published	
+	* plot: S4-Method
+	  Several new warnings added.
+	  Argument trans added, help revised
+	* rose: argument 'na.warning' changed to 'warn' 
+
+2005-10-18 Rene Locher
+	IDPmisc V0.5.4, not published
+	  several improvements on help pages
+	* RhoPhi2xy changed to clock2cart
+	* xy2RhoPhi changed to cart2clock
+	* plot.rose completely revised, including argument list and 
+	            help pages
+	
+2005-12-06 Rene Locher
+	IDPmisc V0.5.5
+	* plot.rose several bugs fixed
+	
+	
+	

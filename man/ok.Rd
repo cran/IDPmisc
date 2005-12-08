@@ -4,7 +4,7 @@
 \description{
   Sets NAs in logical vectors and matrices to FALSE. This is especially
   useful for conditional selections of data when the variables the condition is
-  based on contains \code{NA}s.
+  based on contain \code{NA}s.
 }
 \usage{
 ok(x)
@@ -15,7 +15,7 @@ ok(x)
 }
 
 \value{
-Logical vector or matrix, containing no NAs.
+Logical vector or matrix, containing no \code{NA}s.
 }
 \author{Rene Locher}
 

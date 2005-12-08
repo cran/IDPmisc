@@ -6,7 +6,7 @@
   The density of points in a scatter plot is encoded by color.
 }
 \usage{
-Image(x, y = NULL, pixs = 1, zmax = NULL, ztrans = function(x){x},
+Image(x, y = NULL, pixs = 1, zmax = NULL, ztransf = function(x){x},
       colramp = IDPcolorRamp, factors = c(FALSE, FALSE))
 }
 
@@ -26,7 +26,7 @@ Image(x, y = NULL, pixs = 1, zmax = NULL, ztrans = function(x){x},
     the density in the scatter plot is encoded from 0 pixel to maximum
     number of pixels found. \code{zmax} must be equal or larger than
     maximum counts found.}
-  \item{ztrans}{Function to transform the counts. The user has to make
+  \item{ztransf}{Function to transform the counts. The user has to make
     sure that the transformed counts lie in the range [0,zmax], where
     zmax is any positive number (>=2). For examples see
     \code{\link{ipairs}} and \code{\link{ilagplot}}}  
@@ -43,9 +43,8 @@ Image(x, y = NULL, pixs = 1, zmax = NULL, ztrans = function(x){x},
   a drawback, pixels may be unequally spaced, when there are only very
   few distinct (integer) values in x- or y-direction. When this is the case, the
   corresponding dimension should be declared as factor. (cf. argument
-  \code{factors}).\cr 
-
-  A similar solution for plotting densities is realized in the package
+  \code{factors}). 
+  \crA similar solution for plotting densities is realized in the package
   \pkg{fields}:  
   \code{\link[fields]{image.count}}. The main differences between the
   solution in \pkg{IDPmisc} and \pkg{fields} are the following: In
@@ -55,12 +54,13 @@ Image(x, y = NULL, pixs = 1, zmax = NULL, ztrans = function(x){x},
   whereas  \code{image.count} needs the special plotting
   function \code{\link[fields]{image.plot}}. In addition, \code{Image}
   also works with factors as x- and / or y-coordinates.
+  \crThis function is based on \pkg{\link{graphics}}
 }
 
 \value{
   Maximum number of counts per Pixel found.}
 
-\author{Andreas Ruckstuhl, refined by Rene Locher}
+\author{Andreas Ruckstuhl, Rene Locher}
 
 \seealso{ \code{\link{ipairs}}, \code{\link{ilagplot}},
   \code{\link{ixyplot}}, \code{\link{image}},

@@ -1,6 +1,6 @@
 "LegendAndTitle" <-
 function(main,cex.main,border,colramp,zmax)
-  ## internal functions for iplot and ilagplot
+  ## internal functions for ipairs and ilagplot
 {
   ## writing title
   par(mar=rep(0,4), las=1)
@@ -16,7 +16,7 @@ function(main,cex.main,border,colramp,zmax)
   ## drawing legend
   ## calculate colcut only when common zmax is defined
   if(is.null(zmax)) {
-    warning(c("Separate color coding for each image"),call. = FALSE)
+    warning(c("Separate color coding for each image\n"),call. = FALSE)
     border <- FALSE
     mycol <- c(par("bg"),colramp(100))
   }else {

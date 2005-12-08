@@ -14,7 +14,7 @@
 
 \usage{
 ixyplot(x, y = NULL,
-        pixs = 1, zmax = NULL, ztrans = function(x){x},
+        pixs = 1, zmax = NULL, ztransf = function(x){x},
         colramp = IDPcolorRamp, border = FALSE,
         xlab = NULL, ylab = NULL, nx.lab = 5, ny.lab = 5, minL.lab = 3,
         main = NULL, cex.main = par("cex.main"))
@@ -28,7 +28,7 @@ ixyplot(x, y = NULL,
   \item{pixs}{Pixelsize in mm.}
   \item{zmax}{Maximum counts per pixel to be plotted. \code{zmax} must
     be >= maximum number of counts per pixel.}
-  \item{ztrans}{Function to transform the counts. The user has to make
+  \item{ztransf}{Function to transform the counts. The user has to make
     sure that the transformed counts lie in the range [0,zmax], where
     zmax is any positive number (>=2).}  
   \item{colramp}{Color ramp to encode the density of the points within a
@@ -46,22 +46,21 @@ ixyplot(x, y = NULL,
 }
 
 \details{
-  When there are factors present in the data.frame, the variables are
-  reordered so that the factors are plotted in the left corner of the
-  bottom.\cr
-  
-  The idea is similar to \code{\link[hexbin]{plot.hexbin}}. The hexagons are
-  better suited to reflect the density of points in a plane than the
-  squares used here. Nevertheless squares are, contrary to hexagons,
-  invariant to reflexions at the x- \emph{and} y-axis and therefore suited for
-  scatter plot matrices and also for plotting factors.
+  The idea of this plot is similar to
+  \code{\link[hexbin]{plot.hexbin}}. The 
+  hexagons are better suited to reflect the density of points in a plane
+  than the squares used here. Nevertheless squares are, contrary to
+  hexagons, invariant to reflexions at the x- \emph{and} y-axis and
+  therefore suited for scatter plot matrices and also for plotting
+  factors.
+  \crThis function is based on \pkg{\link{graphics}}
 }
 
 \value{
   Maximum number of counts per Pixel found.
 }
 
-\author{Andreas Ruckstuhl, refined by Rene Locher}
+\author{Andreas Ruckstuhl, Rene Locher}
 
 \note{When you get the error message "Zmax too small! Densiest aereas
   are out of range!" you must run the function again without specifying

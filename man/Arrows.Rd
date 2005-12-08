@@ -43,7 +43,8 @@ Arrows(x1, y1, x2, y2,
     \item{=0}{End of shaft at top of head,}
     \item{=1}{End of shaft at bottom of head,}
     \item{>1}{Gap between shaft and head,}
-    \item{<0}{Head is on the shaft.}}
+    \item{<0}{Head is on the shaft.}
+    \crThis function is based on \pkg{\link{graphics}}}
 }
 
 \value{

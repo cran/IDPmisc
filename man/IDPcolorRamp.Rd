@@ -30,8 +30,8 @@ IDPcolorRamp(n,
 \details{
   The function distributes the number of colors in the subramps, given
   the fractions fr, as smoothly as possible. There is at least one color
-  in the first and the last subramp.\cr
-  Definition of hsv code:
+  in the first and the last subramp.
+  \crDefinition of hsv code:
   \describe{
   \item{\code{h}}{Hue of hsv-Signal: 0=red, 1/3=green, 2/3=blue, 1=red.}
   \item{\code{s}}{Saturation of hsv-Signal: 0=white, 1=full color.}

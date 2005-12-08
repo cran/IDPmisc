@@ -3,7 +3,7 @@ function(x,
                     y=NULL,
                     pixs=1,
                     zmax=NULL,
-                    ztrans=function(x){x},
+                    ztransf=function(x){x},
                     colramp=IDPcolorRamp,
                     border=FALSE,
                     xlab=NULL,
@@ -16,7 +16,7 @@ function(x,
   ## Produces an image scatter plot of a large 2d dataset.
   
   ## based on R function lag.plot V1.7
-  ## Authors: Andreas Ruckstuhl, refined by René Locher
+  ## Authors: Andreas Ruckstuhl, René Locher
   ## Version 16-03-05
 {
   no.xlab <- is.null(xlab)
@@ -28,7 +28,7 @@ function(x,
 
   if(is.data.frame(x)|is.matrix(x)){
     if(ncol(x)>1) {
-      if(!no.y) stop("'y' must be NULL when x is a matrix or data.frame with more than 1 column!")
+      if(!no.y) stop("'y' must be NULL when x is a matrix or data.frame with more than 1 column!\n")
       if (no.xlab) xlab <- colnames(x)[1]
       if (no.ylab) ylab <- colnames(x)[2]
       no.y <- FALSE
@@ -37,7 +37,7 @@ function(x,
     } else if(ncol(x)==1) {
       if (no.xlab) xlab <- colnames(x)[1]
       x <- x[,1]
-    } else stop("Matrix has no columns!")
+    } else stop("Matrix has no columns!\n")
   }
      if(no.y) {
        ylab <- xlab
@@ -68,7 +68,7 @@ function(x,
   }
 
   if(!(is.vector(x)&is.vector(y)))
-    stop("x must be a vector, matrix or data.frame and y must be a vector if present")
+    stop("x must be a vector, matrix or data.frame and y must be a vector if present\n")
   
   par(las=1)
   mar <- mar.orig
@@ -110,7 +110,7 @@ function(x,
     axis(2, at = at.y, xpd = NA)
   }
 
-  zzmax <- Image(x,y,pixs=pixs,zmax=zmax,ztrans=ztrans,
+  zzmax <- Image(x,y,pixs=pixs,zmax=zmax,ztransf=ztransf,
                  colramp=colramp, factors=c(xfac,yfac))
   if(is.null(zmax)) zmax <- zzmax
   zmax <- max(zmax,2)

@@ -1,15 +1,48 @@
-"rose" <-
-function(x, cyclVar=NULL, circle=NULL, n.cyclVar=8, 
-                 cut=NULL, breaks=NULL, labels=NULL,
-                 dig.lab=2, include.lowest = FALSE,
-                 subset=NULL, na.warning=TRUE, FUN=mean, ...)
+"val.rose" <-
+function(x)
+  ## Validation function for rose-class
   ## Author: Rene Locher
-  ## Version: 2005-09-30
+  ## Version: 2005-10-17
+  {
+    if (length(x@cyclVar)!=nrow(x@rho))
+      return("nrow(x) must be equal to length(cyclVar)\n")
+    if (length(x@circle)!=1) return(paste("length of 'circle' is ",
+                length(x@circle),", but must be 1!\n",sep=""))
+    if (sum(is.na(x@cyclVar))>0)
+      return("slot 'cyclVar' must not contain NAs!\n") 
+    if (min(x@cyclVar,rm.na=T)<0 || max(x@cyclVar,rm.na=T)>=x@circle)
+      return("The following condition must be valid: 0 <= 'cyclVar' < 'circle'!\n")
+    if (!any(sort(x@cyclVar)==x@cyclVar))
+      return("'cyclVar' must be sorted by increasing values!\n")
+    if (any(duplicated(x@cyclVar)))
+      return("All values of 'cyclVar' must be unique!\n")
+    if (is.null(colnames(x@rho)))
+        return("'rho' must have column names!\n")
+    if (is.null(rownames(x@rho)))
+        return("'rho' must have row names!\n")
+    return(TRUE)
+    } # val.rose
+
+setClass("rose",
+         representation(rho="matrix",
+                        cyclVar="numeric",
+                        circle="numeric"),
+         validity=val.rose)
+
+
+"rose" <-
+function(x, subset=NULL, 
+                 cyclVar=NULL, circle=NULL, n.cyclVar=8, 
+                 cut=NULL, labels=NULL, breaks=NULL, 
+                 include.lowest = FALSE, right = TRUE, dig.lab=2, 
+                 warn=TRUE, FUN=mean, ...)
+  ## Author: Rene Locher
+  ## Version: 2005-10-18
   ##
   ## Calculates aggregates as function of cyclic variable like direction or hour
   ##  of day and, possibly, a second variable for splitting the data.
   ## Examples: The mean value of ozone concentration as a function of wind 
-  ##           direction and windspeed.
+  ##           direction and wind speed.
   ##           The mean value of ozone, nitrogen dioxide, nitrogen oxid, etc. as
   ##           a function of hour of day.
   ##           The quantiles of ozone concentration as a function of wind
@@ -30,7 +63,7 @@ function(x, cyclVar=NULL, circle=NULL, n.cyclVar=8,
   ##
   ## The different columns correspond to
   ## the splitting levels of the second variable or to
-  ## the different x column when x has more than one column or to
+  ## the different columns of x, when x has more than one column, or to
   ## the different elements of the output vector of FUN.
   ##
   ## The centers of the cyclic variable are stored in the vector 'cyclVar'
@@ -43,18 +76,18 @@ function(x, cyclVar=NULL, circle=NULL, n.cyclVar=8,
     x <- as.matrix(x)
     colnames(x) <- lab 
   } else  if (!(is.matrix(x))) x <- as.matrix(x) else
-  stop("'x' must be a matrix, a data.frame or a vector!")
+  stop("'x' must be a matrix, a data.frame or a vector!\n")
 
-  if(is.null(circle)) stop("'circle' is not defined!")
+  if(is.null(circle)) stop("'circle' is not defined!\n")
 
-  if (is.null(cyclVar)) stop("'cyclVar' is not defined!") else
-  if (!is.numeric(cyclVar)) stop("'cyclVar' must be numeric!") else
-  if (is.factor(cyclVar)) stop("'cyclVar' must not be a factor!") else
+  if (is.null(cyclVar)) stop("'cyclVar' is not defined!\n") else
+  if (!is.numeric(cyclVar)) stop("'cyclVar' must be numeric!\n") else
+  if (is.factor(cyclVar)) stop("'cyclVar' must not be a factor!\n") else
   if (sum(cyclVar<0,na.rm=TRUE)+sum(cyclVar>=circle,na.rm=TRUE)>0)
-    stop("The following condition must be full filled: \n0 <= 'cyclVar' < 'circle'")
+    stop("The following condition must be full filled: \n0 <= 'cyclVar' < 'circle'\n")
   
   if (nrow(x) != length(cyclVar))
-    stop("\nx and cyclVar have incompatible dimensions!")      
+    stop("x and cyclVar have incompatible dimensions!\n")      
   if (is.null(colnames(x)))
     colnames(x) <- paste("x",1:ncol(x),sep="")
 
@@ -66,8 +99,9 @@ function(x, cyclVar=NULL, circle=NULL, n.cyclVar=8,
   }
   
   ii <- is.na(cyclVar)
-  if (sum(ii)&na.warning){
-    warning("cyclVar' must not contain NAs! Corresponding data are omitted.\n\n")
+  nna <- sum(ii)
+  if (sum(nna)>0&warn){
+    warning("cyclVar' must not contain NAs! ",nna," observations are omitted!!\n")
     x <- x[!ii,,drop=FALSE]
     cyclVar <- cyclVar[!ii]
     if (!is.null(cut)) cut <- cut[!ii]
@@ -82,8 +116,8 @@ function(x, cyclVar=NULL, circle=NULL, n.cyclVar=8,
                labels=cyclVar.lab,include.lowest=T)
 
   if (ncol(x)>1) {
-    if (!is.null(cut)|!is.null(breaks))
-      warning("When x has more than 1 column, 'cut' and 'breaks' are not used!")
+    if ((!is.null(cut)|!is.null(breaks))&warn)
+      warning("When x has more than 1 column, 'cut' and 'breaks' are not used!\n")
     res <- aggregate(x, by=list(cyclVar=cyclVar.f), FUN=FUN, ...)
     res$cyclVar <- as.numeric(as.character(res$cyclVar))
 
@@ -100,7 +134,7 @@ function(x, cyclVar=NULL, circle=NULL, n.cyclVar=8,
         if (sum(ii)>0) res <- res[!ii]
         if (diff(range(sapply(res,length)))!=0) {
           print(res)
-          stop("\n'FUN' must return a vector of fixed length!")
+          stop("'FUN' must return a vector of fixed length!\n")
         } 
       }
     }
@@ -116,7 +150,7 @@ function(x, cyclVar=NULL, circle=NULL, n.cyclVar=8,
     if (!is.null(cnam)) colnames(res) <- cnam
     else colnames(res) <- paste("V",1:ncol(res),sep="")
   } else { ## 2 D statistics with one column
-    if (nrow(x)!=length(cut)) stop("The vector 'cut' must have the same length as vector'x'")
+    if (nrow(x)!=length(cut)) stop("The vector 'cut' must have the same length as vector'x'\n")
     if (is.factor(cut)) {
       cut.f <- cut} else
     if (is.logical(cut)) {
@@ -125,11 +159,16 @@ function(x, cyclVar=NULL, circle=NULL, n.cyclVar=8,
         breaks <- pretty(c(cut,max(cut)+diff(range(cut)*0.01)),n=3)
       }
       cut.f <- cut(cut, breaks=breaks, labels=labels, dig.lab=dig.lab,
-                   include.lowest=include.lowest)
+                   include.lowest=include.lowest, right = right)
     }
 
     if (length(eval(FUN(x[,1])))>1)
-      stop("\When 'cut' is not NULL, 'FUN' must return a scalar!")
+      stop("When 'cut' is not NULL, 'FUN' must return a scalar!\n")
+
+    nout <- sum(is.na(cut.f)&!is.na(x)&!is.na(cut))
+    if (warn & nout>0)
+      warning(nout," values are out of range of breaks!\n")
+    
     agg <- aggregate(x, by=list(cyclVar=cyclVar.f,cut=cut.f), FUN=FUN, ...)
 
     ## Make sure that all combination are in the matrix

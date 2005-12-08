@@ -11,7 +11,7 @@
 }
 \usage{
 ipairs(x,
-       pixs = 1, zmax = NULL, ztrans=function(x){x},
+       pixs = 1, zmax = NULL, ztransf=function(x){x},
        colramp = IDPcolorRamp, border = FALSE, 
        labels, cex.lab = NULL, nlab = 5, minL.lab = 2, pty = "s", 
        main = NULL, cex.main = par("cex.main"), verbose = FALSE, ...)
@@ -25,7 +25,7 @@ ipairs(x,
     counts per pixel is supplied, the scale will be identical for all
     scatter plots. The maximum of the number per pixel is delivered by
     the return value.}
-  \item{ztrans}{Function to transform the counts. The user has to make
+  \item{ztransf}{Function to transform the counts. The user has to make
     sure that the transformed counts lie in the range [0,zmax], where
     zmax is any positive number (>=2).}  
   \item{colramp}{Color ramp to encode the density of the points within a
@@ -45,13 +45,13 @@ ipairs(x,
   \item{\dots}{Additional arguments to \code{\link{plot.default}}}
 }
 \details{
-  The idea is similar to \code{\link[hexbin]{plot.hexbin}}. The hexagons are
-  better suited to reflect the density of points in a plane than the
+  The idea is similar to \code{\link[hexbin]{plot.hexbin}}. The hexagons
+  are better suited to reflect the density of points in a plane than the
   squares used here. Nevertheless squares are, contrary to hexagons,
-  invariant to reflexions at the x- \emph{and} y-axis and therefore suited for
-  scatter plot matrices and also for plotting factors.
+  invariant to reflexions at the x- \emph{and} y-axis and therefore
+  suited for scatter plot matrices and also for plotting factors.
 
-  Code is based on R function \code{\link{pairs}} V1.7.
+  The code is based on R function \code{\link{pairs}} V1.7.
 }
 
 \value{
@@ -59,13 +59,14 @@ ipairs(x,
   returned when \code{verbose == TRUE}.
 }
 
-\author{Andreas Ruckstuhl, refined by Rene Locher}
+\author{Andreas Ruckstuhl, Rene Locher}
 
 \note{When you get the error message "Zmax too small! Densiest aereas
   are out of range!" you must run the function again without specifying
   zmax. The value returned gives you the minimum value allowed for zmax.}
 
-\seealso{\code{\link{ilagplot}}, \code{\link{ixyplot}}, \code{\link{Image}}}
+\seealso{\code{\link{ilagplot}}, \code{\link{ixyplot}},
+  \code{\link{Image}}} 
 
 \examples{
 zmax <- ipairs(airquality,pixs=2,main="Air Quality")
@@ -81,17 +82,17 @@ if(require(SwissAir)) {
 
   ## low correlation
   ipairs(AirQual[,c("ad.O3","lu.O3","sz.O3")],
-         ztrans=function(x){x[x<1] <- 1; log2(x)*10})
+         ztransf=function(x){x[x<1] <- 1; log2(x)*10})
   
   ipairs(AirQual[,c("ad.NO","lu.NO","sz.NO")],
-         ztrans=function(x){x[x<1] <- 1; log2(x)*10})
+         ztransf=function(x){x[x<1] <- 1; log2(x)*10})
 
   ## high correlation
   Ox <- AirQual[,c("ad.O3","lu.O3","sz.O3")]+
     AirQual[,c("ad.NOx","lu.NOx","sz.NOx")]-
       AirQual[,c("ad.NO","lu.NO","sz.NO")]
   names(Ox) <- c("ad","lu","sz")
-  ipairs(Ox,cex.lab=2, ztrans=function(x){x[x<1] <- 1; log2(x)*10})
+  ipairs(Ox,cex.lab=2, ztransf=function(x){x[x<1] <- 1; log2(x)*10})
 
   ## cf. ?AirQual for the explanation of the physical and chemical background
 } else print("Package SwissAir is not available")

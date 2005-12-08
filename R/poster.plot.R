@@ -8,7 +8,7 @@ function(x, y=NULL,  type="p", col=col.fg,
   ## Convenient xyplot with colored background.
   ##
   ## Authors: Andreas Ruckstuhl, refined by Rene Locher
-  ## Version: 2005-02-01
+  ## Version: 2005-10-17
 
   no.xlab <- (is.null(xlab))
   no.ylab <- (is.null(ylab))

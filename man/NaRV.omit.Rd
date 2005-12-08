@@ -9,7 +9,6 @@
 }
 \usage{
 NaRV.omit(x)
-inf.omit(x)  ##deprecated
 }
 
 \arguments{

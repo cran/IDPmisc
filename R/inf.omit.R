@@ -1,6 +1,5 @@
 "inf.omit" <-
-function(x) { ##deprecated!!
-  .Deprecated("NaRV.omit", package="IDPmisc")
-  NaRV.omit(x)
-} ##
+function(x) { 
+  .Defunct("NaRV.omit", package="IDPmisc")
+}
 

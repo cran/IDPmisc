@@ -5,8 +5,8 @@ function(x){
   ##
   ## Authors: Thomas Unternaehrer, René Locher
   ## Version 29.09.05
-  if (!is.list(x)) stop("'x' must be of type list\n\n")
-  if (min(sapply(x,length)) == 0) stop("NULL elements in list not allowed\n\n")
+  if (!is.list(x)) stop("'x' must be of type list\n")
+  if (min(sapply(x,length)) == 0) stop("NULL elements in list not allowed\n")
   return(sapply(x, function(y) {length(y) <- max(sapply(x,length));y}))
 }
 

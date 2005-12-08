@@ -12,7 +12,7 @@
 
 \usage{
 ilagplot(x, set.lags = 1,
-         pixs = 1, zmax = NULL, ztrans = function(x){x},
+         pixs = 1, zmax = NULL, ztransf = function(x){x},
          colramp = IDPcolorRamp,
          mfrow = NULL, border = FALSE,
          main = NULL, cex.main = 2 * par("cex.main"), ...)
@@ -27,7 +27,7 @@ ilagplot(x, set.lags = 1,
     counts per pixel is supplied, the scale will be identical for all
     lag plots. The maximum of the number per pixel is delivered by the
     return vallue.}
-  \item{ztrans}{Function to transform the counts. The user has to make
+  \item{ztransf}{Function to transform the counts. The user has to make
     sure that the transformed counts lie in the range [0,zmax], where
     zmax is any positive number (>=2).}
   \item{colramp}{Color ramp to encode the density of the points within a
@@ -63,7 +63,7 @@ if(require(SwissAir)) {
 
   ## low correlation
   ilagplot(AirQual[,c("ad.O3")],set.lags = 1:9,
-         ztrans=function(x){x[x<1] <- 1; log2(x)*10})
+         ztransf=function(x){x[x<1] <- 1; log2(x)*10})
 
   ## high correlation
   Ox <- AirQual[,c("ad.O3","lu.O3","sz.O3")]+
@@ -71,7 +71,7 @@ if(require(SwissAir)) {
       AirQual[,c("ad.NO","lu.NO","sz.NO")]
   names(Ox) <- c("ad","lu","sz")
   ilagplot(Ox$ad,set.lags = 1:9,
-           ztrans=function(x){x[x<1] <- 1; log2(x)*10})
+           ztransf=function(x){x[x<1] <- 1; log2(x)*10})
 
   ## cf. ?AirQual for the explanation of the physical and chemical background
 } else print("Package SwissAir is not available")
