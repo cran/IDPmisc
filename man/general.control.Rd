@@ -10,14 +10,14 @@
 }
 
 \usage{
-general.control(mar = rep(0.3, 4),
-                stacked = FALSE,
+general.control(stacked = FALSE,
+                rose.rad = NULL, rose.x = NULL, rose.y = NULL,
+                mar = rep(0.3, 4),
                 rev.col = FALSE,
                 cex = 1, col = NULL, lty = 1:3, lwd = 1)
 }
 
 \arguments{
-  \item{mar}{ Margin around the plotting area. See details.}
   \item{stacked}{ \code{stacked = FALSE}: For each point
     \code{(x@rho[i,j], x@cyclVar[i])} with \code{x} equal to a
     \code{\link{rose}} object, the radius is \code{x@rho[i,j]} -
@@ -30,6 +30,15 @@ general.control(mar = rep(0.3, 4),
     two adjacent \code{j} are filled by color.
     \cr\code{NA} values in \code{x@rho} are interpreted as \code{0} and a
     warning is issued. }
+  \item{rose.rad, rose.x, rose.y}{ Approximate length of radius, x- and
+    y-position of rose. Default units are mm but any valid grid unit
+    might be chosen (cf. \code{\link[grid]{unit}}. If one or more of
+    these arguments are defined, the user of the plot function must make
+    sure that the size of the viewport is large enough to show the
+    complete rose and the legend. These arguments are especially useful
+    when a series of plots of exactly the same size and position of the
+    rose on the viewport has to be produced.}   
+  \item{mar}{ Margin around the plotting area. See details.}
   \item{rev.col}{ \code{= TRUE}: Ordering of the columns of \code{x@rho}
     is reversed. }
   \item{cex}{ Basic size of characters in the plot. }
@@ -41,9 +50,7 @@ general.control(mar = rep(0.3, 4),
 }
 
 \details{
-  When the title of legend to be drawn is longer than the body of the
-  legend (cf. \code{\link{draw.leg}}), \code{mar[3]} can be used to
-    position the legend so that the full length of the title can be plotted.
+
   }
   
 \value{

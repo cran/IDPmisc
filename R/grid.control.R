@@ -11,14 +11,14 @@ function(circ.n = 4,
                         circ.sub.col = "gray70",
                         circ.sub.lwd = 0.5,
                         cyclVar.lab =
-                          c("N","NE","E","SW","S","SW","W","NW"),
+                          c("N","NE","E","SE","S","SW","W","NW"),
                         cyclVar.cex = 1.2,
                         cyclVar.between = 0,
                         cyclVar.centered = TRUE,
                         ray.lim = NULL,
                         ray.n = 8)
   ## Author: Rene Locher
-  ## Version: 2005-12-06
+  ## Version: 2005-12-16
   
 
   {

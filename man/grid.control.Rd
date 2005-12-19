@@ -13,7 +13,7 @@ grid.control(circ.n = 4, circ.r = NULL,
              circ.dir = pi/16 * 9,
              circ.sub.n = NULL, circ.sub.r = NULL,
              circ.sub.col = "gray70", circ.sub.lwd = 0.5,
-             cyclVar.lab = c("N","NE","E","SW","S","SW","W","NW"),
+             cyclVar.lab = c("N","NE","E","SE","S","SW","W","NW"),
              cyclVar.cex = 1.2, cyclVar.between = 0,
              cyclVar.centered = TRUE,
              ray.lim = NULL, ray.n = 8)

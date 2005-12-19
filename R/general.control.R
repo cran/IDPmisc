@@ -1,19 +1,37 @@
 "general.control" <-
-function(mar = rep(0.3,4),
-                            stacked = FALSE,
+function(stacked = FALSE,
+                            rose.rad = NULL,
+                            rose.x = NULL,
+                            rose.y = NULL,
+                            mar = rep(0.3,4),
                             rev.col = FALSE,
                             cex = 1,
                             col = NULL,
                             lty = 1:3,
                             lwd = 1)
   ## Author: Rene Locher
-  ## Version: 2005-12-06
+  ## Version: 2005-12-16
   
   {
+    if (is.null(rose.rad)) auto <- TRUE else auto <- FALSE
+
+    if (!is.null(rose.rad) && !is.unit(rose.rad))
+      rose.rad <- unit(rose.rad,"mm")
+
+    if (!auto && (!is.null(rose.x) || !is.null(rose.y)))
+      warning("When 'rad.rose' is NULL 'rad.x' and 'rad.y' are ignored!")
+    
+    if (!is.null(rose.x) && !is.unit(rose.x))
+      rose.x <- unit(rose.x,"mm")
+    
+    if (!is.null(rose.y) && !is.unit(rose.y))
+      rose.y <- unit(rose.y,"mm")
+    
     return(list(rose =
-                list(rad = NULL,
-                     x = NULL,
-                     y = NULL),
+                list(rad = rose.rad,
+                     x = rose.x,
+                     y = rose.y,
+                     auto = auto),
                 mar = mar,
                 stacked = stacked,
                 rev.col = rev.col,

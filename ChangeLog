@@ -85,7 +85,18 @@
 	
 2005-12-06 Rene Locher
 	IDPmisc V0.5.5
-	* plot.rose several bugs fixed
+	* plot.rose: several bugs fixed
 	
-	
+2005-12-16 Rene Locher
+	IDPmisc V0.5.6
+	* plot.rose works now correctly with ray.lim set manually 
+	  in grid.control
+	* general.control: arguments reordered and new arguments for 
+	  manual setting of rose dimensions. Help expanded and corrected.
+	* grid.control: default values for argument cyclVar.lab 
+	  corrected. SW replaced by SE
+
+2005-12-16 Rene Locher
+	IDPmisc V0.5.7
+	* general.control: Help expanded
 	

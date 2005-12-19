@@ -19,26 +19,29 @@
 \tabular{ll}{
   Package: \tab IDPmisc\cr
   Type: \tab Package\cr
-  Version: \tab 0.5.4\cr
-  Date: \tab 2005-11-28\cr
+  Version: \tab 0.5.7\cr
+  Date: \tab 2005-12-16\cr
   License: \tab  GPL (GNU Public Licence), Version 2 or later\cr
 }
 
 \tabular{ll}{
-  Function \tab     Description\cr
-  \code{\link{Arrows}} \tab       Pretty Open or Closed Arrows\cr
-  \code{\link{IDPcolorRamp}} \tab Color Ramp for Ordered Values\cr
-  \code{\link{Image}} \tab        Displays the Density of Points in a Scatter Plot by Colors\cr
-  \code{\link{NaRV.omit}} \tab      Omits Observations with NA, NaN, Inf and -Inf Values\cr
-  \code{\link{col2hsv}} \tab        Converting Color to hsv Code\cr
-  \code{\link{data.sheet}} \tab     Coercing a list to a data.frame\cr
-  \code{\link{ilagplot}} \tab       Image Lag Plot Matrix for Large Time Series\cr
-  \code{\link{ipairs}} \tab         Image Scatter Plot Matrix for Large Datasets\cr
-  \code{\link{ixyplot}} \tab        Image Scatter Plot for Large Datasets\cr
-  \code{\link{ok}} \tab             Sets NAs in Logical Objects to FALSE\cr
-  \code{\link{poster.plot}} \tab    Convenient xyplot with Differently Colored Margin and Plot Region\cr
-  \code{\link{showColors}} \tab     Displays vectors of colors\cr
-  \code{\link{zoom}}  \tab          Zooming in and out in a 2d-Plot\cr
+  Function \tab                              Description\cr
+  \code{\link{Arrows}} \tab                  Pretty Open or Closed Arrows\cr
+  \code{\link{cart2clock}} \tab              Converts Cartesian Coordinates to Clock Coordinates\cr
+  \code{\link{clock2cart}} \tab              Converts Clock Coordinates to Cartesian Coordinates\cr
+  \code{\link{col2hsv}} \tab                 Converting Color to hsv Code\cr
+  \code{\link{data.sheet}} \tab              Coercing a list to a data.frame\cr
+  \code{\link{IDPcolorRamp}} \tab            Color Ramp for Ordered Values\cr
+  \code{\link{ilagplot}} \tab                Image Lag Plot Matrix for Large Time Series\cr
+  \code{\link{Image}} \tab                   Displays the Density of Points in a Scatter Plot by Colors\cr
+  \code{\link{ipairs}} \tab                  Image Scatter Plot Matrix for Large Datasets\cr
+  \code{\link{ixyplot}} \tab                 Image Scatter Plot for Large Datasets\cr
+  \code{\link{NaRV.omit}} \tab               Omits Observations with NA, NaN, Inf and -Inf Values\cr
+  \code{\link{ok}} \tab                      Sets NAs in Logical Objects to FALSE\cr
+  \code{\link{plot}} \tab                    Plots objects of Class Rose\cr
+  \code{\link{poster.plot}} \tab             Convenient xyplot with Differently Colored Margin and Plot Region\cr
+  \code{\link{showColors}} \tab              Displays vectors of colors\cr
+  \code{\link{zoom}}  \tab                   Zooming in and out in a 2d-Plot\cr
 }
 
 }
