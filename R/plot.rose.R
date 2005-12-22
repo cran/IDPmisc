@@ -1,13 +1,13 @@
 "plot.rose" <-
-   function (x,
-             transf = function(x) sqrt(x),
-             subset.col = NULL,
-             general = general.control(),
-             grid = grid.control(),
-             title = title.control(),
-             key = key.control())
+  function (x,
+            transf = function(x) sqrt(x),
+            subset.col = NULL,
+            general = general.control(),
+            grid = grid.control(),
+            title = title.control(),
+            key = key.control())
   ## Author: Rene Locher
-  ## Version: 2005-12-16
+  ## Version: 2005-12-22
   ##
   ## NA are plotted as 0
 
@@ -126,11 +126,12 @@
     if (length(grid$circ$value)>1) {
       if (is.null(grid$circ$sub$r))
         grid$circ$sub$r <-
-          transf(
-                 seq(grid$circ$value[1],
+          transf(seq(grid$circ$value[1],
                      by = (diff(grid$circ$value[1:2]) / grid$circ$sub$n),
-                     to = grid$circ$value[length(grid$circ$value)])) else
-      grid$circ$sub$r <- transf(grid$circ$sub$r)
+                     to = grid$circ$value[length(grid$circ$value)])) -
+      transf(grid$ray$lim[1]) else
+      grid$circ$sub$r <-
+        transf(grid$circ$sub$r) - transf(grid$ray$lim[1])
     } else {
       grid$circ$sub$plot <- FALSE
       warning("Definitions of 'circ.n', 'circ.r' incompatible with definitions for subcircles. No subcircles are plotted.\n")
@@ -290,4 +291,4 @@
   }
 } ## plot.rose
 
-setMethod("plot",signature(x="rose",y="missing"), plot.rose)
+setMethod("plot", signature(x = "rose",y = "missing"), plot.rose)

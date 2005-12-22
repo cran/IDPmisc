@@ -66,9 +66,9 @@ function(rho,
     ## calculating x & y coordinates
 
     ## for drawing data
-    x.dat <- as.vector(sweep(transf(rho),MAR=1,
+    x.dat <- as.vector(sweep(transf(rho)-transf(grid$ray$lim[1]),MAR=1,
                              sin(2*pi*cyclVar/circle),"*"))
-    y.dat <- as.vector(sweep(transf(rho),MAR=1,
+    y.dat <- as.vector(sweep(transf(rho)-transf(grid$ray$lim[1]),MAR=1,
                              cos(2*pi*cyclVar/circle),"*"))
     id.dat <- rep(1:ncol(rho), rep(nrow(rho),ncol(rho)))
 

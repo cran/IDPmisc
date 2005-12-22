@@ -96,7 +96,15 @@
 	* grid.control: default values for argument cyclVar.lab 
 	  corrected. SW replaced by SE
 
-2005-12-16 Rene Locher
+2005-12-19 Rene Locher
 	IDPmisc V0.5.7
 	* general.control: Help expanded
+	* IDPmisc.package: Help expanded
+
+2005-12-22 Rene Locher
+	IDPmisc V0.5.8
+	* plot.rose: Bug for roses with negative values in slot rho 
+	  eliminated
+
+	
 	
