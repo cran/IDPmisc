@@ -8,7 +8,7 @@ function(rho,
                     grid,
                     title)
   ## Author: Rene Locher
-  ## Version: 2005-12-06
+  ## Version: 2005-01-19
   
   {
     cyclVar.lab.n <- length(grid$cyclVar$lab)
@@ -67,9 +67,11 @@ function(rho,
 
     ## for drawing data
     x.dat <- as.vector(sweep(transf(rho)-transf(grid$ray$lim[1]),MAR=1,
-                             sin(2*pi*cyclVar/circle),"*"))
+                             sin(2*pi*(cyclVar+general$shift)/circle),
+                             "*"))
     y.dat <- as.vector(sweep(transf(rho)-transf(grid$ray$lim[1]),MAR=1,
-                             cos(2*pi*cyclVar/circle),"*"))
+                             cos(2*pi*(cyclVar+general$shift)/circle),
+                             "*"))
     id.dat <- rep(1:ncol(rho), rep(nrow(rho),ncol(rho)))
 
 

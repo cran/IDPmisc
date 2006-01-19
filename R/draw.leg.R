@@ -97,6 +97,7 @@ function(key, draw = FALSE, vp = NULL)
 
     key.length <- length(key)
     key.names <- names(key)    # Need to update
+
     if (is.logical(key$border)) 
         key$border <-
             if (key$border) "black"

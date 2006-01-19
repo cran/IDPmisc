@@ -1,13 +1,13 @@
 "plot.rose" <-
-  function (x,
-            transf = function(x) sqrt(x),
-            subset.col = NULL,
-            general = general.control(),
-            grid = grid.control(),
-            title = title.control(),
-            key = key.control())
+function (x,
+                    transf = function(x) sqrt(x),
+                    subset.col = NULL,
+                    general = general.control(),
+                    grid = grid.control(),
+                    title = title.control(),
+                    key = key.control())
   ## Author: Rene Locher
-  ## Version: 2005-12-22
+  ## Version: 2006-01-19
   ##
   ## NA are plotted as 0
 
@@ -292,3 +292,5 @@
 } ## plot.rose
 
 setMethod("plot", signature(x = "rose",y = "missing"), plot.rose)
+
+

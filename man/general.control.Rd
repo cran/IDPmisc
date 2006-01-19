@@ -14,6 +14,7 @@ general.control(stacked = FALSE,
                 rose.rad = NULL, rose.x = NULL, rose.y = NULL,
                 mar = rep(0.3, 4),
                 rev.col = FALSE,
+                shift = 0,
                 cex = 1, col = NULL, lty = 1:3, lwd = 1)
 }
 
@@ -41,6 +42,9 @@ general.control(stacked = FALSE,
   \item{mar}{ Margin around the plotting area. See details.}
   \item{rev.col}{ \code{= TRUE}: Ordering of the columns of \code{x@rho}
     is reversed. }
+  \item{shift}{ Shifts the plot in clockwise direction by this
+    angle. Units of \code{shift} must be identical with units of
+    \code{\cyclVar} in \code{link{plot.rose}}}  
   \item{cex}{ Basic size of characters in the plot. }
   \item{col}{ Colors of lines \code{stacked = TRUE} or colors of
     stacked areas. In the first case colors are by default as distinct

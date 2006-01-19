@@ -106,5 +106,10 @@
 	* plot.rose: Bug for roses with negative values in slot rho 
 	  eliminated
 
+2005-01-19 Rene Locher
+	IDPmisc V0.5.9
+	* general.control for plot.rose with new argument shift
+	
+
 	
 	
