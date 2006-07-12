@@ -2,9 +2,9 @@
 \alias{ok}
 \title{Sets NAs in Logical Objects to FALSE}
 \description{
-  Sets NAs in logical vectors and matrices to FALSE. This is especially
-  useful for conditional selections of data when the variables the condition is
-  based on contain \code{NA}s.
+  Sets NAs in logical vectors and matrices to FALSE.  This is especially
+  useful for conditional selections of data when the variables the
+  condition is based on contain \code{NA}s.
 }
 \usage{
 ok(x)

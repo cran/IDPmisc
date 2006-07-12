@@ -17,16 +17,16 @@
 
 \section{Slots}{
   \describe{
-    \item{\code{rho}:}{Object of class \code{matrix}. \code{rho[i,]}
+    \item{\code{rho}:}{Object of class \code{matrix}.  \code{rho[i,]}
       contains the summary values of all data within the interval
-      defined by the cyclic Variable \code{cyclVar[i]}. Column  and row
-      names are mandatory. The different columns of \code{rho}
+      defined by the cyclic Variable \code{cyclVar[i]}.  Column  and row
+      names are mandatory.  The different columns of \code{rho}
       correspond to different responses when the summary statistics is a
       scalar \emph{or} to the different elements of a vector summary of
       one response \emph{or} to the different subsets of the second
       grouping element. } 
     \item{\code{cyclVar}:}{Object of class \code{numeric} containing
-      the center of the interval of the cyclic variable. The values are
+      the center of the interval of the cyclic variable.  The values are
       sorted by increasing values, are unique and cannot contain NA
       values. }
     \item{\code{circle}:}{Scalar of class \code{numeric}, defining the

@@ -10,7 +10,7 @@
   for displaying large datasets, displaying circular data in a very
   flexible way, brewing color ramps, drawing nice arrows, zooming
   2D-plots, creating figures with differently colored margins and plot
-  regions. In addition, the package contains auxiliary functions for
+  regions.  In addition, the package contains auxiliary functions for
   data manipulation like omitting observations with irregular values or
   selecting data by logical vectors, which include NAs. 
 }

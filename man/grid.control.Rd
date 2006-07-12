@@ -45,11 +45,11 @@ grid.control(circ.n = 4, circ.r = NULL,
     \code{cyclVar.cex}. }
   \item{cyclVar.centered}{ Labels are positioned relative
     to their center.  \code{cyclVar.centered = FALSE} is used for very
-    long labels like (unabbreviated) days of the week. In this case, the
+    long labels like (unabbreviated) days of the week.  In this case, the
     labels are positioned relative to the side of the label, which is
     closest to the circle. }
   \item{ray.lim}{ Defines the values for the center and the
-    maximum radius in user coordinates. Be careful with specifying the
+    maximum radius in user coordinates.  Be careful with specifying the
     center different from 0 as this might result in misleading roses. }
   \item{ray.n}{ Number of rays. }
 }

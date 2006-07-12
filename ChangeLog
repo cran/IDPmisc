@@ -106,10 +106,27 @@
 	* plot.rose: Bug for roses with negative values in slot rho 
 	  eliminated
 
-2005-01-19 Rene Locher
+2006-01-19 Rene Locher
 	IDPmisc V0.5.9
 	* general.control for plot.rose with new argument shift
-	
 
+2006-06-20 Rene Locher
+	IDPmisc V0.6.0, not published
+	* clock2cart, cart2clock: processing of arguments changed 
+	  to make input more flexible
+	* Arrows default settings of arguments h.lwd and h.lty changed
+	* getXY: new function to read in data with 1 or 2 dimension
+	* peaks: new function to evaluate peaks in data without 
+	  smoothing them first
+	* MS: New dataset included: SELDI TOF MS of sheep blood
 	
+2006-07-03 Rene Locher
+	IDPmisc V0.6.1
+	* getXY, peaks, MS: Improvement of help, 
+	  change of some argument names for better understanding 
+
+
+2006-07-12 Rene Locher
+	IDPmisc V0.6.2
+	* peaks: Improvement of help
 	

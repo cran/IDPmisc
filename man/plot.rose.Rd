@@ -21,10 +21,10 @@
 
 \arguments{
   \item{x}{ Object \code{\link{rose}}. }
-  \item{transf}{ Transformation function for \code{x@rho}. It defaults to
+  \item{transf}{ Transformation function for \code{x@rho}.  It defaults to
   the square root, resulting in equal area roses.}
   \item{subset.col}{ Display only a subset of the columns of
-    \code{x@rho}. Subset might be declared by numerical values or by
+    \code{x@rho}.  Subset might be declared by numerical values or by
     name. }
   \item{general}{ Settings for general appearance of plot, defined in
     \code{\link{general.control}}}
@@ -39,16 +39,16 @@
 \details{
   This function appeals especially to environmental specialists who
   often have response variables, which depend from cyclic variables like
-  the direction of wind, the hour of the day, the month etc. All these
+  the direction of wind, the hour of the day, the month etc.  All these
   variables are displayed usually clockwise,
-  starting with 0 in the north (12 o' clock). We call this
+  starting with 0 in the north (12 o' clock).  We call this
   kind of coordinates 'clock coordinates', to distinct them from the
-  polar coordinates as used in mathematical context. The
+  polar coordinates as used in mathematical context.  The
   \code{\link{rose}} object is displayed as the time on a clock,
   measuring the angle defined in slot \code{cyclVar} in the clockwise
   direction from the north. 
   \crThe eye takes the area of a graphical object as a measure of its
-  size. This is why the default transformation of \code{x@rho} is
+  size.  This is why the default transformation of \code{x@rho} is
   chosen to be the square root.  For equal distance roses use the
   transformation function \code{function(x) x}. 
   \crAll labels, titles and line sizes are defined in multiples of cex.

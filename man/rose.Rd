@@ -17,23 +17,23 @@ rose(x, subset = NULL,
 }
 
 \arguments{
-  \item{x}{Vector, data frame or matrix containing response.}
+  \item{x}{Vector, data frame or matrix containing the response.}
   \item{subset}{ An optional vector specifying a subset of observations
     to be used in the aggregating process. }
   \item{cyclVar}{Cyclic variable as first grouping
-    element. \code{cyclVar} must be a numeric vector whose length is
+    element.  \code{cyclVar} must be a numeric vector whose length is
     equal to the number of rows in \code{x} with 0 <= \code{cyclVar} < 
-    \code{circle}. Observations where cyclic variables are NA are
+    \code{circle}.  Observations where cyclic variables are NA are
     automatically excluded from the rose object. }
   \item{circle}{Defines the value of a full circle with no default.}
   \item{n.cyclVar}{Defines the number of equally spaced intervals of the
-  cyclic variable, into which the data are split. The first interval is
+  cyclic variable, into which the data are split.  The first interval is
   labeled with 0 and is always centered around 0.}
   \item{cut}{Vector of numerics, logicals  or factors as second grouping
-    elements. Its length is equal to the number of rows in
-    \code{x}. \code{cut} is used  to group the observations similar to
+    elements.  Its length is equal to the number of rows in
+    \code{x}.  \code{cut} is used  to group the observations similar to
     function \code{\link[base]{cut}}. } 
-  \item{labels}{ Labels for the corresponding intervals. When cut is a
+  \item{labels}{ Labels for the corresponding intervals.  When cut is a
     logical, labels has to be named in the order: FALSE, TRUE.}
   \item{breaks, include.lowest, right, dig.lab}{ These arguments are
     only active when \code{cut} is numeric and  are used
@@ -54,7 +54,7 @@ rose(x, subset = NULL,
 
 \details{
   The first grouping element, \code{cyclVar}, for the summary statistics
-  must be circular and numeric. The second grouping element, \code{cut},
+  must be circular and numeric.  The second grouping element, \code{cut},
   can be numeric, logical or a factor.
   \crNot all combinations of arguments are allowed:
   \crArgument \code{cut} can only be defined when summary consists of a

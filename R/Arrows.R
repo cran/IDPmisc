@@ -9,8 +9,8 @@ function (x1, y1, x2, y2,
                     sh.lty=1,
                     h.col=sh.col,
                     h.col.bo=sh.col,
-                    h.lwd=1,
-                    h.lty=1,
+                    h.lwd=sh.lwd,
+                    h.lty=sh.lty,
                     verbose=FALSE)
   ## Author: Andreas Ruckstuhl, refined by Rene Locher
   ## Version: 2005-10-17

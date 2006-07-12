@@ -20,22 +20,22 @@ ipairs(x,
 \arguments{
   \item{x}{data.frame or matrix}
   \item{pixs}{Pixel size in mm on the plotting device.}
-  \item{zmax}{Maximum counts per Pixel to be plotted. When NULL each
-    scatter plot has its individual scale. If a number >= maximum number of
+  \item{zmax}{Maximum counts per Pixel to be plotted.  When NULL each
+    scatter plot has its individual scale.  If a number >= maximum number of
     counts per pixel is supplied, the scale will be identical for all
-    scatter plots. The maximum of the number per pixel is delivered by
+    scatter plots.  The maximum of the number per pixel is delivered by
     the return value.}
-  \item{ztransf}{Function to transform the counts. The user has to make
+  \item{ztransf}{Function to transform the counts.  The user has to make
     sure that the transformed counts lie in the range [0,zmax], where
     zmax is any positive number (>=2).}  
   \item{colramp}{Color ramp to encode the density of the points within a
     pixel.}
   \item{border}{Shall border be drawn between the colors in the legend:
     \code{TRUE} / \code{FALSE}.}  
-  \item{labels}{Labels of columns. If NULL the names of x are used.}
+  \item{labels}{Labels of columns.  If NULL the names of x are used.}
   \item{minL.lab}{The minimum length of the abbreviations of factor
     levels, used to label the axes.}
-  \item{cex.lab}{Size of the labels. If NULL they are calculated automatically.}
+  \item{cex.lab}{Size of the labels.  If NULL they are calculated automatically.}
   \item{nlab}{Approximate number of labels on axes.}
   \item{pty}{See Argument \code{pty} in \code{\link{par}}.}
   \item{main}{Titel.}
@@ -45,9 +45,9 @@ ipairs(x,
   \item{\dots}{Additional arguments to \code{\link{plot.default}}}
 }
 \details{
-  The idea is similar to \code{\link[hexbin]{plot.hexbin}}. The hexagons
+  The idea is similar to \code{\link[hexbin]{plot.hexbin}}.  The hexagons
   are better suited to reflect the density of points in a plane than the
-  squares used here. Nevertheless squares are, contrary to hexagons,
+  squares used here.  Nevertheless squares are, contrary to hexagons,
   invariant to reflexions at the x- \emph{and} y-axis and therefore
   suited for scatter plot matrices and also for plotting factors.
 
@@ -55,7 +55,7 @@ ipairs(x,
 }
 
 \value{
-  Maximum number of counts per Pixel found. Additional elements are
+  Maximum number of counts per Pixel found.  Additional elements are
   returned when \code{verbose == TRUE}.
 }
 
@@ -63,7 +63,7 @@ ipairs(x,
 
 \note{When you get the error message "Zmax too small! Densiest aereas
   are out of range!" you must run the function again without specifying
-  zmax. The value returned gives you the minimum value allowed for zmax.}
+  zmax.  The value returned gives you the minimum value allowed for zmax.}
 
 \seealso{\code{\link{ilagplot}}, \code{\link{ixyplot}},
   \code{\link{Image}}} 
@@ -94,7 +94,8 @@ if(require(SwissAir)) {
   names(Ox) <- c("ad","lu","sz")
   ipairs(Ox,cex.lab=2, ztransf=function(x){x[x<1] <- 1; log2(x)*10})
 
-  ## cf. ?AirQual for the explanation of the physical and chemical background
+  ## cf. ?AirQual for the explanation of the physical and
+  ## chemical background
 } else print("Package SwissAir is not available")
 
 }

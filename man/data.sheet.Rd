@@ -3,7 +3,7 @@
 
 \title{Coercing a list to a data.frame}
 \description{
-  Coerces a list with vectors of different length into a data.frame. Fills the shorter vectors with NA.
+  Coerces a list with vectors of different length into a data.frame.  Fills the shorter vectors with NA.
 }
 \usage{
 data.sheet(x)

@@ -19,10 +19,10 @@ zoom(fun = plot, zoom.col = "red", delay = 3, ...)
 
 \details{
   When the clicked points lay within the plot region range, the points
-  define the new plotting limits. When the clicked points lay in the
+  define the new plotting limits.  When the clicked points lay in the
   margin,  the plotting limits will be moved into the corresponding
-  direction by 1/3 out of the actual range. There is no special
-  sequential order for the zooming points required. The zooming function
+  direction by 1/3 out of the actual range.  There is no special
+  sequential order for the zooming points required.  The zooming function
   is stopped by right clicking and choosing the menu item "stop".
 }
 

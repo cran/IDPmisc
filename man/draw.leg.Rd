@@ -4,7 +4,7 @@
 \title{Produce a Legend or Key (Grid Function)}
 \description{
   Produces (and possibly draws) a Grid frame grob which is a legend that
-  can be placed in other Grid plots. \code{draw.leg} is a 
+  can be placed in other Grid plots.  \code{draw.leg} is a 
   slightly enhanced version of \code{\link[lattice]{draw.key}} in
   package \pkg{lattice} V 0.12-3.
 }
@@ -12,7 +12,7 @@
 draw.leg(key, draw=FALSE, vp=NULL)
 }
 \arguments{
-  \item{key}{ A list determining the key. See details below and the
+  \item{key}{ A list determining the key.  See details below and the
     documentation for \code{\link[lattice]{xyplot}}.
   }
   \item{draw}{ logical, whether the grob is to be drawn. }
@@ -25,23 +25,23 @@ draw.leg(key, draw=FALSE, vp=NULL)
 \details{
   Three new components are added to the list \code{key} of the original code
   in package \pkg{lattice} V 0.12-3: \code{between.rows},
-  \code{between.title}, \code{adj.title}. They allow to format the
-  legend in a more flexible way. To ease the use of \code{draw.leg}, the
+  \code{between.title}, \code{adj.title}.  They allow to format the
+  legend in a more flexible way.  To ease the use of \code{draw.leg}, the
   full description of \code{\link[lattice]{draw.key}} and the here
   interesting part of \code{\link[lattice]{xyplot}} are also included:  
   \crThe key essentially consists of a number of columns, possibly
-  divided into blocks, each containing some rows.  The contents of the
+  divided into blocks, each containing some rows.   The contents of the
   key are determined by (possibly repeated) components named
-  ``rectangles'', ``lines'', ``points'' or ``text''. Each of these
+  ``rectangles'', ``lines'', ``points'' or ``text''.  Each of these
   must be lists with relevant graphical parameters (see later)
-  controlling their appearance. The \code{key} list itself can contain
+  controlling their appearance.  The \code{key} list itself can contain
   graphical parameters, these would be used if relevant graphical
   components are omitted from the other components.
 
   The length (number of rows) of each such column (except ``text''s)
   is taken to be the largest of the lengths of the graphical
   components, including the ones specified outside (see the entry for
-  \code{rep} below for details on this). The ``text'' component has to
+  \code{rep} below for details on this).  The ``text'' component has to
   have a character or expression vector as its first component, and
   the length of this vector determines the number of rows.
 
@@ -66,8 +66,8 @@ draw.leg(key, draw=FALSE, vp=NULL)
   }
 
   \code{adj}, \code{angle} and \code{density} are currently
-  unimplemented.  \code{size} determines the width of columns of
-  rectangles and lines in character widths. \code{type} is relevant
+  unimplemented.   \code{size} determines the width of columns of
+  rectangles and lines in character widths.  \code{type} is relevant
   for lines; \code{"l"} denotes a line, \code{"p"} denotes a point,
   and \code{"b"} and \code{"o"} both denote both together.
 
@@ -82,10 +82,10 @@ draw.leg(key, draw=FALSE, vp=NULL)
       string or expression giving a title for the key
     }
     \item{\code{rep}}{
-      logical, defaults to \code{TRUE}.  By default, it's assumed that
+      logical, defaults to \code{TRUE}.   By default, it's assumed that
       all columns in the key (except the ``text''s) will have the same
       number of rows, and all components are replicated to be as long
-      as the longest. This can be suppressed by specifying
+      as the longest.  This can be suppressed by specifying
       \code{rep=FALSE}, in which case the length of each column will
       be determined by components of that column alone.
     }
@@ -119,7 +119,7 @@ draw.leg(key, draw=FALSE, vp=NULL)
     }
      \item{\code{adj.title}}{
       New argument: Adjustment of title in respect to body of
-      legend. \cr\code{adj.title 
+      legend.  \cr\code{adj.title 
 	= 0} adjusts the title to the left, \cr\code{adj.title
 	= 1} adjusts the title to the right and \cr\code{adj.title
 	= 0.5} (=default) centers the title.

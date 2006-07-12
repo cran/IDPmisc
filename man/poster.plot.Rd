@@ -3,7 +3,7 @@
 
 \title{Convenient xyplot with Differently Colored Margin and Plot Region}
 \description{
-  Convenient xyplot with Colored Background. Background of margin may be
+  Convenient xyplot with Colored Background.  Background of margin may be
   chosen independently from background in plot region.
 }
 
@@ -16,11 +16,11 @@ poster.plot(x, y = NULL, type = "p",
 }
 
 \arguments{
-  \item{x}{A vector, data.frame or matrix. When x is data.frame or
+  \item{x}{A vector, data.frame or matrix.  When x is data.frame or
     matrix only first two columns are used.}
   \item{y}{A vector or \code{NULL}}
   \item{type}{See Argument \code{type} in \code{\link{par}}}
-  \item{col}{Color of points. If \code{length(col)} > 1, colors are recycled.}
+  \item{col}{Color of points.  If \code{length(col)} > 1, colors are recycled.}
   \item{col.axis}{Color of axis.}
   \item{col.lab}{Color  of labels on axis.}
   \item{col.fg}{Color  of foreground.}

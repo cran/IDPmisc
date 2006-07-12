@@ -6,30 +6,29 @@
 
 \description{
   Draws a set of open or closed arrows which can be shaped by
-  many arguments. \code{Arrows} is an extended version of
+  many arguments.  \code{Arrows} is an extended version of
   \code{\link[sfsmisc]{p.arrows}}.
 }
 
 \usage{
-Arrows(x1, y1, x2, y2,
-       size = 1, width = 1.2/4/cin, open = TRUE,
-       sh.adj = 0.1, sh.lwd = 1,
-       sh.col = if (is.R()) par("fg") else 1, sh.lty = 1,
-       h.col = sh.col, h.col.bo = sh.col,
-       h.lwd = 1, h.lty = 1, verbose = FALSE)
+Arrows(x1, y1, x2, y2, size = 1, width = 1.2/4/cin, open = TRUE,
+       sh.adj = 0.1, sh.lwd = 1, sh.col = if (is.R()) par("fg") else 1,
+       sh.lty = 1,
+       h.col = sh.col, h.col.bo = sh.col, h.lwd = sh.lwd, h.lty = sh.lty,
+       verbose = FALSE)
 }
 
 \arguments{
   \item{x1, y1}{Coordinates of points \bold{from} which to draw.}
   \item{x2, y2}{Coordinates of points \bold{to} which to draw.}
   \item{size}{Head size as a fraction of a character height.}
-  \item{width}{Width of the arrow head. See argument \code{verbose}.}
+  \item{width}{Width of the arrow head.  See argument \code{verbose}.}
   \item{open}{Defines if arrows are open or closed.}
   \item{sh.adj}{Defines gap between end of the shaft and the top of the
     head of the arrow (see details)}
-  \item{sh.lwd}{Thickness of shaft. cf. \code{\link{par}}}
-  \item{sh.col}{Color of shaft. cf. \code{\link{par}}}
-  \item{sh.lty}{Line type of shaft. cf. \code{\link{par}}}
+  \item{sh.lwd}{Thickness of shaft.  cf. \code{\link{par}}}
+  \item{sh.col}{Color of shaft.  cf. \code{\link{par}}}
+  \item{sh.lty}{Line type of shaft.  cf. \code{\link{par}}}
   \item{h.col}{Color of head.}
   \item{h.col.bo}{Color of border of head.}
   \item{h.lwd}{Line width of border of head.}

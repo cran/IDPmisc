@@ -21,7 +21,7 @@ NaRV.omit(x)
 }
 \value{
   Returns objects of \code{class} vector, factor, data.frame or matrix
-  in the same way as \code{\link{na.omit}} does. Returns all other
+  in the same way as \code{\link{na.omit}} does.  Returns all other
   objects unchanged and prints a warning. 
 }
 

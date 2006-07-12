@@ -13,7 +13,7 @@ key.control(plot = TRUE, lab = NULL, title = NULL, between = 0)
 }
 
 \arguments{
-  \item{plot}{ Defines whether legend should be drawn. When
+  \item{plot}{ Defines whether legend should be drawn.  When
     \code{FALSE}, the full width of the viewport is used for the rose itself.  }
   \item{lab, title}{ Labels and title of
     legend. When \code{lab = NULL}, labels are extracted from the

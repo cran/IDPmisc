@@ -5,9 +5,9 @@
 
 \description{
   Produces color ramps which change simultanously hues, saturation and
-  values as defined in the \code{\link[grDevices]{hsv}} modus. This
+  values as defined in the \code{\link[grDevices]{hsv}} modus.  This
   allows to produce especially smooth transitions from one color to the
-  next. The default color ramp starts with light blue, continues with
+  next.  The default color ramp starts with light blue, continues with
   green, yellow, red and ends with dark violet.
 }
 
@@ -23,13 +23,13 @@ IDPcolorRamp(n,
   \item{n}{Total number of different colors in color ramp.}
   \item{colInt}{Data.frame or matrix with the columns h,s & v
     which defines the Intervals for individual color subramps, with
-    nrow(colInt) = nsr+1 with nsr>1. See details}  
+    nrow(colInt) = nsr+1 with nsr>1.  See details}  
   \item{fr}{Fraction of the colors in each of the first nsr-1 subramps.}
 }
 
 \details{
   The function distributes the number of colors in the subramps, given
-  the fractions fr, as smoothly as possible. There is at least one color
+  the fractions fr, as smoothly as possible.  There is at least one color
   in the first and the last subramp.
   \crDefinition of hsv code:
   \describe{
