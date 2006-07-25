@@ -129,4 +129,21 @@
 2006-07-12 Rene Locher
 	IDPmisc V0.6.2
 	* peaks: Improvement of help
+
+2006-07-14 Rene Locher	
+        IDPmisc V0.7.0, not published
+	* longts.plot New function for plotting very long time series
+
+2006-07-24 Rene Locher	
+        IDPmisc V0.7.1
+	* longts.plot Help improved, some names of arguments changed
+
+2006-07-25 Rene Locher	
+        IDPmisc V0.7.2
+	* longts.plot Default of arguments y1lim and y2lim changed to 
+	  range(y1,na.rm=T,finite=TRUE). 
+
+2006-07-25 Rene Locher	
+        IDPmisc V0.7.3
+	* draw.leg code adapted to new grid version
 	

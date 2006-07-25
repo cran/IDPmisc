@@ -258,7 +258,7 @@ function(key, draw = FALSE, vp = NULL)
 
         heights.x <- rep(1, n.row)
         heights.units <- rep("lines", n.row)
-        heights.data <- as.list(1:n.row)
+        heights.data <- vector("list", n.row)
 
         if (length(key$title) > 0)
         {
