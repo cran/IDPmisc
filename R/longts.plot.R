@@ -1,23 +1,20 @@
 "longts.plot" <-
 function(y1, y2=NULL,
                         names1=NULL, names2=NULL,
-                        startP=start(y1)[1],
-                        upf=14, fpp=5, overlap=0.5, 
-                        ann.x=NULL, ann.dx=1, tick.dx=0.25*ann.dx,
-                        ann.ny=3,
-                        xlab="",
-                        y1lab="", y2lab="",
-                        y1.col="black", y2.col="black",
+                        startP=start(y1)[1],upf=14, fpp=5, overlap=0.5, 
+                        x.ann=NULL, dx.ann=1, dx.tick=0.25*dx.ann,
+                        ny.ann=3, xlab="", y1lab="", y2lab="",
+                        col.y1="black", col.y2="black",
                         cex.lab=par("cex.lab"),
                         y1lim=range(y1,na.rm=T,finite=TRUE),
                         y2lim=range(y2,na.rm=T,finite=TRUE),
                         lty1=1, lty2=2, lwd1=1, lwd2=2,
                         col1=NULL, col2=NULL,
-                        leg=TRUE, leg.y1nam=NULL, leg.y2nam=NULL,
-                        leg.ncol=NULL, leg.cex=1.5,
+                        leg=TRUE, y1nam.leg=NULL, y2nam.leg=NULL,
+                        ncol.leg=NULL, cex.leg=1.5,
                         h1=NULL, h2=NULL,
-                        h1.col="gray70", h2.col="gray70",
-                        main=NULL, main.cex=par("main.cex"),
+                        col.h1="gray70", col.h2="gray70",
+                        main=NULL, cex.main=par("cex.main"),
                         automain=TRUE,
                         mgp=c(1.7,0.7,0),
                         oma = if (automain) c(0,0,1,0) else par("oma"),
@@ -50,12 +47,12 @@ function(y1, y2=NULL,
   len <- ncol(y1)
   lty1 <- rep(lty1,len)[1:len]
   lwd1 <- rep(lwd1,len)[1:len]
-  aty1 <- pretty(y1lim,n=ann.ny)
+  aty1 <- pretty(y1lim,n=ny.ann)
 
-  if (!is.null(ann.x)) {
-    if (length(ann.x)!=nrow(y1))
-      stop("'ann.x' must have the same length as timeseries 'y1' or must be NULL!", call. = FALSE)
-    ann.x <- ts(ann.x,start=start(y1),freq=fq1)
+  if (!is.null(x.ann)) {
+    if (length(x.ann)!=nrow(y1))
+      stop("'x.ann' must have the same length as timeseries 'y1' or must be NULL!", call. = FALSE)
+    x.ann <- ts(x.ann,start=start(y1),freq=fq1)
   }  
 
   if (!is.null(y2)) {
@@ -88,7 +85,7 @@ function(y1, y2=NULL,
     
     ## rescaling y2 to y1
     y2 <- (y2-y2lim[1])/diff(range(y2lim))*diff(range(y1lim))+y1lim[1]
-    y2.lab <- pretty(y2lim,n=ann.ny)
+    y2.lab <- pretty(y2lim,n=ny.ann)
     aty2 <- (y2.lab-y2lim[1])/diff(range(y2lim))*diff(range(y1lim))+
       y1lim[1]
     if (!is.null(h2)) h2 <- (h2-y2lim[1])/diff(range(y2lim))*
@@ -107,19 +104,19 @@ function(y1, y2=NULL,
     plot.onepage(
        y1=y1, y2=y2, names1=names1, names2=names2,
        startP=st, upf=upf, fpp=fpp, overlap=overlap,
-       ann.x=ann.x, ann.dx=ann.dx, tick.dx=tick.dx, 
-       ann.ny=ann.ny,
-       xlab=xlab, y1lab=y1lab, y2lab=y2lab, y1.col=y1.col, y2.col=y2.col,
+       x.ann=x.ann, dx.ann=dx.ann, dx.tick=dx.tick, 
+       ny.ann=ny.ann,
+       xlab=xlab, y1lab=y1lab, y2lab=y2lab, col.y1=col.y1, col.y2=col.y2,
        y2.lab = y2.lab, cex.lab=cex.lab,
        y1lim=y1lim, y2lim=y2lim, aty1=aty1, aty2=aty2,
        lty1=lty1, lty2=lty2, lwd1=lwd1, lwd2=lwd2, col1=col1, col2=col2,
-       leg=leg, leg.y1nam=leg.y1nam, leg.y2nam=leg.y2nam,
-       leg.ncol=leg.ncol, leg.cex=leg.cex,
-       h1=h1, h2=h2, h1.col=h1.col, h2.col=h2.col,
+       leg=leg, y1nam.leg=y1nam.leg, y2nam.leg=y2nam.leg,
+       ncol.leg=ncol.leg, cex.leg=cex.leg,
+       h1=h1, h2=h2, col.h1=col.h1, col.h2=col.h2,
        main=if (automain)
           paste("From",max(st,startP),"to",
                 min(st+upp-1+round(overlap),ee+1)) else main,
-       main.cex=main.cex,
+       cex.main=cex.main,
        mgp=mgp, oma=oma, cex=cex, type=type)
     
     print(answ <- readline(prompt="\nfor next plot: press <return>\nfor stopping plot: press <s><return>"))
@@ -129,19 +126,19 @@ function(y1, y2=NULL,
   if (end(y1)[1]>start(y1)[1])
   plot.onepage(y1=y1, y2=y2, names1=names1, names2=names2,
                startP=startP, upf=upf, fpp=fpp, overlap=overlap,
-               ann.x=ann.x, ann.dx=ann.dx, tick.dx=tick.dx,
-               ann.ny=ann.ny,
+               x.ann=x.ann, dx.ann=dx.ann, dx.tick=dx.tick, 
+               ny.ann=ny.ann,
                xlab=xlab, y1lab=y1lab, y2lab=y2lab, y2.lab = y2.lab,
-               y1.col=y1.col, y2.col=y2.col, cex.lab=cex.lab,
+               col.y1=col.y1, col.y2=col.y2, cex.lab=cex.lab,
                y1lim=y1lim, y2lim=y2lim, aty1=aty1, aty2=aty2,
                lty1=lty1, lty2=lty2, lwd1=lwd1, lwd2=lwd2,
                col1=col1, col2=col2,
-               leg=leg, leg.y1nam=leg.y1nam, leg.y2nam=leg.y2nam,
-               leg.ncol=leg.ncol, leg.cex=leg.cex,
-               h1=h1, h2=h2, h1.col=h1.col, h2.col=h2.col,
+               leg=leg, y1nam.leg=y1nam.leg, y2nam.leg=y2nam.leg,
+               ncol.leg=ncol.leg, cex.leg=cex.leg,
+               h1=h1, h2=h2, col.h1=col.h1, col.h2=col.h2,
                main = if (automain)
                  paste("From",max(startP),"to", startP+upp-1) else main,
-               main.cex=main.cex,
+               cex.main=cex.main,
                mgp=mgp, oma=oma, cex=cex, type=type)
 }
 } #longts.plot

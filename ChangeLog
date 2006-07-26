@@ -146,4 +146,11 @@
 2006-07-25 Rene Locher	
         IDPmisc V0.7.3
 	* draw.leg code adapted to new grid version
+
+2006-07-26 Rene Locher	
+        IDPmisc V0.7.4
+	* longts.plot Argument names changed changed back to V0.7.2 
+	  because these are more consistent to arguments in par().
+	  Sorry for this inconvenience!
+	  Bug for color in axis removed.
 	

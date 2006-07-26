@@ -10,18 +10,18 @@
 longts.plot(y1, y2 = NULL,
             names1 = NULL, names2 = NULL,
             startP = start(y1)[1], upf = 14, fpp = 5, overlap = 0.5,
-            ann.x = NULL, ann.dx = 1, tick.dx = 0.25 * ann.dx,
-            ann.ny = 3, xlab = "", y1lab = "", y2lab = "",
-            y1.col = "black", y2.col = "black",
+            x.ann = NULL, dx.ann = 1, dx.tick = 0.25 * dx.ann,
+            ny.ann = 3, xlab = "", y1lab = "", y2lab = "",
+            col.y1 = "black", col.y2 = "black",
             cex.lab = par("cex.lab"),
             y1lim = range(y1, na.rm = T, finite=TRUE),
             y2lim = range(y2, na.rm = T, finite=TRUE),
             lty1 = 1, lty2 = 2, lwd1 = 1, lwd2 = 2,
             col1 = NULL, col2 = NULL,
-            leg = TRUE, leg.y1nam = NULL, leg.y2nam = NULL,
-            leg.ncol = NULL, leg.cex = 1.5,
-            h1 = NULL, h2 = NULL, h1.col = "gray70", h2.col = "gray70",
-            main = NULL, main.cex = par("main.cex"), automain = TRUE,
+            leg = TRUE, y1nam.leg = NULL, y2nam.leg = NULL,
+            ncol.leg = NULL, cex.leg = 1.5,
+            h1 = NULL, h2 = NULL, col.h1 = "gray70", col.h2 = "gray70",
+            main = NULL, cex.main = par("cex.main"), automain = TRUE,
             mgp = c(1.7, 0.7, 0),
             oma = if (automain) c(0, 0, 1, 0) else par("oma"),
             cex = par("cex"), type = "s", slide = FALSE, each.fig = 1)
@@ -39,19 +39,18 @@ longts.plot(y1, y2 = NULL,
   \item{fpp}{ Number of figures per page (screen). }
   \item{overlap}{ Length of time series on the right end of the figures
     which is identical with the left end of the next figure. }
-  \item{ann.x}{ Time label (character vector) for \emph{each} point of
-    \code{y1}, from which algorithm takes the annotations for the
-    x-axis. } 
-  \item{ann.dx}{ Distance between two annotions on the x-axis in time
+  \item{x.ann}{ Time annotations (character vector) for \emph{each}
+    point of \code{y1}, from which algorithm takes the annotations for
+    the x-axis. } 
+  \item{dx.ann}{ Distance between two annotions on the x-axis in time
     units. } 
-  \item{tick.dx}{ Distance between two ticks on the x-axis in time
+  \item{dx.tick}{ Distance between two ticks on the x-axis in time
     units. }
-  \item{ann.ny}{ Time label for \emph{each} point of \emph{\code{y1}},
-    from which algorithm takes the annotations for the x-axis. }
+  \item{ny.ann}{ Approximate number of annotations on y-axis  }
   \item{xlab}{ Label for x-axis. }
   \item{y1lab, y2lab}{ Labels for y-axes on the left and on the right
     end of the figure. }
-  \item{y1.col, y2.col}{ Colors for left and right axis respectively. }
+  \item{col.y1, col.y2}{ Colors for left and right axis respectively. }
   \item{cex.lab}{ cex of labels. }
   \item{y1lim, y2lim}{ Limits for left and right axis respectively. }
   \item{lty1, lty2}{ Vector of line types for each time series, possibly
@@ -61,15 +60,15 @@ longts.plot(y1, y2 = NULL,
   \item{col1, col2}{ Vector of color for each time series, possibly
     recycled. } 
   \item{leg}{ Logical. When TRUE, legend is drawn. }
-  \item{leg.y1nam, leg.y2nam}{ Name of y1- and y2-axis in legend.  }
-  \item{leg.ncol}{ Number of columns in legend. }
-  \item{leg.cex}{ cex for legend. }
+  \item{y1nam.leg, y2nam.leg}{ Name of y1- and y2-axis in legend.  }
+  \item{ncol.leg}{ Number of columns in legend. }
+  \item{cex.leg}{ cex for legend. }
   \item{h1, h2}{ Vector of y-positions of horizontal lines in the
     coordinate systems represented by the left and the right axis
     respectively. } 
-  \item{h1.col, h2.col}{ Vector of colors for horizontal lines. }
+  \item{col.h1, col.h2}{ Vector of colors for horizontal lines. }
   \item{main}{ Title of plot. }
-  \item{main.cex}{ cex of title.  }
+  \item{cex.main}{ cex of title.  }
   \item{automain}{ Logical. When \code{TRUE}, the units of the start and
     the end on the page are printed in the title. }
   \item{mgp, oma, cex}{ Cf. \code{\link[graphics]{plot}}. }
@@ -121,7 +120,7 @@ longts.plot(y1, y2 = NULL,
 \examples{
 data(sunspots)
 longts.plot(sunspots,upf=ceiling((end(sunspots)-start(sunspots))[1]/5),
-            ann.dx=10, tick.dx=1)
+            dx.ann=10, dx.tick=1)
 
 if (require(SwissAir)) {
   data(AirQual)
@@ -130,8 +129,8 @@ if (require(SwissAir)) {
 
   longts.plot(y1=AirQual[,c("ad.O3","ad.NOx")], y2 = AirQual$ad.T,
               names1=c("O3","NOx"),names2="Temp",
-              startP = 6.5*30*48, upf=7*48, ann.dx=48,
-              ann.x=substr(st,1,6),
+              startP = 6.5*30*48, upf=7*48, dx.ann=48,
+              x.ann=substr(st,1,6),
               y1lab="[ppb]", y2lab="[°C]",
               y1lim=c(0,150), y2lim=c(10,30),
               col2="red", type="l")
