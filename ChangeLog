@@ -153,4 +153,8 @@
 	  because these are more consistent to arguments in par().
 	  Sorry for this inconvenience!
 	  Bug for color in axis removed.
+
+2006-07-27 Rene Locher	
+        IDPmisc V0.7.5
+	* peaks In rare cases peak width was undefined.
 	

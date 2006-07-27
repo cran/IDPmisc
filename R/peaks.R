@@ -56,9 +56,10 @@ function(x, y = NULL, minPH, minPW, thr, stepF = 0.49){
 
       ## PW is calculated correctly only when the positions
       ## within the observed window is constant
-      PW <-  abs(x[PW]-x[1])
+      ## in rare cases PW might stay -1
+      PW <-  if(PW>=0) abs(x[PW]-x[1])
       
-      if (PH >= minPH & PW >= minPW) {
+      if (PH >= minPH && PW >= minPW) {
         peak.x <- c(peak.x,x[i])
         peak.y <- c(peak.y,y[i])
         peak.w <- c(peak.w,PW)
