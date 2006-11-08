@@ -1,3 +1,4 @@
+UseDynLib(IDPmisc)
 import(graphics,grid,lattice)
 export(Arrows,poster.plot,zoom)
 export(data.sheet,inf.omit,NaRV.omit,ok)
@@ -9,6 +10,7 @@ export(longts.plot)
 export(clock2cart,cart2clock)
 export(general.control, grid.control, title.control, key.control)
 export(rose)
-
+export(rfbaseline)
+export(rfbaselineScale)
 exportClasses("rose")
 exportMethods("plot")

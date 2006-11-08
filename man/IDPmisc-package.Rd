@@ -8,11 +8,12 @@
 \description{
   The IDPmisc package contains different high-level graphics functions
   for displaying large datasets, displaying circular data in a very
-  flexible way, brewing color ramps, drawing nice arrows, zooming
-  2D-plots, creating figures with differently colored margins and plot
-  regions.  In addition, the package contains auxiliary functions for
-  data manipulation like omitting observations with irregular values or
-  selecting data by logical vectors, which include NAs. 
+  flexible way, finding local maxima, brewing color ramps, drawing nice
+  arrows, zooming 2D-plots, creating figures with differently colored
+  margin and plot region.  In addition, the package contains auxiliary
+  functions for data manipulation like omitting observations with
+  irregular values or selecting data by logical vectors, which include
+  NAs.  
 }
 
 \details{
@@ -20,7 +21,7 @@
   Package: \tab IDPmisc\cr
   Type: \tab Package\cr
   Version: \tab 0.7.5\cr
-  Date: \tab 2006-07-27\cr
+  Date: \tab 2006-11-08\cr
   License: \tab  GPL (GNU Public Licence), Version 2 or later\cr
 }
 
@@ -40,6 +41,8 @@
   \code{\link{ok}} \tab                      Sets NAs in Logical Objects to FALSE\cr
   \code{\link{plot}} \tab                    Plots objects of Class Rose\cr
   \code{\link{poster.plot}} \tab             Convenient xyplot with Differently Colored Margin and Plot Region\cr
+  \code{\link{rfbaseline}} \tab               Robust fitting of baselines\cr
+  \code{\link{rfbaselineScale}} \tab         Estimation of the scale parameter based on all data smaller than its first mode\cr
   \code{\link{showColors}} \tab              Displays vectors of colors\cr
   \code{\link{zoom}}  \tab                   Zooming in and out in a 2d-Plot\cr
 }

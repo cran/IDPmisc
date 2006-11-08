@@ -157,4 +157,9 @@
 2006-07-27 Rene Locher	
         IDPmisc V0.7.5
 	* peaks In rare cases peak width was undefined.
+
+2006-11-08 Rene Locher	
+        IDPmisc V0.8.0
+	* rfbaseline New function for baseline subtraction
+	* rfbaselineScale New function
 	

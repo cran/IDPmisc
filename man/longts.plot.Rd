@@ -67,10 +67,10 @@ longts.plot(y1, y2 = NULL,
     coordinate systems represented by the left and the right axis
     respectively. } 
   \item{col.h1, col.h2}{ Vector of colors for horizontal lines. }
-  \item{main}{ Title of plot. }
+  \item{main}{ Title of plot.}
   \item{cex.main}{ cex of title.  }
   \item{automain}{ Logical. When \code{TRUE}, the units of the start and
-    the end on the page are printed in the title. }
+    the end on the page are printed in the title.}
   \item{mgp, oma, cex}{ Cf. \code{\link[graphics]{plot}}. }
   \item{type}{ Cf. \code{\link[graphics]{plot}}. } 
   \item{slide}{ Logical. When \code{FALSE}, the first page (screen) is
@@ -115,7 +115,7 @@ longts.plot(y1, y2 = NULL,
   \code{y1}
 }
 
-\seealso{ ~~objects to See Also as \code{\link{help}}, ~~~ }
+%%\seealso{ }
 
 \examples{
 data(sunspots)
