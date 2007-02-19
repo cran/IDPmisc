@@ -1,7 +1,7 @@
 \name{data.sheet}
 \alias{data.sheet}
 
-\title{Coercing a list to a data.frame}
+\title{Coerce a list to a data.frame}
 \description{
   Coerces a list with vectors of different length into a data.frame.  Fills the shorter vectors with NA.
 }

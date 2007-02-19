@@ -2,7 +2,7 @@
 \alias{col2hsv}
 
 \title{
-  Converting Color to hsv Code
+  Convert Color to hsv Code
 }
 
 \description{

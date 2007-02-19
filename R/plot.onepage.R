@@ -1,7 +1,7 @@
-"plot.onepage" <-
+`plot.onepage` <-
 function(y1, y2, names1, names2,
                          startP, upf, fpp, overlap,
-                         x.ann, dx.ann, dx.tick, ny.ann,
+                         x.ann, dx.ann, dx.tick, ny.ann,cex.ann,
                          xlab, y1lab, y2lab, col.y1, col.y2,
                          y2.lab, cex.lab,
                          y1lim, y2lim, aty1, aty2,
@@ -9,10 +9,10 @@ function(y1, y2, names1, names2,
                          leg, y1nam.leg, y2nam.leg,
                          ncol.leg, cex.leg=1.5,
                          h1, h2, col.h1, col.h2,
-                         main, cex.main, mgp, oma, cex,type){
+                         main, cex.main, mgp, mar, oma, cex, type){
   ## internal function
   ## Author:  Rene Locher
-  ## Version: 2006-07-05
+  ## Version: 2007-02-08
   
   par.old <- par(no.readonly = TRUE)
   on.exit(par(par.old))
@@ -20,8 +20,8 @@ function(y1, y2, names1, names2,
   on.exit(options(warn=0), add=TRUE)
 
   par(mfrow=c(ifelse(leg,fpp+1,fpp),1),
-      mgp=mgp, mar=c(2,4,2,4)+.1, oma=oma, cex=cex)
-   
+      mgp=mgp, mar=mar, oma=oma, cex=cex)
+  
   for (ff in 0:(fpp-1)) {
     st <- startP+ff*upf
     ee <- startP+(ff+1)*upf+overlap
@@ -67,14 +67,15 @@ function(y1, y2, names1, names2,
 
       axis(1,at=atxTick,labels=F,tcl=-0.3)
 
-      axis(1,at=atxLab,label=lab,tcl=-0.5)
+      axis(1,at=atxLab,label=lab,tcl=-0.5,cex.axis=cex.ann)
       
-      axis(2,aty1, col.lab=col.y1, col.axis=col.y1)
-      mtext(text=y1lab,side=2,line=mgp[1],cex=cex*cex.lab,col=col.y1)
+      axis(2,aty1, col.lab=col.y1, col.axis=col.y1,cex.axis=cex.ann)
+      mtext(text=y1lab,side=2,line=mgp[1],col=col.y1,cex=cex.lab)
       
       if (!is.null(y2)) {
-        axis(4,aty2, y2.lab, col.lab=col.y2, col.axis=col.y2)
-        mtext(text=y2lab,side=4,line=mgp[1],cex=cex*cex.lab,col=col.y2)
+        axis(4,aty2, y2.lab, col.lab=col.y2, col.axis=col.y2,
+             cex=cex.lab)
+        mtext(text=y2lab,side=4,line=mgp[1],col=col.y2,cex=cex.lab)
       }
       box()
     } else frame()
@@ -109,7 +110,7 @@ function(y1, y2, names1, names2,
       if (is.null(ncol.leg)) ncol.leg <- max(ncol(y1),ncol(y2))
       if (is.null(y1nam.leg)) y1nam.leg <- "left axis:"
       if (is.null(y2nam.leg)) y2nam.leg <- "right axis:"
-      text.w <- max(sapply(c(names1,names2),strwidth, cex=cex*cex.leg))
+      text.w <- max(sapply(c(names1,names2),strwidth, cex=cex.leg))
       
       le1 <- legend(0.5,0.5,legend=names1,col=col1,lwd=lwd1,lty=lty1,
                     ncol=ncol.leg, xjust=0.5, yjust=1, cex=cex.leg,

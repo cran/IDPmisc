@@ -1,9 +1,9 @@
 \name{longts.plot}
 \alias{longts.plot}
 
-\title{ Plots Very Long Regular Time Series }
+\title{ Plot Very Long Regular Time Series }
 \description{
-  Plots one or more regular time series in multiple figures on one or
+  Plot one or more regular time series in multiple figures on one or
   more pages.
 }
 \usage{
@@ -11,7 +11,8 @@ longts.plot(y1, y2 = NULL,
             names1 = NULL, names2 = NULL,
             startP = start(y1)[1], upf = 14, fpp = 5, overlap = 0.5,
             x.ann = NULL, dx.ann = 1, dx.tick = 0.25 * dx.ann,
-            ny.ann = 3, xlab = "", y1lab = "", y2lab = "",
+            ny.ann = 3, cex.ann = par("cex.axis"),
+            xlab = "", y1lab = "", y2lab = "",
             col.y1 = "black", col.y2 = "black",
             cex.lab = par("cex.lab"),
             y1lim = range(y1, na.rm = T, finite=TRUE),
@@ -21,10 +22,13 @@ longts.plot(y1, y2 = NULL,
             leg = TRUE, y1nam.leg = NULL, y2nam.leg = NULL,
             ncol.leg = NULL, cex.leg = 1.5,
             h1 = NULL, h2 = NULL, col.h1 = "gray70", col.h2 = "gray70",
-            main = NULL, cex.main = par("cex.main"), automain = TRUE,
-            mgp = c(1.7, 0.7, 0),
-            oma = if (automain) c(0, 0, 1, 0) else par("oma"),
-            cex = par("cex"), type = "s", slide = FALSE, each.fig = 1)
+            main = NULL, cex.main = par("cex.main"),
+            automain = is.null(main),
+            mgp = c(2, 0.7, 0), mar = c(2,3,1,3)+.1,
+            oma = if (automain|!is.null(main))
+                              c(0,0,2,0) else par("oma"),
+            cex = par("cex"), type = "s", slide = FALSE, each.fig = 1,
+            filename = NULL, extension = NULL, filetype = NULL, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -47,6 +51,8 @@ longts.plot(y1, y2 = NULL,
   \item{dx.tick}{ Distance between two ticks on the x-axis in time
     units. }
   \item{ny.ann}{ Approximate number of annotations on y-axis  }
+  \item{cex.ann}{ The magnification to be used for axis annotation
+    relative to the current setting of cex. } 
   \item{xlab}{ Label for x-axis. }
   \item{y1lab, y2lab}{ Labels for y-axes on the left and on the right
     end of the figure. }
@@ -71,7 +77,7 @@ longts.plot(y1, y2 = NULL,
   \item{cex.main}{ cex of title.  }
   \item{automain}{ Logical. When \code{TRUE}, the units of the start and
     the end on the page are printed in the title.}
-  \item{mgp, oma, cex}{ Cf. \code{\link[graphics]{plot}}. }
+  \item{mgp, mar, oma, cex}{ Cf. \code{\link[graphics]{par}}. }
   \item{type}{ Cf. \code{\link[graphics]{plot}}. } 
   \item{slide}{ Logical. When \code{FALSE}, the first page (screen) is
     plotted only. When \code{TRUE}, user may leaf through the pages
@@ -79,6 +85,24 @@ longts.plot(y1, y2 = NULL,
   \item{each.fig}{ For \code{each.fig==1} all data are plotted.
                    for \code{each.fig==2} every 2nd page is plotted and
 		   so on. }
+  \item{filename, extension}{When \code{filename} is not 
+    \code{NULL}, the displayed screen(s) are saved to the
+    disk. When \code{slide = TRUE}, the filename of the plots is
+    extended by a serial number. The extension is defined automatically
+    on windows systems and must be defined manually on the other
+    systems.} 
+  \item{filetype, ...}{\emph{On windows operating systems}, these
+    arguments are identical with the arguments in
+    \code{\link[grDevices]{savePlot}(filename = filename, type =
+      filetype, ...)}, where filename ist defined above. The filetype
+    defaults to windows meta file, \code{\dQuote{wmf}} , with the
+    extension \code{\dQuote{.wmf}}.\cr 
+  \emph{On non windows operating systems}, these
+    arguments are identical with the arguments in
+    \code{\link[grDevices]{devPrint}(filename = filename, device =
+      filetype, ...)}, , where filename ist defined above. The filetype
+    defaults to \code{postscript} , with the extension
+    \code{\dQuote{.ps}}.}  
 }
 \details{
   For longer time-series, it is sometimes important to spread several
@@ -104,7 +128,7 @@ longts.plot(y1, y2 = NULL,
 
 \section{Side Effects}{
   One or more pages of time series plots are drawn on the current
-  graphic device.
+  graphic device and, optionally, saved in one or more files.
 }
 
 %%\references{ ~put references to the literature/web site here ~ }

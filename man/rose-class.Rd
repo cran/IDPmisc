@@ -2,7 +2,7 @@
 \docType{class}
 \alias{rose-class}
 
-\title{Class "rose" }
+\title{rose-class}
 
 \description{ Summary statistics of cyclic data. }
 

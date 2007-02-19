@@ -13,38 +13,18 @@
   margin and plot region.  In addition, the package contains auxiliary
   functions for data manipulation like omitting observations with
   irregular values or selecting data by logical vectors, which include
-  NAs.  
+  NAs. Other functions are especially useful in spectroscopy and
+  analyses of environmental data: robust baseline fitting, finding peaks
+  in spectra.  
 }
 
 \details{
 \tabular{ll}{
   Package: \tab IDPmisc\cr
   Type: \tab Package\cr
-  Version: \tab 0.7.5\cr
-  Date: \tab 2006-11-08\cr
+  Version: \tab 0.9.1\cr
+  Date: \tab 2007-02-19\cr
   License: \tab  GPL (GNU Public Licence), Version 2 or later\cr
-}
-
-\tabular{ll}{
-  Function \tab                              Description\cr
-  \code{\link{Arrows}} \tab                  Pretty Open or Closed Arrows\cr
-  \code{\link{cart2clock}} \tab              Converts Cartesian Coordinates to Clock Coordinates\cr
-  \code{\link{clock2cart}} \tab              Converts Clock Coordinates to Cartesian Coordinates\cr
-  \code{\link{col2hsv}} \tab                 Converting Color to hsv Code\cr
-  \code{\link{data.sheet}} \tab              Coercing a list to a data.frame\cr
-  \code{\link{IDPcolorRamp}} \tab            Color Ramp for Ordered Values\cr
-  \code{\link{ilagplot}} \tab                Image Lag Plot Matrix for Large Time Series\cr
-  \code{\link{Image}} \tab                   Displays the Density of Points in a Scatter Plot by Colors\cr
-  \code{\link{ipairs}} \tab                  Image Scatter Plot Matrix for Large Datasets\cr
-  \code{\link{ixyplot}} \tab                 Image Scatter Plot for Large Datasets\cr
-  \code{\link{NaRV.omit}} \tab               Omits Observations with NA, NaN, Inf and -Inf Values\cr
-  \code{\link{ok}} \tab                      Sets NAs in Logical Objects to FALSE\cr
-  \code{\link{plot}} \tab                    Plots objects of Class Rose\cr
-  \code{\link{poster.plot}} \tab             Convenient xyplot with Differently Colored Margin and Plot Region\cr
-  \code{\link{rfbaseline}} \tab               Robust fitting of baselines\cr
-  \code{\link{rfbaselineScale}} \tab         Estimation of the scale parameter based on all data smaller than its first mode\cr
-  \code{\link{showColors}} \tab              Displays vectors of colors\cr
-  \code{\link{zoom}}  \tab                   Zooming in and out in a 2d-Plot\cr
 }
 
 }

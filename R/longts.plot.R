@@ -1,27 +1,33 @@
-"longts.plot" <-
-function(y1, y2=NULL,
-                        names1=NULL, names2=NULL,
-                        startP=start(y1)[1],upf=14, fpp=5, overlap=0.5, 
-                        x.ann=NULL, dx.ann=1, dx.tick=0.25*dx.ann,
-                        ny.ann=3, xlab="", y1lab="", y2lab="",
-                        col.y1="black", col.y2="black",
-                        cex.lab=par("cex.lab"),
-                        y1lim=range(y1,na.rm=T,finite=TRUE),
-                        y2lim=range(y2,na.rm=T,finite=TRUE),
-                        lty1=1, lty2=2, lwd1=1, lwd2=2,
-                        col1=NULL, col2=NULL,
-                        leg=TRUE, y1nam.leg=NULL, y2nam.leg=NULL,
-                        ncol.leg=NULL, cex.leg=1.5,
-                        h1=NULL, h2=NULL,
-                        col.h1="gray70", col.h2="gray70",
-                        main=NULL, cex.main=par("cex.main"),
-                        automain=TRUE,
-                        mgp=c(1.7,0.7,0),
-                        oma = if (automain) c(0,0,1,0) else par("oma"),
-                        cex=par("cex"),
-                        type="s", slide=FALSE, each.fig=1) {
+`longts.plot` <-
+function(y1, y2 = NULL,
+                        names1 = NULL, names2 = NULL,
+                        startP = start(y1)[1],
+                        upf = 14, fpp = 5, overlap = 0.5, 
+                        x.ann = NULL, dx.ann = 1, dx.tick = 0.25*dx.ann,
+                        ny.ann = 3, cex.ann = par("cex.axis"),
+                        xlab = "", y1lab = "", y2lab = "",
+                        col.y1 = "black", col.y2 = "black",
+                        cex.lab = par("cex.lab"),
+                        y1lim = range(y1,na.rm=T,finite=TRUE),
+                        y2lim = range(y2,na.rm=T,finite=TRUE),
+                        lty1 = 1, lty2 = 2, lwd1 = 1, lwd2 = 2,
+                        col1 = NULL, col2 = NULL,
+                        leg = TRUE, y1nam.leg = NULL, y2nam.leg = NULL,
+                        ncol.leg = NULL, cex.leg = 1.5,
+                        h1 = NULL, h2 = NULL,
+                        col.h1 = "gray70", col.h2 = "gray70",
+                        main = NULL, cex.main = par("cex.main"),
+                        automain = is.null(main),
+                        mgp = c(2,0.7,0),
+                        mar = c(2,3,1,3)+.1,
+                        oma = if (automain|!is.null(main))
+                              c(0,0,2,0) else par("oma"),
+                        cex = par("cex"),
+                        type = "s", slide = FALSE, each.fig = 1,
+                        filename = NULL, extension = NULL,
+                        filetype = NULL, ...) {
   ## Author:  Rene Locher
-  ## Version: 2006-07-05
+  ## Version: 2007-02-08
 
   if (is.null(names1)) {
     names1 <- deparse(substitute(y1))
@@ -36,9 +42,7 @@ function(y1, y2=NULL,
   if (!is.matrix(y1)) {
     y1 <- ts(as.matrix(y1),start=start(y1),freq=fq1)
   }
-
-  if (!is.null(main)) oma[3] <- max(oma[3],5)
-
+  
   if (is.null(col1)) col1 <-
     c("blue","green4" ,"red", "darkorchid4", "black", 
       "deepskyblue","green","orange", "violetred", "grey50",
@@ -92,20 +96,30 @@ function(y1, y2=NULL,
       diff(range(y1lim))+y1lim[1]
   }
 
+  par(mfrow = c(ifelse(leg,fpp+1,fpp),1),
+      mgp = mgp, mar = mar, oma=oma, cex=cex)
+
+  if (Sys.info()["sysname"]!="Windows"){
+    filetype <- postscript
+    extension <- ".ps"
+  }
+  
   if (length(startP) != 1) stop("startP must be scalar!")
   upp <- upf*fpp
   
   if (slide) {
   ee <- end(y1)[1]
+  nr <- 0
     
   for (ii in 0:(ceiling((end(y1)[1]+1-startP)/upp)-1)){
     if (ii%%each.fig!=0) next
     st <- startP+ii*upp
+    nr <- nr+1
     plot.onepage(
        y1=y1, y2=y2, names1=names1, names2=names2,
        startP=st, upf=upf, fpp=fpp, overlap=overlap,
        x.ann=x.ann, dx.ann=dx.ann, dx.tick=dx.tick, 
-       ny.ann=ny.ann,
+       ny.ann=ny.ann, cex.ann=cex.ann,
        xlab=xlab, y1lab=y1lab, y2lab=y2lab, col.y1=col.y1, col.y2=col.y2,
        y2.lab = y2.lab, cex.lab=cex.lab,
        y1lim=y1lim, y2lim=y2lim, aty1=aty1, aty2=aty2,
@@ -117,9 +131,15 @@ function(y1, y2=NULL,
           paste("From",max(st,startP),"to",
                 min(st+upp-1+round(overlap),ee+1)) else main,
        cex.main=cex.main,
-       mgp=mgp, oma=oma, cex=cex, type=type)
-    
-    print(answ <- readline(prompt="\nfor next plot: press <return>\nfor stopping plot: press <s><return>"))
+       mgp=mgp, mar=mar, oma=oma, cex=cex, type=type)
+      if (!is.null(filename)){
+        fn <- paste(filename, formatC(nr,format = "d", width=3, flag=0),
+                    extension, sep="")
+        if (Sys.info()["sysname"]=="Windows")
+          savePlot(filename=fn, type=filetype, ...) else
+        dev.print(file=fn,device=filetype, ...)
+      }
+     print(answ <- readline(prompt="\nfor next plot: press <return>\nfor stopping plot: press <s><return>"))
     if (is.element(answ,c("s","S"))) return()
   }
 } else {
@@ -127,7 +147,7 @@ function(y1, y2=NULL,
   plot.onepage(y1=y1, y2=y2, names1=names1, names2=names2,
                startP=startP, upf=upf, fpp=fpp, overlap=overlap,
                x.ann=x.ann, dx.ann=dx.ann, dx.tick=dx.tick, 
-               ny.ann=ny.ann,
+               ny.ann=ny.ann, cex.ann=cex.ann,
                xlab=xlab, y1lab=y1lab, y2lab=y2lab, y2.lab = y2.lab,
                col.y1=col.y1, col.y2=col.y2, cex.lab=cex.lab,
                y1lim=y1lim, y2lim=y2lim, aty1=aty1, aty2=aty2,
@@ -139,7 +159,14 @@ function(y1, y2=NULL,
                main = if (automain)
                  paste("From",max(startP),"to", startP+upp-1) else main,
                cex.main=cex.main,
-               mgp=mgp, oma=oma, cex=cex, type=type)
+               mgp=mgp, mar=mar, oma=oma, cex=cex, type=type)
+      if (!is.null(filename)){
+        if (Sys.info()["sysname"]=="Windows")
+          savePlot(filename=paste(filename,extension,sep=""),
+                   type=filetype, ...) else
+        dev.print(file=paste(filename,extension,sep=""),
+                  device=filetype, ...)
+      }
 }
 } #longts.plot
 

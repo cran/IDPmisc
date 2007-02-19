@@ -1,7 +1,7 @@
 \name{clock2cart}
 \alias{clock2cart}
 
-\title{ Converts Clock Coordinates to Cartesian Coordinates }
+\title{ Convert Clock Coordinates to Cartesian Coordinates }
 \description{
   Converts clock coordinates (\code{rho}, \code{phi}) to cartesian
   coordinates (\code{x}, \code{y}.

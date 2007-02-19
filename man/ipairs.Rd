@@ -20,15 +20,17 @@ ipairs(x,
 \arguments{
   \item{x}{data.frame or matrix}
   \item{pixs}{Pixel size in mm on the plotting device.}
-  \item{zmax}{Maximum counts per Pixel to be plotted.  When NULL each
-    scatter plot has its individual scale.  If a number >= maximum number of
-    counts per pixel is supplied, the scale will be identical for all
-    scatter plots.  The maximum of the number per pixel is delivered by
-    the return value.}
-  \item{ztransf}{Function to transform the counts.  The user has to make
+  \item{zmax}{Maximum number ofcounts per pixel in the plot.  When NULL,
+    each scatter plot has its individual scale.  If a number >= maximum
+    number of counts per pixel is supplied, the scale will be identical
+    for all scatter plots.  The maximum number of counts per pixel is
+    delivered by the return value.}
+  \item{ztransf}{Function to transform the counts per
+    pixel, which will be mapped by the function in
+    \code{colramp} to well defined colors. The user has to make
     sure that the transformed counts lie in the range [0,zmax], where
     zmax is any positive number (>=2).}  
-  \item{colramp}{Color ramp to encode the density of the points within a
+  \item{colramp}{Color ramp to encode the number of counts within a
     pixel.}
   \item{border}{Shall border be drawn between the colors in the legend:
     \code{TRUE} / \code{FALSE}.}  

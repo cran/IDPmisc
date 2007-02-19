@@ -21,17 +21,23 @@ ixyplot(x, y = NULL,
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{x,y}{Coordinates of points whose density should be plotted.  If
-    \code{x} ist a matrix or a data.frame, the first two column are used as x
-    and y respectively.  \code{y} must be in this case NULL.  \code{x} and
-    \code{y} may be numeric or factor variable. }
+  \item{x,y}{Coordinates of points whose density is to be plotted.  If
+    \code{x} ist a matrix or a data.frame, the first two column are used
+    as x and y respectively.  \code{y} must be in this case NULL.
+    \code{x} and \code{y} may be numeric or factor variable. }
   \item{pixs}{Pixelsize in mm.}
-  \item{zmax}{Maximum counts per pixel to be plotted.  \code{zmax} must
-    be >= maximum number of counts per pixel.}
-  \item{ztransf}{Function to transform the counts.  The user has to make
-    sure that the transformed counts lie in the range [0,zmax], where
-    zmax is any positive number (>=2).}  
-  \item{colramp}{Color ramp to encode the density of the points within a
+  \item{zmax}{Maximum number of counts per pixel in the plot.  When
+    \code{NULL}, the density in the scatter plot is encoded from 0 
+    to maximum number of counts per pixel observed.  \code{zmax} must be
+    equal or larger than maximum number of counts found.  The maximum
+    number of counts per pixel is delivered by the return value.}
+  \item{ztransf}{Function to transform the number of counts per
+    pixel, which will be mapped by the function in  \code{colramp} to
+    well defined colors.  The user 
+    has to make  sure that the transformed density lies in the range
+    [0,zmax], where zmax is any positive number (>=2).  For examples see
+    \code{\link{ipairs}} and \code{\link{ilagplot}}.}  
+  \item{colramp}{Color ramp to encode the number of counts within a
     pixel.}
   \item{border}{Shall border be drawn between the colors in the legend:
     \code{TRUE} / \code{FALSE}.}

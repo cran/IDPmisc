@@ -149,9 +149,9 @@
 
 2006-07-26 Rene Locher	
         IDPmisc V0.7.4
-	* longts.plot Argument names changed changed back to V0.7.2 
-	  because these are more consistent to arguments in par().
-	  Sorry for this inconvenience!
+	* longts.plot Argument names changed changed back to old version 
+	  in V0.7.2 because these are more consistent to arguments in 
+	  par(). Sorry for this inconvenience!
 	  Bug for color in axis removed.
 
 2006-07-27 Rene Locher	
@@ -162,4 +162,22 @@
         IDPmisc V0.8.0
 	* rfbaseline New function for baseline subtraction
 	* rfbaselineScale New function
+
+2007-02-07 Rene Locher	
+        IDPmisc V0.9.0, not published	
+	* itermplot New function for termplots with very large numbers 
+	  of observations
+	* ipanel.smooth New panelfunction for itermplot
+	* help Typing errors corrected
+2007-02-19 Rene Locher	
+	IDPmisc V0.9.1
+	* longts.plot 
+	  New arguments cex.axis, mar, filename, extension, filetype.
+	  Spacing between individual figures has been optimized. 
+	  Automatic constructed and manually defined titles 
+	  are now positioned identically. 
+          Default value of mgp changed from c(1.7,0.7,0) to c(2,0.7,0)
+	* rose-class Help updated, so that it is found now in the subject
+	  index by rose-class
+	  
 	

@@ -1,7 +1,7 @@
 \name{Image}
 \alias{Image}
 
-\title{Displays the Density of Points in a Scatter Plot by Colors}
+\title{Display the Density of Points in a Scatter Plot by Colors}
 \description{
   The density of points in a scatter plot is encoded by color.
 }
@@ -12,9 +12,9 @@ Image(x, y = NULL, pixs = 1, zmax = NULL, ztransf = function(x){x},
 
 \arguments{
   \item{x, y}{Coordinates of points whose density is plotted.  If
-    \code{x} ist a matrix or a data.frame, the first two column are used as x
-    and y respectively.  \code{y} must be in this case NULL.  \code{x} and
-    \code{y} may be numeric or factor variable.}
+    \code{x} is a matrix or a data.frame, the first two column are used
+    as x and y respectively.  \code{y} must be in this case NULL.
+    \code{x} and \code{y} may be numeric or factor variable.}
   \item{pixs}{Size of pixel in x- and y-direction in [mm] on the
     plotting device.  When \code{x} and \code{y} are numeric, 
     pixels are square.  When \code{x} and \code{y} are factors or should
@@ -22,15 +22,18 @@ Image(x, y = NULL, pixs = 1, zmax = NULL, ztransf = function(x){x},
     longer square.  The pixels are enlarged in the dimension in which the
     factors are displayed, so that the rectangular pixels are centered
     at the factor levels.}
-  \item{zmax}{Maximum counts per Pixel to be plotted.  When \code{NULL}
-    the density in the scatter plot is encoded from 0 pixel to maximum
-    number of pixels found.  \code{zmax} must be equal or larger than
-    maximum counts found.}
-  \item{ztransf}{Function to transform the counts.  The user has to make
-    sure that the transformed counts lie in the range [0,zmax], where
-    zmax is any positive number (>=2).  For examples see
-    \code{\link{ipairs}} and \code{\link{ilagplot}}}  
-  \item{colramp}{Color ramp to encode the density of the points within a
+  \item{zmax}{Maximum number of counts per pixel in the plot.  When
+    \code{NULL}, the density in the scatter plot is encoded from 0 
+    to maximum number of counts per pixel observed.  \code{zmax} must be
+    equal or larger than maximum number of counts found. The maximum
+    number of counts per pixel is delivered by the return value.}
+  \item{ztransf}{Function to transform the number of counts per
+    pixel, which will be mapped by the function in
+    \code{colramp} to well defined colors.  The user
+    has to make  sure that the transformed density lies in the range
+    [0,zmax], where zmax is any positive number (>=2).  For examples see
+    \code{\link{ipairs}} and \code{\link{ilagplot}}.}   
+  \item{colramp}{Color ramp to encode the number of the counts within a
     pixel by color.}
   \item{factors}{Vector of logicals indicating whether \code{x} and / or
     \code{y} should be handled as factors 
@@ -41,7 +44,8 @@ Image(x, y = NULL, pixs = 1, zmax = NULL, ztransf = function(x){x},
   calling \code{plot(x,y,type="n")}.  This function ensures 
   by default that the pixel has the same size in x- and y-direction.  As
   a drawback, pixels may be unequally spaced, when there are only very
-  few distinct (integer) values in x- or y-direction.  When this is the case, the
+  few distinct (integer) values in x- or y-direction.  When this is the
+  case, the 
   corresponding dimension should be declared as factor.  (cf. argument
   \code{factors}). 
   \crA similar solution for plotting densities is realized in the package
@@ -58,7 +62,7 @@ Image(x, y = NULL, pixs = 1, zmax = NULL, ztransf = function(x){x},
 }
 
 \value{
-  Maximum number of counts per Pixel found.}
+  Maximum number of counts per pixel found.}
 
 \author{Andreas Ruckstuhl, Rene Locher}
 
