@@ -1,4 +1,4 @@
-"IDPcolorRamp" <-
+`IDPcolorRamp` <-
 function (n,
                           colInt = data.frame(
                             h = c(0.47, 0.28, 0.16, 0.00, 1.00, 0.8), 
@@ -11,6 +11,8 @@ function (n,
 {
   if(!is.vector(n)) stop("n must be a single value\n")
   if(length(n)!=1) stop("n must be a single value\n")
+  if(n<1) stop("n must be >= 1\n")
+  n <- ceiling(n) ## n must be an integer
   nsr <- length(fr)+1
   if(sum(fr)<=0 | sum(fr)>1 | any(fr<0))
     stop("fr must sum to x with  0 < x < 1 where all fr are positive\n")

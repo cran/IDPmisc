@@ -3,7 +3,7 @@
 \alias{plot}
 \alias{plot,rose,missing-method}
 
-\title{ Plot Method for Class "rose"  (Grid Function)}
+\title{ Plot Method for Class "rose"  (Grid Graphics Function)}
 \description{
   Describes plot method for class "rose"
 }

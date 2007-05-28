@@ -1,4 +1,4 @@
-"Arrows" <-
+`Arrows` <-
 function (x1, y1, x2, y2,
                     size= 1,     
                     width= 1.2/4/cin,
@@ -13,14 +13,23 @@ function (x1, y1, x2, y2,
                     h.lty=sh.lty,
                     verbose=FALSE)
   ## Author: Andreas Ruckstuhl, refined by Rene Locher
-  ## Version: 2005-10-17
+  ## Version: 2007-05-28
 {
+  arr <- ((x2-x1)^2+(y2-y1)^2) > (10*.Machine$double.eps)
+  if (any(!arr)) {
+    warning("Some of the arrows have undefined directions and are therefore not drawn.\n")
+    x1 <- x1[arr]
+    x2 <- x2[arr]
+    y1 <- y1[arr]
+    y2 <- y2[arr]
+  }
+  
   cin <- size * par("cin")[2]
   uin <- if (is.R()) 
     1/xyinch()
   else par("uin")
   x <- sqrt(seq(0, cin^2, length = floor(35 * cin) + 2))
-  delta <-  sqrt(h.lwd)*par("cin")[2]*0.005      ## has been 0.05
+  delta <-  sqrt(h.lwd)*par("cin")[2]*0.005   
   x.arr <- c(-rev(x), -x)
   wx2 <- width * x^2
   y.arr <- c(-rev(wx2 + delta), wx2 + delta)

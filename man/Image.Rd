@@ -62,7 +62,8 @@ Image(x, y = NULL, pixs = 1, zmax = NULL, ztransf = function(x){x},
 }
 
 \value{
-  Maximum number of counts per pixel found.}
+  Maximum number of counts per pixel found. If the number is not an
+  integer, it is rounded to the nearest integer which is greater.} 
 
 \author{Andreas Ruckstuhl, Rene Locher}
 

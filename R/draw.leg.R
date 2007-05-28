@@ -1,4 +1,4 @@
-"draw.leg" <-
+`draw.leg` <-
 function(key, draw = FALSE, vp = NULL)
 {
     if (!is.list(key)) stop("key must be a list")
@@ -20,13 +20,13 @@ function(key, draw = FALSE, vp = NULL)
 
     rearrangeUnit <- function (x, pos, u) ##lor
       {
-        if (unit.length(x) == 1) 
+        if (length(x) == 1) 
           u
         else if (pos == 1) 
-          unit.c(u, x[(pos + 1):unit.length(x)])
-        else if (pos == unit.length(x)) 
+          unit.c(u, x[(pos + 1):length(x)])
+        else if (pos == length(x)) 
           unit.c(x[1:(pos - 1)], u)
-        else unit.c(x[1:(pos - 1)], u, x[(pos + 1):unit.length(x)])
+        else unit.c(x[1:(pos - 1)], u, x[(pos + 1):length(x)])
       } ##lor
 
     chooseFace <- function (fontface = NULL, font = 1) ##lor

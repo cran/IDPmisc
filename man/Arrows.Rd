@@ -57,7 +57,9 @@ A value is only returned, when \code{verbose == TRUE}.
 
 \note{
 The plotting device should not be resized manually after plotting as
-this changes in general the aspect ratio of the pot and deforms hereby the plotted arrows.
+this changes in general the aspect ratio of the pot and deforms hereby
+the plotted arrows. The beauty of the arrows depends from the resolution
+of the device. The higher resolutions give better results.
 }
 
 \seealso{\code{\link[sfsmisc]{p.arrows}}, \code{\link{arrows}}
