@@ -8,7 +8,7 @@ standard errors and partial residuals in a density plot.
 }
 \usage{
 itermplot(model, data = NULL, envir = environment(formula(model)),
-          partial.resid = FALSE, pixs = 1,
+          partial.resid = FALSE, scale=0, pixs = 1,
           zmax=NULL, ztransf = function(x) {x}, colramp = IDPcolorRamp,
           terms = NULL, se = FALSE,
           xlabs = NULL, ylabs = NULL, main = NULL,
@@ -26,6 +26,13 @@ itermplot(model, data = NULL, envir = environment(formula(model)),
   \item{data}{ Data frame in which variables in model can be found }
   \item{envir}{ Environment in which variables in model can be found }
   \item{partial.resid}{ Logical; should partial residuals be plotted? }
+  \item{scale}{ A lower limit for the number of units covered by the
+    limits on the `y' for each plot. The default is \code{scale = 0}, in
+    which case each plot uses the range of the functions being plotted
+    to create their ylim. By setting scale to be the maximum value of
+    diff(ylim) or above for all the plots, then all subsequent plots
+    will be produced in the same vertical units. This is essential for
+    comparing the importance of fitted terms in additive models. } 
   \item{pixs}{ Size of pixel in x- and y-direction in [mm] on the
     plotting device. When x and y are numeric, pixels are square. When x
     and y are factors, pixels are no longer square. The pixels are

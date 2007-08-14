@@ -1,5 +1,5 @@
-\name{IDPmisc-package}
-\alias{IDPmisc}
+\name{IDPmisc}
+\alias{IDPmisc-package}
 \docType{package}
 
 \title{Utilities of Institute of Data Analyses and Process Design (www.idp.zhwin.ch)
@@ -22,8 +22,8 @@
 \tabular{ll}{
   Package: \tab IDPmisc\cr
   Type: \tab Package\cr
-  Version: \tab 0.9.2\cr
-  Date: \tab 2007-05-28\cr
+  Version: \tab 0.9.3\cr
+  Date: \tab 2007-08-14\cr
   License: \tab  GPL (GNU Public Licence), Version 2 or later\cr
 }
 

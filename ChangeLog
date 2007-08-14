@@ -193,4 +193,10 @@
 	  arrow is not drawn.
 	* draw.leg
 	  updated to new version of grid graphics
+2007-08-14 Rene Locher	
+	IDPmisc V0.9.3
+	* iterm
+	New argument scale.
+	* IDPmisc-package
+	  changed to IDPmisc. Alias is now IDPmisc-package
 	

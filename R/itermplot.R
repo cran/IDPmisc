@@ -1,6 +1,6 @@
 `itermplot` <-
 function(model, data=NULL,envir=environment(formula(model)),
-                      partial.resid=FALSE,
+                      partial.resid=FALSE, scale=0,
                       pixs=1, zmax=NULL, ztransf = function(x){x},
                       colramp = IDPcolorRamp,
                       terms=NULL, se=FALSE,
@@ -15,7 +15,7 @@ function(model, data=NULL,envir=environment(formula(model)),
                       ...)
   ## modified Version of termplot R2.3.1
   ## Author:  Rene Locher
-  ## Version: 2007-02-07
+  ## Version: 2007-08-14
 {
     which.terms<-terms
     terms <- ## need if(), since predict.coxph() has non-NULL default terms :
@@ -92,7 +92,8 @@ function(model, data=NULL,envir=environment(formula(model)),
 			   tms[,i] - 1.05*2*terms$se.fit[,i], na.rm=TRUE)
 	if (partial.resid)
 	    ylims <- range(ylims, pres[,i], na.rm=TRUE)
-
+        if (scale>diff(ylims))
+            ylims <- ylims+c(-0.5,0.5)*(scale-diff(ylims))
 	if (is.fac[i]) {
 	    ff <- mf[,nmt[i]]
             if (!is.null(model$na.action))
