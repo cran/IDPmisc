@@ -12,10 +12,8 @@ function(y1, y2, names1, names2,
                          main, cex.main, mgp, mar, oma, cex, type){
   ## internal function
   ## Author:  Rene Locher
-  ## Version: 2007-02-08
+  ## Version: 2007-10-02
   
-  par.old <- par(no.readonly = TRUE)
-  on.exit(par(par.old))
   options(warn=-1)
   on.exit(options(warn=0), add=TRUE)
 

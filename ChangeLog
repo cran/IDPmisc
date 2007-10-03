@@ -169,6 +169,7 @@
 	  of observations
 	* ipanel.smooth New panelfunction for itermplot
 	* help Typing errors corrected
+
 2007-02-19 Rene Locher	
 	IDPmisc V0.9.1
 	* longts.plot 
@@ -179,6 +180,7 @@
           Default value of mgp changed from c(1.7,0.7,0) to c(2,0.7,0)
 	* rose-class Help updated, so that it is found now in the subject
 	  index by rose-class
+
 2007-02-19 Rene Locher	
 	IDPmisc V0.9.2
 	* IDPcolorRamp
@@ -193,10 +195,23 @@
 	  arrow is not drawn.
 	* draw.leg
 	  updated to new version of grid graphics
+
 2007-08-14 Rene Locher	
 	IDPmisc V0.9.3
-	* iterm
-	New argument scale.
-	* IDPmisc-package
-	  changed to IDPmisc. Alias is now IDPmisc-package
-	
+	* iterm New argument scale.
+
+2007-10-02 Rene Locher	
+	IDPmisc V0.9.4
+	* DESCRPTION: 'SaveImage: TRUE' removed, 
+	  Authors E-mail address changed
+          License standardized
+	* RD-Files: non-ASCII values from help pages removed.
+	* plot.rose new argument warn added
+	* title.control default for argument 'cex' 1.5 (before 1.7)
+	* longts.plot default for argument 'cex.leg' par("cex") 
+	              (before 1.5)
+	. example adapted to SwissAir(>= 1.08)
+
+2007-10-03 Rene Locher
+	IDPmisc V0.9.5
+	* DESCRIPTION: 'Encoding: latin1' added

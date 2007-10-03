@@ -1,4 +1,4 @@
-"grid.control" <-
+`grid.control` <-
 function(circ.n = 4,
                          circ.r = NULL,
                          circ.col = "gray30",
@@ -18,7 +18,7 @@ function(circ.n = 4,
                          ray.lim = NULL,
                          ray.n = 8)
   ## Author: Rene Locher
-  ## Version: 2005-12-16
+  ## Version: 2007-10-02
 
   {
     return(list(ray =

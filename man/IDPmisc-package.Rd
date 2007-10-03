@@ -1,8 +1,8 @@
-\name{IDPmisc}
-\alias{IDPmisc-package}
+\name{IDPmisc-package}
+\alias{IDPmisc}
 \docType{package}
 
-\title{Utilities of Institute of Data Analyses and Process Design (www.idp.zhwin.ch)
+\title{Utilities of Institute of Data Analyses and Process Design (www.idp.zhaw.ch)
 }
 
 \description{
@@ -22,17 +22,17 @@
 \tabular{ll}{
   Package: \tab IDPmisc\cr
   Type: \tab Package\cr
-  Version: \tab 0.9.3\cr
-  Date: \tab 2007-08-14\cr
-  License: \tab  GPL (GNU Public Licence), Version 2 or later\cr
+  Version: \tab 0.9.5\cr
+  Date: \tab 2007-10-03\cr
+  License: \tab  GPL (>= 3) (GNU Public Licence)\cr
 }
 
 }
 
 \author{
-Rene Locher, Andreas Ruckstuhl, Thomas Unternährer
+Rene Locher, Andreas Ruckstuhl, Thomas Unternaehrer
 
-Maintainer: Rene Locher <rene.locher@zhwin.ch>
+Maintainer: Rene Locher <rene.locher@zhaw.ch>
 }
 
 %% references{

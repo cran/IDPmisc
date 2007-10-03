@@ -13,6 +13,7 @@
           x,
           transf = function(x) sqrt(x),
           subset.col = NULL,
+          warn = TRUE,
           general = general.control(),
           grid = grid.control(),
           title = title.control(),
@@ -26,14 +27,15 @@
   \item{subset.col}{ Display only a subset of the columns of
     \code{x@rho}.  Subset might be declared by numerical values or by
     name. }
+  \item{warn}{ Logical. If \code{FALSE}, warnings are suppressed.}
   \item{general}{ Settings for general appearance of plot, defined in
-    \code{\link{general.control}}}
+    \code{\link{general.control}}.}
   \item{grid}{ Settings for appearance of guiding elements of rose such
     as circles, rays and labels, defined in \code{\link{grid.control}}}
   \item{title}{ Settings for title, defined in
-    \code{\link{title.control}}}  
+    \code{\link{title.control}}.}  
   \item{key}{ Settings for appearance of the legend, defined in
-    \code{\link{key.control}}}   
+    \code{\link{key.control}}.}   
 }
 
 \details{
@@ -69,7 +71,9 @@
 The function is designed to use the area on the active viewport in an
 optimal way, but the plot is not scalable after having been drawn.
 \crFurthermore this function is still experimental so that some features
-may change in future versions. }
+may change in future versions.\cr
+You will find another nice example for this plot method at \code{\link[SwissAir]{AirQual}}
+}
 
 \seealso{ \code{\link{rose}}, \code{\link{rose-class}} }
 \examples{
@@ -143,11 +147,8 @@ plot(windrose,
 if (require(SwissAir)){
   data(AirQual)
   dat <-
-    data.frame(month =as.numeric(
-                 substr(levels(AirQual$start)[AirQual$start],4,5)),
-               hour = as.numeric(
-                 substr(levels(AirQual$start)[AirQual$start],
-                        12,13)),
+    data.frame(month =as.numeric(substr(AirQual$start,4,5)),
+               hour = as.numeric(substr(AirQual$start,12,13)),
                WD = AirQual$ad.WD,
                NOx = AirQual$ad.NOx,
                ## NO2 = AirQual$ad.NOx-AirQual$ad.NO,

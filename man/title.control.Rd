@@ -7,7 +7,7 @@
 }
 
 \usage{
-title.control(text = NULL, cex = 1.7,
+title.control(text = NULL, cex = 1.5,
               between = if (is.null(text)) 0 else 1)
 }
 

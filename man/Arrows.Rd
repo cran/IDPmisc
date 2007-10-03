@@ -52,7 +52,7 @@ A value is only returned, when \code{verbose == TRUE}.
 
 
 \author{
-  Andreas Ruckstuhl, refined by René Locher
+  Andreas Ruckstuhl, refined by Rene Locher
 }
 
 \note{

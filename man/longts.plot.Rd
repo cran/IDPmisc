@@ -20,7 +20,7 @@ longts.plot(y1, y2 = NULL,
             lty1 = 1, lty2 = 2, lwd1 = 1, lwd2 = 2,
             col1 = NULL, col2 = NULL,
             leg = TRUE, y1nam.leg = NULL, y2nam.leg = NULL,
-            ncol.leg = NULL, cex.leg = 1.5,
+            ncol.leg = NULL, cex.leg = par("cex"),
             h1 = NULL, h2 = NULL, col.h1 = "gray70", col.h2 = "gray70",
             main = NULL, cex.main = par("cex.main"),
             automain = is.null(main),
@@ -149,12 +149,10 @@ longts.plot(sunspots,upf=ceiling((end(sunspots)-start(sunspots))[1]/5),
 if (require(SwissAir)) {
   data(AirQual)
 
-  st <- levels(AirQual$start)[AirQual$start]
-
   longts.plot(y1=AirQual[,c("ad.O3","ad.NOx")], y2 = AirQual$ad.T,
               names1=c("O3","NOx"),names2="Temp",
               startP = 6.5*30*48, upf=7*48, dx.ann=48,
-              x.ann=substr(st,1,6),
+              x.ann=substr(AirQual$start,1,6),
               y1lab="[ppb]", y2lab="[°C]",
               y1lim=c(0,150), y2lim=c(10,30),
               col2="red", type="l")
