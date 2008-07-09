@@ -6,11 +6,11 @@ function(y1, y2 = NULL,
                         x.ann = NULL, dx.ann = 1, dx.tick = 0.25*dx.ann,
                         ny.ann = 3, cex.ann = par("cex.axis"),
                         xlab = "", y1lab = "", y2lab = "",
-                        col.y1 = "black", col.y2 = "black",
+                        col.y1 = "black", col.y2 = col.y1,
                         cex.lab = par("cex.lab"),
                         y1lim = range(y1,na.rm=T,finite=TRUE),
                         y2lim = range(y2,na.rm=T,finite=TRUE),
-                        lty1 = 1, lty2 = 2, lwd1 = 1, lwd2 = 2,
+                        lty1 = 1, lty2 = 2, lwd1 = 1, lwd2 = lwd1,
                         col1 = NULL, col2 = NULL,
                         leg = TRUE, y1nam.leg = NULL, y2nam.leg = NULL,
                         ncol.leg = NULL, cex.leg = par("cex"),
@@ -27,12 +27,15 @@ function(y1, y2 = NULL,
                         filename = NULL, extension = NULL,
                         filetype = NULL, ...) {
   ## Author:  Rene Locher
-  ## Version: 2007-02-08
+  ## Version: 2008-06-24
 
   if (is.null(names1)) {
     names1 <- deparse(substitute(y1))
     if (is.matrix(y1)||is.data.frame(y1)) names1 <- colnames(y1)
     }
+
+  .Deprecated("longtsPlot", package="IDPmisc")
+
 
   if (is.data.frame(y1)) y1 <- as.matrix(y1)
   if (!is.numeric(y1)) stop("y1 must be numeric!")
@@ -106,9 +109,9 @@ function(y1, y2 = NULL,
   
   if (length(startP) != 1) stop("startP must be scalar!")
   upp <- upf*fpp
+  ee <- end(y1)[1]
   
   if (slide) {
-  ee <- end(y1)[1]
   nr <- 0
     
   for (ii in 0:(ceiling((end(y1)[1]+1-startP)/upp)-1)){
@@ -128,8 +131,8 @@ function(y1, y2 = NULL,
        ncol.leg=ncol.leg, cex.leg=cex.leg,
        h1=h1, h2=h2, col.h1=col.h1, col.h2=col.h2,
        main=if (automain)
-          paste("From",max(st,startP),"to",
-                min(st+upp-1+round(overlap),ee+1)) else main,
+          paste(main,paste("From",max(st,startP),"to",
+                min(st+upp-1+round(overlap),ee+1)), sep=" ") else main,
        cex.main=cex.main,
        mgp=mgp, mar=mar, oma=oma, cex=cex, type=type)
       if (!is.null(filename)){
@@ -156,9 +159,11 @@ function(y1, y2 = NULL,
                leg=leg, y1nam.leg=y1nam.leg, y2nam.leg=y2nam.leg,
                ncol.leg=ncol.leg, cex.leg=cex.leg,
                h1=h1, h2=h2, col.h1=col.h1, col.h2=col.h2,
-               main = if (automain)
-                 paste("From",max(startP),"to", startP+upp-1) else main,
-               cex.main=cex.main,
+               main=if (automain)
+               paste(main,paste("From",max(startP+upp,startP),"to",
+                min(startP+upp+upp-1+round(overlap),ee+1)),
+                     sep=" ") else main,
+                cex.main=cex.main,
                mgp=mgp, mar=mar, oma=oma, cex=cex, type=type)
       if (!is.null(filename)){
         if (Sys.info()["sysname"]=="Windows")

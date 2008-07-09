@@ -7,7 +7,8 @@
 }
 \usage{
 Image(x, y = NULL, pixs = 1, zmax = NULL, ztransf = function(x){x},
-      colramp = IDPcolorRamp, factors = c(FALSE, FALSE))
+      colramp = IDPcolorRamp, factors = c(FALSE, FALSE),
+      matrix = FALSE)
 }
 
 \arguments{
@@ -38,6 +39,8 @@ Image(x, y = NULL, pixs = 1, zmax = NULL, ztransf = function(x){x},
   \item{factors}{Vector of logicals indicating whether \code{x} and / or
     \code{y} should be handled as factors 
     independently of their \code{class}.}
+  \item{matrix}{Boolean. Should all counts be returned in a xyz-matrix
+    or just the maximum.}
 }
 \details{
   Before calling \code{Image} a plot must have been created by, e.g.,
@@ -62,8 +65,8 @@ Image(x, y = NULL, pixs = 1, zmax = NULL, ztransf = function(x){x},
 }
 
 \value{
-  Maximum number of counts per pixel found. If the number is not an
-  integer, it is rounded to the nearest integer which is greater.} 
+  Maximum number of counts per pixel found (\code{matrix = FALSE}) or
+  the full matrix.} 
 
 \author{Andreas Ruckstuhl, Rene Locher}
 
@@ -87,7 +90,7 @@ axis(2)
 Image(iris$Species,iris$Petal.Width,pixs=3)
 
 ## The above can be merged to
-ixyplot(iris$Species,iris$Petal.Width,pixs=3, minL.lab=10)
+iplot(iris$Species,iris$Petal.Width,pixs=3, minL.lab=10)
 
 }
 

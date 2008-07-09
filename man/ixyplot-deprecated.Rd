@@ -8,8 +8,7 @@
 \title{Image Scatter Plot for Large Datasets}
 
 \description{
-  Produces an image scatter plot of large datasets where the colors
-  encode the density of the points in the scatter plot.  Works also with factors.
+  Deprecated. Use \code{iplot()} instead!
 }
 
 \usage{
@@ -73,18 +72,5 @@ ixyplot(x, y = NULL,
   zmax.  The value returned gives you the minimum value allowed for zmax.}
 
 \seealso{\code{\link{ilagplot}}, \code{\link{ipairs}}, \code{\link{Image}}}
-
-\examples{
-x <-  rnorm(100000)
-y <- atan(rnorm(100000,0))
-ixyplot(x,y)
-ixyplot(x,pixs=2)
-ixyplot(iris[,1:2],pixs=4)
-ixyplot(iris[,"Petal.Width"],iris[,"Species"],pixs=4)
-ixyplot(x=iris[,"Species"],y=iris[,"Petal.Width"],pixs=4,border=TRUE,
-        xlab="Species",
-        ylab="Petal Width",
-        main="Iris Species and Petal Width")
-}
 
 \keyword{hplot}

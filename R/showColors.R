@@ -1,4 +1,4 @@
-"showColors" <-
+`showColors` <-
 function(col=IDPcolorRamp(20),
                        ntm=min(length(col),20),  
                        border=TRUE)
@@ -9,7 +9,8 @@ function(col=IDPcolorRamp(20),
   ## Version: 2004-10-31
 
 {
-  par(xpd=NA)
+  opar <- par(xpd=NA)
+  on.exit(opar)
   lim <- 0:length(col)
   col.range <- c(0,length(col))
   plot(x=c(0,1),y=col.range,

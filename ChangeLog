@@ -215,3 +215,35 @@
 2007-10-03 Rene Locher
 	IDPmisc V0.9.5
 	* DESCRIPTION: 'Encoding: latin1' added
+
+2008-07-08 Rene Locher
+	IDPmisc V0.9.6
+	* plot.longts replaces function longts.plot with 
+	  new argument 'xpd' to define whether data points are 
+	  clipped at figure border (=TRUE) or not (=FALSE). Horizontal 
+	  lines will be clipped in any case.
+	  Arguments 'automain' and 'main' can now be combined.
+	  New defaults for upf, fpp, overlap, col.y2, lwd2, mar.
+	  New arguments for defining labeling and tick marking axes. 
+	  Beware: Definition of x-axis has completely changed and is now 
+	  closer to standard approach.
+	  Restores parameters of par() which were in use before call of 
+	  function.
+	  
+	* longts.plot deprecated
+	* ixyplot deprecated and replaced by iplot. Reason: ixyplot() 
+	  produces classical graphics contrary to xyplot().
+	* showColors 
+	  Restores parameters of par() which were in use before call 
+	  function.
+	* poster.plot
+	  Restores parameters of par() which were in use before call 
+	  function.
+	* Image: New argument matrix. Zmax is not rounded any more.
+
+2008-07-08 Rene Locher
+	IDPmisc V0.9.7
+	* longts.plot: examples in help removed
+	* ixyplot: examples in help removed
+	* Image: example with ixyplot replaced by iplot
+	

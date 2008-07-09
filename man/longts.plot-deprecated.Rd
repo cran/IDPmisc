@@ -13,11 +13,11 @@ longts.plot(y1, y2 = NULL,
             x.ann = NULL, dx.ann = 1, dx.tick = 0.25 * dx.ann,
             ny.ann = 3, cex.ann = par("cex.axis"),
             xlab = "", y1lab = "", y2lab = "",
-            col.y1 = "black", col.y2 = "black",
+            col.y1 = "black", col.y2 = col.y1,
             cex.lab = par("cex.lab"),
             y1lim = range(y1, na.rm = T, finite=TRUE),
             y2lim = range(y2, na.rm = T, finite=TRUE),
-            lty1 = 1, lty2 = 2, lwd1 = 1, lwd2 = 2,
+            lty1 = 1, lty2 = 2, lwd1 = 1, lwd2 = lwd1,
             col1 = NULL, col2 = NULL,
             leg = TRUE, y1nam.leg = NULL, y2nam.leg = NULL,
             ncol.leg = NULL, cex.leg = par("cex"),
@@ -140,25 +140,6 @@ longts.plot(y1, y2 = NULL,
 }
 
 %%\seealso{ }
-
-\examples{
-data(sunspots)
-longts.plot(sunspots,upf=ceiling((end(sunspots)-start(sunspots))[1]/5),
-            dx.ann=10, dx.tick=1)
-
-if (require(SwissAir)) {
-  data(AirQual)
-
-  longts.plot(y1=AirQual[,c("ad.O3","ad.NOx")], y2 = AirQual$ad.T,
-              names1=c("O3","NOx"),names2="Temp",
-              startP = 6.5*30*48, upf=7*48, dx.ann=48,
-              x.ann=substr(AirQual$start,1,6),
-              y1lab="[ppb]", y2lab="[°C]",
-              y1lim=c(0,150), y2lim=c(10,30),
-              col2="red", type="l")
-}
-
-}
 
 \keyword{ hplot }
 \keyword{ iplot }

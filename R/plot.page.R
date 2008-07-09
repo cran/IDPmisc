@@ -1,30 +1,29 @@
-`plot.onepage` <-
+`plot.page` <-
 function(y1, y2, names1, names2,
-           startP, upf, fpp, overlap,
-           x.ann, dx.ann, dx.tick, ny.ann,cex.ann,
-           xlab, y1lab, y2lab, col.y1, col.y2,
-           y2.lab, cex.lab,
-           y1lim, y2lim, aty1, aty2,
-           lty1, lty2, lwd1, lwd2, col1, col2,
-           leg, y1nam.leg, y2nam.leg,
-           ncol.leg, cex.leg=1.5,
-           h1, h2, col.h1, col.h2,
-           main, cex.main, mgp, mar, oma, cex, type){
-    ## internal function
-    ## Author:  Rene Locher
-    ## Version: 2008-06-30
-    
+                         startP, upf, fpp, overlap,
+                         x.at, x.ann, x.tick,
+                         y1.at, y1.ann, y1.tick,
+                         y2.at, y2.ann, y2.tick,
+                         ny.ann, cex.ann,
+                         xlab, y1lab, y2lab, col.y1, col.y2,
+                         y2.lab, cex.lab,
+                         y1lim, y2lim, 
+                         lty1, lty2, lwd1, lwd2, col1, col2,
+                         leg, y1nam.leg, y2nam.leg,
+                         ncol.leg, cex.leg=1.5,
+                         h1, h2, col.h1, col.h2,
+                         mgp, main, cex.main, xpd, cex, 
+                         type){
+  ## internal function
+  ## Author:  Rene Locher
+  ## Version: 2008-06-30
+  
   options(warn=-1)
   on.exit(options(warn=0), add=TRUE)
 
-  par(mfrow=c(ifelse(leg,fpp+1,fpp),1),
-      mgp=mgp, mar=mar, oma=oma, cex=cex)
-  
   for (ff in 0:(fpp-1)) {
     st <- startP+ff*upf
     ee <- startP+(ff+1)*upf+overlap
-    atxLab <- ts(seq(st,ee,dx.ann),start=st,freq=1/dx.ann)
-    atxTick <- ts(seq(st,ee,dx.tick),start=st,freq=1/dx.tick)    
     st1 <- start(y1)
     st1 <- max(st,st1[1]+(st1[2]-1)/frequency(y1))
     ee1 <- end(y1)
@@ -34,7 +33,7 @@ function(y1, y2, names1, names2,
       err <- try(plot(window(y1,start=st1,end=ee1),
                       col=col1,lty=lty1, lwd=lwd1,  ylim=y1lim,
                       xlim=c(st,ee), type=type, plot.type="single",
-                      xlab=xlab, ylab="", las=1,axes=F),
+                      xlab=xlab, ylab="", axes=F),
                  silent=TRUE)
       if (!is.null(err)) {
         if (regexpr("margins too large",geterrmessage())>0) {
@@ -57,22 +56,21 @@ function(y1, y2, names1, names2,
                 lty=lty2[ii], lwd=lwd2, type=type)
         if (!is.null(h2)) abline(h=h2, col=col.h2, xpd=FALSE)
        }
-      
-      ## Make sure that units labeled correctly
-      atxLab <- window(atxLab,start=st1,end=ee1,frequ=1/dx.ann)
-      if (is.null(x.ann)) lab <- atxLab else 
-      lab <- window(x.ann,start=st1,end=ee1,freq=1/dx.ann)
+       
+      if (!is.null(x.tick)) axis(1,at=x.tick,labels=FALSE,tcl=-0.3)
+      axis(1,at=x.at,label=x.ann,tcl=-0.5,cex.axis=cex.ann)
 
-      axis(1,at=atxTick,labels=F,tcl=-0.3)
-
-      axis(1,at=atxLab,label=lab,tcl=-0.5,cex.axis=cex.ann)
-      
-      axis(2,aty1, col.lab=col.y1, col.axis=col.y1,cex.axis=cex.ann)
+      if (!is.null(y1.tick))
+          axis(2, y1.tick, labels=FALSE, col.axis=col.y1, tcl=-0.3)
+      axis(2, at = y1.at, labels=y1.ann,
+           col.lab=col.y1, col.axis=col.y1,cex.axis=cex.ann)
       mtext(text=y1lab,side=2,line=mgp[1],col=col.y1,cex=cex.lab)
       
       if (!is.null(y2)) {
-        axis(4,aty2, y2.lab, col.lab=col.y2, col.axis=col.y2,
-             cex=cex.lab)
+        if (!is.null(y2.tick))
+          axis(4, y2.tick, labels=FALSE, col.axis=col.y2, tcl=-0.3)
+        axis(4, at=y2.at, labels=y2.ann,
+             col.lab=col.y2, col.axis=col.y2, cex=cex.lab, tcl=-0.5)
         mtext(text=y2lab,side=4,line=mgp[1],col=col.y2,cex=cex.lab)
       }
       box()
@@ -80,6 +78,7 @@ function(y1, y2, names1, names2,
   }
 
   if (leg) {
+    par(xpd=NA)
     plot(0:1,0:1,type="n",an=FALSE,axes=FALSE)
     cH <- strheight("A")
     cW <- strwidth("A")
@@ -119,7 +118,6 @@ function(y1, y2, names1, names2,
 
       leg.w <- min(max(le1$rect$w,le2$rect$w),1)
 
-      par(xpd=NA)
       le1 <- legend(0.5-leg.w/2, le1$rect$h+le2$rect$h-2*cH,
                     legend=names1,col=col1,lwd=lwd1,lty=lty1,
                     ncol=ncol.leg, xjust=0, yjust=1, cex=cex.leg,
@@ -133,8 +131,10 @@ function(y1, y2, names1, names2,
            cex=cex.leg, adj=1, col=col.y1)
       text(0.5-(leg.w+cW*cex.leg)/2, le2$text$y[1], y2nam.leg,
            cex=cex.leg, adj=1, col=col.y2)
+      
     }
+  par(xpd=xpd)
   }
   if (!is.null(main)) mtext(text=main,side=3,line=0,outer=T,cex=cex.main)
-} #plot.onepage
+} #plot.page
 

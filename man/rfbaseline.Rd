@@ -63,7 +63,7 @@ rfbaseline(x, y, span = 2/3, NoXP = NULL,
   published } 
 \author{ Andreas Ruckstuhl }
 
-}
+
 \seealso{ See Also as \code{\link{loess}} and \code{\link{lowess}} }
 \examples{
 data(MS)

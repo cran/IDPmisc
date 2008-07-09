@@ -1,4 +1,4 @@
-"poster.plot" <-
+`poster.plot` <-
 function(x, y=NULL,  type="p", col=col.fg,
                         col.axis=col.fg, col.lab=col.fg, col.fg="blue",
                         col.bg="lavender",col.box="cornsilk",
@@ -34,8 +34,10 @@ function(x, y=NULL,  type="p", col=col.fg,
     if(no.ylab) ylab <- t.ylab
   }
 
-  par(bg=col.bg, fg=col.fg, col.axis=col.axis, col.lab=col.lab,
-      font=2,cex=cex,...)
+  opar <- par(bg=col.bg, fg=col.fg, col.axis=col.axis, col.lab=col.lab,
+              font=2,cex=cex,...)
+   on.exit(opar)
+  
   if(is.null(xlim)) xlim <- range(x)
   if(is.null(ylim)) ylim <- range(y)
   plot(xlim, ylim, type="n", axes=FALSE, ann=FALSE)

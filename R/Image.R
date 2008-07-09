@@ -1,9 +1,10 @@
 `Image` <-
 function(x, y = NULL, pixs = 1, zmax = NULL,
                   ztransf = function(x){x},
-                  colramp = IDPcolorRamp, factors = c(FALSE,FALSE))
+                  colramp = IDPcolorRamp, factors = c(FALSE,FALSE),
+                  matrix = FALSE)
   ## Authors: Andreas Ruckstuhl, Rene Locher
-  ## Version: 2007-05-28
+  ## Version: 2008-07-08
 {
   xy <- NaRV.omit(getXY(x,y))
   factors <- factors | sapply(xy,is.factor)
@@ -36,18 +37,21 @@ function(x, y = NULL, pixs = 1, zmax = NULL,
   }
   
   if(zzmax>zmax)
-    stop("zmax too small! Densiest aereas are out of range!",call. = FALSE)
+    stop("zmax too small! Densiest aereas are out of range!",
+         call. = FALSE)
 
   zmax <- max(zmax,2) ## zmax must not be smaller than 2!
 
   ## bg color for 0
   lbx <- length(bx)
   lby <- length(by)
+  xx <- 0.5*(bx[-1]+bx[-lbx])
+  yy <- 0.5*(by[-1]+by[-lby])
 
-  image(x=0.5*(bx[-1]+bx[-lbx]), y=0.5*(by[-1]+by[-lby]), zz,
+  image(x=xx, y=yy, zz,
         col=colramp(zmax), breaks=seq(0.5,zmax+1,1),
         xaxs="r", yaxs="r", add=TRUE)
   box()
-  invisible(zzmax)
+  if (matrix) invisible(zzmax) else invisible(cbind(x=xx,y=yy,z=zz))
 } # Image
 
