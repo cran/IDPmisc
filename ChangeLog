@@ -246,4 +246,8 @@
 	* longts.plot: examples in help removed
 	* ixyplot: examples in help removed
 	* Image: example with ixyplot replaced by iplot
-	
+
+2008-07-08 Rene Locher
+	IDPmisc V0.9.8
+	* longtsPlot: Restores parameters of par() which were in use 
+	before call function.

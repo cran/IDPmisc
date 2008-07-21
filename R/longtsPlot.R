@@ -30,7 +30,10 @@ function(y1, y2 = NULL,
                        filename = NULL, extension = NULL,
                        filetype = NULL, ...) {
   ## Author:  Rene Locher
-  ## Version: 2008-06-30
+  ## Version: 2008-07-10
+
+  opar <- par(no.readonly = TRUE)
+  on.exit(opar)
 
   if (is.null(names1)) {
     names1 <- deparse(substitute(y1))
@@ -122,9 +125,8 @@ function(y1, y2 = NULL,
       diff(range(y1lim))+y1lim[1]
   }
 
-  opar <- par(mfrow = c(ifelse(leg,fpp+1,fpp),1),
+ par(mfrow = c(ifelse(leg,fpp+1,fpp),1),
               mgp = mgp, mar = mar, oma=oma, cex=cex)
-  on.exit(opar)
 
   if (Sys.info()["sysname"]!="Windows"){
     filetype <- postscript

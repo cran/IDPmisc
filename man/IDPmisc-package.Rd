@@ -23,8 +23,8 @@
 \tabular{ll}{
   Package: \tab IDPmisc\cr
   Type: \tab Package\cr
-  Version: \tab 0.9.7\cr
-  Date: \tab 2008-07-09\cr
+  Version: \tab 0.9.9\cr
+  Date: \tab 2008-07-21\cr
   License: \tab  GPL (>= 3) (GNU Public Licence)\cr
 }
 

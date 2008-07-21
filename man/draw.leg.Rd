@@ -119,13 +119,13 @@ draw.leg(key, draw=FALSE, vp=NULL)
     }
      \item{\code{adj.title}}{
       New argument: Adjustment of title in respect to body of
-      legend.  \cr\code{adj.title 
-	= 0} adjusts the title to the left, \cr\code{adj.title
-	= 1} adjusts the title to the right and \cr\code{adj.title
-	= 0.5} (=default) centers the title.
+      legend.
+      \cr\code{adj.title = 0} adjusts the title to the left,
+      \cr\code{adj.title = 1} adjusts the title to the right and
+      \cr\code{adj.title = 0.5} (=default) centers the title.
     }
     \item{\code{divide}}{
-      \crNumber of point symbols to divide each line when \code{type} is
+      Number of point symbols to divide each line when \code{type} is
       \code{"b"} or \code{"o"} in \code{lines}.
     }
   }
