@@ -1,6 +1,5 @@
 \name{NaRV.omit}
 \alias{NaRV.omit}
-\alias{inf.omit}
 
 \title{Omits Observations with NA, NaN, Inf and -Inf Values}
 \description{

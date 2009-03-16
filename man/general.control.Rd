@@ -38,13 +38,15 @@ general.control(stacked = FALSE,
     sure that the size of the viewport is large enough to show the
     complete rose and the legend.  These arguments are especially useful
     when a series of plots of exactly the same size and position of the
-    rose on the viewport has to be produced.}   
-  \item{mar}{ Margin around the plotting area.  See details.}
+    rose on the viewport has to be produced.}
+  \item{mar}{ Margin around the plotting area. Default units are 
+  \code{grid.control(cyclVar.cex)}. Other units can be defined by
+  \code{\link[grid]{unit}}.} 
   \item{rev.col}{ \code{= TRUE}: Ordering of the columns of \code{x@rho}
     is reversed. }
   \item{shift}{ Shifts the plot in clockwise direction by this
     angle.  Units of \code{shift} must be identical with units of
-    \code{\cyclVar} in \code{link{plot.rose}}}  
+    \code{\cyclVar} in \code{link{plot.rose}}}
   \item{cex}{ Basic size of characters in the plot. }
   \item{col}{ Colors of lines \code{stacked = TRUE} or colors of
     stacked areas.  In the first case colors are by default as distinct
@@ -53,10 +55,6 @@ general.control(stacked = FALSE,
   \item{lty, lwd}{ Line type and line width. }
 }
 
-\details{
-
-  }
-  
 \value{
   Returns the arguments conveniently packaged up in a list to supply the
   general arguments for \code{\link{plot.rose}}.

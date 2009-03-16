@@ -3,8 +3,7 @@
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{ Panelplot for itermplot }
 \description{
-  An example of a simple useful panel function to be used as argument in
-  \code{\link{itermplot}} }
+  An example of a useful panel function for huge datasets}
 \usage{
 ipanel.smooth(x, y = NULL, pixs = 1, zmax = NULL,
               ztransf = function(x) {x},
@@ -21,22 +20,22 @@ ipanel.smooth(x, y = NULL, pixs = 1, zmax = NULL,
   \item{zmax}{ Maximum number of counts per Pixel in the plot. When
     NULL, the density in the scatter plot is encoded from 0 pixel to
     maximum number of counts observed.  zmax must be equal or larger than
-    maximum number of counts found. } 
+    maximum number of counts found. }
   \item{ztransf}{ Function to transform the number of counts per pixel,
     which will be mapped by the function in \code{colramp} to well
     defined colors.  The user has to make sure that the transformed
     density lies in the range [0,zmax], where zmax is any positive
     number (>=2).  For examples see \code{\link{ipairs}} and
-    \code{\link{ilagplot}}.} 
+    \code{\link{ilagplot}}.}
   \item{colramp}{ Color ramp to encode the number of counts within
-    a pixel by color. } 
+    a pixel by color. }
   \item{col,lwd}{ Color and line width of the \dQuote{smoothed curve}. }
   \item{span}{ the smoother span. This gives the proportion of points in
     the plot which influence the smooth at each value. Larger values
-    give more smoothness. } 
+    give more smoothness. }
   \item{iter}{ The number of robustifying iterations which should be
     performed. Using smaller values of iter will make lowess run
-    faster. } 
+    faster. }
   \item{\dots}{ Other graphical parameters as arguments to the
     \code{\link{lines} function. }}
 }
@@ -55,11 +54,13 @@ itermplot(r.lm, se = TRUE, partial.res=TRUE, smooth=ipanel.smooth,
           lwd.smth = 3, pixs = 2, ask=FALSE)
 
 if (require(SwissAir)) {
-  data(AirQual)
-  r.lm <- lm(log(ad.O3)~log(ad.NOx)+ad.T+ad.Td+ad.WS, data=AirQual)
-  par(mfrow=c(2,2),pty="s")
-  itermplot(r.lm, se = TRUE, partial.res=TRUE, smooth=ipanel.smooth,
-            lwd.smth = 3, pixs = 1, ask=FALSE)
+  par(mfrow=c(1,1))
+  dat <- AirQual[,c("ad.O3","ad.NOx","ad.T","ad.Td","ad.WS")]
+  dat$ad.O3 <- log(dat$ad.O3)
+  dat$ad.NOx <- log(dat$ad.NOx)
+  dat$ad.WS <- log(dat$ad.WS)
+  pairs(dat,
+        panel=ipanel.smooth)
 } else print("Package SwissAir is not available")
 
 }

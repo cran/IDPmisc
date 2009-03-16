@@ -2,7 +2,7 @@
 function(key, draw = FALSE, vp = NULL)
 {
     if (!is.list(key)) stop("key must be a list")
-    
+
     max.length <- 0
 
     ## maximum of the `row-lengths' of the above
@@ -20,18 +20,18 @@ function(key, draw = FALSE, vp = NULL)
 
     rearrangeUnit <- function (x, pos, u) ##lor
       {
-        if (length(x) == 1) 
+        if (length(x) == 1)
           u
-        else if (pos == 1) 
+        else if (pos == 1)
           unit.c(u, x[(pos + 1):length(x)])
-        else if (pos == length(x)) 
+        else if (pos == length(x))
           unit.c(x[1:(pos - 1)], u)
         else unit.c(x[1:(pos - 1)], u, x[(pos + 1):length(x)])
       } ##lor
 
     chooseFace <- function (fontface = NULL, font = 1) ##lor
       if (is.null(fontface)) font else fontface ##lor
-    
+
     process.key <-
         function(between = 2,
                  align = TRUE,
@@ -39,26 +39,26 @@ function(key, draw = FALSE, vp = NULL)
                  rep = TRUE,
                  background = trellis.par.get("background")$col,
                  border = FALSE,
-                 transparent = FALSE, 
+                 transparent = FALSE,
                  columns = 1,
                  divide = 3,
-                 between.columns = 3, 
+                 between.columns = 3,
                  between.rows = 0.2,  ##lor
                  between.title = 0.2, ##lor
                  adj.title = 0.5,     ##lor
                  cex = 1,
                  cex.title = 1.5 * max(cex),
-                 col = "black", 
+                 col = "black",
                  lty = 1,
                  lwd = 1,
-                 font = 1, 
-                 fontface = NULL, 
-                 fontfamily = NULL, 
+                 font = 1,
+                 fontface = NULL,
+                 fontfamily = NULL,
                  pch = 8,
                  adj = 0,
-                 type = "l", 
-                 size = 5, 
-                 angle = 0, 
+                 type = "l",
+                 size = 5,
+                 angle = 0,
                  density = -1,
                  ...)
         {
@@ -68,13 +68,13 @@ function(key, draw = FALSE, vp = NULL)
                  rep = rep,
                  background = background,
                  border = border,
-                 transparent = transparent, 
+                 transparent = transparent,
                  columns = columns,
                  divide = divide,
-                 between.columns = between.columns, 
+                 between.columns = between.columns,
                  between.rows = between.rows,    ##lor
                  between.title =  between.title, ##lor
-                 adj.title =  adj.title,         ##lor 
+                 adj.title =  adj.title,         ##lor
                  cex = cex,
                  cex.title = cex.title,
                  col = col,
@@ -85,20 +85,20 @@ function(key, draw = FALSE, vp = NULL)
                  fontfamily = fontfamily,
                  pch = pch,
                  adj = adj,
-                 type = type, 
-                 size = size, 
-                 angle = angle, 
+                 type = type,
+                 size = size,
+                 angle = angle,
                  density = density,
                  ...)
         }
-    size.rect <- 0.6 ##lor defines dimensions of rectangles in key relative to strheight 
+    size.rect <- 0.6 ##lor defines dimensions of rectangles in key relative to strheight
     fontsize.points <- trellis.par.get("fontsize")$points
     key <- do.call("process.key", key)
 
     key.length <- length(key)
     key.names <- names(key)    # Need to update
 
-    if (is.logical(key$border)) 
+    if (is.logical(key$border))
         key$border <-
             if (key$border) "black"
             else "transparent"
@@ -141,14 +141,14 @@ function(key, draw = FALSE, vp = NULL)
                          size = key$size,
                          angle = key$angle,
                          density = key$density)
-            
+
             pars[names(key[[i]])] <- key[[i]]
 
             tmplen <- max(unlist(lapply(pars,length)))
             max.length <- max(max.length, tmplen)
             components[[length(components)+1]] <-
                 list(type = "rectangles", pars = pars, length = tmplen)
-            
+
         }
         else if (curname == 3) { # "lines"
 
@@ -166,7 +166,7 @@ function(key, draw = FALSE, vp = NULL)
             max.length <- max(max.length, tmplen)
             components[[length(components)+1]] <-
                 list(type = "lines", pars = pars, length = tmplen)
-            
+
         }
         else if (curname == 4) { # "points"
 
@@ -176,7 +176,7 @@ function(key, draw = FALSE, vp = NULL)
                          font = key$font,
                          fontface = key$fontface,
                          fontfamily = key$fontfamily)
-                         
+
             pars[names(key[[i]])] <- key[[i]]
 
             tmplen <- max(unlist(lapply(pars,length)))
@@ -188,7 +188,7 @@ function(key, draw = FALSE, vp = NULL)
     }
 
 
-    
+
     number.of.components <- length(components)
     ## number of components named one of "text",
     ## "lines", "rectangles" or "points"
@@ -206,7 +206,7 @@ function(key, draw = FALSE, vp = NULL)
     ## argument to the key list, which controls whether each column
     ## will be repeated as necessary to have the same length.
 
-    
+
     for (i in 1:number.of.components)
         if (components[[i]]$type != "text") {
             components[[i]]$pars <-
@@ -227,17 +227,17 @@ function(key, draw = FALSE, vp = NULL)
     rows.per.block <- ceiling(max.length/column.blocks)
 
     if (column.blocks > max.length) warning("not enough rows for columns")
-    
+
     key$between <- rep(key$between, length = number.of.components)
 
-    
+
     if (key$align) {
 
         ## Setting up the layout
 
 
 	## The problem of allocating space for text (character strings
-	## or expressions) is dealt with as follows: 
+	## or expressions) is dealt with as follows:
 
 	## Each row and column will take exactly as much space as
 	## necessary. As steps in the construction, a matrix
@@ -282,13 +282,13 @@ function(key, draw = FALSE, vp = NULL)
             widths.x[(1:number.of.components-1)*3+1 +
                      (i-1)*3*number.of.components + i-1] <-
                          key$between/2
-            
+
             widths.x[(1:number.of.components-1)*3+1 +
                      (i-1)*3*number.of.components + i+1] <-
                          key$between/2
         }
-    
-        
+
+
 	index <- 1
 
         for (i in 1:number.of.components) {
@@ -331,8 +331,8 @@ function(key, draw = FALSE, vp = NULL)
         }
 
 
-        ## Need to adjust the heights and widths 
-        
+        ## Need to adjust the heights and widths
+
         ## adjusting heights
         heights.insertlist.position <- 0
         heights.insertlist.unit <- unit(1, "null")
@@ -399,10 +399,10 @@ function(key, draw = FALSE, vp = NULL)
 
         ## OK, layout set up, now to draw the key - no
 
-        
+
         key.gf <- frameGrob(layout = key.layout, vp = vp)
 
-        if (!key$transparent) 
+        if (!key$transparent)
             key.gf <- placeGrob(key.gf,
                                 rectGrob(gp = gpar(fill = key$background,
                                                    col = key$border)),
@@ -414,7 +414,7 @@ function(key, draw = FALSE, vp = NULL)
 
         ## Title
         if (!is.null(key$title))
-            key.gf <- placeGrob(key.gf, 
+            key.gf <- placeGrob(key.gf,
                                 textGrob(x=key$adj.title,                        ##lor
                                          just = c(                               ##lor
                                            if (key$adj.title == 1) "right"       ##lor
@@ -423,9 +423,9 @@ function(key, draw = FALSE, vp = NULL)
                                            "center"),                            ##lor
                                          label = key$title, gp = gpar(cex = key$cex.title)),
                                 row=1, col = NULL)
-        
 
-        
+
+
         for (i in 1:number.of.components)
         {
             cur <- components[[i]]
@@ -437,8 +437,8 @@ function(key, draw = FALSE, vp = NULL)
                 yy <- j %% rows.per.block + 1
                 if (yy == 1) yy <- rows.per.block + 1
                 if (cur$type == "text") {
-                    
-                    key.gf <- placeGrob(key.gf, 
+
+                    key.gf <- placeGrob(key.gf,
                                         textGrob(x = cur$pars$adj[j],
                                                  just = c(
                                                  if (cur$pars$adj[j] == 1) "right"
@@ -452,10 +452,10 @@ function(key, draw = FALSE, vp = NULL)
                                                       fontface = chooseFace(cur$pars$fontface[j], cur$pars$font[j]),
                                                       cex = cur$pars$cex[j])),
                                         row = yy, col = xx)
-                    
+
                 }
                 else if (cur$type == "rectangles") {
-                    key.gf <- placeGrob(key.gf, 
+                    key.gf <- placeGrob(key.gf,
                                         ##rectGrob(width = cur$pars$size[j]/max(cur$pars$size), ##lor
                                         rectGrob(width = size.rect*cur$pars$size[j]/max(cur$pars$size), ##lor
                                                  height = unit(size.rect,"lines"), ##lor
@@ -491,7 +491,7 @@ function(key, draw = FALSE, vp = NULL)
                     else if (cur$pars$type[j] == "p") {
                         key.gf <-
                             placeGrob(key.gf,
-                                      pointsGrob(x=.5, y=.5, 
+                                      pointsGrob(x=.5, y=.5,
                                                  gp =
                                                  gpar(col = cur$pars$col[j], cex = cur$pars$cex[j],
                                                       fontfamily = cur$pars$fontfamily[j],
@@ -502,7 +502,7 @@ function(key, draw = FALSE, vp = NULL)
                     }
                     else { # if (cur$pars$type[j] == "b" or "o") -- not differentiating
                         key.gf <-
-                            placeGrob(key.gf, 
+                            placeGrob(key.gf,
                                       linesGrob(x = c(0,1) * cur$pars$size[j]/max(cur$pars$size),
 
                                                 ## ^^ this should be
@@ -525,11 +525,11 @@ function(key, draw = FALSE, vp = NULL)
                         if (key$divide > 1)
                         {
                             key.gf <-
-                                placeGrob(key.gf, 
+                                placeGrob(key.gf,
                                           pointsGrob(x = (1:key$divide-1)/(key$divide-1),
                                                      y = rep(.5, key$divide),
                                                      gp =
-                                                     gpar(col = cur$pars$col[j], 
+                                                     gpar(col = cur$pars$col[j],
                                                           cex = cur$pars$cex[j],
                                                           fontfamily = cur$pars$fontfamily[j],
                                                           fontface = chooseFace(cur$pars$fontface[j], cur$pars$font[j]),
@@ -540,11 +540,11 @@ function(key, draw = FALSE, vp = NULL)
                         else if (key$divide == 1)
                         {
                             key.gf <-
-                                placeGrob(key.gf, 
-                                          pointsGrob(x = 0.5, 
-                                                     y = 0.5, 
+                                placeGrob(key.gf,
+                                          pointsGrob(x = 0.5,
+                                                     y = 0.5,
                                                      gp =
-                                                     gpar(col = cur$pars$col[j], 
+                                                     gpar(col = cur$pars$col[j],
                                                           cex = cur$pars$cex[j],
                                                           fontfamily = cur$pars$fontfamily[j],
                                                           fontface = chooseFace(cur$pars$fontface[j], cur$pars$font[j]),
@@ -578,5 +578,5 @@ function(key, draw = FALSE, vp = NULL)
         grid.draw(key.gf)
 
     key.gf
-}
+} ## drawleg.R
 

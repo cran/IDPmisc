@@ -1,11 +1,11 @@
-"key.control" <-
+`key.control` <-
 function(plot = TRUE,
                         lab = NULL,
                         title = NULL,
                         between = 0)
   ## Author: Rene Locher
   ## Version: 2005-12-06
-  
+  ## helper function for plot.rose
   {
     return(list(plot = plot,
                 x = NULL,

@@ -8,8 +8,8 @@
 }
 
 \usage{
-poster.plot(x, y = NULL, type = "p", 
-            col = col.fg, col.axis = col.fg, col.lab = col.fg,  
+poster.plot(x, y = NULL, type = "p",
+            col = col.fg, col.axis = col.fg, col.lab = col.fg,
             col.fg = "blue", col.bg = "lavender", col.box = "cornsilk",
             xlim = NULL, ylim = NULL, xlab = "", ylab = "",
             main = "", cex = 1.2, axes = TRUE, ...)
@@ -44,13 +44,16 @@ graphic elements can be added comfortably.
 \author{Andreas Ruckstuhl, refined by Rene Locher}
 
 \examples{
-poster.plot(iris[,1],iris[,2], col=c("red","black"),
+poster.plot(iris[,1],iris[,2],
             xlab="Sepal.Length", ylab="Sepal.Width")
 
-poster.plot(iris[,1],col="red",ylab="Sepal.Length")
+poster.plot(iris[,1], col="red", col.box="grey95", ylab="Sepal.Length")
 
-poster.plot(iris[,c(1,3)],col.fg="violet",
-            xlab="Sepal.Length",ylab="Petal.Length")
+## plotting lines
+n <- 200
+freq <- 1:n
+y <- sin(freq/n*4*pi)*cos(freq/n*3*pi) + 0.1*rnorm(n)
+poster.plot(y,col.fg="grey30",type="l")
 }
 
 \keyword{hplot}

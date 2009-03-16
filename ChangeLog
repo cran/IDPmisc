@@ -10,20 +10,20 @@
 	* inf.omit deprecated
 	* inf.omit renamed to the more precise name NaRV.omit.
 	  NaRV = Not A Regular Value
-	* ipairs, iplot, image: densities are now displayed centered over 
+	* ipairs, iplot, image: densities are now displayed centered over
 	  the corresponding factor levels
 
-2005-04-21 Rene Locher	
+2005-04-21 Rene Locher
 	IDPmisc V0.3.3
 	* ipairs: factor levels are now correctely labeled
 	* Image, ipairs, ilagplot: argument ztrans renamed to ztransf
-	
+
 
 2005-04-27 Rene Locher
 	IDPmisc V0.3.4
 	* iplot: factor levels are now correctely labeled
 
-2005-06-03 Rene Locher	
+2005-06-03 Rene Locher
 	IDPmisc V0.3.5
 	* zoom: example in help and text output of zoom are improved
 
@@ -38,14 +38,15 @@
 2005-10-05
 	IDPmisc V0.4.2
 	* ipairs, ilagplot: additional examples on dataset AirQual{SwissAir}
-	* Image, ipairs, ilagplot, ixyplot: additional argument "ztrans", which 
-	  allows transformation of counts by a user defined function.
+	* Image, ipairs, ilagplot, ixyplot: additional argument
+	  'ztransf', which allows transformation of counts by a user
+	  defined function.
 
 2005-11-15 Rene Locher
-	Quick fix for CRAN because version 0.5 is not yet ready to be 
+	Quick fix for CRAN because version 0.5 is not yet ready to be
 	  published
 	* Arrows: 'atan(y,x)' replaced by 'atan2(y,x)'
-	
+
 2005-10-12 Rene Locher
 	IDPmisc V0.5.0, not published
 	* draw.leg: new function
@@ -61,39 +62,40 @@
 
 2005-10-17 Rene Locher
 	IDPmisc V0.5.2, not published
-	* plot: S4-Method, help to argument 'stacked' and 
+	* plot: S4-Method, help to argument 'stacked' and
 	  corresponding error message in code updated.
-	  Interpretation of argument 'rev.col' changed, so that stacked 
+	  Interpretation of argument 'rev.col' changed, so that stacked
 	  and unstacked roses have now the same order in the legend.
 	* rose: new argument 'right'
-	  'na.warning=TRUE': warns now also for x values out of breaks range
+	  'na.warning=TRUE': warns now also for x values out of breaks
+	  range
 
 2005-10-18 Rene Locher
-	IDPmisc V0.5.3, not published	
+	IDPmisc V0.5.3, not published
 	* plot: S4-Method
 	  Several new warnings added.
-	  Argument trans added, help revised
-	* rose: argument 'na.warning' changed to 'warn' 
+	  Argument 'trans' added, help revised
+	* rose: argument 'na.warning' changed to 'warn'
 
 2005-10-18 Rene Locher
 	IDPmisc V0.5.4, not published
 	  several improvements on help pages
-	* RhoPhi2xy changed to clock2cart
-	* xy2RhoPhi changed to cart2clock
-	* plot.rose completely revised, including argument list and 
+	* RhoPhi2xy changed to 'clock2cart'
+	* xy2RhoPhi changed to 'cart2clock'
+	* plot.rose completely revised, including argument list and
 	            help pages
-	
+
 2005-12-06 Rene Locher
 	IDPmisc V0.5.5
 	* plot.rose: several bugs fixed
-	
+
 2005-12-16 Rene Locher
 	IDPmisc V0.5.6
-	* plot.rose works now correctly with ray.lim set manually 
+	* plot.rose works now correctly with ray.lim set manually
 	  in grid.control
-	* general.control: arguments reordered and new arguments for 
+	* general.control: arguments reordered and new arguments for
 	  manual setting of rose dimensions. Help expanded and corrected.
-	* grid.control: default values for argument cyclVar.lab 
+	* grid.control: default values for argument cyclVar.lab
 	  corrected. SW replaced by SE
 
 2005-12-19 Rene Locher
@@ -103,7 +105,7 @@
 
 2005-12-22 Rene Locher
 	IDPmisc V0.5.8
-	* plot.rose: Bug for roses with negative values in slot rho 
+	* plot.rose: Bug for roses with negative values in slot rho
 	  eliminated
 
 2006-01-19 Rene Locher
@@ -112,76 +114,77 @@
 
 2006-06-20 Rene Locher
 	IDPmisc V0.6.0, not published
-	* clock2cart, cart2clock: processing of arguments changed 
+	* clock2cart, cart2clock: processing of arguments changed
 	  to make input more flexible
 	* Arrows default settings of arguments h.lwd and h.lty changed
 	* getXY: new function to read in data with 1 or 2 dimension
-	* peaks: new function to evaluate peaks in data without 
+	* peaks: new function to evaluate peaks in data without
 	  smoothing them first
 	* MS: New dataset included: SELDI TOF MS of sheep blood
-	
+
 2006-07-03 Rene Locher
 	IDPmisc V0.6.1
-	* getXY, peaks, MS: Improvement of help, 
-	  change of some argument names for better understanding 
+	* getXY, peaks, MS: Improvement of help,
+	  change of some argument names for better understanding
 
 
 2006-07-12 Rene Locher
 	IDPmisc V0.6.2
 	* peaks: Improvement of help
 
-2006-07-14 Rene Locher	
+2006-07-14 Rene Locher
         IDPmisc V0.7.0, not published
 	* longts.plot New function for plotting very long time series
 
-2006-07-24 Rene Locher	
+2006-07-24 Rene Locher
         IDPmisc V0.7.1
 	* longts.plot Help improved, some names of arguments changed
 
-2006-07-25 Rene Locher	
+2006-07-25 Rene Locher
         IDPmisc V0.7.2
-	* longts.plot Default of arguments y1lim and y2lim changed to 
-	  range(y1,na.rm=T,finite=TRUE). 
+	* longts.plot Default of arguments 'y1lim' and 'y2lim' changed
+	to 'range(y1,na.rm=T,finite=TRUE)'.
 
-2006-07-25 Rene Locher	
+2006-07-25 Rene Locher
         IDPmisc V0.7.3
 	* draw.leg code adapted to new grid version
 
-2006-07-26 Rene Locher	
+2006-07-26 Rene Locher
         IDPmisc V0.7.4
-	* longts.plot Argument names changed changed back to old version 
-	  in V0.7.2 because these are more consistent to arguments in 
+	* longts.plot Argument names changed changed back to old version
+	  in V0.7.2 because these are more consistent to arguments in
 	  par(). Sorry for this inconvenience!
 	  Bug for color in axis removed.
 
-2006-07-27 Rene Locher	
+2006-07-27 Rene Locher
         IDPmisc V0.7.5
 	* peaks In rare cases peak width was undefined.
 
-2006-11-08 Rene Locher	
+2006-11-08 Rene Locher
         IDPmisc V0.8.0
 	* rfbaseline New function for baseline subtraction
 	* rfbaselineScale New function
 
-2007-02-07 Rene Locher	
-        IDPmisc V0.9.0, not published	
-	* itermplot New function for termplots with very large numbers 
+2007-02-07 Rene Locher
+        IDPmisc V0.9.0, not published
+	* itermplot New function for termplots with very large numbers
 	  of observations
 	* ipanel.smooth New panelfunction for itermplot
 	* help Typing errors corrected
 
-2007-02-19 Rene Locher	
+2007-02-19 Rene Locher
 	IDPmisc V0.9.1
-	* longts.plot 
+	* longts.plot
 	  New arguments cex.axis, mar, filename, extension, filetype.
-	  Spacing between individual figures has been optimized. 
-	  Automatic constructed and manually defined titles 
-	  are now positioned identically. 
-          Default value of mgp changed from c(1.7,0.7,0) to c(2,0.7,0)
-	* rose-class Help updated, so that it is found now in the subject
-	  index by rose-class
+	  Spacing between individual figures has been optimized.
+	  Automatic constructed and manually defined titles
+	  are now positioned identically.
+          Default value of 'mgp' changed from c(1.7,0.7,0) to
+	  c(2,0.7,0)
+	* rose-class Help updated, so that it is found now in the
+	  subject index by rose-class
 
-2007-02-19 Rene Locher	
+2007-02-19 Rene Locher
 	IDPmisc V0.9.2
 	* IDPcolorRamp
 	  Makes now sure that argument 'n' is an integer so that no
@@ -190,25 +193,25 @@
 	  Makes now sure that the returned maximum counts is an integer
 	  for any function in argument 'ztransf'.
 	* Arrows
-	  When some elements of (x1,y1,x2,y2) result in an undefined 
-	  direction, an warning is issued and the corresponding 
+	  When some elements of (x1,y1,x2,y2) result in an undefined
+	  direction, an warning is issued and the corresponding
 	  arrow is not drawn.
 	* draw.leg
 	  updated to new version of grid graphics
 
-2007-08-14 Rene Locher	
+2007-08-14 Rene Locher
 	IDPmisc V0.9.3
 	* iterm New argument scale.
 
-2007-10-02 Rene Locher	
+2007-10-02 Rene Locher
 	IDPmisc V0.9.4
-	* DESCRPTION: 'SaveImage: TRUE' removed, 
+	* DESCRPTION: 'SaveImage: TRUE' removed,
 	  Authors E-mail address changed
           License standardized
 	* RD-Files: non-ASCII values from help pages removed.
-	* plot.rose new argument warn added
+	* plot.rose new argument 'warn' added
 	* title.control default for argument 'cex' 1.5 (before 1.7)
-	* longts.plot default for argument 'cex.leg' par("cex") 
+	* longts.plot default for argument 'cex.leg' par("cex")
 	              (before 1.5)
 	. example adapted to SwissAir(>= 1.08)
 
@@ -218,26 +221,26 @@
 
 2008-07-08 Rene Locher
 	IDPmisc V0.9.6
-	* plot.longts replaces function longts.plot with 
-	  new argument 'xpd' to define whether data points are 
-	  clipped at figure border (=TRUE) or not (=FALSE). Horizontal 
-	  lines will be clipped in any case.
+	* plot.longts replaces function 'longts.plot' with
+	  new argument 'xpd' to define whether data points are
+	  clipped to plot region (=FALSE) or not (=TRUE). Horizontal
+	  lines will be always clipped.
 	  Arguments 'automain' and 'main' can now be combined.
-	  New defaults for upf, fpp, overlap, col.y2, lwd2, mar.
-	  New arguments for defining labeling and tick marking axes. 
-	  Beware: Definition of x-axis has completely changed and is now 
+	  New defaults for 'upf', 'fpp', 'overlap', 'col.y2', 'lwd2', 'mar'.
+	  New arguments for defining labeling and tick marking axes.
+	  Beware: Definition of x-axis has completely changed and is now
 	  closer to standard approach.
-	  Restores parameters of par() which were in use before call of 
+	  Restores parameters of par() which were in use before call of
 	  function.
-	  
+
 	* longts.plot deprecated
-	* ixyplot deprecated and replaced by iplot. Reason: ixyplot() 
+	* ixyplot deprecated and replaced by iplot. Reason: ixyplot()
 	  produces classical graphics contrary to xyplot().
-	* showColors 
-	  Restores parameters of par() which were in use before call 
+	* showColors
+	  Restores parameters of par() which were in use before call
 	  function.
 	* poster.plot
-	  Restores parameters of par() which were in use before call 
+	  Restores parameters of par() which were in use before call
 	  function.
 	* Image: New argument matrix. Zmax is not rounded any more.
 
@@ -249,5 +252,61 @@
 
 2008-07-08 Rene Locher
 	IDPmisc V0.9.8
-	* longtsPlot: Restores parameters of par() which were in use 
+	* longtsPlot: Restores parameters of par() which were in use
 	before call function.
+
+2008-07-21 Rene Locher
+	IDPmisc V0.9.9
+	Typos in help removed
+
+2008-03-13 Rene Locher
+	IDPmisc V1.0.00
+	* inf.omit: removed. Was replaced by NaRV.omit() .
+	* longts.plot: help reduced and function defunct. Use longtsPlot
+	  instead.
+	* rd-files: Adaption to new rules for R 2.9.x, examples added
+	  and \ or improved.
+	* ixyplot: Help reduced and function defunct'ed. Use iplot()
+	  instead.
+	* IDPcolorRamp: Help extended.
+	* Image: matrix=TRUE delivered 'zmax' instead of matrix. This
+	  resulted also in wrong behaviour for ilagplot() and ipairs()
+	  for zmax=fixed value.
+	  Comments on package 'fields' removed.
+	* ilagplot: Argument 'zmax' did not work correctly.
+	  Position of title optimized.
+	  New arguments 'cex.axis', 'd.main', 'legend', 'd.legend',
+	  'mar', 'oma'.
+	  Defaults for cex.main changed.
+	  Help slightly improved.
+	* ipairs: Argument 'zmax' did not work correctly.
+	  Axes were not clipped to the plot region.
+	  Arguments 'labels', 'cex.lab', 'nlab', 'minL.lab' are now
+	  called 'lab.diag', 'cex.lag', 'nlab.axis', 'minL.axis'.
+          New arguments 'cex.axis', 'd.main', 'legend', 'd.legend',
+	  'mar', 'oma'.
+	  Defaults for cex.diag and cex.main changed.
+ 	  Argument 'verbose' removed.
+	  Compacter figure. By default no margins around individual
+	  scatter plots.
+	  Examples in help slightly improved.
+	* iplotLegend: New function to plot legends of color ramp.
+	* iplot: Plotting Legend first, to allow further additions
+	  to plot.
+	  'nx.lab', 'ny.lab', 'minL.lab' renamed to 'nlab.xaxis',
+	  'nlab.yaxis', 'minL.axis'.
+	  New arguments 'd.main', 'legend', 'd.legend', 'cex.axis',
+	  'las', 'oma', '...'
+	* longtsPlot: Axes have sometimes not been clipped to the plot
+	region. Help improved.
+	* MS: Help improved.
+	* peak: Help improved.
+	* poster.plot: Help improved.
+	* showColors: New argument mar.
+	  After exiting showColors, original arguments of par() are
+	  restored.
+2008-03-16 Rene Locher
+	IDPmisc V1.0.01
+	* plot.rose Shows warning only when warn = TRUE
+	* Typo in help corrected
+	

@@ -33,9 +33,9 @@
   \item{grid}{ Settings for appearance of guiding elements of rose such
     as circles, rays and labels, defined in \code{\link{grid.control}}}
   \item{title}{ Settings for title, defined in
-    \code{\link{title.control}}.}  
+    \code{\link{title.control}}.}
   \item{key}{ Settings for appearance of the legend, defined in
-    \code{\link{key.control}}.}   
+    \code{\link{key.control}}.}
 }
 
 \details{
@@ -48,14 +48,14 @@
   polar coordinates as used in mathematical context.  The
   \code{\link{rose}} object is displayed as the time on a clock,
   measuring the angle defined in slot \code{cyclVar} in the clockwise
-  direction from the north. 
-  \crThe eye takes the area of a graphical object as a measure of its
+  direction from the north. \cr
+  The eye takes the area of a graphical object as a measure of its
   size.  This is why the default transformation of \code{x@rho} is
   chosen to be the square root.  For equal distance roses use the
-  transformation function \code{function(x) x}. 
-  \crAll labels, titles and line sizes are defined in multiples of cex.
-  \crThis graphic function is based on package \pkg{\link{grid}}:
-  Viewport \code{vp.rose} which was used to draw the rose and viewport 
+  transformation function \code{function(x) x}. \cr
+  All labels, titles and line sizes are defined in multiples of cex. \cr
+  This graphic function is based on package \pkg{\link{grid}}:
+  Viewport \code{vp.rose} which was used to draw the rose and viewport
   \code{vp.key} which was used to draw the key may be addressed by
   \code{pushviewport()} after having drawn the figure.
 }
@@ -69,10 +69,10 @@
 
 \note{
 The function is designed to use the area on the active viewport in an
-optimal way, but the plot is not scalable after having been drawn.
-\crFurthermore this function is still experimental so that some features
-may change in future versions.\cr
-You will find another nice example for this plot method at \code{\link[SwissAir]{AirQual}}
+optimal way, but the plot is not scalable after having been drawn. \cr
+Furthermore this function is still experimental so that some features
+may change in future versions. \cr
+You will find another nice example for this plot method in \code{\link[SwissAir]{AirQual}}
 }
 
 \seealso{ \code{\link{rose}}, \code{\link{rose-class}} }
@@ -156,7 +156,7 @@ if (require(SwissAir)){
                O3  = AirQual$ad.O3,
                Ox  = AirQual$ad.O3+AirQual$ad.NOx-AirQual$ad.NO)
 
-  
+
   ## Windrose
   windrose <- rose(dat$WD,
                    cyclVar = dat$WD, n.cyclVar = 32, circle = 360,
@@ -169,7 +169,7 @@ if (require(SwissAir)){
        grid =
        grid.control(circ.n = 2,
                     circ.sub.n = 2))
-  
+
   ## median of concentrations as a function of daytime
   ## from May to September
   med.dayrose <- rose(dat[,c("NOx","O3","Ox")],
@@ -185,11 +185,11 @@ if (require(SwissAir)){
                     circ.n =2,
                     circ.sub.n = 2,
                     cyclVar.lab = seq(0,by=2,to=22)),
-       title = title.control(text = 
+       title = title.control(text =
          "Day Rose of Medians\nduring summer"))
 
   ## quantiles of concentrations as a function of daytime
-  ## from May to September 
+  ## from May to September
   quant.dayrose <- rose(dat$NOx,
                         subset= dat$month>4 & dat$month<10,
                         cyclVar=dat$hour, n.cyclVar=24, circle=24,

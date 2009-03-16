@@ -4,7 +4,7 @@
 \title{Produce a Legend or Key (Grid Function)}
 \description{
   Produces (and possibly draws) a Grid frame grob which is a legend that
-  can be placed in other Grid plots.  \code{draw.leg} is a 
+  can be placed in other Grid plots.  \code{draw.leg} is a
   slightly enhanced version of \code{\link[lattice]{draw.key}} in
   package \pkg{lattice} V 0.12-3.
 }
@@ -28,8 +28,9 @@ draw.leg(key, draw=FALSE, vp=NULL)
   \code{between.title}, \code{adj.title}.  They allow to format the
   legend in a more flexible way.  To ease the use of \code{draw.leg}, the
   full description of \code{\link[lattice]{draw.key}} and the here
-  interesting part of \code{\link[lattice]{xyplot}} are also included:  
-  \crThe key essentially consists of a number of columns, possibly
+  interesting part of \code{\link[lattice]{xyplot}} are also included:
+  \cr
+  The key essentially consists of a number of columns, possibly
   divided into blocks, each containing some rows.   The contents of the
   key are determined by (possibly repeated) components named
   ``rectangles'', ``lines'', ``points'' or ``text''.  Each of these
@@ -120,9 +121,9 @@ draw.leg(key, draw=FALSE, vp=NULL)
      \item{\code{adj.title}}{
       New argument: Adjustment of title in respect to body of
       legend.
-      \cr\code{adj.title = 0} adjusts the title to the left,
-      \cr\code{adj.title = 1} adjusts the title to the right and
-      \cr\code{adj.title = 0.5} (=default) centers the title.
+      \cr \code{adj.title = 0} adjusts the title to the left,
+      \cr \code{adj.title = 1} adjusts the title to the right and
+      \cr \code{adj.title = 0.5} (=default) centers the title.
     }
     \item{\code{divide}}{
       Number of point symbols to divide each line when \code{type} is
@@ -133,6 +134,7 @@ draw.leg(key, draw=FALSE, vp=NULL)
 }
 
 \examples{
+## Legend 2 cm below and 1 cm left of the upper right corner
 grid.newpage()
 key <- draw.leg(key = list(rectangles = list(col=1:3,
                            size = 2,
@@ -147,16 +149,17 @@ key <- draw.leg(key = list(rectangles = list(col=1:3,
                   transparent = TRUE))
 
 vp.key <-  viewport(x = convertX(unit(1,"npc")-unit(1,"cm"),"cm"),
-                    y = convertY(unit(1,"cm"),"cm"),
+                    y = convertY(unit(1,"npc")-unit(2,"cm"),"cm"),
                     width=grobWidth(key),
                     height=grobHeight(key),
-                    just=c("right","bottom"))
+                    just=c("right","top"))
+
 pushViewport(vp.key)
 grid.draw(key)
 popViewport()
 
 ##----------------------------------------
-## another example, where the title is left adjusted
+## Legend 1 cm above the lower left corner
 key <- draw.leg(key = list(rectangles = list(col=1:3,
                              size = 4,
                              lwd = 0.5),

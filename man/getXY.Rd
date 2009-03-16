@@ -16,19 +16,19 @@ getXY(x, y = NULL, unidim.allowed = TRUE)
   \item{x}{ Vector, matrix, dataframe or list. If \code{x} is a vector,
     the second dimension may be defined by argument \code{y}. If
     \code{x} is a matrix, dataframe or list and a second column or
-    element exists, this second element is used instead of \code{y}. } 
+    element exists, this second element is used instead of \code{y}. }
   \item{y}{ Optional vector of the same length as \code{x}.
-    \crWhen argument \code{x} is onedimensional, argument \code{y} does
+    \cr When argument \code{x} is onedimensional, argument \code{y} does
     not exist \emph{and} unidim.allowed is TRUE, argument \code{x} is
     coerced to a vector and returned as \code{y} component where the
-    resulting \code{x} is just the index vector 1:n. } 
+    resulting \code{x} is just the index vector 1:n. }
   \item{unidim.allowed}{ Logical.
-    \crWhen unidim.allowed is TRUE (=default), one and two dimensional
+    \cr When unidim.allowed is TRUE (=default), one and two dimensional
     input is accepted for any reasonable combination of x and y. In this
     mode \code{getXY} behaves very similar to \code{\link{xy.coords}}
     \cr An error message is returned, when \code{unidim.allowed} is
     FALSE, argument \code{x} is onedimenional und \code{y} does not
-    exist.} 
+    exist.}
 }
 
 \details{
@@ -36,8 +36,8 @@ getXY(x, y = NULL, unidim.allowed = TRUE)
   first two elements must have identical length. When \code{y} is
   defined, \code{x} must be one dimensional and must have the same
   length as argument \code{y}. When \code{onedim.allowed} is
-  FALSE, input must be twodimensional. 
-  
+  FALSE, input must be twodimensional.
+
   When input is one dimensional and \code{unidim} is TRUE, \code{y}
   gives the numbers of elements back.
 

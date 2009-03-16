@@ -1,12 +1,16 @@
 \name{internals}
-\alias{LegendAndTitle}
+\alias{rose.grob}
+\alias{plotdat}
+\alias{plot.page}
+\alias{plot.onepage}
 
 \title{Internal Functions}
 \description{
   These functions are for internal use only and not documented further.
 }
 \usage{
-LegendAndTitle(main, cex.main, border, colramp, zmax)
+
+iplotMain(main,cex.main)
 
 plotdat(rho, cyclVar, circle, transf, vp, general, grid, title)
 
@@ -36,14 +40,14 @@ rose.grob(pdat, general, grid, title)
 \details{
   \tabular{ll}{
     Functions \tab used in\cr
-    \code{LegendAndTitle} \tab \code{\link{ipairs}},
+    \code{iplotMain} \tab \code{\link{ipairs}},
     \code{\link{ilagplot}}\cr
     \code{plotpage} \tab \code{\link{longts.plot}}\cr
+    \code{plot.page} \tab \code{\link{longtsPlot}}\cr    
     \code{plotdat} \tab \code{\link{plot.rose}}\cr
     \code{rose.grob} \tab \code{\link{plot.rose}}\cr
-    \code{} \tab \code{\link{plot.rose}}\cr
   }
-  
+
 }
 
 \author{Rene Locher}

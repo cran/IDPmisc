@@ -2,7 +2,7 @@
 function(y1, y2 = NULL,
                        names1 = NULL, names2 = NULL,
                        startP = start(y1)[1],
-                       upf = 400, fpp = 4, overlap = 20, 
+                       upf = 400, fpp = 4, overlap = 20,
                        x.at = NULL, x.ann = NULL, x.tick = NULL,
                        y1.at = NULL, y1.ann = NULL, y1.tick = NULL,
                        y2.at = NULL, y2.ann = NULL, y2.tick = NULL,
@@ -24,16 +24,15 @@ function(y1, y2 = NULL,
                        mar = c(2,3,1,3)+.2,
                        oma = if (automain|!is.null(main))
                        c(0,0,2,0) else par("oma"),
-                       xpd = FALSE,
+                       xpd = par("xpd"),
                        cex = par("cex"),
                        type = "s", slide = FALSE, each.fig = 1,
                        filename = NULL, extension = NULL,
                        filetype = NULL, ...) {
   ## Author:  Rene Locher
-  ## Version: 2008-07-10
+  ## Version: 2009-03-11
 
   opar <- par(no.readonly = TRUE)
-  on.exit(opar)
 
   if (is.null(names1)) {
     names1 <- deparse(substitute(y1))
@@ -48,9 +47,9 @@ function(y1, y2 = NULL,
   if (!is.matrix(y1)) {
     y1 <- ts(as.matrix(y1),start=start(y1),freq=fq1)
   }
-  
+
   if (is.null(col1)) col1 <-
-    c("blue","green4" ,"red", "darkorchid4", "black", 
+    c("blue","green4" ,"red", "darkorchid4", "black",
       "deepskyblue","green","orange", "violetred", "grey50",
       "saddlebrown")[1:min(nrow(y1),11)]
 
@@ -67,7 +66,7 @@ function(y1, y2 = NULL,
   if (is.null(y1.ann)) {
     y1.ann <- y1.at
   }
-     
+
   if (is.null(y1.at)) {
     y1.at <- pretty(y1lim,n=ny.ann)
   }
@@ -75,7 +74,7 @@ function(y1, y2 = NULL,
   if (is.null(y1.ann)) {
     y1.ann <- y1.at
   }
-  
+
   if (!is.null(y2)) {
     if (is.null(names2)) {
       names2 <- deparse(substitute(y2))
@@ -88,9 +87,9 @@ function(y1, y2 = NULL,
     if (!is.numeric(y2)) stop("y2 must be numeric!")
     if (!is.ts(y2)) y2 <- ts(y2)
     fq2 <- frequency(y2)
-    
+
     if (!is.matrix(y2)) {
-      y2 <- ts(as.matrix(y2),start=start(y2),freq=fq2)      
+      y2 <- ts(as.matrix(y2),start=start(y2),freq=fq2)
     }
 
     if (ncol(y2)==length(names2)) colnames(y2) <- names2 else
@@ -99,11 +98,11 @@ function(y1, y2 = NULL,
       c("deepskyblue","green","orange", "violetred","grey50",
         "blue","green4" ,"red", "darkorchid4", "black",
         "saddlebrown")[1:min(nrow(y1),11)]
-    
+
     len <- ncol(y2)
     lty2 <- rep(lty2,len)[1:len]
     lwd2 <- rep(lwd2,len)[1:len]
-    
+
     ## rescaling y2 to y1
     y2 <- (y2-y2lim[1])/diff(range(y2lim))*diff(range(y1lim))+y1lim[1]
 
@@ -132,14 +131,14 @@ function(y1, y2 = NULL,
     filetype <- postscript
     extension <- ".ps"
   }
-  
+
   if (length(startP) != 1) stop("startP must be scalar!")
   upp <- upf*fpp
   ee <- end(y1)[1]
-  
+
   if (slide) {
   nr <- 0
-    
+
   for (ii in 0:(ceiling((end(y1)[1]+1-startP)/upp)-1)){
     if (ii%%each.fig!=0) next
     st <- startP+ii*upp
@@ -153,7 +152,7 @@ function(y1, y2 = NULL,
        ny.ann=ny.ann, cex.ann=cex.ann,
        xlab=xlab, y1lab=y1lab, y2lab=y2lab, col.y1=col.y1, col.y2=col.y2,
        cex.lab=cex.lab,
-       y1lim=y1lim, y2lim=y2lim, 
+       y1lim=y1lim, y2lim=y2lim,
        lty1=lty1, lty2=lty2, lwd1=lwd1, lwd2=lwd2, col1=col1, col2=col2,
        leg=leg, y1nam.leg=y1nam.leg, y2nam.leg=y2nam.leg,
        ncol.leg=ncol.leg, cex.leg=cex.leg,
@@ -181,9 +180,9 @@ function(y1, y2 = NULL,
               y1.at = y1.at, y1.ann = y1.ann, y1.tick = y1.tick,
               y2.at = y2.at, y2.ann = y2.ann, y2.tick = y2.tick,
               ny.ann=ny.ann, cex.ann=cex.ann,
-              xlab=xlab, y1lab=y1lab, y2lab=y2lab, 
+              xlab=xlab, y1lab=y1lab, y2lab=y2lab,
               col.y1=col.y1, col.y2=col.y2, cex.lab=cex.lab,
-              y1lim=y1lim, y2lim=y2lim, 
+              y1lim=y1lim, y2lim=y2lim,
               lty1=lty1, lty2=lty2, lwd1=lwd1, lwd2=lwd2,
               col1=col1, col2=col2,
               leg=leg, y1nam.leg=y1nam.leg, y2nam.leg=y2nam.leg,
@@ -203,5 +202,6 @@ function(y1, y2 = NULL,
                   device=filetype, ...)
       }
 }
+  par(opar)
 } #longts.plot
 

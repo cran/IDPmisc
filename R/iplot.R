@@ -1,22 +1,30 @@
 `iplot` <-
 function(x,
-                    y=NULL,
-                    pixs=1,
-                    zmax=NULL,
-                    ztransf=function(x){x},
-                    colramp=IDPcolorRamp,
-                    border=FALSE,
-                    xlab=NULL,
-                    ylab=NULL,
-                    nx.lab=5,
-                    ny.lab=5,
-                    minL.lab=3,
-                    main=NULL,
-                    cex.main=par("cex.main"))
+                  y = NULL,
+                  pixs = 1,
+                  zmax = NULL,
+                  ztransf = function(x){x},
+                  colramp = IDPcolorRamp,
+                  main = NULL,
+                  d.main = 1,
+                  cex.main=par("cex.main"),
+                  xlab = NULL,
+                  ylab = NULL,
+                  cex.lab = 1,
+                  legend = TRUE,
+                  d.legend = 1,
+                  cex.axis = par("cex.axis"),
+                  nlab.xaxis = 5,
+                  nlab.yaxis = 5,
+                  minL.axis = 3,
+                  las = 1,
+                  border = FALSE,
+                  oma = c(3,3,1,0),
+                  ...)
   ## Produces an image scatter plot of a large 2d dataset.
-  
+
   ## Authors: Andreas Ruckstuhl, René Locher
-  ## Version 16-03-05
+  ## Version 09-03-10
 {
   no.xlab <- is.null(xlab)
   no.ylab <- is.null(ylab)
@@ -44,21 +52,19 @@ function(x,
     y <- x
     x <- 1:length(y)
   }
-  
+
   xy <- NaRV.omit(data.frame(x,y=y))
   x <- xy$x
   y <- xy$y
 
-  mar.orig <- (opar <- par(c("mar", "las", "mfrow")))$mar
-  on.exit(par(opar))
-  w <- (3 + mar.orig[2]) * par("csi") * 2.54
-  nf <- layout(matrix(c(1, 2), nc = 2), widths = c(1, lcm(w)))
+  par(oma=oma, mar=rep(0,4))
+
   x.old <- x
   y.old <- y
 
   xfac <- is.factor(x.old)
   yfac <- is.factor(y.old)
-  
+
   if(xfac) {
     x <- as.integer(x.old)
   }
@@ -68,15 +74,55 @@ function(x,
 
   if(!(is.vector(x)&is.vector(y)))
     stop("x must be a vector, matrix or data.frame and y must be a vector if present\n")
-  
-  par(las=1)
-  mar <- mar.orig
-  mar[4] <- 1
-  par(mar = mar)
+
+  w <- par("cin")[1] * 2.54
+  h <- par("cin")[2] * 2.54
+
+  w.legend <- lcm(cex.axis*4*w)
+  h.main <- lcm(1*h)
+  d.main <- lcm(d.main*1.2*h)
+  d.legend <- lcm(d.legend*1.2*h)
+
+  if (!is.null(main) & legend) { ## plot title and legend
+      lom <- rbind(c(1,rep(0,2)),
+                   rep(0,3),
+                   c(3,0,2))
+
+      lo <- layout(lom,
+                   width=c(1, d.legend, w.legend),
+                   height=c(h.main, d.main, 1),
+                   respect=TRUE)
+      iplotMain(main,cex.main)
+      iplotLegend(colramp,zmax,cex.axis,border)
+  } ## plot title and legend
+
+  if (is.null(main) & legend) { ## plot legend only
+      lom <- matrix(c(2,0,1),ncol=3)
+
+      lo <- layout(lom,
+                   width=c(1, d.legend, w.legend),
+                   height=1,
+                   respect=TRUE)
+      iplotLegend(colramp,zmax,cex.axis,border)
+  }## plot legend only
+
+  if (!is.null(main) & !legend) { ## plot title only
+      lom <- matrix(c(1,0,2),ncol=1)
+
+      lo <- layout(lom,
+                   width=1,
+                   height=c(h.main, d.main, 1),
+                   respect=TRUE)
+      iplotMain(main,cex.main)
+  } ## plot title only
+
+
+  ## And now data are plotted
+  par(cex.axis=cex.axis, las=las, ...)
 
   ## drawing labels at
-  at.x <- pretty(x,n=nx.lab)
-  at.y <- pretty(y,n=ny.lab)
+  at.x <- pretty(x,n=nlab.xaxis)
+  at.y <- pretty(y,n=nlab.yaxis)
 
   plot(if (xfac) range(at.x)+0.5*c(-1,+1) else range(x),
        if (yfac) range(at.y)+0.5*c(-1,+1) else range(y),
@@ -84,29 +130,29 @@ function(x,
        ylab=ylab,
        type="n",
        axes=FALSE,
-       main=main,
-       cex.main=cex.main)
+       main=NULL,
+       cex.main=cex.main,
+       xpd = NA,
+       cex.lab = cex.lab)
 
   if(is.factor(x.old)) {
     xmin <- min(x,na.rm=TRUE)
     xmax <- max(x,na.rm=TRUE)
-    at <- seq(xmin, xmax, by=max(floor((xmax-xmin)/(max(nx.lab-1,1))),1))
+    at <- seq(xmin, xmax, by=max(floor((xmax-xmin)/(max(nlab.xaxis-1,1))),1))
     axis(1, at=at,
-         labels=abbreviate(levels(x.old)[at],minl=minL.lab),
-         xpd = NA)
+         labels=abbreviate(levels(x.old)[at],minl=minL.axis))
   } else {
-    axis(1, at = at.x, xpd = NA)
+    axis(1, at = at.x)
   }
 
   if(is.factor(y.old)) {
     ymin <- min(y,na.rm=TRUE)
     ymax <- max(y,na.rm=TRUE)
-    at <- seq(ymin, ymax, by=max(floor((ymax-ymin)/(max(ny.lab-1,1))),1))
+    at <- seq(ymin, ymax, by=max(floor((ymax-ymin)/(max(nlab.yaxis-1,1))),1))
     axis(2, at=at,
-         labels=abbreviate(levels(y.old)[at],minl=minL.lab),
-         xpd = NA)
+         labels=abbreviate(levels(y.old)[at],minl=minL.axis))
   } else {
-    axis(2, at = at.y, xpd = NA)
+    axis(2, at = at.y)
   }
 
   zzmax <- Image(x,y,pixs=pixs,zmax=zmax,ztransf=ztransf,
@@ -115,24 +161,6 @@ function(x,
   zmax <- max(zmax,2)
   box()
 
-  ## plotting legend
-  mar <- mar.orig
-  mar[4] <- mar[2]
-  mar[2] <- 1
-  par(mar = mar)
-  mycol <- c(par("bg"),colramp(zmax))
-  
-  lev <- 0:length(mycol)
-  plot.new()
-  plot.window(xlim=c(0, 1), ylim=range(lev,na.rm=TRUE),
-              xaxs="i", yaxs="i")
-  if(border) 
-    rect(0, lev[-length(lev)], 1, lev[-1], col=mycol)
-  else
-    rect(0, lev[-length(lev)], 1, lev[-1], col=mycol, border=mycol)
-  box()
-  ap <- pretty(lev)
-  axis(side=4, at=ap+0.5, labels=paste(ap))
   invisible(zmax)
 } ## iplot
 

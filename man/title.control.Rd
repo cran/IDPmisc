@@ -15,8 +15,9 @@ title.control(text = NULL, cex = 1.5,
   \item{text}{ Title. }
   \item{cex}{ Size of characters in title in multiples of \code{cex} as
     defined in \code{\link{general.control}}.}
-  \item{between}{ Distance between title and label North in multiples of
-    cex (title). }
+  \item{between}{ Distance between title and label North. Default units
+  are \code{grid.control(cyclVar.cex)}. Other units can be defined by
+  \code{\link[grid]{unit}}.}
 }
 
 \value{

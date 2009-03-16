@@ -1,4 +1,4 @@
-"peaks" <-
+`peaks` <-
 function(x, y = NULL, minPH, minPW, thr, stepF = 0.49){
   ## Author: Rene Locher
   ## Version: 2006-07-03

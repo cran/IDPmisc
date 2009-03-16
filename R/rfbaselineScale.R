@@ -5,5 +5,5 @@ function(r) {
   rr <- r[r<= modus] - modus
   rr <- c(rr, -rr)
   sd(rr)
-}
+} ## rfbaselineScale
 

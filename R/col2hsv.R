@@ -1,4 +1,4 @@
-"col2hsv" <-
+`col2hsv` <-
 function(col){
   ## Author: Rene Locher
   ## Version: 2005-01-18

@@ -1,10 +1,10 @@
-"NaRV.omit" <-
+`NaRV.omit` <-
 function(x){
   ## Author: Rene Locher
   ## Version: 2005-10-17
-  
+
   if (is.vector(x)) {
-    if (is.numeric(x)) x <- na.omit(x[is.finite(x)]) else 
+    if (is.numeric(x)) x <- na.omit(x[is.finite(x)]) else
     x <- na.omit(x)
   } else if (is.factor(x)) {
     x <- na.omit(x)

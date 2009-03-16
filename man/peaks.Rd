@@ -15,7 +15,7 @@ peaks(x, y = NULL, minPH, minPW, thr, stepF = 0.49)
 \arguments{
   \item{x, y}{ Position and height of signal. Any reasonable way of
     defining the coordinates is acceptable. See function
-    \code{link{getXY}} for details.}  
+    \code{link{getXY}} for details.}
   \item{minPH}{ Mimimum height of peak to be reported. }
   \item{minPW}{ Minimum width of peak at half maximum to be reported. }
   \item{thr}{ Threshold below which the signal is not processed. }
@@ -40,7 +40,7 @@ peaks(x, y = NULL, minPH, minPW, thr, stepF = 0.49)
   for the calculated peak widths are only approximate.}
 
 \value{
- dataframe consisting of 
+ dataframe consisting of
   \item{x }{Position of peak}
   \item{y }{Signal height}
   \item{w }{Approximate width at half maximum of peak}
@@ -52,10 +52,10 @@ peaks(x, y = NULL, minPH, minPW, thr, stepF = 0.49)
   In the function, the main selection criterium for the peaks is the
   height of the peaks, the second optional criterium is the width of the
   peaks.
-  
+
   When the width of different peaks vary not too strongly and the
   distances between the peaks is not critical, you might use the faster
-  functions 
+  functions
   \code{\link[PROcess]{peaks}} of package \code{PROcess} or, even faster,
   \code{\link[ppc]{ppc.peaks}} of package \code{ppc}.
 }
@@ -68,41 +68,39 @@ theory <- sin(freq/n*4*pi)*cos(freq/n*3*pi)
 spec <- theory + 0.1*rnorm(n)
 
 plot(spec,ty="b")
-lines(theory,col="blue",lwd=3)
+lines(theory,lwd=2)
 
 pts <- peaks(spec, minPH=0.7)
-abline(v=pts$x,col="blue",lwd=3)
+points(pts,col="red",cex=1.2, pch=20)
 
 ## peaks after smoothing the spectrum
 spec.sm <- loess.smooth(freq, spec, span=0.2,
                         degree = 2, evaluation = 100)
-lines(spec.sm$x, spec.sm$y, col="orange", lwd=2)
+lines(spec.sm$x, spec.sm$y, col="steelblue", lwd=2)
 pts <- peaks(spec.sm, minPH=0.4)
-abline(v=pts$x,col="orange", lwd=2)
+points(pts,col="green",cex=1.2,pch=20)
 
 ## Analyses of Mass Spectrum between 12000 and 100'000
 ## without smoothing, without baseline substraction
 data(MS)
-MS <- log10(MS[MS$mz>12000&MS$mz<1e5,])
+MS1 <- log10(MS[MS$mz>12000&MS$mz<1e5,])
 
-P <- peaks(MS, minPH=0.02, minPW=0.001)
-plot(MS, ty="l")
-abline(v=P$x,col="blue")
+P <- peaks(MS1, minPH=0.02, minPW=0.001)
+plot(MS1, ty="l", xlab="log10(mz)", ylab="log10(I)")
+points(P,col="blue",cex=1.6)
 
 ## compare to
-if (require(PROcess)) {  ## V 1.8.0
-  ii <- peaks(MS$I,300)
+if (require(PROcess)) {
+  ii <- peaks(MS1$I,span=300)
   detach("package:PROcess")
-  plot(MS, ty="l")
-  abline(v=MS$mz[ii],col="orange")
+  points(MS1$mz[ii],MS1$I[ii],col="darkgreen",cex=1.2)
 } else print("Package Process not available!")
 
 ## or to
 if (require(ppc)) {  ## V 1.01
-  ii <- ppc.peaks(MS$I,400/nrow(MS))
+  ii <- ppc.peaks(MS1$I,400/nrow(MS1))
   detach("package:ppc")
-  plot(MS, ty="l")
-  abline(v=MS$mz[ii],col="red")
+  points(MS1$mz[ii],MS1$I[ii],col="red", cex=0.8)
 } else print("Package ppc not available!")
 }
 

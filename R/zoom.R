@@ -1,6 +1,6 @@
-"zoom" <-
+`zoom` <-
 function(fun = plot, zoom.col="red", delay=3, ...){
-  ## 
+  ##
   ## fun       plotting function
   ## zoom.col  color of clicked points
   ## delay     number of sec during which the 2nd zooming point is shown
@@ -10,7 +10,7 @@ function(fun = plot, zoom.col="red", delay=3, ...){
   ##
   ## Author: Rene Locher
   ## Version 03.06.05
-  
+
   oldpar <- par(no.readonly = TRUE)
   on.exit(par(oldpar))
 
@@ -28,7 +28,7 @@ function(fun = plot, zoom.col="red", delay=3, ...){
     }
     abline(v=p1$x,col=zoom.col)
     abline(h=p1$y,col=zoom.col)
-    
+
     p2 <- locator(n = 1, ty="p", col=zoom.col)
     if(is.null(p2$x)){
       cat("\n")
@@ -40,8 +40,8 @@ function(fun = plot, zoom.col="red", delay=3, ...){
 
     xx <- sort(c(p1$x,p2$x))
     yy <-  sort(c(p1$y,p2$y))
-    
-    ## check if zooming out 
+
+    ## check if zooming out
     usr <- par()$usr
 
     ## zooming out in x direction
@@ -55,12 +55,12 @@ function(fun = plot, zoom.col="red", delay=3, ...){
     if (yy[2]<usr[3]) yy[2] <- usr[3]-diff(range(usr[3:4]/3))
     if (yy[1]>usr[4]) yy[1] <- usr[4]+diff(range(usr[3:4]/3))
     if (yy[2]>usr[4]) yy[2] <- usr[4]+diff(range(usr[3:4]/3))
-    
+
     xlim <- range(xx)
     ylim <- range(yy)
     print(t(data.frame(xlim,ylim)))
     cat("\n")
-    
+
     par(xpd=FALSE)
     fun(..., xlim = xlim, ylim = ylim)
   }

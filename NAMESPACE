@@ -1,10 +1,10 @@
 UseDynLib(IDPmisc)
 import(graphics,grid,lattice)
 export(Arrows,poster.plot,zoom)
-export(data.sheet,inf.omit,NaRV.omit,ok)
+export(data.sheet,NaRV.omit,ok)
 export(col2hsv,IDPcolorRamp,showColors)
 export(draw.leg, getXY)
-export(Image,iplot,ipairs,ilagplot,itermplot,ipanel.smooth)
+export(Image,iplot,ipairs,ilagplot,itermplot,ipanel.smooth,iplotLegend)
 export(peaks)
 export(longtsPlot)
 export(clock2cart,cart2clock)
@@ -15,5 +15,5 @@ export(rfbaselineScale)
 exportClasses("rose")
 exportMethods("plot")
 
-## deprecated
+## defunct
 export(ixyplot,longts.plot)

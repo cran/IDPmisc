@@ -1,4 +1,4 @@
-"rose.grob" <-
+`rose.grob` <-
 function(pdat,
                       general,
                       grid,
@@ -35,10 +35,10 @@ function(pdat,
               circleGrob(name = "circles",
                          x = 0, y = 0,
                          r = grid$circ$r[grid$circ$r>0],
-                         default.units = "native", 
+                         default.units = "native",
                          gp = gpar(col = grid$circ$col,
                            lwd = grid$circ$lwd)),
-              
+
               textGrob(name = "circ.lab",
                        grid$circ$value,
                        x = pdat$circ$lab$x,
@@ -46,7 +46,7 @@ function(pdat,
                        just = c("center","center"),
                        default.units = "native",
                        gp = gpar(cex=grid$circ$cex)),
-              
+
               segmentsGrob(name = "rays",
                            x0 = 0, y0 = 0,
                            x1 = grid$circ$r[length(grid$circ$r)] *
@@ -56,7 +56,7 @@ function(pdat,
                            default.units = "native",
                            gp=gpar(col=grid$circ$col,
                              lwd=grid$circ$lwd)),
-              
+
               textGrob(name = "cyclVar.lab",
                        label = grid$cyclVar$lab,
                        x = pdat$cyclVar$lab$x,
@@ -64,7 +64,7 @@ function(pdat,
                        default.units = "native",
                        just = c("center","center"),
                        gp=gpar(cex = grid$cyclVar$cex)),
-              
+
               if (!is.null(title$text))
               textGrob(name = "title",
                        label = title$text,

@@ -1,5 +1,6 @@
 \name{clock2cart}
 \alias{clock2cart}
+\concept{conversion}
 
 \title{ Convert Clock Coordinates to Cartesian Coordinates }
 \description{
@@ -20,10 +21,10 @@ clock2cart(rho, phi, circle)
 %% \details{
 %%   ~~ If necessary, more details than the __description__  above ~~
 %% }
-%% 
+%%
 
 \value{
-  Data frame with 
+  Data frame with
   \item{\code{x}, \code{y} }{Cartesian coordinates.}
 }
 
@@ -36,12 +37,9 @@ clock2cart(rho, phi, circle)
 \seealso{ \code{\link{cart2clock}}, \code{\link{rose-class}} }
 
 \examples{
-xy <- clock2cart(5,80,360)
-xy
-cart2clock(xy[1],xy[2],360)
-
-cart2clock(0,1,360)
-cart2clock(1,1,360)
+## an easy way to plot a circle
+xy <- clock2cart(rho=rep(1,33),phi=seq(0,to=360,len=33),circle=360)
+plot(xy)
 }
 
 \keyword{ dplot }

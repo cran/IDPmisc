@@ -1,4 +1,4 @@
-"plotdat" <-
+`plotdat` <-
 function(rho,
                     cyclVar,
                     circle,
@@ -9,7 +9,7 @@ function(rho,
                     title)
   ## Author: Rene Locher
   ## Version: 2005-01-19
-  
+  ## helper function for plot.rose
   {
     cyclVar.lab.n <- length(grid$cyclVar$lab)
 
@@ -19,14 +19,14 @@ function(rho,
     West <- 0
     east <- 0
     west <- 0
-    
+
     if (cyclVar.lab.n>=3) {
       if (cyclVar.lab.n %%2 ==0) {
         South <- cyclVar.lab.n/2+1
         east <- 2:(cyclVar.lab.n %/% 2)
       } else east <- 2:(cyclVar.lab.n %/% 2 + 1)
       East <- which.min(abs(seq(0,by=360/cyclVar.lab.n,
-                                len=cyclVar.lab.n)-90))   
+                                len=cyclVar.lab.n)-90))
       west <- (cyclVar.lab.n %/% 2 + 2):cyclVar.lab.n
       West <- which.min(abs(seq(0,by=360/cyclVar.lab.n,
                                 len=cyclVar.lab.n)-270))
@@ -41,21 +41,19 @@ function(rho,
       stringWidth(grid$circ$value)* grid$circ$cex*0.5 +
       unit(grid$circ$cex,"char") * grid$circ$between
     circ.lab.r <- convertWidth(circ.lab.r,"native",valueOnly=TRUE)
-    
-    cyclVar.lab.dr <- 
+
+    cyclVar.lab.dr <-
       if (grid$cyclVar$centered) {
         if (cyclVar.lab.n>2) {
           max(convertWidth(stringWidth(grid$cyclVar$lab[c(east,west)]),
               "native", valueOnly = TRUE) * grid$cyclVar$cex/2/
                  abs(sin(seq(0, by=2*pi/cyclVar.lab.n, len=cyclVar.lab.n)
-                         )[c(east,west)]))  
-          ##max(convertWidth(stringWidth(grid$cyclVar$lab[c(east,west)]),
-          ##        "native", valueOnly = TRUE)) *grid$cyclVar$cex/2    
-        } else 
+                         )[c(east,west)]))
+        } else
         max(convertHeight(stringHeight(grid$cyclVar$lab), "native",
                           valueOnly = TRUE)) * grid$cyclVar$cex/2
       } else 0
-    
+
     each.cyclVar.lab <- grid$ray$n %/% length(grid$cyclVar$lab)
     cyclVar.lab.r <- grid$circ$r[length(grid$circ$r)] + cyclVar.lab.dr +
       convertWidth(stringWidth("X"),"native", valueOnly = TRUE)*
@@ -96,7 +94,7 @@ function(rho,
       0.5*grid$cyclVar$cex*
         convertHeight(stringHeight(grid$cyclVar$lab[1]),
                       "native", valueOnly = TRUE)
-    
+
     ymax <- convertY(unit(cyclVar.lab.y[1],"native"),"mm") +
             0.5*grid$cyclVar$cex*
               convertHeight(stringHeight(grid$cyclVar$lab[1]),"mm")
@@ -110,23 +108,23 @@ function(rho,
         title$cex*unit(title$between, "char")
 
     top <- ymax -  convertY(unit(1,"npc"),"mm")
-    
+
     ## label east
-    if (!grid$cyclVar$centered && East>0) 
+    if (!grid$cyclVar$centered && East>0)
       cyclVar.lab.x[east] <- cyclVar.lab.x[east] +
         0.5*grid$cyclVar$cex*
           convertWidth(stringWidth(grid$cyclVar$lab[east]),
                        "native", valueOnly = TRUE)
-    
+
     if (East>0){
-      xmax <- 
+      xmax <-
       convertX(unit(cyclVar.lab.x[east],"native"),"mm") +
       0.5*grid$cyclVar$cex*
         convertHeight(stringWidth(grid$cyclVar$lab[east]),"mm")
       xmax <- max(xmax)
     } else
     xmax <- convertX(unit(cyclVar.lab.r,"native"), "mm")
-    
+
     right <- xmax-convertX(unit(1,"npc"),"mm")
 
     ## label South
@@ -134,7 +132,7 @@ function(rho,
       cyclVar.lab.y[South] <- cyclVar.lab.y[South] -
         0.5*grid$cyclVar$cex*convertHeight(stringHeight(
             grid$cyclVar$lab[South]), "native", valueOnly = TRUE)
-    
+
     if (South>0) {
       ymin <-
         convertY(unit(cyclVar.lab.y[South],"native"),"mm") -
@@ -142,11 +140,11 @@ function(rho,
           convertHeight(stringHeight(grid$cyclVar$lab[South]),"mm")
     } else
     ymin <- convertY(unit(-cyclVar.lab.r,"native"), "mm")
-    
+
     bottom <- convertY(unit(0,"npc"),"mm") - ymin
-    
+
     ## label west
-    if (!grid$cyclVar$centered &&West>0) 
+    if (!grid$cyclVar$centered &&West>0)
       cyclVar.lab.x[west] <- cyclVar.lab.x[west] - 0.5*grid$cyclVar$cex*
         convertWidth(stringWidth(grid$cyclVar$lab[west]),
                                  "native", valueOnly = TRUE)
@@ -158,11 +156,11 @@ function(rho,
       xmin <- min(xmin)
     } else
     xmin <- convertX(unit(-cyclVar.lab.r,"native"), "mm")
-                       
+
     left <- convertX(unit(0,"npc"),"mm") - xmin
 
     labSpace = unit.c(bottom,left,top,right)
-    
+
     popViewport()
 
     return(list(x = x.dat,

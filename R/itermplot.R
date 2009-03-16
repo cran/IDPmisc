@@ -81,7 +81,7 @@ function(model, data=NULL,envir=environment(formula(model)),
     }
 
     cntsmax <- 0 ## maximum number of points per pixel
-    
+
     ##---------- Do the individual plots : ----------
 
     for (i in 1:n.tms) {
@@ -115,7 +115,7 @@ function(model, data=NULL,envir=environment(formula(model)),
                       smooth(xx,pres[,i],
                              lty=lty.smth, col=col.smth, lwd=lwd.smth,
                              span=span.smth, pixs = pixs, zmax = zmax,
-                             ztransf = ztransf, colramp =colramp)) 
+                             ztransf = ztransf, colramp =colramp))
               } else
              ## points(xx, pres[,i], cex = cex, pch = pch, col = col.res)
               cntsmax <-
@@ -123,7 +123,7 @@ function(model, data=NULL,envir=environment(formula(model)),
                     Image(xx, pres[,i], pixs = pixs, zmax = zmax,
                           ztransf = ztransf, colramp = colramp,
                           factors = c(is.fac[i],FALSE)))
-            }            
+            }
 	    for(j in seq(along=ll)) {
 		ww <- which(ff==ll[j])[c(1,1)]
 		jf <- j + c(-.4, .4)
@@ -161,5 +161,5 @@ function(model, data=NULL,envir=environment(formula(model)),
 
       }
     invisible(zmax)
-  }
+  } ## itermplot
 

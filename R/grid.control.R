@@ -17,8 +17,9 @@ function(circ.n = 4,
                          cyclVar.centered = TRUE,
                          ray.lim = NULL,
                          ray.n = 8)
-  ## Author: Rene Locher
-  ## Version: 2007-10-02
+    ## helper function for plot.rose
+    ## Author: Rene Locher
+    ## Version: 2007-10-02
 
   {
     return(list(ray =

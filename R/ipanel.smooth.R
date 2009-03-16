@@ -8,8 +8,8 @@ function (x, y = NULL, pixs = 1, zmax = NULL,
 {
   Image(x, y, pixs = pixs, ztransf = ztransf, colramp = colramp )
   ok <- is.finite(x) & is.finite(y)
-  if (any(ok)) 
-    lines(stats::lowess(x[ok], y[ok], f = span, iter = iter), 
+  if (any(ok))
+    lines(stats::lowess(x[ok], y[ok], f = span, iter = iter),
           col = col, lwd = lwd, ...)
-}
+} ## ipanel.smooth
 

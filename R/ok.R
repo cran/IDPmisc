@@ -1,4 +1,4 @@
-"ok" <-
+`ok` <-
 function(x) {
   ## Author: Rene Locher
   ## Version: 2005-10-17
@@ -7,5 +7,5 @@ function(x) {
     return(x)
   } else
   stop("'x' must be logical!\n")
-} ## ok 
+} ## ok
 

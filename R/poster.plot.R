@@ -37,7 +37,7 @@ function(x, y=NULL,  type="p", col=col.fg,
   opar <- par(bg=col.bg, fg=col.fg, col.axis=col.axis, col.lab=col.lab,
               font=2,cex=cex,...)
    on.exit(opar)
-  
+
   if(is.null(xlim)) xlim <- range(x)
   if(is.null(ylim)) ylim <- range(y)
   plot(xlim, ylim, type="n", axes=FALSE, ann=FALSE)

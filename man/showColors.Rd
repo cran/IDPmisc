@@ -9,7 +9,7 @@
 \usage{
 showColors(col = IDPcolorRamp(20),
            ntm = min(length(col), 20),
-           border = TRUE)
+           border = TRUE, mar = rep(0,4))
 }
 
 \arguments{
@@ -17,6 +17,7 @@ showColors(col = IDPcolorRamp(20),
   \item{ntm}{Approximate number of tick marks for axis}
   \item{border}{Shall border be drawn between the colors in the legend:
     \code{TRUE} / \code{FALSE}}
+  \item{mar}{Margin. cf \code{\link{par}}}
 }
 
 \author{Rene Locher}
@@ -32,7 +33,7 @@ showColors(IDPcolorRamp(200),border=FALSE,ntm=5)
 
 showColors(IDPcolorRamp(4,
                         colInt = data.frame(
-                            h = c(0.47, 0.28, 0.22, 0.2, 0.00), 
+                            h = c(0.47, 0.28, 0.22, 0.2, 0.00),
                             s = c(0.3, 0.55, 0.75, 0.75, 0.75),
                             v = c(1, 1, 1, 1, 1)),
                         fr     = c(0.2,0.2,0.2))

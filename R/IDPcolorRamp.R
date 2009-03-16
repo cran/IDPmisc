@@ -1,7 +1,7 @@
 `IDPcolorRamp` <-
 function (n,
                           colInt = data.frame(
-                            h = c(0.47, 0.28, 0.16, 0.00, 1.00, 0.8), 
+                            h = c(0.47, 0.28, 0.16, 0.00, 1.00, 0.8),
                             s = c(0.31, 0.55, 0.7, 0.8, 0.8, 1.00),
                             v = c(1, 1, 1, 1, 1, 0.4)),
                           fr     = c(0.27, 0.27, 0.27, 0))
@@ -48,7 +48,7 @@ function (n,
     ii <- ii[1:delta]
     col1$ncol[ii] <- col1$ncol[ii]-1
     col[-c(1,nsr),"ncol"] <- col1$ncol
-    col$mod <- c(fr,col$ncol/n)*n-col$ncol    
+    col$mod <- c(fr,col$ncol/n)*n-col$ncol
   }
 
   colRamp <- rep(NA,n)
@@ -57,10 +57,10 @@ function (n,
     hsv(h = seq(colInt[1,1], colInt[2,1], length = col$ncol[1]),
         s = seq(colInt[1,2], colInt[2,2], length = col$ncol[1]),
         v = seq(colInt[1,3], colInt[2,3], length = col$ncol[1]))
-  
+
   for (ii in 2:nsr) {
     if(col$ncol[ii]>0)
-      colRamp[(sum(col$ncol[1:(ii-1)])+1):sum(col$ncol[1:ii])] <- 
+      colRamp[(sum(col$ncol[1:(ii-1)])+1):sum(col$ncol[1:ii])] <-
         hsv(h = seq(colInt[ii,1], colInt[ii+1,1],
               length = col$ncol[ii]+1),
             s = seq(colInt[ii,2], colInt[ii+1,2],
@@ -69,5 +69,5 @@ function (n,
               length = col$ncol[ii]+1))[-1]
   }
   return(colRamp)
-} ## IDPcolorRamp 
+} ## IDPcolorRamp
 

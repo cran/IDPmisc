@@ -1,4 +1,4 @@
-"general.control" <-
+`general.control` <-
 function(stacked = FALSE,
                             rose.rad = NULL,
                             rose.x = NULL,
@@ -12,7 +12,8 @@ function(stacked = FALSE,
                             lwd = 1)
   ## Author: Rene Locher
   ## Version: 2005-12-16
-  
+  ## helper function for plot.rose
+
   {
     if (is.null(rose.rad)) auto <- TRUE else auto <- FALSE
 
@@ -21,13 +22,13 @@ function(stacked = FALSE,
 
     if (!auto && (!is.null(rose.x) || !is.null(rose.y)))
       warning("When 'rad.rose' is NULL 'rad.x' and 'rad.y' are ignored!")
-    
+
     if (!is.null(rose.x) && !is.unit(rose.x))
       rose.x <- unit(rose.x,"mm")
-    
+
     if (!is.null(rose.y) && !is.unit(rose.y))
       rose.y <- unit(rose.y,"mm")
-    
+
     return(list(rose =
                 list(rad = rose.rad,
                      x = rose.x,

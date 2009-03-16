@@ -12,7 +12,7 @@ function(x, y = NULL, pixs = 1, zmax = NULL,
 
   pixs <- (pixs/10)/2.54
   usr <- par("usr")
-  
+
   if (factors[1]) {
     bx <- seq(min(xy[,1]-0.25), max(xy[,1]+0.25),
               length=2*diff(range(xy[,1]))+2)
@@ -26,7 +26,7 @@ function(x, y = NULL, pixs = 1, zmax = NULL,
   } else {
     by <- seq(usr[3],usr[4], length=round(par("pin")/pixs)[2]+1)
   }
-  
+
   zz <- ztransf(table(cut(xy[,1],b=bx), cut(xy[,2], b=by)))
   zzmax <- ceiling(max(zz))
 
@@ -35,7 +35,7 @@ function(x, y = NULL, pixs = 1, zmax = NULL,
     stop("zmax must be >= 1 and
           plot(x,y,...) must have been called before calling this function!\n")
   }
-  
+
   if(zzmax>zmax)
     stop("zmax too small! Densiest aereas are out of range!",
          call. = FALSE)
@@ -52,6 +52,6 @@ function(x, y = NULL, pixs = 1, zmax = NULL,
         col=colramp(zmax), breaks=seq(0.5,zmax+1,1),
         xaxs="r", yaxs="r", add=TRUE)
   box()
-  if (matrix) invisible(zzmax) else invisible(cbind(x=xx,y=yy,z=zz))
+  if (matrix) invisible(cbind(x=xx,y=yy,z=zz)) else invisible(zzmax)
 } # Image
 

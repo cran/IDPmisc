@@ -1,4 +1,5 @@
 \name{IDPmisc-package}
+\alias{IDPmisc-package}
 \alias{IDPmisc}
 \docType{package}
 
@@ -10,21 +11,20 @@
   for displaying large datasets, displaying circular data in a very
   flexible way, finding local maxima, brewing color ramps, drawing nice
   arrows, zooming 2D-plots, creating figures with differently colored
-  margin and plot region.  In addition, the packagk
-  contains auxiliary
+  margin and plot region. In addition, the package contains auxiliary
   functions for data manipulation like omitting observations with
   irregular values or selecting data by logical vectors, which include
   NAs. Other functions are especially useful in spectroscopy and
   analyses of environmental data: robust baseline fitting, finding peaks
-  in spectra, plotting wind roses.  
+  in spectra, plotting wind roses.
 }
 
 \details{
 \tabular{ll}{
   Package: \tab IDPmisc\cr
   Type: \tab Package\cr
-  Version: \tab 0.9.9\cr
-  Date: \tab 2008-07-21\cr
+  Version: \tab 1.0.01\cr
+  Date: \tab 2009-03-16\cr
   License: \tab  GPL (>= 3) (GNU Public Licence)\cr
 }
 
@@ -52,7 +52,7 @@ Maintainer: Rene Locher <rene.locher@zhaw.ch>
 %% ~~ Optional links to other man pages, e.g. ~~
 %% ~~ \code{\link[<pkg>:<pkg>-package]{<pkg>}} ~~
 %% }
-%% 
+%%
 %% \examples{
 %% ~~ simple examples of the most important functions ~~
 %% }

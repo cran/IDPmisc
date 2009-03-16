@@ -1,6 +1,7 @@
 \name{rose-class}
-\docType{class}
 \alias{rose-class}
+
+\docType{class}
 
 \title{rose-class}
 
@@ -24,7 +25,7 @@
       correspond to different responses when the summary statistics is a
       scalar \emph{or} to the different elements of a vector summary of
       one response \emph{or} to the different subsets of the second
-      grouping element. } 
+      grouping element. }
     \item{\code{cyclVar}:}{Object of class \code{numeric} containing
       the center of the interval of the cyclic variable.  The values are
       sorted by increasing values, are unique and cannot contain NA

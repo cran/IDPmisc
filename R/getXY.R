@@ -1,12 +1,12 @@
-"getXY" <-
+`getXY` <-
 function(x, y = NULL, unidim.allowed = TRUE)
   ## Author: Rene Locher
   ## Version: 2006-06-20
 {
   if (missing(x)) xarg <- "x" else xarg <- deparse(substitute(x))
-  
+
   if (missing(y)) yarg <- "y" else yarg <- deparse(substitute(y))
-  
+
   if (is.matrix(x) | is.data.frame(x)) {
     if (ncol(x)>1) {
       if (is.null(y)) y <- x[,2] else
@@ -20,9 +20,9 @@ function(x, y = NULL, unidim.allowed = TRUE)
       x <- x[[1]]
       if (length(y)!=length(x))
         stop("First and second element of the list must have identical length!\n")
-    } else x <- x[[1]] 
+    } else x <- x[[1]]
   }
-  
+
   if (is.null(y)) {
     if (!unidim.allowed) stop("'",yarg,"' is not defined!\n")
     y <- x
@@ -32,7 +32,7 @@ function(x, y = NULL, unidim.allowed = TRUE)
     if (length(y)!=length(x))
       stop("Vector '",yarg,"' and 'x' must have identical lengths!\n")
   }
-  
- return(data.frame(x = x, y = y)) 
+
+ return(data.frame(x = x, y = y))
 } ## getXY
 
