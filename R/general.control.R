@@ -9,9 +9,10 @@ function(stacked = FALSE,
                             cex = 1,
                             col = NULL,
                             lty = 1:3,
-                            lwd = 1)
+                            lwd = 1,
+                            type = "s")
   ## Author: Rene Locher
-  ## Version: 2005-12-16
+  ## Version: 2009-03-16
   ## helper function for plot.rose
 
   {
@@ -29,6 +30,10 @@ function(stacked = FALSE,
     if (!is.null(rose.y) && !is.unit(rose.y))
       rose.y <- unit(rose.y,"mm")
 
+    if (!is.element(type,c("s","l"))) {
+        type <- "s"
+        warning(paste("type",type,"is not a valid option. Type 's' is used instead"))}
+
     return(list(rose =
                 list(rad = rose.rad,
                      x = rose.x,
@@ -41,6 +46,8 @@ function(stacked = FALSE,
                 cex = cex,
                 col = col,
                 lty = lty,
-                lwd = lwd))
+                lwd = lwd,
+                ncp = 1000,
+                type = type))
   } ## general.control
 

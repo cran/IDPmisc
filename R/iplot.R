@@ -1,10 +1,12 @@
-`iplot` <-
-function(x,
+### iplot.R
+
+iplot <- function(x,
                   y = NULL,
                   pixs = 1,
                   zmax = NULL,
                   ztransf = function(x){x},
                   colramp = IDPcolorRamp,
+                  cex = par("cex"),
                   main = NULL,
                   d.main = 1,
                   cex.main=par("cex.main"),
@@ -19,12 +21,14 @@ function(x,
                   minL.axis = 3,
                   las = 1,
                   border = FALSE,
-                  oma = c(3,3,1,0),
+                  oma = c(5,4,1,0)+0.1,
+                  mgp = c(2,0.5,0)*cex.axis,
+                  tcl = -0.3,
                   ...)
   ## Produces an image scatter plot of a large 2d dataset.
 
   ## Authors: Andreas Ruckstuhl, René Locher
-  ## Version 09-03-10
+  ## Version 09-04-08
 {
   no.xlab <- is.null(xlab)
   no.ylab <- is.null(ylab)
@@ -57,7 +61,8 @@ function(x,
   x <- xy$x
   y <- xy$y
 
-  par(oma=oma, mar=rep(0,4))
+  mar <- rep(0,4)
+  par(oma=oma, mar=mar)
 
   x.old <- x
   y.old <- y
@@ -77,11 +82,13 @@ function(x,
 
   w <- par("cin")[1] * 2.54
   h <- par("cin")[2] * 2.54
+  mar.legend <- c(0,0,0,3)
 
-  w.legend <- lcm(cex.axis*4*w)
-  h.main <- lcm(1*h)
-  d.main <- lcm(d.main*1.2*h)
-  d.legend <- lcm(d.legend*1.2*h)
+  ## 40% of space for color bar and 60% of it for axis labels
+  w.legend <- lcm(7*cex.axis*cex*w)
+  h.main <- lcm(cex.main*cex*h)
+  d.main <- lcm(d.main*cex.main*cex*h)
+  d.legend <- lcm(d.legend*cex.main*cex*h)
 
   if (!is.null(main) & legend) { ## plot title and legend
       lom <- rbind(c(1,rep(0,2)),
@@ -92,8 +99,11 @@ function(x,
                    width=c(1, d.legend, w.legend),
                    height=c(h.main, d.main, 1),
                    respect=TRUE)
-      iplotMain(main,cex.main)
-      iplotLegend(colramp,zmax,cex.axis,border)
+
+      iplotMain(main, cex.main, cex=cex)
+      iplotLegend(colramp=colramp,ncol=zmax,cex.axis=cex.axis,
+                  border=border, mar=c(mar[1],0,mar[3],4)*cex.axis,
+                  las=las, tcl=tcl, cex=cex)
   } ## plot title and legend
 
   if (is.null(main) & legend) { ## plot legend only
@@ -103,7 +113,10 @@ function(x,
                    width=c(1, d.legend, w.legend),
                    height=1,
                    respect=TRUE)
-      iplotLegend(colramp,zmax,cex.axis,border)
+
+      iplotLegend(colramp=colramp,ncol=zmax,cex.axis=cex.axis,
+                  border=border, mar=c(mar[1],0,mar[3],4)*cex.axis,
+                  las=las, tcl=tcl, cex=cex)
   }## plot legend only
 
   if (!is.null(main) & !legend) { ## plot title only
@@ -113,12 +126,13 @@ function(x,
                    width=1,
                    height=c(h.main, d.main, 1),
                    respect=TRUE)
-      iplotMain(main,cex.main)
+      iplotMain(main, cex.main, cex=cex)
   } ## plot title only
 
 
   ## And now data are plotted
-  par(cex.axis=cex.axis, las=las, ...)
+  par(cex=cex, cex.axis=cex.axis, las=las, mar=mar*cex.axis,
+       mgp=mgp, tcl=tcl, ...)
 
   ## drawing labels at
   at.x <- pretty(x,n=nlab.xaxis)

@@ -1,5 +1,7 @@
-`plot.page` <-
-function(y1, y2, names1, names2,
+## plot.page.R
+## helper function for longtsPlot
+
+plot.page <- function(y1, y2, names1, names2,
                          startP, upf, fpp, overlap,
                          x.at, x.ann, x.tick,
                          y1.at, y1.ann, y1.tick,
@@ -149,4 +151,3 @@ function(y1, y2, names1, names2,
     }
     if (!is.null(main)) mtext(text=main,side=3,line=0,outer=T,cex=cex.main)
 } #plot.page
-

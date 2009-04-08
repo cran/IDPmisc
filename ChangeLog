@@ -308,5 +308,21 @@
 2008-03-16 Rene Locher
 	IDPmisc V1.0.01
 	* plot.rose Shows warning only when warn = TRUE
-	* Typo in help corrected
-	
+	* Help: Typos corrected, text improved.
+2008-03-26 Rene Locher
+	IDPmisc V1.1.00
+	* plotdat devided into plotdat and griddat
+	* plot.rose:
+	  Rose will now be plotted in segments by default.
+	  Help slightly changed.
+	* general.control: New argument 'type'. Cf. 'plot.rose'.
+	* draw.leg: if (any(textLocations)) replaced by
+	  if (length(textLocations))
+	* ilagplot: Default distances and character sizes optimized.
+	  New arguments 'cex','mgp','tcl'.
+	* ipairs: Default distances and character sizes optimized.
+	  New arguments 'cex','mgp','tcl'.
+	* iplot: Default distances and character sizes optimized.
+	  New arguments 'cex','mgp','tcl'.
+
+

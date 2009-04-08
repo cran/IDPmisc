@@ -13,11 +13,12 @@
 \usage{
 ilagplot(x, set.lags = 1,
          pixs = 1, zmax = NULL, ztransf = function(x){x},
-         colramp = IDPcolorRamp, mfrow=NULL,
-         main = NULL, d.main = 1, cex.main = 2*par("cex.main"),
+         colramp = IDPcolorRamp, mfrow=NULL, cex=par("cex"),
+         main = NULL, d.main = 1, cex.main = 1.5*par("cex.main"),
          legend = TRUE, d.legend = 1,
          cex.axis = par("cex.axis"), las = 1,
-         border=FALSE, mar = c(3,3,2,0), oma = c(3,3,1,0), ...)
+         border=FALSE, mar = c(2,2,2,0), oma = rep(0,4)+0.1,
+         mgp = c(2,0.5,0)*cex.axis, tcl = -0.3, ...)
 }
 
 \arguments{
@@ -36,6 +37,7 @@ ilagplot(x, set.lags = 1,
   \item{colramp}{Color ramp to encode the density of the points within a
   pixel}
   \item{mfrow}{See Argument \code{mfrow} in \code{\link{par}}}
+  \item{cex}{See Argument \code{cex} in \code{\link{par}}}
   \item{main}{Title}
   \item{d.main}{Vertical distance between upper border of scatter plots
     and the title line in multiples of title height.}
@@ -50,13 +52,15 @@ ilagplot(x, set.lags = 1,
   \item{las}{Orientation of labels on axes.}
   \item{border}{Logical. When \code{TRUE}, a border is drawn around the
     individual colors in the legend.}
-  \item{mar, oma}{Margin and outer margin respectively.
+  \item{mar, oma}{Margin and outer margin respectively. 
     Cf. \code{\link{par}}}
+  \item{mgp, tcl}{Cf. \code{\link{par}}}
   \item{\dots}{Additional arguments to \code{\link{par}}}
 }
 
 \details{
- Code is based on R function \code{\link{lag.plot}} V1.7.
+  Code is based on R function \code{\link{lag.plot}} V1.7.
+  Tip: Legend looks  better when \code{mar} is defined symmetrically.
 }
 
 \value{

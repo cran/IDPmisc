@@ -1,26 +1,28 @@
-`ilagplot` <-
-function (x,
+ilagplot <- function (x,
                       set.lags=1,
                       pixs=1,
                       zmax=NULL,
                       ztransf=function(x){x},
                       colramp=IDPcolorRamp,
                       mfrow=NULL,
+                      cex=par("cex"),
                       main = NULL,
                       d.main = 1,
-                      cex.main = 2*par("cex.main"),
+                      cex.main = 1.5*par("cex.main"),
                       legend = TRUE,
                       d.legend = 1,
                       cex.axis = par("cex.axis"),
                       las = 1,
                       border=FALSE,
-                      mar = c(3,3,2,0),
-                      oma = c(3,3,1,0),
+                      mar = c(2,2,2,0),
+                      oma = rep(0,4)+0.1,
+                      mgp = c(2,0.5,0)*cex.axis,
+                      tcl = -0.3,
                       ...)
 
   ## based on R function lag.plot V1.7
   ## Authors: Andreas Ruckstuhl, Rene Locher
-  ## Version 09-02-19
+  ## Version 09-04-08
 {
   if (!(is.vector(x)|is.ts(x))) stop("x must be a vector or ts\n")
   if(!is.numeric(x)) stop("x must be numeric or ts\n")
@@ -36,10 +38,11 @@ function (x,
   w <- par("cin")[1] * 2.54
   h <- par("cin")[2] * 2.54
 
-  w.legend <- lcm(4*w)
-  h.main <- lcm(1*h)
-  d.main <- lcm(d.main*1.2*h)
-  d.legend <- lcm(d.legend*1.2*h)
+  ## 40% of space for color bar and 60% of it for axis labels
+  w.legend <- lcm(7*cex.axis*cex*w)
+  h.main <- lcm(cex.main*cex*h)
+  d.main <- lcm(d.main*cex.main*cex*h)
+  d.legend <- lcm(d.legend*cex.main*cex*h)
 
   if (!is.null(main) & legend) { ## plot title and legend
       lom <- matrix(1:prod(mfrow), ncol=mfrow[2], byrow=TRUE) + 2
@@ -50,8 +53,10 @@ function (x,
                    width=c(rep(1,mfrow[2]), d.legend, w.legend),
                    height=c(h.main, d.main, rep(1,mfrow[1])),
                    respect=TRUE)
-      iplotMain(main,cex.main)
-      iplotLegend(colramp,zmax,cex.axis,border,mar=c(mar[1],0,mar[3],3))
+      iplotMain(main,cex.main,cex=cex)
+      iplotLegend(colramp=colramp,ncol=zmax,cex.axis=cex.axis,
+                  border=border, mar=c(mar[1],0,mar[3],4)*cex.axis,
+                  las=las, tcl=tcl, cex=cex)
   } ## plot title and legend
 
   if (is.null(main) & legend) { ## plot legend only
@@ -62,7 +67,9 @@ function (x,
                    width=c(rep(1,mfrow[2]), d.legend, w.legend),
                    height=rep(1,mfrow[1]),
                    respect=TRUE)
-      iplotLegend(colramp,zmax,cex.axis,border,mar=c(mar[1],0,mar[3],3))
+      iplotLegend(colramp=colramp,ncol=zmax,cex.axis=cex.axis,
+                  border=border, mar=c(mar[1],0,mar[3],4)*cex.axis,
+                  las=las, tcl=tcl, cex=cex)
   }## plot legend only
 
   if (!is.null(main) & !legend) { ## plot title only
@@ -75,7 +82,7 @@ function (x,
                    width=rep(1,mfrow[2]),
                    height=c(h.main, d.main, rep(1,mfrow[1])),
                    respect=TRUE)
-      iplotMain(main,cex.main)
+      iplotMain(main,cex.main,cex=cex)
   } ## plot title only
 
   if (is.null(main) & !legend) { ## No title, no legend
@@ -94,14 +101,15 @@ function (x,
   cntsmax <- 0
   n <- length(x)
 
-  par(mar=mar, las = las, cex.axis=cex.axis, pty="s", ...)
+  par(mar=mar*cex.axis, las=las, cex=cex, cex.axis=cex.axis,
+      mgp=mgp, pty="s", tcl=tcl, ...)
   xl <- range(x,na.rm=TRUE)
   for (ll in set.lags) {
     xx <- x[1:(n - ll)]
     xy <- x[(ll+1):n]
     plot.default(xx, xy, xlim=xl, ylim=xl, xlab="", ylab="",
-                 mgp=c(3,1, 0), type="n", las=1, ...)
-    mtext(side=3, line=0.5, text=paste("lag",ll))
+                 type="n", las=1)
+    mtext(side=3, line=0.5, text=paste("lag",ll), cex=cex.axis)
     cntsmax <- max(cntsmax,
                    Image(x=xx, y=xy, pixs=pixs, zmax=zmax,
                          ztransf=ztransf, colramp=colramp))

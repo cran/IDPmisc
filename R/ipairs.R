@@ -1,29 +1,33 @@
-`ipairs` <-
-function(x,
+### ipairs.R
+
+ipairs <- function(x,
                    pixs = 1,
                    zmax = NULL,
                    ztransf = function(x){x},
                    colramp = IDPcolorRamp,
+                   cex = par("cex"),
                    lab.diag,
                    cex.diag = NULL,
                    main = NULL,
-                   d.main = 1,
-                   cex.main = 2*par("cex.main"),
+                   d.main = 1.5,
+                   cex.main = 1.5*par("cex.main"),
                    legend = TRUE,
-                   d.legend = 1,
-                   cex.axis = par("cex.axis"),
+                   d.legend = 1.5,
+                   cex.axis = 0.8*par("cex.axis"),
                    nlab.axis = 5,
                    minL.axis = 2,
                    las = 1,
                    border = FALSE,
                    mar = rep(0,4),
                    oma = c(3,3,1,0),
+                   mgp = c(2,0.5,0)*cex.axis,
+                   tcl = -0.3,
                    ...)
   ## Produces an image scatter plot matrix of largee datasets
 
   ## based on R function pairs V1.7
   ## Authors: Andreas Ruckstuhl, René Locher
-  ## Version: 2009-02-19
+  ## Version: 2009-04-08
 
 {
   if (!(is.data.frame(x)||is.matrix(x)))
@@ -66,10 +70,11 @@ function(x,
   w <- par("cin")[1] * 2.54
   h <- par("cin")[2] * 2.54
 
-  w.legend <- lcm(4*w)
-  h.main <- lcm(1*h)
-  d.main <- lcm(d.main*cex.main*h)
-  d.legend <- lcm(d.legend*cex.main*h)
+  ## 40% of space for color bar and 60% of it for axis labels
+  w.legend <- lcm(7*cex.axis*cex*w)
+  h.main <- lcm(cex.main*cex*h)
+  d.main <- lcm(d.main*cex.main*cex*h)
+  d.legend <- lcm(d.legend*cex.main*cex*h)
 
   if (!is.null(main) & legend) { ## plot title and legend
       lom <- matrix(1:nc^2, ncol=nc) + 2
@@ -79,8 +84,11 @@ function(x,
                    width  = c(rep(1,nc),d.legend,w.legend),
                    height = c(h.main,d.main,rep(1,nc)),
                    respect=TRUE)
-      iplotMain(main,cex.main)
-      iplotLegend(colramp,zmax,cex.axis,border)
+
+      iplotMain(main,cex.main,cex=cex)
+      iplotLegend(colramp=colramp,ncol=zmax,cex.axis=cex.axis,
+                  border=border, mar=c(mar[1],0,mar[3],4)*cex.axis,
+                  las=las, tcl=tcl, cex=cex)
   } ## plot title and legend
 
   if (is.null(main) & legend) { ## plot legend only
@@ -91,7 +99,10 @@ function(x,
                    width  = c(rep(1,nc), d.legend, w.legend),
                    height = rep(1,nc),
                    respect=TRUE)
-       iplotLegend(colramp,zmax,cex.axis,border)
+
+       iplotLegend(colramp=colramp,ncol=zmax,cex.axis=cex.axis,
+                  border=border, mar=c(mar[1],0,mar[3],4)*cex.axis,
+                  las=las, tcl=tcl, cex=cex)
   }## plot legend only
 
   if (!is.null(main) & !legend) { ## plot title only
@@ -102,7 +113,7 @@ function(x,
                    width  = rep(1,nc),
                    height = c(h.main, d.main, rep(1,nc)),
                    respect=TRUE)
-      iplotMain(main,cex.main)
+      iplotMain(main,cex.main,cex=cex)
   } ## plot title only
 
   if (is.null(main) & !legend) { ## No title, no legend
@@ -120,7 +131,8 @@ function(x,
   cntsmax <- 0
 
   ## drawing scatterplots and axes
-  par(mar=mar, las=las, cex.axis=cex.axis, pty="s", ...)
+  par(mar=mar*cex.axis, las=las, cex=cex, cex.axis=cex.axis,
+      mgp=mgp, pty="s", tcl=tcl, ...)
   for (i in 1:nc){
     for (j in 1:nc) {
       plot(if(is.f[i]) range(NaRV.omit(x[, i]))+0.5*c(-1,1) else

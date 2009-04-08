@@ -177,9 +177,10 @@ if (require(SwissAir)){
                       cyclVar=dat$hour, n.cyclVar=24, circle=24,
                       FUN=median, na.rm=TRUE)
 
+  ## line type version of rose
   grid.newpage()
   plot(med.dayrose,
-       general = general.control(lwd=2),
+       general = general.control(lwd=2, type="l"),
        grid =
        grid.control(ray.n = 12,
                     circ.n =2,

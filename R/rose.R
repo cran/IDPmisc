@@ -1,5 +1,6 @@
-"rose" <-
-function(x, subset=NULL,
+## rose.R
+
+rose <- function(x, subset=NULL,
                  cyclVar=NULL, circle=NULL, n.cyclVar=8,
                  cut=NULL, labels=NULL, breaks=NULL,
                  include.lowest = FALSE, right = TRUE, dig.lab=2,
@@ -153,3 +154,4 @@ function(x, subset=NULL,
   rownames(res) <- cyclVar.lab
   return(new("rose",rho=res,cyclVar=cyclVar.lab,circle=circle))
 } ## rose
+

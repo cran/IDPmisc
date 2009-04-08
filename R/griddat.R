@@ -1,14 +1,13 @@
-`plotdat` <-
-function(rho,
+## griddat.R
+
+griddat <- function(rho,
                     cyclVar,
                     circle,
-                    transf,
                     vp,
-                    general,
                     grid,
                     title)
   ## Author: Rene Locher
-  ## Version: 2005-01-19
+  ## Version: 2009-04-08
   ## helper function for plot.rose
   {
     cyclVar.lab.n <- length(grid$cyclVar$lab)
@@ -62,16 +61,6 @@ function(rho,
 
     ##----------------------------------------
     ## calculating x & y coordinates
-
-    ## for drawing data
-    x.dat <- as.vector(sweep(transf(rho)-transf(grid$ray$lim[1]),MAR=1,
-                             sin(2*pi*(cyclVar+general$shift)/circle),
-                             "*"))
-    y.dat <- as.vector(sweep(transf(rho)-transf(grid$ray$lim[1]),MAR=1,
-                             cos(2*pi*(cyclVar+general$shift)/circle),
-                             "*"))
-    id.dat <- rep(1:ncol(rho), rep(nrow(rho),ncol(rho)))
-
 
     ## for labels on circles
     circ.lab.x <- circ.lab.r*sin(grid$circ$dir)
@@ -163,10 +152,7 @@ function(rho,
 
     popViewport()
 
-    return(list(x = x.dat,
-                y = y.dat,
-                id = id.dat,
-                labSpace = labSpace,
+    return(list(labSpace = labSpace,
                 circ = list(
                   lab = list(
                     x = circ.lab.x,
@@ -177,5 +163,6 @@ function(rho,
                     y = cyclVar.lab.y)),
                 title = list(
                   y = y.title)))
-  } ## plotdat
+  } ## griddat
+
 

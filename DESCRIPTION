@@ -2,8 +2,8 @@ Package: IDPmisc
 Type: Package
 Title: Utilities of Institute of Data Analyses and Process Design
         (www.idp.zhaw.ch)
-Version: 1.0.01
-Date: 2009-03-16
+Version: 1.1.00
+Date: 2009-04-08
 Encoding: latin1
 Author: Andreas Ruckstuhl, Thomas Unternaehrer, Rene Locher
 Maintainer: Rene Locher <rene.locher@zhaw.ch>
@@ -23,6 +23,6 @@ LazyData: yes
 Depends: R(>= 2.8), methods, grid(>= 2.1.1), lattice(>= 0.12-3)
 Suggests: SwissAir(>= 1.08)
 License: GPL (>= 3)
-Packaged: Mon Mar 16 10:51:56 2009; lore
+Packaged: Wed Apr 8 18:46:07 2009; lore
 Repository: CRAN
-Date/Publication: 2009-03-16 10:16:20
+Date/Publication: 2009-04-14 17:26:13

@@ -9,10 +9,9 @@
   These functions are for internal use only and not documented further.
 }
 \usage{
+griddat(rho, cyclVar, circle, vp, grid, title)
 
-iplotMain(main,cex.main)
-
-plotdat(rho, cyclVar, circle, transf, vp, general, grid, title)
+iplotMain(main,cex.main, cex)
 
 plot.page(y1, y2, names1, names2,
           startP, upf, fpp, overlap,
@@ -34,18 +33,21 @@ plot.onepage(y1, y2, names1, names2,
              ncol.leg, cex.leg=1.5, h1, h2, col.h1, col.h2,
              main, cex.main, mgp, mar, oma, cex, type)
 
-rose.grob(pdat, general, grid, title)
+rose.grob(rho, cyclVar, circle, transf, general, grid, title, gdat)
+segments.circle(rho, shift, circle = 360, ncp = 1000, gp = gpar())
 }
 
 \details{
   \tabular{ll}{
     Functions \tab used in\cr
+    \code{griddat} \tab \code{\link{plot.rose}}\cr
     \code{iplotMain} \tab \code{\link{ipairs}},
     \code{\link{ilagplot}}\cr
     \code{plotpage} \tab \code{\link{longts.plot}}\cr
-    \code{plot.page} \tab \code{\link{longtsPlot}}\cr    
+    \code{plot.page} \tab \code{\link{longtsPlot}}\cr
     \code{plotdat} \tab \code{\link{plot.rose}}\cr
     \code{rose.grob} \tab \code{\link{plot.rose}}\cr
+    \code{segments.circle} \tab \code{\link{rose.grob}}\cr
   }
 
 }

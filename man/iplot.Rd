@@ -15,12 +15,13 @@
 \usage{
 iplot(x, y = NULL,
       pixs = 1, zmax = NULL, ztransf = function(x){x},
-      colramp = IDPcolorRamp,
+      colramp = IDPcolorRamp, cex = par("cex"),
       main = NULL, d.main = 1, cex.main = par("cex.main"),
       xlab = NULL, ylab = NULL, cex.lab = 1,
       legend = TRUE, d.legend = 1,
       cex.axis = par("cex.axis"), nlab.xaxis = 5, nlab.yaxis = 5,
-      minL.axis = 3, las = 1, border = FALSE, oma = c(3,3,1,0), ...
+      minL.axis = 3, las = 1, border = FALSE,
+      oma = c(5,4,1,0)+0.1, mgp = c(2,0.5,0)*cex.axis, tcl = -0.3, ...
       )
 }
 %- maybe also 'usage' for other objects documented here.
@@ -43,6 +44,7 @@ iplot(x, y = NULL,
     \code{\link{ipairs}} and \code{\link{ilagplot}}.}
   \item{colramp}{Color ramp to encode the number of counts within a
     pixel.}
+  \item{cex}{Magnification of text relative to default.}
   \item{main}{Title.}
  \item{d.main}{Vertical distance between upper border of scatter plots
     and the title line in multiples of title height.}
@@ -54,8 +56,8 @@ iplot(x, y = NULL,
     the current setting of cex}
   \item{legend}{Logical. When \code{FALSE}, no legend is plotted and
     space is saved in figure region. }
-  \item{d.legend}{Horizontal distance between right border of scatter
-    plots and legend in multiples of title height.}
+  \item{d.legend}{Horizontal distance between right border of
+    scatter plot and legend in multiples of title height.}
   \item{cex.axis}{Magnification used for axis annotation
     relative to the current setting of cex. }
   \item{nlab.xaxis, nlab.yaxis}{Approximate number of labels on x- and
@@ -66,6 +68,7 @@ iplot(x, y = NULL,
   \item{border}{Logical. When \code{TRUE}, a border is drawn around the
     individual colors in the legend.}
   \item{oma}{Outer margin. Cf. \code{\link{par}}}
+  \item{mgp, tcl}{Cf. \code{\link{par}}}
   \item{\dots}{Additional arguments to \code{\link{par}}}
 }
 

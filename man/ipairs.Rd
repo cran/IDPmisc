@@ -12,11 +12,13 @@
 \usage{
 ipairs(x,
        pixs = 1, zmax = NULL, ztransf=function(x){x},
-       colramp = IDPcolorRamp, lab.diag, cex.diag = NULL,
-       main = NULL, d.main = 1, cex.main = 2*par("cex.main"),
-       legend = TRUE, d.legend = 1, cex.axis = par("cex.axis"),
+       colramp = IDPcolorRamp, cex = par("cex"),
+       lab.diag, cex.diag = NULL,
+       main = NULL, d.main = 1.5, cex.main = 1.5*par("cex.main"),
+       legend = TRUE, d.legend = 1.5, cex.axis = 0.8*par("cex.axis"),
        nlab.axis = 5, minL.axis = 2, las = 1, border = FALSE,
-       mar = rep(0,4), oma = c(3,3,1,0), ...)
+       mar = rep(0,4), oma = c(3,3,1,0), mgp = c(2,0.5,0)*cex.axis,
+       tcl = -0.3, ...)
 }
 
 \arguments{
@@ -34,6 +36,7 @@ ipairs(x,
     zmax is any positive number (>=2).}
   \item{colramp}{Color ramp to encode the number of counts within a
     pixel.}
+  \item{cex}{See Argument \code{cex} in \code{\link{par}}}
   \item{lab.diag}{Labels of columns, written into the diagonal of the
     matrix. When  \code{NULL}, the names of x are used.}
   \item{cex.diag}{Magnification used for text in diagonal  relative to
@@ -58,6 +61,7 @@ ipairs(x,
     individual colors in the legend.}
   \item{mar, oma}{Margin and outer margin respectively.
     Cf. \code{\link{par}}}
+  \item{mgp, tcl}{Cf. \code{\link{par}}}
   \item{\dots}{Additional arguments to \code{\link{par}}}
 }
 \details{

@@ -1,5 +1,6 @@
-`val.rose` <-
-function(x)
+## val.rose.R
+
+val.rose <- function(x)
   ## Validation function for rose-class
   ## Author: Rene Locher
   ## Version: 2005-10-17

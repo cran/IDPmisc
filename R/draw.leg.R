@@ -340,7 +340,8 @@ function(key, draw = FALSE, vp = NULL)
         for (i in 1:n.row) {
             textLocations <- textMatrix[i,]
             textLocations <- textLocations[textLocations>0]
-            if (any(textLocations)) {
+            ## if (any(textLocations))
+            if (length(textLocations)) {
 
                 strbar <- textList[textLocations]
                 heights.insertlist.position <- c(heights.insertlist.position, i)
@@ -373,13 +374,15 @@ function(key, draw = FALSE, vp = NULL)
         for (i in 1:n.col) {
             textLocations <- textMatrix[,i]
             textLocations <- textLocations[textLocations>0]
-            if (any(textLocations)) {
-
+            ##  if (any(textLocations))
+            if (length(textLocations)) {
                 strbar <- textList[textLocations]
-                widths.insertlist.position <- c(widths.insertlist.position, i)
+                widths.insertlist.position <-
+                    c(widths.insertlist.position, i)
                 widths.insertlist.unit <-
                     unit.c(widths.insertlist.unit,
-                           max(unit(textCex[textLocations], "strwidth", strbar)))
+                           max(unit(textCex[textLocations],
+                                    "strwidth", strbar)))
             }
         }
 

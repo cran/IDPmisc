@@ -15,7 +15,7 @@ general.control(stacked = FALSE,
                 mar = rep(0.3, 4),
                 rev.col = FALSE,
                 shift = 0,
-                cex = 1, col = NULL, lty = 1:3, lwd = 1)
+                cex = 1, col = NULL, lty = 1:3, lwd = 1, type = "s")
 }
 
 \arguments{
@@ -39,9 +39,9 @@ general.control(stacked = FALSE,
     complete rose and the legend.  These arguments are especially useful
     when a series of plots of exactly the same size and position of the
     rose on the viewport has to be produced.}
-  \item{mar}{ Margin around the plotting area. Default units are 
+  \item{mar}{ Margin around the plotting area. Default units are
   \code{grid.control(cyclVar.cex)}. Other units can be defined by
-  \code{\link[grid]{unit}}.} 
+  \code{\link[grid]{unit}}.}
   \item{rev.col}{ \code{= TRUE}: Ordering of the columns of \code{x@rho}
     is reversed. }
   \item{shift}{ Shifts the plot in clockwise direction by this
@@ -53,6 +53,11 @@ general.control(stacked = FALSE,
     as possible; in the latter case, all colors are matched by default
     to the range green (=center of rose) to blue (outside of rose). }
   \item{lty, lwd}{ Line type and line width. }
+  \item{type}{1-character string giving the type of plot desired: \cr
+    "s" plots observations as segments. This option is the proper way to
+  distplay rose data. \cr
+    "l" plots a line joining the data points. This option is a nicer to
+  look at when data are smoothly distributed in all directions.}
 }
 
 \value{
