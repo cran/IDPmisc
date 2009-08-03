@@ -65,22 +65,22 @@ Image(x, y = NULL, pixs = 1, zmax = NULL, ztransf = function(x){x},
   \code{\link[fields]{image.count}}}
 
 \examples{
-plot.default(iris$Species,iris$Petal.Width,xlim=c(0.5,3.5),
-             type="n",axes=FALSE)
-axis(1,at=1:3,lab=levels(iris$Species))
+plot.default(iris$Species, iris$Petal.Width, xlim=c(0.5,3.5),
+             type="n", axes=FALSE)
+axis(1, at=1:3, labels=levels(iris$Species))
 axis(2)
-Image(iris$Species,iris$Petal.Width,pixs=3)
+Image(iris$Species, iris$Petal.Width, pixs=3)
 
 ##
 x <- rnorm(10000)
-y <- rnorm(10000,10)
-plot(x+y,y,type="n")
-Image(x+y,y)
-abline(a=0,b=1)
+y <- rnorm(10000, 10)
+plot(x+y, y, type="n")
+Image(x+y, y)
+abline(a=0, b=1)
 
 ## The above can be merged to
 iplot(x+y, y, legend=FALSE, oma=c(5, 4, 4, 2) + 0.1)
-abline(a=0,b=1)
+abline(a=0, b=1)
 }
 
 \keyword{aplot}

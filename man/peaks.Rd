@@ -67,7 +67,7 @@ freq <- 1:n
 theory <- sin(freq/n*4*pi)*cos(freq/n*3*pi)
 spec <- theory + 0.1*rnorm(n)
 
-plot(spec,ty="b")
+plot(spec,type="b")
 lines(theory,lwd=2)
 
 pts <- peaks(spec, minPH=0.7)
@@ -86,7 +86,7 @@ data(MS)
 MS1 <- log10(MS[MS$mz>12000&MS$mz<1e5,])
 
 P <- peaks(MS1, minPH=0.02, minPW=0.001)
-plot(MS1, ty="l", xlab="log10(mz)", ylab="log10(I)")
+plot(MS1, type="l", xlab="log10(mz)", ylab="log10(I)")
 points(P,col="blue",cex=1.6)
 
 ## compare to

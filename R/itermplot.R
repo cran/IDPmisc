@@ -22,9 +22,9 @@ itermplot <- function(model, data=NULL,envir=environment(formula(model)),
     which.terms<-terms
     terms <- ## need if(), since predict.coxph() has non-NULL default terms :
 	if (is.null(terms))
-	    predict(model, type="terms", se=se)
+	    predict(model, type="terms", se.fit=se)
 	else
-	    predict(model, type="terms", se=se, terms=terms)
+	    predict(model, type="terms", se.fit=se, terms=terms)
     n.tms <- ncol(tms <- as.matrix(if(se) terms$fit else terms))
     mf <- model.frame(model)
     if (is.null(data))
@@ -101,13 +101,13 @@ itermplot <- function(model, data=NULL,envir=environment(formula(model)),
             if (!is.null(model$na.action))
               ff<-naresid(model$na.action,ff)
 	    ll <- levels(ff)
-	    xlims <- range(seq(along=ll)) + c(-.5, .5)
+	    xlims <- range(seq(along.with=ll)) + c(-.5, .5)
             xx <- as.numeric(ff) ##need if rug or partial
 
 	    plot(1,0, type = "n", xlab = xlabs[i], ylab = ylabs[i],
                  xlim = xlims, ylim = ylims, main = main[i],xaxt="n", ...)
             if (use.factor.levels)
-                axis(1,at=seq(along=ll),labels=ll,...)
+                axis(1,at=seq(along.with=ll),labels=ll,...)
             else
                 axis(1)
             if (partial.resid){
@@ -126,7 +126,7 @@ itermplot <- function(model, data=NULL,envir=environment(formula(model)),
                           ztransf = ztransf, colramp = colramp,
                           factors = c(is.fac[i],FALSE)))
             }
-	    for(j in seq(along=ll)) {
+	    for(j in seq(along.with=ll)) {
 		ww <- which(ff==ll[j])[c(1,1)]
 		jf <- j + c(-.4, .4)
 		lines(jf,tms[ww,i], col=col.term, lwd=lwd.term, ...)

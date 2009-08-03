@@ -329,10 +329,18 @@
 	* non-english letters removed from sources and help files for
 	  compatibility
 	* Description: Encoding: latin1 removed
+	* Partially matching arguments altered to 
+	  fully matching arguments
 2008-08-03 Rene Locher
 	IDPmisc V1.1.02
 	* Error in help file corrected
-
+	* Partially matching arguments altered to 
+	  fully matching arguments
+2008-08-04 Rene Locher
+	IDPmisc V1.1.03
+	* File drawleg.R, which was needless, removed.
+	* Partially matching arguments altered to 
+	  fully matching arguments
 
 
 

@@ -1,5 +1,31 @@
-`draw.leg` <-
-function(key, draw = FALSE, vp = NULL)
+## draw.leg.R
+
+### Copyright (C) 2001-2005  Deepayan Sarkar <Deepayan.Sarkar@R-project.org>
+###
+### This file is part of the lattice library for R.
+### It is made available under the terms of the GNU General Public
+### License, version 2, or at your option, any later version,
+### incorporated herein by reference.
+###
+### This program is distributed in the hope that it will be
+### useful, but WITHOUT ANY WARRANTY; without even the implied
+### warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+### PURPOSE.  See the GNU General Public License for more
+### details.
+###
+### You should have received a copy of the GNU General Public
+### License along with this program; if not, write to the Free
+### Software Foundation, Inc., 59 Temple Place - Suite 330, Boston,
+### MA 02111-1307, USA
+
+## Slightly modified Version of draw.key {lattice 0.12-3}
+## by Rene Locher <Rene.Locher@zhaw.ch>
+## last revision: 09-08-04
+## 3 new components added to list key: between.rows, between.title, adj.title
+
+
+
+draw.leg <- function(key, draw = FALSE, vp = NULL)
 {
     if (!is.list(key)) stop("key must be a list")
 
@@ -128,7 +154,7 @@ function(key, draw = FALSE, vp = NULL)
             tmplen <- length(pars$labels)
             for (j in 1:length(pars))
                 if (is.character(pars))
-                    pars[[j]] <- rep(pars[[j]], length = tmplen)
+                    pars[[j]] <- rep(pars[[j]], length.out = tmplen)
 
             max.length <- max(max.length, tmplen)
             components[[length(components)+1]] <-
@@ -211,7 +237,7 @@ function(key, draw = FALSE, vp = NULL)
         if (components[[i]]$type != "text") {
             components[[i]]$pars <-
                 lapply(components[[i]]$pars, rep,
-                       length = if (key$rep) max.length
+                       length.out = if (key$rep) max.length
                        else components[[i]]$length)
             if (key$rep) components[[i]]$length <- max.length
         }
@@ -228,7 +254,7 @@ function(key, draw = FALSE, vp = NULL)
 
     if (column.blocks > max.length) warning("not enough rows for columns")
 
-    key$between <- rep(key$between, length = number.of.components)
+    key$between <- rep(key$between, length.out = number.of.components)
 
 
     if (key$align) {
@@ -272,7 +298,7 @@ function(key, draw = FALSE, vp = NULL)
         else heights.x[1] <- 0
 
 
-        widths.x <- rep(key$between.column, n.col)
+        widths.x <- rep(key$between.columns, n.col)
         widths.units <- rep("strwidth", n.col)
         widths.data <- as.list(rep("o", n.col))
 
@@ -582,4 +608,3 @@ function(key, draw = FALSE, vp = NULL)
 
     key.gf
 } ## drawleg.R
-

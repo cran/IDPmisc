@@ -39,7 +39,7 @@ y <- i*sin(i*(pi/16))
 y <- c(rev(y),y)
 
 ## Not run:
-zoom(fun=plot, zoom.col="red", x=1:200, y=y, ty="l", xlab="index")
+zoom(fun=plot, zoom.col="red", x=1:200, y=y, type="l", xlab="index")
 ## End( Not run)
 }
 

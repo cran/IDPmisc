@@ -71,7 +71,7 @@ plot.rose <-
     if (general$stacked) {
         if (min(rho,na.rm=TRUE)<0)
             stop("Stacked roses make sense only for positive variables like counts,  proportions and concentrations!")
-        rho <- t(apply(rho, MAR=1, cumsum))[,ncol(rho):1]
+        rho <- t(apply(rho, MARGIN=1, cumsum))[,ncol(rho):1]
     } ## stacked
 
     ## calculating the labels for the (main) circles

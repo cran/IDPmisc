@@ -32,11 +32,11 @@ itermplot(model, data = NULL, envir = environment(formula(model)),
     to create their ylim. By setting scale to be the maximum value of
     diff(ylim) or above for all the plots, then all subsequent plots
     will be produced in the same vertical units. This is essential for
-    comparing the importance of fitted terms in additive models. } 
+    comparing the importance of fitted terms in additive models. }
   \item{pixs}{ Size of pixel in x- and y-direction in [mm] on the
     plotting device. When x and y are numeric, pixels are square. When x
     and y are factors, pixels are no longer square. The pixels are
-    enlarged in x-direction. } 
+    enlarged in x-direction. }
   \item{zmax}{ Maximum number of counts per pixel in the plot.  When
     NULL, each scatter plot has its individual scale.  If a number >=
     maximum number of counts per pixel is supplied, the scale will be
@@ -49,26 +49,26 @@ itermplot(model, data = NULL, envir = environment(formula(model)),
   \item{colramp}{ Color ramp to encode the number of counts within a
     pixel by color. }
   \item{terms}{ Numeric. Which terms to plot (default NULL means all
-    terms) } 
+    terms) }
   \item{se}{ Logical. Plot pointwise standard errors? }
   \item{xlabs}{ Vector of labels for the x axes }
   \item{ylabs}{ Vector of labels for the y axes }
   \item{main}{ Logical, or vector of main titles; if TRUE, the model's
-    call is taken as main title, NULL or FALSE mean no titles. } 
+    call is taken as main title, NULL or FALSE mean no titles. }
   \item{col.term, lwd.term}{ Color and line width for the \dQuote{term
-    curve} } 
+    curve} }
   \item{col.se, lty.se, lwd.se}{ Color, line type and line width for the
     \dQuote{twice-standard-error curve} when se = TRUE. }
   \item{col.smth, lty.smth, lwd.smth}{ Color, line type and line width
-    for the smoothed curve} 
+    for the smoothed curve}
   \item{span.smth}{ Smoothing parameter f for \code{\link[stats]{lowess}}.}
   \item{ask}{ Logical. Should user be asked before each plot? cf.
-    \code{\link{par}}. } 
+    \code{\link{par}}. }
   \item{use.factor.levels}{ Logical. Should x-axis ticks use factor
-    levels or numbers for factor terms? } 
+    levels or numbers for factor terms? }
   \item{smooth}{ NULL or a function with the same arguments as
     \code{\link{ipanel.smooth}} to draw a smooth through the partial
-    residuals for non-factor terms } 
+    residuals for non-factor terms }
   \item{\dots}{ Other graphical parameters  }
 }
 \details{
@@ -78,17 +78,17 @@ itermplot(model, data = NULL, envir = environment(formula(model)),
   models of huge datasets.
   The model object must have a predict method that accepts type=terms,
   eg glm in the base package, coxph and survreg in the survival
-  package. 
+  package.
 
   For the partial.resid=TRUE option it must have a residuals method that
   accepts type="partial", which \code{\link{lm}},  \code{\link{glm}} and
-  \code{\link[mgcv]{gam}} do.  
+  \code{\link[mgcv]{gam}} do.
 
   The data argument should rarely be needed, but in some cases termplot
   may be unable to reconstruct the original data frame. Using
-  na.action=na.exclude makes these problems less likely. 
+  na.action=na.exclude makes these problems less likely.
 
-  Nothing sensible happens for interaction terms. 
+  Nothing sensible happens for interaction terms.
 }
 \value{
   Maximum number of counts per pixel found.
@@ -96,7 +96,7 @@ itermplot(model, data = NULL, envir = environment(formula(model)),
 %%\references{  }
 \author{ Rene Locher }
 
-\seealso{ \code{\link{termplot}}. } 
+\seealso{ \code{\link{termplot}}. }
 \examples{
 r.lm <- lm(Sepal.Length~Sepal.Width+Petal.Length+Petal.Width+Species,
            data=iris)
@@ -108,7 +108,7 @@ if (require(SwissAir)) {
   data(AirQual)
   r.lm <- lm(log(ad.O3)~log(ad.NOx)+ad.T+ad.Td+ad.WS, data=AirQual)
   par(mfrow=c(2,2),pty="s")
-  itermplot(r.lm, se = TRUE, partial.res=TRUE, smooth=ipanel.smooth,
+  itermplot(r.lm, se = TRUE, partial.resid=TRUE, smooth=ipanel.smooth,
             lwd.smth = 3, pixs = 1, ask=FALSE)
 } else print("Package SwissAir is not available")
 
