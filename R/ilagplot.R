@@ -50,8 +50,8 @@ ilagplot <- function (x,
                    cbind(lom,rep(0,mfrow[1]),rep(2,mfrow[1])))
 
       lo <- layout(lom,
-                   width=c(rep(1,mfrow[2]), d.legend, w.legend),
-                   height=c(h.main, d.main, rep(1,mfrow[1])),
+                   widths=c(rep(1,mfrow[2]), d.legend, w.legend),
+                   heights=c(h.main, d.main, rep(1,mfrow[1])),
                    respect=TRUE)
       iplotMain(main,cex.main,cex=cex)
       iplotLegend(colramp=colramp,ncol=zmax,cex.axis=cex.axis,
@@ -64,8 +64,8 @@ ilagplot <- function (x,
       lom <- cbind(lom,rep(0,mfrow[1]),rep(1,mfrow[1]))
 
       lo <- layout(lom,
-                   width=c(rep(1,mfrow[2]), d.legend, w.legend),
-                   height=rep(1,mfrow[1]),
+                   widths=c(rep(1,mfrow[2]), d.legend, w.legend),
+                   heights=rep(1,mfrow[1]),
                    respect=TRUE)
       iplotLegend(colramp=colramp,ncol=zmax,cex.axis=cex.axis,
                   border=border, mar=c(mar[1],0,mar[3],4)*cex.axis,
@@ -79,8 +79,8 @@ ilagplot <- function (x,
                    lom)
 
       lo <- layout(lom,
-                   width=rep(1,mfrow[2]),
-                   height=c(h.main, d.main, rep(1,mfrow[1])),
+                   widths=rep(1,mfrow[2]),
+                   heights=c(h.main, d.main, rep(1,mfrow[1])),
                    respect=TRUE)
       iplotMain(main,cex.main,cex=cex)
   } ## plot title only
@@ -89,8 +89,8 @@ ilagplot <- function (x,
       lom <- matrix(1:prod(mfrow), ncol=mfrow[2], byrow=TRUE)
 
       lo <- layout(lom,
-                   width=rep(1,mfrow[2]),
-                   height=rep(1,mfrow[1]),
+                   widths=rep(1,mfrow[2]),
+                   heights=rep(1,mfrow[1]),
                    respect=TRUE)
 
   } ## No title, no legend

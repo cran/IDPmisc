@@ -33,11 +33,11 @@ plot.page <- function(y1, y2, names1, names2,
 
         if (st1 < ee1) {
             opar <- par(xpd=xpd)
-            err <- try(plot(window(y1,start=st1,end=ee1),
-                            col=col1,lty=lty1, lwd=lwd1, ylim=y1lim,
-                            xlim=c(st,ee), type=type,
-                            plot.type="single",
-                            xlab=xlab, ylab="", axes=F),
+            err <- try(plot(window(y1, start = st1, end = ee1),
+                            col = col1,lty = lty1, lwd = lwd1,
+                            ylim = y1lim, xlim=c(st, ee), type = type,
+                            plot.type = "single",
+                            xlab = xlab, ylab="", axes = FALSE),
                        silent=TRUE)
             par(opar)
             if (!is.null(err)) {
@@ -68,15 +68,16 @@ plot.page <- function(y1, y2, names1, names2,
 
             if (!is.null(x.tick))
                 axis(1,at=x.tick,labels=FALSE,tcl=-0.3, xpd=FALSE)
-            axis(1,at=x.at,label=x.ann,tcl=-0.5,cex.axis=cex.ann,
-                 xpd=FALSE)
+            axis(1, at = x.at, labels = x.ann, tcl = -0.5,
+                 cex.axis = cex.ann, xpd = FALSE)
 
             if (!is.null(y1.tick))
-                axis(2, y1.tick, labels=FALSE, col.axis=col.y1,
+                axis(2, y1.tick, labels = FALSE, col.axis = col.y1,
                      tcl=-0.3, xpd=FALSE)
-            axis(2, at = y1.at, labels=y1.ann, col.lab=col.y1,
-                 col.axis=col.y1,cex.axis=cex.ann, xpd=FALSE)
-            mtext(text=y1lab,side=2,line=mgp[1],col=col.y1,cex=cex.lab)
+            axis(2, at = y1.at, labels = y1.ann, col.lab = col.y1,
+                 col.axis = col.y1, cex.axis = cex.ann, xpd = FALSE)
+            mtext(text = y1lab, side = 2, line = mgp[1],
+                  col = col.y1, cex = cex.lab)
 
             if (!is.null(y2)) {
                 if (!is.null(y2.tick))
@@ -93,7 +94,7 @@ plot.page <- function(y1, y2, names1, names2,
 
     if (leg) {
         par(xpd=NA)
-        plot(0:1,0:1,type="n",an=FALSE,axes=FALSE)
+        plot(0:1, 0:1, type="n", an = FALSE, axes=FALSE)
         cH <- strheight("A")
         cW <- strwidth("A")
 

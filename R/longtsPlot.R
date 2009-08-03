@@ -1,5 +1,6 @@
-`longtsPlot` <-
-function(y1, y2 = NULL,
+##longtsPlot.R
+
+longtsPlot <- function(y1, y2 = NULL,
                        names1 = NULL, names2 = NULL,
                        startP = start(y1)[1],
                        upf = 400, fpp = 4, overlap = 20,
@@ -45,7 +46,7 @@ function(y1, y2 = NULL,
   fq1 <- frequency(y1)
 
   if (!is.matrix(y1)) {
-    y1 <- ts(as.matrix(y1),start=start(y1),freq=fq1)
+    y1 <- ts(as.matrix(y1),start=start(y1),frequency=fq1)
   }
 
   if (is.null(col1)) col1 <-
@@ -89,7 +90,7 @@ function(y1, y2 = NULL,
     fq2 <- frequency(y2)
 
     if (!is.matrix(y2)) {
-      y2 <- ts(as.matrix(y2),start=start(y2),freq=fq2)
+      y2 <- ts(as.matrix(y2),start=start(y2),frequency=fq2)
     }
 
     if (ncol(y2)==length(names2)) colnames(y2) <- names2 else

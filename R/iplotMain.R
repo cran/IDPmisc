@@ -1,5 +1,6 @@
-`iplotMain` <-
-function(main, cex.main, cex)
+### iplotMain.R
+
+iplotMain <- function(main, cex.main, cex)
   ## internal functions for ipairs and ilagplot
   ## Version  2009-02-10
 {

@@ -38,7 +38,7 @@ Data frame with
 
 \examples{
 ## convert polar coordinates to cartesian coordinates
-xy <- clock2cart(rho=rep(1,33),phi=seq(0,to=360,len=33),circle=360)
+xy <- clock2cart(rho=rep(1,33),phi=seq(0,to=360,length.out=33),circle=360)
 
 ## convert the cartesian coordinates back to polar coordinates
 rhophi <- cart2clock(xy$x,xy$y,circle=360)

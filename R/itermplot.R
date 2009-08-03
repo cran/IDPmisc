@@ -1,5 +1,7 @@
-`itermplot` <-
-function(model, data=NULL,envir=environment(formula(model)),
+## itermplot.R
+
+
+itermplot <- function(model, data=NULL,envir=environment(formula(model)),
                       partial.resid=FALSE, scale=0,
                       pixs=1, zmax=NULL, ztransf = function(x){x},
                       colramp = IDPcolorRamp,
@@ -45,7 +47,7 @@ function(model, data=NULL,envir=environment(formula(model)),
         main <- if(main) deparse(model$call, 500) else ""
     else if(!is.character(main))
         stop("'main' must be TRUE, FALSE, NULL or character (vector).")
-    main <- rep(main, length = n.tms) # recycling
+    main <- rep(main, length.out = n.tms) # recycling
     pf <- envir
     carrier <- function(term) { # used for non-factor ones
 	if (length(term) > 1)
@@ -162,4 +164,3 @@ function(model, data=NULL,envir=environment(formula(model)),
       }
     invisible(zmax)
   } ## itermplot
-

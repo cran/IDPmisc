@@ -1,15 +1,17 @@
-`iplotLegend` <-
-function(colramp = IDPcolorRamp,
+### iplotLegend.R
+
+iplotLegend <- function(colramp = IDPcolorRamp,
                         ncol = NULL, cex.axis = par("cex.axis"),
                         border = FALSE, mar = c(0,0,0,3), las = 1, ...)
   ## internal functions for ipairs and ilagplot
   ## Version  2009-03-26
 {
-
       ##-------------------
       ## drawing legend
       ## calculate colcut only when common ncol is defined
       if(is.null(ncol)) {
+          ## warning(c("Separate color coding for each image\n"),
+          ##         call. = FALSE)
           border <- FALSE
           mycol <- c(par("bg"),colramp(100))
       }else {

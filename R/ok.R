@@ -1,5 +1,6 @@
-`ok` <-
-function(x) {
+### ok.R
+
+ok <- function(x) {
   ## Author: Rene Locher
   ## Version: 2005-10-17
   if (is.logical(x)) {

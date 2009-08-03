@@ -32,10 +32,10 @@ rose.grob <- function(rho,
     } else { ## drawing lines between observations
         x.dat <-
             as.vector(sweep(transf(rho)-transf(grid$ray$lim[1]),
-              MAR=1,sin(2*pi*(cyclVar+general$shift)/circle),"*"))
+              MARGIN=1,sin(2*pi*(cyclVar+general$shift)/circle),"*"))
         y.dat <-
             as.vector(sweep(transf(rho)-transf(grid$ray$lim[1]),
-              MAR=1,cos(2*pi*(cyclVar+general$shift)/circle),"*"))
+              MARGIN=1,cos(2*pi*(cyclVar+general$shift)/circle),"*"))
         id.dat <- rep(1:ncol(rho), rep(nrow(rho),ncol(rho)))
 
         nude.rose <-

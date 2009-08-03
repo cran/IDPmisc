@@ -27,7 +27,7 @@ iplot <- function(x,
                   ...)
   ## Produces an image scatter plot of a large 2d dataset.
 
-  ## Authors: Andreas Ruckstuhl, René Locher
+  ## Authors: Andreas Ruckstuhl, Rene Locher
   ## Version 09-04-08
 {
   no.xlab <- is.null(xlab)
@@ -96,8 +96,8 @@ iplot <- function(x,
                    c(3,0,2))
 
       lo <- layout(lom,
-                   width=c(1, d.legend, w.legend),
-                   height=c(h.main, d.main, 1),
+                   widths=c(1, d.legend, w.legend),
+                   heights=c(h.main, d.main, 1),
                    respect=TRUE)
 
       iplotMain(main, cex.main, cex=cex)
@@ -110,8 +110,8 @@ iplot <- function(x,
       lom <- matrix(c(2,0,1),ncol=3)
 
       lo <- layout(lom,
-                   width=c(1, d.legend, w.legend),
-                   height=1,
+                   widths=c(1, d.legend, w.legend),
+                   heights=1,
                    respect=TRUE)
 
       iplotLegend(colramp=colramp,ncol=zmax,cex.axis=cex.axis,
@@ -123,8 +123,8 @@ iplot <- function(x,
       lom <- matrix(c(1,0,2),ncol=1)
 
       lo <- layout(lom,
-                   width=1,
-                   height=c(h.main, d.main, 1),
+                   widths=1,
+                   heights=c(h.main, d.main, 1),
                    respect=TRUE)
       iplotMain(main, cex.main, cex=cex)
   } ## plot title only
@@ -154,7 +154,7 @@ iplot <- function(x,
     xmax <- max(x,na.rm=TRUE)
     at <- seq(xmin, xmax, by=max(floor((xmax-xmin)/(max(nlab.xaxis-1,1))),1))
     axis(1, at=at,
-         labels=abbreviate(levels(x.old)[at],minl=minL.axis))
+         labels=abbreviate(levels(x.old)[at],minlength=minL.axis))
   } else {
     axis(1, at = at.x)
   }
@@ -164,7 +164,7 @@ iplot <- function(x,
     ymax <- max(y,na.rm=TRUE)
     at <- seq(ymin, ymax, by=max(floor((ymax-ymin)/(max(nlab.yaxis-1,1))),1))
     axis(2, at=at,
-         labels=abbreviate(levels(y.old)[at],minl=minL.axis))
+         labels=abbreviate(levels(y.old)[at],minlength=minL.axis))
   } else {
     axis(2, at = at.y)
   }

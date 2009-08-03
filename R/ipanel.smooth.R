@@ -1,5 +1,7 @@
-`ipanel.smooth` <-
-function (x, y = NULL, pixs = 1, zmax = NULL,
+## ipanel.smooth.R
+
+ipanel.smooth <-
+  function (x, y = NULL, pixs = 1, zmax = NULL,
             ztransf = function(x){x}, colramp = IDPcolorRamp,
             col = "black", lwd = 2, span = 2/3,
             iter = 3, ...)
@@ -12,4 +14,3 @@ function (x, y = NULL, pixs = 1, zmax = NULL,
     lines(stats::lowess(x[ok], y[ok], f = span, iter = iter),
           col = col, lwd = lwd, ...)
 } ## ipanel.smooth
-

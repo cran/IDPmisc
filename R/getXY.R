@@ -1,5 +1,6 @@
-`getXY` <-
-function(x, y = NULL, unidim.allowed = TRUE)
+### getXY.R
+
+getXY <- function(x, y = NULL, unidim.allowed = TRUE)
   ## Author: Rene Locher
   ## Version: 2006-06-20
 {

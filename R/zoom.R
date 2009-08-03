@@ -1,5 +1,6 @@
-`zoom` <-
-function(fun = plot, zoom.col="red", delay=3, ...){
+### zoom.R
+
+zoom <- function(fun = plot, zoom.col="red", delay=3, ...){
   ##
   ## fun       plotting function
   ## zoom.col  color of clicked points
@@ -20,7 +21,7 @@ function(fun = plot, zoom.col="red", delay=3, ...){
   fun(...)
   while(TRUE) {
     par(xpd=NA)
-    p1 <- locator(n = 1, ty="p", col=zoom.col)
+    p1 <- locator(n = 1, type="p", col=zoom.col)
 
     if(is.null(p1$x)){
       cat("\n")
@@ -29,7 +30,7 @@ function(fun = plot, zoom.col="red", delay=3, ...){
     abline(v=p1$x,col=zoom.col)
     abline(h=p1$y,col=zoom.col)
 
-    p2 <- locator(n = 1, ty="p", col=zoom.col)
+    p2 <- locator(n = 1, type="p", col=zoom.col)
     if(is.null(p2$x)){
       cat("\n")
       break

@@ -24,13 +24,14 @@ general.control(stacked = FALSE,
     \code{\link{rose}} object, the radius is \code{x@rho[i,j]} -
       \code{ray.lim[1]} as defined in \code{\link{grid.control}}.  Points
       with identical \code{j} are connected by a colored line.
-    \cr\code{stacked = TRUE}: For each point (x@rho[i,j], x@cyclVar[i]),
-    the radius is \code{sum(x@rho[1:i,j])}.  No negative values are
-    allowed in the stacked case as this feature makes sense only for
-    variables like proportions, counts or concentrations.  Areas between
-    two adjacent \code{j} are filled by color.
-    \cr\code{NA} values in \code{x@rho} are interpreted as \code{0} and a
-    warning is issued. }
+      \cr \code{stacked = TRUE}: For each point
+      \code{(x@rho[i,j], x@cyclVar[i])},
+      the radius is \code{sum(x@rho[1:i,j])}.  No negative values are
+      allowed in the stacked case as this feature makes sense only for
+      variables like proportions, counts or concentrations.  Areas
+      between two adjacent \code{j} are filled by color.
+      \cr \code{NA} values in \code{x@rho} are interpreted as \code{0}
+      and a warning is issued.}
   \item{rose.rad, rose.x, rose.y}{ Approximate length of radius, x- and
     y-position of rose.  Default units are mm but any valid grid unit
     might be chosen (cf. \code{\link[grid]{unit}}.  If one or more of
@@ -46,7 +47,7 @@ general.control(stacked = FALSE,
     is reversed. }
   \item{shift}{ Shifts the plot in clockwise direction by this
     angle.  Units of \code{shift} must be identical with units of
-    \code{\cyclVar} in \code{link{plot.rose}}}
+    \code{cyclVar} in \code{link{plot.rose}}}
   \item{cex}{ Basic size of characters in the plot. }
   \item{col}{ Colors of lines \code{stacked = TRUE} or colors of
     stacked areas.  In the first case colors are by default as distinct

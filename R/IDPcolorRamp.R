@@ -1,12 +1,13 @@
-`IDPcolorRamp` <-
-function (n,
+### IDPcolorRamp.R
+
+IDPcolorRamp <- function (n,
                           colInt = data.frame(
                             h = c(0.47, 0.28, 0.16, 0.00, 1.00, 0.8),
                             s = c(0.31, 0.55, 0.7, 0.8, 0.8, 1.00),
                             v = c(1, 1, 1, 1, 1, 0.4)),
                           fr     = c(0.27, 0.27, 0.27, 0))
 
-  ## Author: René Locher
+  ## Author: Rene Locher
   ## Version: 2005-10-17
 {
   if(!is.vector(n)) stop("n must be a single value\n")
@@ -54,19 +55,19 @@ function (n,
   colRamp <- rep(NA,n)
 
   colRamp[1:col$ncol[1]] <-
-    hsv(h = seq(colInt[1,1], colInt[2,1], length = col$ncol[1]),
-        s = seq(colInt[1,2], colInt[2,2], length = col$ncol[1]),
-        v = seq(colInt[1,3], colInt[2,3], length = col$ncol[1]))
+    hsv(h = seq(colInt[1,1], colInt[2,1], length.out = col$ncol[1]),
+        s = seq(colInt[1,2], colInt[2,2], length.out = col$ncol[1]),
+        v = seq(colInt[1,3], colInt[2,3], length.out = col$ncol[1]))
 
   for (ii in 2:nsr) {
     if(col$ncol[ii]>0)
       colRamp[(sum(col$ncol[1:(ii-1)])+1):sum(col$ncol[1:ii])] <-
         hsv(h = seq(colInt[ii,1], colInt[ii+1,1],
-              length = col$ncol[ii]+1),
+              length.out = col$ncol[ii]+1),
             s = seq(colInt[ii,2], colInt[ii+1,2],
-              length = col$ncol[ii]+1),
+              length.out = col$ncol[ii]+1),
             v = seq(colInt[ii,3], colInt[ii+1,3],
-              length = col$ncol[ii]+1))[-1]
+              length.out = col$ncol[ii]+1))[-1]
   }
   return(colRamp)
 } ## IDPcolorRamp

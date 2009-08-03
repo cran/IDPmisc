@@ -1,5 +1,6 @@
-`grid.control` <-
-function(circ.n = 4,
+## grid.control.R
+
+grid.control <- function(circ.n = 4,
                          circ.r = NULL,
                          circ.col = "gray30",
                          circ.lwd = 0.5,
@@ -47,4 +48,5 @@ function(circ.n = 4,
                      between = cyclVar.between,
                      centered = cyclVar.centered)))
   } ## grid.control
+
 

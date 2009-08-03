@@ -26,7 +26,7 @@ ipairs <- function(x,
   ## Produces an image scatter plot matrix of largee datasets
 
   ## based on R function pairs V1.7
-  ## Authors: Andreas Ruckstuhl, René Locher
+  ## Authors: Andreas Ruckstuhl, Rene Locher
   ## Version: 2009-04-08
 
 {
@@ -81,8 +81,8 @@ ipairs <- function(x,
       lom <- rbind(c(rep(1,nc),rep(0,2)), rep(0,nc+2),
                    cbind(lom,rep(0,nc),rep(2,nc)))
       lo <- layout(lom,
-                   width  = c(rep(1,nc),d.legend,w.legend),
-                   height = c(h.main,d.main,rep(1,nc)),
+                   widths  = c(rep(1,nc),d.legend,w.legend),
+                   heights = c(h.main,d.main,rep(1,nc)),
                    respect=TRUE)
 
       iplotMain(main,cex.main,cex=cex)
@@ -96,8 +96,8 @@ ipairs <- function(x,
       lom <- rbind(cbind(lom,rep(0,nc),rep(1,nc)))
 
       lo <- layout(lom,
-                   width  = c(rep(1,nc), d.legend, w.legend),
-                   height = rep(1,nc),
+                   widths  = c(rep(1,nc), d.legend, w.legend),
+                   heights = rep(1,nc),
                    respect=TRUE)
 
        iplotLegend(colramp=colramp,ncol=zmax,cex.axis=cex.axis,
@@ -110,8 +110,8 @@ ipairs <- function(x,
       lom <- rbind(rep(1,nc), rep(0,nc),lom)
 
       lo <- layout(lom,
-                   width  = rep(1,nc),
-                   height = c(h.main, d.main, rep(1,nc)),
+                   widths  = rep(1,nc),
+                   heights = c(h.main, d.main, rep(1,nc)),
                    respect=TRUE)
       iplotMain(main,cex.main,cex=cex)
   } ## plot title only
@@ -120,8 +120,8 @@ ipairs <- function(x,
       lom <- matrix(1:nc^2, ncol=nc)
 
       lo <- layout(lom,
-                   width  = rep(1,nc),
-                   height = rep(1,nc),
+                   widths  = rep(1,nc),
+                   heights = rep(1,nc),
                    respect=TRUE)
   }  ## No title, no legend
 
@@ -149,7 +149,8 @@ ipairs <- function(x,
           at <- seq(xmin, xmax,
                     by=max(floor((xmax-xmin)/(max(nlab.axis-1,1))),1))
           axis(2, at=at,
-               labels=abbreviate(lev.list[[j-nc+nf]][at],minl=minL.axis))
+               labels=abbreviate(lev.list[[j-nc+nf]][at],
+                                 minlength=minL.axis))
         } else
         axis(2, at=pretty(NaRV.omit(x[, j]),n=nlab.axis))
       }
@@ -161,7 +162,8 @@ ipairs <- function(x,
           at <- seq(xmin, xmax,
                     by=max(floor((xmax-xmin)/(max(nlab.axis-1,1))),1))
           axis(4, at=at,
-               labels=abbreviate(lev.list[[j-nc+nf]][at],minl=minL.axis))
+               labels=abbreviate(lev.list[[j-nc+nf]][at],
+                                 minlength=minL.axis))
         } else
         axis(4, at=pretty(NaRV.omit(x[, j]),n=nlab.axis), adj=1)
       }
@@ -173,7 +175,8 @@ ipairs <- function(x,
           at <- seq(xmin, xmax,
                     by=max(floor((xmax-xmin)/(max(nlab.axis-1,1))),1))
           axis(3, at=at,
-               labels=abbreviate(lev.list[[i-nc+nf]][at],minl=minL.axis))
+               labels=abbreviate(lev.list[[i-nc+nf]][at],
+                                 minlength=minL.axis))
         } else
         axis(3, at=pretty(NaRV.omit(x[, i]),n=nlab.axis))
       }
@@ -185,7 +188,8 @@ ipairs <- function(x,
           at <- seq(xmin, xmax,
                     by=max(floor((xmax-xmin)/(max(nlab.axis-1,1))),1))
           axis(1, at=at,
-               labels=abbreviate(lev.list[[i-nc+nf]][at],minl=minL.axis))
+               labels=abbreviate(lev.list[[i-nc+nf]][at],
+                                 minlength=minL.axis))
         } else
         axis(1, at=pretty(NaRV.omit(x[, i]),n=nlab.axis))
       }

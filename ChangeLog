@@ -312,8 +312,8 @@
 2008-03-26 Rene Locher
 	IDPmisc V1.1.00
 	* plotdat devided into plotdat and griddat
-	* plot.rose:
-	  Rose will now be plotted in segments by default.
+	* plot.rose: New feature:
+	  Rose can now be plotted in segments (which is now default).
 	  Help slightly changed.
 	* general.control: New argument 'type'. Cf. 'plot.rose'.
 	* draw.leg: if (any(textLocations)) replaced by
@@ -324,5 +324,15 @@
 	  New arguments 'cex','mgp','tcl'.
 	* iplot: Default distances and character sizes optimized.
 	  New arguments 'cex','mgp','tcl'.
+2008-08-03 Rene Locher
+	IDPmisc V1.1.01
+	* non-english letters removed from sources and help files for
+	  compatibility
+	* Description: Encoding: latin1 removed
+2008-08-03 Rene Locher
+	IDPmisc V1.1.02
+	* Error in help file corrected
+
+
 
 

@@ -1,5 +1,6 @@
-`Arrows` <-
-function (x1, y1, x2, y2,
+### Arrows.R
+
+Arrows <- function (x1, y1, x2, y2,
                     size= 1,
                     width= 1.2/4/cin,
                     open=TRUE,
@@ -28,7 +29,7 @@ function (x1, y1, x2, y2,
   uin <- if (is.R())
     1/xyinch()
   else par("uin")
-  x <- sqrt(seq(0, cin^2, length = floor(35 * cin) + 2))
+  x <- sqrt(seq(0, cin^2, length.out = floor(35 * cin) + 2))
   delta <-  sqrt(h.lwd)*par("cin")[2]*0.005
   x.arr <- c(-rev(x), -x)
   wx2 <- width * x^2
@@ -55,4 +56,3 @@ function (x1, y1, x2, y2,
            lwd=sh.lwd, col=sh.col, lty=sh.lty)
   if(verbose) return(list(width=width))
 } # Arrows
-

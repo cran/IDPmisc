@@ -70,8 +70,7 @@ cInt <- data.frame(h = c(0.47, 0.28, 0.16, 0, 1, 0.8),
                    v = c(1, 1, 1, 1, 1, 0.5))
 
 fr <- c(0.15, 0.25, 0.45, 0.0)
-
-ii <- seq(1,n,len=6)
+ii <- seq(1,n,length.out=6)
 
 ## colors at equidistant indices
 showColors(IDPcolorRamp(n, colInt = cInt, fr =fr)[ii], border=FALSE)

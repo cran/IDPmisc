@@ -1,5 +1,7 @@
-`general.control` <-
-function(stacked = FALSE,
+## general.control.R
+
+## private functions for plot.rose
+general.control <- function(stacked = FALSE,
                             rose.rad = NULL,
                             rose.x = NULL,
                             rose.y = NULL,
@@ -50,4 +52,3 @@ function(stacked = FALSE,
                 ncp = 1000,
                 type = type))
   } ## general.control
-

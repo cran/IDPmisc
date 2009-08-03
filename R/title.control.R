@@ -1,5 +1,6 @@
-`title.control` <-
-function(text = NULL,
+## title.control.R
+
+title.control <- function(text = NULL,
                           cex = 1.5,
                           between = if(is.null(text)) 0 else 1)
   ## Author: Rene Locher
@@ -11,4 +12,5 @@ function(text = NULL,
                 cex = cex,
                 between = between))
   } ## title.control
+
 

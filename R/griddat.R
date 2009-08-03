@@ -25,10 +25,10 @@ griddat <- function(rho,
         east <- 2:(cyclVar.lab.n %/% 2)
       } else east <- 2:(cyclVar.lab.n %/% 2 + 1)
       East <- which.min(abs(seq(0,by=360/cyclVar.lab.n,
-                                len=cyclVar.lab.n)-90))
+                                length.out=cyclVar.lab.n)-90))
       west <- (cyclVar.lab.n %/% 2 + 2):cyclVar.lab.n
       West <- which.min(abs(seq(0,by=360/cyclVar.lab.n,
-                                len=cyclVar.lab.n)-270))
+                                length.out=cyclVar.lab.n)-270))
     } else if (cyclVar.lab.n == 2) {
       South <- 2
     } else stop("'cyclVar.lab' must consist of at least 2 elements!")
@@ -46,8 +46,9 @@ griddat <- function(rho,
         if (cyclVar.lab.n>2) {
           max(convertWidth(stringWidth(grid$cyclVar$lab[c(east,west)]),
               "native", valueOnly = TRUE) * grid$cyclVar$cex/2/
-                 abs(sin(seq(0, by=2*pi/cyclVar.lab.n, len=cyclVar.lab.n)
-                         )[c(east,west)]))
+                 abs(sin(seq(0, by = 2*pi/cyclVar.lab.n,
+                             length.out = cyclVar.lab.n)
+                         )[c(east, west)]))
         } else
         max(convertHeight(stringHeight(grid$cyclVar$lab), "native",
                           valueOnly = TRUE)) * grid$cyclVar$cex/2

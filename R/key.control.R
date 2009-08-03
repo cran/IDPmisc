@@ -1,5 +1,6 @@
-`key.control` <-
-function(plot = TRUE,
+## key.control.R
+
+key.control <- function(plot = TRUE,
                         lab = NULL,
                         title = NULL,
                         between = 0)

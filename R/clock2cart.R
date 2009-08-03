@@ -1,5 +1,6 @@
-`clock2cart` <-
-function(rho, phi = NULL, circle)
+### clock2cart.R
+
+clock2cart <- function(rho, phi = NULL, circle)
   ## Author: Rene Locher
   ## Version: 2005-10-05
   ##

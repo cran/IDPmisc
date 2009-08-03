@@ -1,5 +1,6 @@
-`Image` <-
-function(x, y = NULL, pixs = 1, zmax = NULL,
+### Image.R
+
+Image <- function(x, y = NULL, pixs = 1, zmax = NULL,
                   ztransf = function(x){x},
                   colramp = IDPcolorRamp, factors = c(FALSE,FALSE),
                   matrix = FALSE)
@@ -15,19 +16,19 @@ function(x, y = NULL, pixs = 1, zmax = NULL,
 
   if (factors[1]) {
     bx <- seq(min(xy[,1]-0.25), max(xy[,1]+0.25),
-              length=2*diff(range(xy[,1]))+2)
+              length.out=2*diff(range(xy[,1]))+2)
   } else {
-    bx <- seq(usr[1],usr[2], length=round(par("pin")/pixs)[1]+1)
+    bx <- seq(usr[1],usr[2], length.out=round(par("pin")/pixs)[1]+1)
   }
 
   if (factors[2]) {
     by <- seq(min(xy[,2]-0.25), max(xy[,2]+0.25),
-              length=2*diff(range(xy[,2]))+2)
+              length.out=2*diff(range(xy[,2]))+2)
   } else {
-    by <- seq(usr[3],usr[4], length=round(par("pin")/pixs)[2]+1)
+    by <- seq(usr[3],usr[4], length.out=round(par("pin")/pixs)[2]+1)
   }
 
-  zz <- ztransf(table(cut(xy[,1],b=bx), cut(xy[,2], b=by)))
+  zz <- ztransf(table(cut(xy[,1],breaks=bx), cut(xy[,2], breaks=by)))
   zzmax <- ceiling(max(zz))
 
   if(is.null(zmax)) zmax <- zzmax else zmax <- ceiling(zmax)
@@ -54,4 +55,3 @@ function(x, y = NULL, pixs = 1, zmax = NULL,
   box()
   if (matrix) invisible(cbind(x=xx,y=yy,z=zz)) else invisible(zzmax)
 } # Image
-

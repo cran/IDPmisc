@@ -1,5 +1,7 @@
-`poster.plot` <-
-function(x, y=NULL,  type="p", col=col.fg,
+### poster.plot.R
+
+
+poster.plot <- function(x, y=NULL,  type="p", col=col.fg,
                         col.axis=col.fg, col.lab=col.fg, col.fg="blue",
                         col.bg="lavender",col.box="cornsilk",
                         xlim=NULL, ylim=NULL,

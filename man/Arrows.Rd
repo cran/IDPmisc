@@ -43,7 +43,7 @@ Arrows(x1, y1, x2, y2, size = 1, width = 1.2/4/cin, open = TRUE,
     \item{=1}{End of shaft at bottom of head,}
     \item{>1}{Gap between shaft and head,}
     \item{<0}{Head is on the shaft.}
-    \crThis function is based on \pkg{\link{graphics}}}
+    \cr This function is based on \pkg{\link{graphics}}}
 }
 
 \value{
@@ -57,7 +57,7 @@ A value is only returned, when \code{verbose == TRUE}.
 
 \note{
 The plotting device should not be resized manually after plotting as
-this changes in general the aspect ratio of the pot and deforms hereby
+this changes in general the aspect ratio of the plot and deforms hereby
 the plotted arrows. The beauty of the arrows depends from the resolution
 of the device. The higher resolutions give better results.
 }
@@ -68,20 +68,20 @@ of the device. The higher resolutions give better results.
 \examples{
 ## a bunch of different arrows
 plot(c(0,10), c(0,10), type="n")
-Arrows(5, 5, 5,10, size=3, 
+Arrows(5, 5, 5,10, size=3,
        sh.lwd=5, sh.lty=2,
        h.lwd=5)
 Arrows(5, 5, 7.5, 9, size=3, open=TRUE,
        sh.adj=0.7, sh.lwd=5, sh.lty=2,
        h.col.bo="red",h.lwd=5)
-Arrows(5, 5, 9, 7.5, size=3, open=FALSE,    
+Arrows(5, 5, 9, 7.5, size=3, open=FALSE,
        sh.adj=1, sh.lwd=5, sh.col="blue",
        h.col.bo="red",h.lwd=2)
 Arrows(5, 5, 10, 5, size=2.5, width=1.5, open=FALSE,
-       sh.adj=1, sh.lwd=7, sh.col="blue")      
+       sh.adj=1, sh.lwd=7, sh.col="blue")
 Arrows(5, 5, 9, 2.5, size=4, open=FALSE,
        sh.lty=0,
-       h.col.bo="black",h.lwd=5)     
+       h.col.bo="black",h.lwd=5)
 Arrows(5, 5, 7.5, 1)
 Arrows(5, 5, 5, 0, size=2)
 Arrows(5, 5, 2.5, 1, size=2, width=1)

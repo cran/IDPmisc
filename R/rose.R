@@ -82,7 +82,7 @@ rose <- function(x, subset=NULL,
   ## labels are the center of the category
   cyclVar.f <- cut((cyclVar+circle/n.cyclVar/2)%%circle,
                breaks=c(cyclVar.lab,circle),
-               labels=cyclVar.lab,include.lowest=T)
+               labels=cyclVar.lab,include.lowest=TRUE)
 
   if (ncol(x)>1) {
     if ((!is.null(cut)|!is.null(breaks))&warn)

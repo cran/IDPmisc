@@ -1,5 +1,6 @@
-`NaRV.omit` <-
-function(x){
+### NaRV.omit.R
+
+NaRV.omit <- function(x){
   ## Author: Rene Locher
   ## Version: 2005-10-17
 
@@ -10,14 +11,16 @@ function(x){
     x <- na.omit(x)
   } else if (is.data.frame(x)) {
     x.num <- as.matrix(x[,sapply(x, is.numeric)])
-    ri <- (!apply(x.num,MAR=1,function(x) sum(is.infinite(x))>0) &
-           !apply(x,MAR=1,function(x) sum(is.na(x))>0))
+    ri <- (!apply(x.num, MARGIN = 1,
+                  function(x) sum(is.infinite(x))>0) &
+           !apply(x, MARGIN = 1, function(x) sum(is.na(x))>0))
     x <- x[ri,,drop=FALSE]
     ## class omit is incompatible with class data.frame
     ## attributes(x) <- c(attributes(x),list(na.action=which(!ri),class="omit"))
   } else if (is.matrix(x)) {
     if(is.numeric(x)) {
-      ri <- !apply(x,MAR=1,function(x) {sum(is.na(x)|is.infinite(x))>0})
+      ri <- !apply(x, MARGIN = 1,
+                   function(x) {sum(is.na(x)|is.infinite(x))>0})
       x <- x[ri,,drop=FALSE]
       attributes(x) <- c(attributes(x),list(na.action=which(!ri),class="omit"))
     } else x <- na.omit(x)
@@ -27,4 +30,3 @@ function(x){
   }
   return(x)
 }## NaRV.omit
-
