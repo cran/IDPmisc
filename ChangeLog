@@ -259,7 +259,7 @@
 	IDPmisc V0.9.9
 	Typos in help removed
 
-2008-03-13 Rene Locher
+2009-03-13 Rene Locher
 	IDPmisc V1.0.00
 	* inf.omit: removed. Was replaced by NaRV.omit() .
 	* longts.plot: help reduced and function defunct. Use longtsPlot
@@ -305,11 +305,11 @@
 	* showColors: New argument mar.
 	  After exiting showColors, original arguments of par() are
 	  restored.
-2008-03-16 Rene Locher
+2009-03-16 Rene Locher
 	IDPmisc V1.0.01
 	* plot.rose Shows warning only when warn = TRUE
 	* Help: Typos corrected, text improved.
-2008-03-26 Rene Locher
+2009-03-26 Rene Locher
 	IDPmisc V1.1.00
 	* plotdat devided into plotdat and griddat
 	* plot.rose: New feature:
@@ -324,23 +324,38 @@
 	  New arguments 'cex','mgp','tcl'.
 	* iplot: Default distances and character sizes optimized.
 	  New arguments 'cex','mgp','tcl'.
-2008-08-03 Rene Locher
+2009-08-03 Rene Locher
 	IDPmisc V1.1.01
 	* non-english letters removed from sources and help files for
 	  compatibility
 	* Description: Encoding: latin1 removed
-	* Partially matching arguments altered to 
+	* Partially matching arguments altered to
 	  fully matching arguments
-2008-08-03 Rene Locher
+2009-08-03 Rene Locher
 	IDPmisc V1.1.02
 	* Error in help file corrected
-	* Partially matching arguments altered to 
+	* Partially matching arguments altered to
 	  fully matching arguments
-2008-08-04 Rene Locher
+2009-08-04 Rene Locher
 	IDPmisc V1.1.03
 	* File drawleg.R, which was needless, removed.
-	* Partially matching arguments altered to 
+	* Partially matching arguments altered to
 	  fully matching arguments
 
+2009-10-05 Rene Locher
+	IDPmisc V1.1.04
+	* date of changes corrected since V1.0.00
+	* longts.plot.rd removed
+	* longtsPlot: A change made in V0.9.6 was revoked.
+  	  Parameters of par() before call of function are no
+	  longer stored. Reason: Easier plotting of individual legend in
+	  the last figure of the page.
+	* rose.grob: gpar(fill="transparent") set in all grobs. This was
+	  necessary for plotting correctly on png devices!?
 
-
+2009-10-06 Rene Locher
+	IDPmisc V1.1.05
+	longtsPlot: When filename is defined longtsPlot() does not
+	ask any more wether it should continue to print the next
+	page. Wrong link corrected in longtsPlot.Rd
+	

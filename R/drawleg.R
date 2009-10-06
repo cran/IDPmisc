@@ -1,4 +1,4 @@
-## draw.leg.R
+## drawleg.R
 
 ### Copyright (C) 2001-2005  Deepayan Sarkar <Deepayan.Sarkar@R-project.org>
 ###
@@ -20,7 +20,7 @@
 
 ## Slightly modified Version of draw.key {lattice 0.12-3}
 ## by Rene Locher <Rene.Locher@zhaw.ch>
-## last revision: 09-08-04
+## last revision: 09-03-16
 ## 3 new components added to list key: between.rows, between.title, adj.title
 
 
@@ -154,7 +154,7 @@ draw.leg <- function(key, draw = FALSE, vp = NULL)
             tmplen <- length(pars$labels)
             for (j in 1:length(pars))
                 if (is.character(pars))
-                    pars[[j]] <- rep(pars[[j]], length.out = tmplen)
+                    pars[[j]] <- rep(pars[[j]], length = tmplen)
 
             max.length <- max(max.length, tmplen)
             components[[length(components)+1]] <-
@@ -237,7 +237,7 @@ draw.leg <- function(key, draw = FALSE, vp = NULL)
         if (components[[i]]$type != "text") {
             components[[i]]$pars <-
                 lapply(components[[i]]$pars, rep,
-                       length.out = if (key$rep) max.length
+                       length = if (key$rep) max.length
                        else components[[i]]$length)
             if (key$rep) components[[i]]$length <- max.length
         }
@@ -254,7 +254,7 @@ draw.leg <- function(key, draw = FALSE, vp = NULL)
 
     if (column.blocks > max.length) warning("not enough rows for columns")
 
-    key$between <- rep(key$between, length.out = number.of.components)
+    key$between <- rep(key$between, length = number.of.components)
 
 
     if (key$align) {

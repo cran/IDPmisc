@@ -95,24 +95,30 @@ longtsPlot(y1, y2 = NULL,
   \item{each.fig}{ For \code{each.fig==1} all data are plotted.
                    for \code{each.fig==2} every 2nd page is plotted and
 		   so on. }
-  \item{filename, extension}{When \code{filename} is not
-    \code{NULL}, the displayed screen(s) are saved to the
-    disk. When \code{slide = TRUE}, the filename of the plots is
-    extended by a serial number. The extension is defined automatically
+  \item{filename}{When \code{filename} is not
+    \code{NULL}, the displayed screen(s) are saved to
+    disk and there is no question whether the next page should be
+    printed. When \code{slide = TRUE}, the filename of the plots is
+    extended by a serial number.}
+   \item{extension}{The extension is defined automatically
     on windows systems and must be defined manually on the other
     systems.}
-  \item{filetype, ...}{\emph{On windows operating systems}, these
-    arguments are identical with the arguments in
-    \code{\link[grDevices]{savePlot}(filename = filename, type =
-      filetype, ...)}, where filename ist defined above. The filetype
-    defaults to windows meta file, \code{\dQuote{wmf}} , with the
-    extension \code{\dQuote{.wmf}}.\cr
-  \emph{On non windows operating systems}, these
-    arguments are identical with the arguments in
-    \code{\link[grDevices]{devPrint}(filename = filename, device =
-      filetype, ...)}, where filename ist defined above. The filetype
+  \item{filetype}{ \emph{On Windows}:
+    The type of plot, Windows metafile, PNG, JPEG,
+    BMP (Windows bitmap format), TIFF, PostScript or PDF.
+    Defaults to Windows meta file, \code{"wmf"} ,
+    with the extension \code{".wmf"}.
+    Cf. \code{\link[grDevices]{savePlot}}.
+    \cr
+    \emph{On non Windows operating systems}: A device
+    function (e.g., x11, postscript,...). The filetype
     defaults to \code{postscript} , with the extension
-    \code{\dQuote{.ps}}.}
+    \code{".ps"}. Cf. \code{\link[grDevices]{dev.print}}
+  }
+  \item{...}{Additional arguments to
+    \code{\link[grDevices]{savePlot}} and
+    \code{\link[grDevices]{dev.print}} respectively.
+  }
 }
 \details{
   For longer time-series, it is sometimes important to spread several
