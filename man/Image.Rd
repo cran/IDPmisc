@@ -61,8 +61,7 @@ Image(x, y = NULL, pixs = 1, zmax = NULL, ztransf = function(x){x},
 \author{Andreas Ruckstuhl, Rene Locher}
 
 \seealso{ \code{\link{ipairs}}, \code{\link{ilagplot}},
-  \code{\link{ixyplot}}, \code{\link{image}},
-  \code{\link[fields]{image.count}}}
+  \code{\link{ixyplot}}, \code{\link{image}}}
 
 \examples{
 plot.default(iris$Species, iris$Petal.Width, xlim=c(0.5,3.5),

@@ -52,7 +52,6 @@ IDPcolorRamp(n,
   (here from h=0.00 to h=1.00) with corresponding fraction fr == 0.}
 
 \seealso{\code{\link{showColors}},
-  \code{\link[dichromat]{colorRamp}},
   \code{\link[RColorBrewer]{ColorBrewer}}}
 
 \examples{

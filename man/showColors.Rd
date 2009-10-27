@@ -23,8 +23,7 @@ showColors(col = IDPcolorRamp(20),
 \author{Rene Locher}
 
 \seealso{\code{\link{IDPcolorRamp}},
-  \code{\link[DAAG]{show.colors}}
-  \code{\link[dichromat]{colorRamp}},
+  \code{\link[DAAG]{show.colors}},
   \code{\link[RColorBrewer]{ColorBrewer}}}
 \examples{
 showColors(IDPcolorRamp(5))

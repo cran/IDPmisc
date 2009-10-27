@@ -355,7 +355,13 @@
 
 2009-10-06 Rene Locher
 	IDPmisc V1.1.05
-	longtsPlot: When filename is defined longtsPlot() does not
-	ask any more wether it should continue to print the next
-	page. Wrong link corrected in longtsPlot.Rd
+	* longtsPlot: When filename is defined longtsPlot() does not
+	  ask any more wether it should continue to print the next
+	  page. Wrong link corrected in longtsPlot.Rd
+	
+2009-10-27 Rene Locher
+	IDPmisc V1.1.06
+	* IDPcolorRamp.Rd: No longer available link removed.
+	* Image.Rd: No longer available link removed.
+	* showColors.Rd: No longer available link removed.
 	
