@@ -56,8 +56,7 @@ peaks(x, y = NULL, minPH, minPW, thr, stepF = 0.49)
   When the width of different peaks vary not too strongly and the
   distances between the peaks is not critical, you might use the faster
   functions
-  \code{\link[PROcess]{peaks}} of package \code{PROcess} or, even faster,
-  \code{\link[ppc]{ppc.peaks}} of package \code{ppc}.
+  \code{\link[PROcess]{peaks}} of package \code{PROcess}.
 }
 
 %% \seealso{  }
@@ -96,12 +95,6 @@ if (require(PROcess)) {
   points(MS1$mz[ii],MS1$I[ii],col="darkgreen",cex=1.2)
 } else print("Package Process not available!")
 
-## or to
-if (require(ppc)) {  ## V 1.01
-  ii <- ppc.peaks(MS1$I,400/nrow(MS1))
-  detach("package:ppc")
-  points(MS1$mz[ii],MS1$I[ii],col="red", cex=0.8)
-} else print("Package ppc not available!")
 }
 
 \keyword{ manip }

@@ -358,10 +358,22 @@
 	* longtsPlot: When filename is defined longtsPlot() does not
 	  ask any more wether it should continue to print the next
 	  page. Wrong link corrected in longtsPlot.Rd
-	
+
 2009-10-27 Rene Locher
 	IDPmisc V1.1.06
 	* IDPcolorRamp.Rd: No longer available link removed.
 	* Image.Rd: No longer available link removed.
 	* showColors.Rd: No longer available link removed.
-	
+
+2010-10-15 Rene Locher
+	IDPmisc V1.1.07
+	* peaks.RD: link to outdated ppc-package removed
+	* plot.rose: rose can be plotted as stacked also when cut
+	  argument is null. Default colors for unstacked optimized.
+	* rose.grob: Width of border can be chosen for stacked plots.
+
+2010-10-15 Rene Locher
+	IDPmisc V1.1.08
+	* rose: When warn = FALSE, observations with cyclVar==NA
+	  were not eliminated.
+

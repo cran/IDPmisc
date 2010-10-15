@@ -69,8 +69,8 @@ rose <- function(x, subset=NULL,
 
   ii <- is.na(cyclVar)
   nna <- sum(ii)
-  if (sum(nna)>0&warn){
-    warning("cyclVar' must not contain NAs! ",nna," observations are omitted!!\n")
+  if (sum(nna)>0){
+    if (warn) warning("cyclVar' must not contain NAs! ",nna," observations are omitted!!\n")
     x <- x[!ii,,drop=FALSE]
     cyclVar <- cyclVar[!ii]
     if (!is.null(cut)) cut <- cut[!ii]
@@ -96,6 +96,9 @@ rose <- function(x, subset=NULL,
   } else if (is.null(cut)) {
     ## statistics with possibly more than a single value per level of cyclVar.f
     res <- tapply(unlist(x), INDEX=list(cyclVar=cyclVar.f), FUN=FUN, ...)
+    if (is.numeric(FUN(NULL)))
+        res[is.na(res)] <- FUN(NULL)
+
     len <- sapply(res,length)
     if (length(len)>1) {
       if (diff(range(len))!=0) {

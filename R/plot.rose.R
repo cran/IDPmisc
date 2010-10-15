@@ -71,7 +71,8 @@ plot.rose <-
     if (general$stacked) {
         if (min(rho,na.rm=TRUE)<0)
             stop("Stacked roses make sense only for positive variables like counts,  proportions and concentrations!")
-        rho <- t(apply(rho, MARGIN=1, cumsum))[,ncol(rho):1]
+        if (ncol(rho)>1)
+            rho <- t(apply(rho, MARGIN=1, cumsum))[,ncol(rho):1]
     } ## stacked
 
     ## calculating the labels for the (main) circles
@@ -96,9 +97,10 @@ plot.rose <-
     } else { ## distinct colors
         if (is.null(general$col))
             general$col <-
-                c("blue","green4" ,"red", "darkorchid4", "black",
-                  "deepskyblue","green","orange", "violetred",
-                  "grey50", "saddlebrown")
+                c("#324B80", "#198019", "#DB1919", "#ED9900", "#6E286E")
+##                 c("blue","green4" ,"red", "darkorchid4", "black",
+##                   "deepskyblue","green","orange", "violetred",
+##                   "grey50", "saddlebrown")
     }
 
     ## constructing a col vector of correct length

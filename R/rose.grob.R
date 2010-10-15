@@ -23,8 +23,10 @@ rose.grob <- function(rho,
              circle = circle,
              ncp = general$ncp,
              gp = if (general$stacked) ## colored areas
-                      gpar(col = "black", fill = general$col,
-                           lwd = 1) else ## colored lines
+                      gpar(col = if(general$lwd>=0) general$col else
+                                                    "black",
+                           fill = general$col,
+                           lwd = general$lwd) else ## colored lines
                       gpar(col = general$col,
                            lwd = general$lwd,
                            lty = general$lty)

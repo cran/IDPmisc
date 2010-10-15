@@ -49,11 +49,13 @@ general.control(stacked = FALSE,
     angle.  Units of \code{shift} must be identical with units of
     \code{cyclVar} in \code{link{plot.rose}}}
   \item{cex}{ Basic size of characters in the plot. }
-  \item{col}{ Colors of lines \code{stacked = TRUE} or colors of
-    stacked areas.  In the first case colors are by default as distinct
-    as possible; in the latter case, all colors are matched by default
-    to the range green (=center of rose) to blue (outside of rose). }
-  \item{lty, lwd}{ Line type and line width. }
+  \item{col}{ Colors of lines when \code{stacked = FALSE} or colors of
+    stacked areas else.  In the first case colors are by default as
+  distinct as possible; in the latter case, all colors are matched by
+  default to the range green (=center of rose) to blue (outside of rose). }
+  \item{lty, lwd}{ Line type and line width. When \code{stacked = TRUE}
+  and \code{lwd = 0} the colored aereas are drawn without black
+  borders.} 
   \item{type}{1-character string giving the type of plot desired: \cr
     "s" plots observations as segments. This option is the proper way to
   distplay rose data. \cr
