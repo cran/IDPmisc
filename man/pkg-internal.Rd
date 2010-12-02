@@ -43,7 +43,6 @@ segments.circle(rho, shift, circle = 360, ncp = 1000, gp = gpar())
     \code{griddat} \tab \code{\link{plot.rose}}\cr
     \code{iplotMain} \tab \code{\link{ipairs}},
     \code{\link{ilagplot}}\cr
-    \code{plotpage} \tab \code{\link{longts.plot}}\cr
     \code{plot.page} \tab \code{\link{longtsPlot}}\cr
     \code{plotdat} \tab \code{\link{plot.rose}}\cr
     \code{rose.grob} \tab \code{\link{plot.rose}}\cr

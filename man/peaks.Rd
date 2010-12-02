@@ -55,8 +55,9 @@ peaks(x, y = NULL, minPH, minPW, thr, stepF = 0.49)
 
   When the width of different peaks vary not too strongly and the
   distances between the peaks is not critical, you might use the faster
-  functions
-  \code{\link[PROcess]{peaks}} of package \code{PROcess}.
+  function
+  \code{\link[PROcess]{peaks}} of the bioconductor package
+  \code{PROcess}. 
 }
 
 %% \seealso{  }

@@ -262,11 +262,11 @@
 2009-03-13 Rene Locher
 	IDPmisc V1.0.00
 	* inf.omit: removed. Was replaced by NaRV.omit() .
-	* longts.plot: help reduced and function defunct. Use longtsPlot
+	* longts.plot: help reduced and function defuncted. Use longtsPlot
 	  instead.
 	* rd-files: Adaption to new rules for R 2.9.x, examples added
 	  and \ or improved.
-	* ixyplot: Help reduced and function defunct'ed. Use iplot()
+	* ixyplot: Help reduced and function defuncted. Use iplot()
 	  instead.
 	* IDPcolorRamp: Help extended.
 	* Image: matrix=TRUE delivered 'zmax' instead of matrix. This
@@ -377,3 +377,13 @@
 	* rose: When warn = FALSE, observations with cyclVar==NA
 	  were not eliminated.
 
+2010-12-02 Rene Locher
+	IDPmisc V1.1.09
+	* useDynLib(IDPmisc) in NAMESPACE outcommented as it is not used
+	* ixyplot removed as defuncted since V1.0.00
+	* longts.plot removed as defuncted since V1.0.00
+
+2010-12-02 Rene Locher
+	IDPmisc V1.1.10
+	Unnecessary file removed in src directory.
+	

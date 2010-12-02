@@ -1,4 +1,4 @@
-UseDynLib(IDPmisc)
+##useDynLib(IDPmisc)
 import(graphics,grid,lattice)
 export(Arrows,poster.plot,zoom)
 export(data.sheet,NaRV.omit,ok)
@@ -16,4 +16,4 @@ exportClasses("rose")
 exportMethods("plot")
 
 ## defunct
-export(ixyplot,longts.plot)
+

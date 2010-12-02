@@ -74,7 +74,7 @@ ilagplot(x, set.lags = 1,
   but without specifying zmax. The value returned gives you the minimum
   value allowed for zmax.}
 
-\seealso{\code{\link{ipairs}}, \code{\link{ixyplot}},
+\seealso{\code{\link{ipairs}}, \code{\link{iplot}},
     \code{\link{Image}}}
 
   \examples{

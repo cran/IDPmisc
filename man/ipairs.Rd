@@ -87,7 +87,7 @@ ipairs(x,
   but without specifying zmax. The value returned gives you the minimum
   value allowed for zmax.}
 
-\seealso{\code{\link{ilagplot}}, \code{\link{ixyplot}},
+\seealso{\code{\link{ilagplot}}, \code{\link{iplot}},
   \code{\link{Image}}}
 
 \examples{
