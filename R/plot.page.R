@@ -2,26 +2,47 @@
 ## helper function for longtsPlot
 
 plot.page <- function(y1, y2, names1, names2,
-                         startP, upf, fpp, overlap,
-                         x.at, x.ann, x.tick,
-                         y1.at, y1.ann, y1.tick,
-                         y2.at, y2.ann, y2.tick,
-                         ny.ann, cex.ann,
-                         xlab, y1lab, y2lab, col.y1, col.y2,
-                         y2.lab, cex.lab,
-                         y1lim, y2lim,
-                         lty1, lty2, lwd1, lwd2, col1, col2,
-                         leg, y1nam.leg, y2nam.leg,
-                         ncol.leg, cex.leg=1.5,
-                         h1, h2, col.h1, col.h2,
-                         mgp, main, cex.main, xpd, cex,
-                         type){
+                      startP, upf, fpp, overlap,
+                      x.at, x.ann, x.tick,
+                      y1.at, y1.ann, y1.tick,
+                      y2.at, y2.ann, y2.tick,
+                      ny.ann, cex.ann,
+                      xlab, y1lab, y2lab, col.y1, col.y2,
+                      y2.lab, cex.lab,
+                      y1lim, y2lim,
+                      lty1, lty2, lwd1, lwd2, col1, col2,
+                      leg, y1nam.leg, y2nam.leg,
+                      ncol.leg, cex.leg=1.5,
+                      h1, h2, col.h1, col.h2,
+                      mgp, main, cex.main, xpd, cex,
+                      type1, type2, pch1, pch2, pt.cex1, pt.cex2){
     ## internal function
     ## Author:  Rene Locher
-    ## Version: 2009-03-11
+    ## Version: 2011-09-28
 
+    on.exit(options(warn=options()$warn, add=TRUE))
     options(warn=-1)
-    on.exit(options(warn=0), add=TRUE)
+
+    ## preparing arguments for plotting depending on type
+    Nmax <- max(length(type1),length(pch1),
+                length(lwd1),length(lty1),
+                length(pt.cex1),length(col1))
+    type1 <- rep(type1,Nmax)[1:Nmax]
+    lwd1 <- rep(lwd1,Nmax)[1:Nmax]
+    lty1 <- rep(lty1,Nmax)[1:Nmax]
+    pch1 <- rep(pch1,Nmax)[1:Nmax]
+    pt.cex1 <- rep(pt.cex1,Nmax)[1:Nmax]
+    col1 <- rep(col1,Nmax)[1:Nmax]
+
+    Nmax <- max(length(type2),length(pch2),
+                length(lwd2),length(lty2),
+                length(pt.cex2),length(col2))
+    type2 <- rep(type2,Nmax)[1:Nmax]
+    lwd2 <- rep(lwd2,Nmax)[1:Nmax]
+    lty2 <- rep(lty2,Nmax)[1:Nmax]
+    pch2 <- rep(pch2,Nmax)[1:Nmax]
+    pt.cex2 <- rep(pt.cex2,Nmax)[1:Nmax]
+    col2 <- rep(col2,Nmax)[1:Nmax]
 
     for (ff in 0:(fpp-1)) {
         st <- startP+ff*upf
@@ -34,9 +55,10 @@ plot.page <- function(y1, y2, names1, names2,
         if (st1 < ee1) {
             opar <- par(xpd=xpd)
             err <- try(plot(window(y1, start = st1, end = ee1),
-                            col = col1,lty = lty1, lwd = lwd1,
-                            ylim = y1lim, xlim=c(st, ee), type = type,
-                            plot.type = "single",
+                            col = col1, lty = lty1, lwd = lwd1,
+                            type = "n", pch = pch1, cex = cex,
+                            ylim = y1lim, xlim=c(st, ee),
+                            plot.type = "single", ## see plot.ts!!
                             xlab = xlab, ylab="", axes = FALSE),
                        silent=TRUE)
             par(opar)
@@ -45,6 +67,13 @@ plot.page <- function(y1, y2, names1, names2,
                     stop("\nToo many figures per page defined.\nChoose smaller value for 'fpp' and use slide=TRUE\n", call. = FALSE)} else
                 stop(paste("\nUndefined error:\n",
                            geterrmessage(),sep=""), call. = FALSE)
+            }
+
+            for (ii in 1:ncol(y1)) {
+                lines(window(y1[,ii], start = st1, end = ee1),
+                      col = col1[ii], lty = lty1[ii], lwd = lwd1[ii],
+                      pch = pch1[ii], cex = pt.cex1[ii],
+                      type=type1[ii])
             }
 
             if (!is.null(h1)) abline(h=h1, col=col.h1, xpd=FALSE)
@@ -57,10 +86,12 @@ plot.page <- function(y1, y2, names1, names2,
 
                 if (st2<ee2) {
                     par(xpd=xpd)
-                    for (ii in 1:ncol(y2))
+                    for (ii in 1:ncol(y2)) {
                         lines(window(y2[,ii],start=st2,end=ee2),
-                              col=col2[ii], lty=lty2[ii], lwd=lwd2,
-                              type=type)
+                              col=col2[ii], lty=lty2[ii], lwd=lwd2[ii],
+                              type=type2[ii], pch=pch2[ii],
+                              cex=pt.cex2[ii])
+                    }
                     par(opar)
                 }
                 if (!is.null(h2)) abline(h=h2, col=col.h2, xpd=FALSE)
@@ -93,52 +124,75 @@ plot.page <- function(y1, y2, names1, names2,
     }
 
     if (leg) {
+
+        ## prepatation of lwd, lty and pch for legend
+        iNA <- type1 == "p"
+        lwd1[iNA] <- lty1[iNA] <- NA
+
+        iNA <- type2 == "p"
+        lwd2[iNA] <- lty2[iNA] <- NA
+
+        pch1[type1 %in% c("l","s","S")] <- NA
+        pch2[type2 %in% c("l","s","S")] <- NA
+
         par(xpd=NA)
         plot(0:1, 0:1, type="n", an = FALSE, axes=FALSE)
         cH <- strheight("A")
         cW <- strwidth("A")
 
-        if (is.null(y2)) {
+        if (is.null(y2)) { ## right axis does not exist
             if (is.null(ncol.leg)) ncol.leg <- ncol(y1)
-            le <- legend(0.5,0.5,legend=names1,col=col1,lwd=lwd1,lty=lty1,
+            le <- legend(0.5,0.5, legend=names1,
+                         col=col1, lwd=lwd1, lty=lty1,
+                         pch=pch1, pt.cex=pt.cex1,
                          ncol=ncol.leg, xjust=0.5, yjust=0.5, cex=cex.leg,
                          bty="n",plot=FALSE)
-            if (is.null(y1nam.leg)) legend(0.5,le$rect$h,
-                                           legend=names1,
-                                           col=col1,lwd=lwd1,lty=lty1,
-                                           ncol=ncol.leg,
-                                           xjust=0.5, yjust=1, cex=cex.leg,
-                                           bty="n") else {
-                                               le <- legend(0.5,le$rect$h,
-                                                            legend=names1,
-                                                            col=col1,lwd=lwd1,lty=lty1,
-                                                            ncol=ncol.leg,
-                                                            xjust=0.5, yjust=1, cex=cex.leg,
-                                                            bty="n")
-                                               text(0.5,le$rect$h+cH*cex.leg,
-                                                    y1nam.leg, cex=cex.leg, adj=0.5)
-                                           }
-        } else {
+            if (is.null(y1nam.leg)) ## without axis title in legend
+                legend(0.5, le$rect$h,
+                       legend=names1,
+                       col=col1, lwd=lwd1, lty=lty1,
+                       ncol=ncol.leg,
+                       xjust=0.5, yjust=1, cex=cex.leg,
+                       bty="n") else { ## with axis title in legend
+                           le <- legend(0.5, le$rect$h,
+                                        legend=names1,
+                                        col=col1, lwd=lwd1, lty=lty1,
+                                        pch=pch1, pt.cex=pt.cex1,
+                                        ncol=ncol.leg,
+                                        xjust=0.5, yjust=1, cex=cex.leg,
+                                        bty="n")
+                           text(0.5,le$rect$h+cH*cex.leg,
+                                y1nam.leg, cex=cex.leg, adj=0.5)
+                       }
+        } else { ## right axis exists
             if (is.null(ncol.leg)) ncol.leg <- max(ncol(y1),ncol(y2))
             if (is.null(y1nam.leg)) y1nam.leg <- "left axis:"
             if (is.null(y2nam.leg)) y2nam.leg <- "right axis:"
             text.w <- max(sapply(c(names1,names2),strwidth, cex=cex.leg))
 
-            le1 <- legend(0.5,0.5,legend=names1,col=col1,lwd=lwd1,lty=lty1,
+            le1 <- legend(0.5,0.5,legend=names1,
+                          col=col1,lwd=lwd1,lty=lty1,
+                          pch=pch1, pt.cex=pt.cex1,
                           ncol=ncol.leg, xjust=0.5, yjust=1, cex=cex.leg,
                           bty="n", text.width=text.w, plot=FALSE)
-            le2 <- legend(0.5,0.5, legend=names2, col=col2,lwd=lwd2,lty=lty2,
+            le2 <- legend(0.5,0.5, legend=names2,
+                          col=col2,lwd=lwd2,lty=lty2,
+                          pch=pch2, pt.cex=pt.cex2,
                           ncol=ncol.leg, xjust=0.5, yjust=1, cex=cex.leg,
                           bty="n", text.width=text.w, plot=FALSE)
 
             leg.w <- min(max(le1$rect$w,le2$rect$w),1)
 
             le1 <- legend(0.5-leg.w/2, le1$rect$h+le2$rect$h-2*cH,
-                          legend=names1,col=col1,lwd=lwd1,lty=lty1,
+                          legend=names1,
+                          col=col1, lwd=lwd1, lty=lty1,
+                          pch=pch1, pt.cex=pt.cex1,
                           ncol=ncol.leg, xjust=0, yjust=1, cex=cex.leg,
                           bty="n", text.width=text.w)
             le2 <- legend(0.5-leg.w/2, le2$rect$h-cH,
-                          legend=names2,col=col2,lwd=lwd2,lty=lty2,
+                          legend=names2,
+                          col=col2, lwd=lwd2, lty=lty2,
+                          pch=pch2, pt.cex=pt.cex2,
                           ncol=ncol.leg, xjust=0, yjust=1, cex=cex.leg,
                           bty="n", text.width=text.w)
 

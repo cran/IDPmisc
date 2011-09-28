@@ -11,8 +11,8 @@ longtsPlot <- function(y1, y2 = NULL,
                        xlab = "", y1lab = "", y2lab = "",
                        col.y1 = "black", col.y2 = col.y1,
                        cex.lab = par("cex.lab"),
-                       y1lim = range(y1,na.rm=T,finite=TRUE),
-                       y2lim = range(y2,na.rm=T,finite=TRUE),
+                       y1lim = range(y1, na.rm=TRUE, finite=TRUE),
+                       y2lim = range(y2, na.rm=TRUE, finite=TRUE),
                        lty1 = 1, lty2 = 2, lwd1 = 1, lwd2 = lwd1,
                        col1 = NULL, col2 = NULL,
                        leg = TRUE, y1nam.leg = NULL, y2nam.leg = NULL,
@@ -27,11 +27,14 @@ longtsPlot <- function(y1, y2 = NULL,
                        c(0,0,2,0) else par("oma"),
                        xpd = par("xpd"),
                        cex = par("cex"),
-                       type = "s", slide = FALSE, each.fig = 1,
+                       type1 = "s", type2 = type1,
+                       pch1 = 46, pch2 = pch1,
+                       pt.cex1 = 2, pt.cex2 = pt.cex1,
+                       slide = FALSE, each.fig = 1,
                        filename = NULL, extension = NULL,
                        filetype = NULL, ...) {
     ## Author:  Rene Locher
-    ## Version: 2009-10-06
+    ## Version: 2011-09-28
 
     if (is.null(names1)) {
         names1 <- deparse(substitute(y1))
@@ -83,6 +86,7 @@ longtsPlot <- function(y1, y2 = NULL,
                 y2 <- as.matrix(y2)
             }
         }
+        if (is.data.frame(y2)) y2 <- as.matrix(y2)
         if (!is.numeric(y2)) stop("y2 must be numeric!")
         if (!is.ts(y2)) y2 <- ts(y2)
         fq2 <- frequency(y2)
@@ -121,7 +125,7 @@ longtsPlot <- function(y1, y2 = NULL,
 
         if (!is.null(h2)) h2 <- (h2-y2lim[1])/diff(range(y2lim))*
             diff(range(y1lim))+y1lim[1]
-    }
+    } ## end if (!is.null(y2))
 
     par(mfrow = c(ifelse(leg,fpp+1,fpp),1),
         mgp = mgp, mar = mar, oma=oma, cex=cex)
@@ -160,7 +164,9 @@ longtsPlot <- function(y1, y2 = NULL,
                       paste(main,paste("from",max(st,startP),"to",
                                        min(st+upp-1+round(overlap),ee+1)), sep=" ") else main,
                       cex.main=cex.main,
-                      mgp=mgp, xpd=xpd, cex=cex, type=type)
+                      mgp=mgp, xpd=xpd, cex=cex,
+                      type1=type1, type2=type2, pch1=pch1, pch2=pch2,
+                      pt.cex1=pt.cex1, pt.cex2=pt.cex2)
             if (!is.null(filename)){
                 fn <- paste(filename, formatC(nr,format = "d", width=3, flag=0),
                             extension, sep="")
@@ -171,8 +177,8 @@ longtsPlot <- function(y1, y2 = NULL,
                 print(answ <- readline(prompt="\nfor next plot: press <return>\nfor stopping plot: press <s><return>"))
                 if (is.element(answ,c("s","S"))) return()
             }
-        }
-    } else {
+        } ## end for
+    } else { ## slide is FALSE
         if (end(y1)[1]>start(y1)[1])
             plot.page(y1=y1, y2=y2, names1=names1, names2=names2,
                       startP=startP, upf=upf, fpp=fpp, overlap=overlap,
@@ -194,7 +200,9 @@ longtsPlot <- function(y1, y2 = NULL,
                                            ee+1)),
                             sep=" ") else main,
                       cex.main=cex.main,
-                      mgp=mgp, xpd=xpd, cex=cex, type=type)
+                      mgp=mgp, xpd=xpd, cex=cex,
+                      type1=type1, type2=type2, pch1=pch1, pch2=pch2,
+                      pt.cex1=pt.cex1, pt.cex2=pt.cex2)
         if (!is.null(filename)){
             if (Sys.info()["sysname"]=="Windows")
                 savePlot(filename=paste(filename,extension,sep=""),
@@ -204,5 +212,5 @@ longtsPlot <- function(y1, y2 = NULL,
         }
     }
 
-} #longts.plot
+} #longtsPlot
 

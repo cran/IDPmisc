@@ -16,7 +16,7 @@
 2005-04-21 Rene Locher
 	IDPmisc V0.3.3
 	* ipairs: factor levels are now correctely labeled
-	* Image, ipairs, ilagplot: argument ztrans renamed to ztransf
+	* Image, ipairs, ilagplot: argument 'ztrans' renamed to ztransf
 
 
 2005-04-27 Rene Locher
@@ -35,7 +35,7 @@
 2005-10-05 Rene Locher
 	IDPmisc V0.4.1 not published
 
-2005-10-05
+2005-10-05 Rene Locher
 	IDPmisc V0.4.2
 	* ipairs, ilagplot: additional examples on dataset AirQual{SwissAir}
 	* Image, ipairs, ilagplot, ixyplot: additional argument
@@ -95,8 +95,8 @@
 	  in grid.control
 	* general.control: arguments reordered and new arguments for
 	  manual setting of rose dimensions. Help expanded and corrected.
-	* grid.control: default values for argument cyclVar.lab
-	  corrected. SW replaced by SE
+	* grid.control: default values for argument 'cyclVar.lab'
+	  corrected. 'SW' replaced by 'SE'
 
 2005-12-19 Rene Locher
 	IDPmisc V0.5.7
@@ -110,13 +110,13 @@
 
 2006-01-19 Rene Locher
 	IDPmisc V0.5.9
-	* general.control for plot.rose with new argument shift
+	* general.control for plot.rose with new argument 'shift'
 
 2006-06-20 Rene Locher
 	IDPmisc V0.6.0, not published
 	* clock2cart, cart2clock: processing of arguments changed
 	  to make input more flexible
-	* Arrows default settings of arguments h.lwd and h.lty changed
+	* Arrows default settings of arguments 'h.lwd' and 'h.lty' changed
 	* getXY: new function to read in data with 1 or 2 dimension
 	* peaks: new function to evaluate peaks in data without
 	  smoothing them first
@@ -175,7 +175,8 @@
 2007-02-19 Rene Locher
 	IDPmisc V0.9.1
 	* longts.plot
-	  New arguments cex.axis, mar, filename, extension, filetype.
+	  New arguments 'cex.axis', 'mar', 'filename', 'extension', 
+	  'filetype'.
 	  Spacing between individual figures has been optimized.
 	  Automatic constructed and manually defined titles
 	  are now positioned identically.
@@ -201,7 +202,7 @@
 
 2007-08-14 Rene Locher
 	IDPmisc V0.9.3
-	* iterm New argument scale.
+	* iterm New argument 'scale'.
 
 2007-10-02 Rene Locher
 	IDPmisc V0.9.4
@@ -242,7 +243,7 @@
 	* poster.plot
 	  Restores parameters of par() which were in use before call
 	  function.
-	* Image: New argument matrix. Zmax is not rounded any more.
+	* Image: New argument 'matrix'. Zmax is not rounded any more.
 
 2008-07-08 Rene Locher
 	IDPmisc V0.9.7
@@ -302,7 +303,7 @@
 	* MS: Help improved.
 	* peak: Help improved.
 	* poster.plot: Help improved.
-	* showColors: New argument mar.
+	* showColors: New argument 'mar'.
 	  After exiting showColors, original arguments of par() are
 	  restored.
 2009-03-16 Rene Locher
@@ -386,4 +387,26 @@
 2010-12-02 Rene Locher
 	IDPmisc V1.1.10
 	Unnecessary file removed in src directory.
+
+2011-09-21 Rene Locher
+	IDPmisc V1.1.11
+	* showColors: help improved.
+	* longtsPlot:  on.exit(options(warn=options("warn"), add=TRUE),
+	  was on.exit(warn=0, add=TRUE).
+	  Argument 'type' removed.
+	  New arguments 'type1', 'type2', 'pch1', 'pch2', 'cex1', 'cex2'.
+	  Help text modified.
+	* plot.page.R
+	  New arguments 'type1', 'type2', 'pch1', 'pch2', 'cex1', 'cex2'.
+
+2011-09-28 Rene Locher	
+	IDPmisc V1.1.12
+	* longtsPlot: Arguments 'cex1', 'cex2' renamed to 
+	  'pt.cex1', 'pt.cex2'
+	  Data.frame for y2 did not work.
+	* plot.page.R: Arguments 'cex1', 'cex2' renamed to 
+	  'pt.cex1', 'pt.cex2'
+	  'pt.cex1' and 'pt.cex2' now only used for size of symbols!
+	  Legend plot adapted to different 'pt.cex1' and 'pt.cex2'
+	  Lines arguments corrected.
 	

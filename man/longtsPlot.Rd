@@ -17,8 +17,8 @@ longtsPlot(y1, y2 = NULL,
            xlab = "", y1lab = "", y2lab = "",
            col.y1 = "black", col.y2 = col.y1,
            cex.lab = par("cex.lab"),
-           y1lim = range(y1, na.rm = T, finite=TRUE),
-           y2lim = range(y2, na.rm = T, finite=TRUE),
+           y1lim = range(y1, na.rm = TRUE, finite=TRUE),
+           y2lim = range(y2, na.rm = TRUE, finite=TRUE),
            lty1 = 1, lty2 = 2, lwd1 = 1, lwd2 = lwd1,
            col1 = NULL, col2 = NULL,
            leg = TRUE, y1nam.leg = NULL, y2nam.leg = NULL,
@@ -29,8 +29,10 @@ longtsPlot(y1, y2 = NULL,
            mgp = c(2, 0.7, 0), mar = c(2,3,1,3)+.2,
            oma = if (automain|!is.null(main))
                              c(0,0,2,0) else par("oma"),
-           xpd = par("xpd"),
-           cex = par("cex"), type = "s", slide = FALSE, each.fig = 1,
+           xpd = par("xpd"), cex = par("cex"),
+           type1 = "s", type2 = type1,
+           pch1 = 46, pch2 = pch1, pt.cex1 = 2, pt.cex2 = pt.cex1,
+           slide = FALSE, each.fig = 1,
            filename = NULL, extension = NULL, filetype = NULL, ...)
 }
 %- maybe also 'usage' for other objects documented here.
@@ -88,7 +90,10 @@ longtsPlot(y1, y2 = NULL,
     (=FALSE) or not (=TRUE). Horizontal lines, defined by \code{h1} or
     \code{h2} are always clipped. }
   \item{cex}{ Cf. \code{\link[graphics]{par}}. }
-  \item{type}{ Cf. \code{\link[graphics]{plot}}. }
+  \item{type1, type2}{ For plotting lines or
+    points. Cf. \code{\link[graphics]{plot}}. }
+   \item{pch1, pch2, pt.cex1, pt.cex2}{Plotting symbols and there sizes
+     when 'type1' or 'type2' = "p"}
   \item{slide}{ Logical. When \code{FALSE}, the first page (screen) is
     plotted only. When \code{TRUE}, user may leaf through the pages
     interactively. }
@@ -128,11 +133,6 @@ longtsPlot(y1, y2 = NULL,
   the need of a more flexible annotation of axes than \code{plot.ts}
   provides. \code{longtsPlot} provides the user with all these features
   for one or two matrices or regular time series (time series matrices).
-
-  \code{\link[sfsmisc]{p.ts}} is another function for plotting long time
-  series. The main differences are: \code{p.ts} can also plot irregular
-  times series. \code{p.ts} has only one y-axis, cannot automatically
-  plot a legend and has the full output always on one single page.
 }
 
 \section{Side Effects}{
@@ -166,7 +166,7 @@ if (require(SwissAir)) {
              y2.at = c(10,30), y2.tick = seq(10,30,10),
              y1lab="[ppb]", y2lab="[C]",
              y1lim = c(0,100), y2lim = c(10,30), xpd=TRUE,
-             col2 = "red", type = "l")
+             col2 = "red", type1 = "l")
 }
 
 ## Two time series with different frequencies and start times

@@ -14,7 +14,7 @@ showColors(col = IDPcolorRamp(20),
 
 \arguments{
   \item{col}{Color vector}
-  \item{ntm}{Approximate number of tick marks for axis}
+  \item{ntm}{Approximate number of labels printed}
   \item{border}{Shall border be drawn between the colors in the legend:
     \code{TRUE} / \code{FALSE}}
   \item{mar}{Margin. cf \code{\link{par}}}

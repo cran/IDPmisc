@@ -34,7 +34,7 @@ peaks(x, y = NULL, minPH, minPW, thr, stepF = 0.49)
   small.
 
   The function is looking for peaks without any preceding baseline
-  substraction are smoothing, which could distort the spectrum.
+  substraction or smoothing, which could distort the spectrum.
 
   The selection criteria \code{minPH} and \code{minPW} and the values
   for the calculated peak widths are only approximate.}

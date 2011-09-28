@@ -23,15 +23,15 @@
 \tabular{ll}{
   Package: \tab IDPmisc\cr
   Type: \tab Package\cr
-  Version: \tab 1.1.10\cr
-  Date: \tab 2010-12-02\cr
+  Version: \tab 1.1.12\cr
+  Date: \tab 2011-09-28\cr
   License: \tab  GPL (>= 3) (GNU Public Licence)\cr
 }
 
 }
 
 \author{
-Rene Locher, Andreas Ruckstuhl, Thomas Unternaehrer
+Rene Locher, Andreas Ruckstuhl et al.
 
 Maintainer: Rene Locher <rene.locher@zhaw.ch>
 }
