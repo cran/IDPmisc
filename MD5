@@ -1,5 +1,5 @@
-869733ee8106af2395a09853163b46a5 *ChangeLog
-0bd49b4af1543e42087258106235ef24 *DESCRIPTION
+4de268324345680107cad1bc29d11ab5 *ChangeLog
+45b97b9a95d764c5a5e8ea0e4f6c2b70 *DESCRIPTION
 18adb2bf8008e905d5c96cd9963f318b *NAMESPACE
 5e0736c157ddf9d42cfd95bbf181ecf3 *R/Arrows.R
 4b4c7ebab599b8b689da10b04a5eed04 *R/IDPcolorRamp.R
@@ -11,7 +11,6 @@ f46453c313ae8fa1adde0918d8427107 *R/cart2clock.R
 46a1ef14ca9a8f44b9d8301f79c5febb *R/col2hsv.R
 f8189f492d92bdddf7a85a79cf7eb1fb *R/data.sheet.R
 555c285c1a3d37a79434054336bfc929 *R/draw.leg.R
-6eb8ec622055a2c583572178488f4f3b *R/drawleg.R
 c9eeb92bc6aa737503ec77037f589c31 *R/general.control.R
 1d1efd6bfd7f58e13dbb93581df5dc60 *R/getXY.R
 d8245f870623df5859d5e9a5356553eb *R/grid.control.R
@@ -25,10 +24,10 @@ c3e75eda94dd05aa9ea55db2aeb5ca58 *R/iplotLegend.R
 3cc94d5462b3d5649912fa438df2ea9d *R/iplotMain.R
 4c086fbd360d7be3fca724fa11b1d5d8 *R/itermplot.R
 a9c4aeb49a4c0b535029a9d82102c4fa *R/key.control.R
-c3c8b703ecc0d25283c360e13b5595c1 *R/longtsPlot.R
+853f72cbf35b250278bfcf55d2ba7d56 *R/longtsPlot.R
 57e7e09da6ebdcb0333003600bca4b6e *R/ok.R
 b6aff926d3fa24dce6c2d57e37413997 *R/peaks.R
-ccccd4bfece28f7be2d8dd0c1fa2b97c *R/plot.page.R
+26db7cc0b7ddffa656011df887aba6c2 *R/plot.page.R
 a5effcb0297bbb296e843b371fe0c4b6 *R/plot.rose.R
 9b5a997b25405148a67ccb409761ee9e *R/plotdat.R
 9a2497d0ec624e44775e96b670328bfe *R/poster.plot.R
@@ -64,10 +63,10 @@ b107718ee2d839976b22fa85490ce2aa *man/ipairs.Rd
 fcc6a558159eb4ae085bfd9405bb7c1a *man/iplotLegend.Rd
 d88da919ca31495d25510696f180d5f7 *man/itermplot.Rd
 527f6e174c6789723191e227bdf1ebb5 *man/key.control.Rd
-2d5e2cf11ef8e92759bd7234b0107832 *man/longtsPlot.Rd
+ad18ef757a865d7576c2e89495db08c0 *man/longtsPlot.Rd
 a2ed741318d96e90a54737507a13e51d *man/ok.Rd
 acc9c6647b0aae72ea5f4388ec9b8e51 *man/peaks.Rd
-ae0222f21b34c64b0839a462a3b7f553 *man/pkg-internal.Rd
+c284e9b7f2545347b17db823caccea0c *man/pkg-internal.Rd
 2cd155f30c3a401f18d3378d5027e8a6 *man/plot.rose.Rd
 30db0a855a6a0e75b3311c066669a08a *man/poster.plot.Rd
 2f88ee55c2d60af6481fe560d3d71006 *man/rfbaseline.Rd

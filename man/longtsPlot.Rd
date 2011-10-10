@@ -14,7 +14,7 @@ longtsPlot(y1, y2 = NULL,
            y1.at = NULL, y1.ann = NULL, y1.tick = NULL,
            y2.at = NULL, y2.ann = NULL, y2.tick = NULL,
            nx.ann = 10, ny.ann = 3, cex.ann = par("cex.axis"),
-           xlab = "", y1lab = "", y2lab = "",
+           xlab = "", y1lab = "", y2lab = "", las = 0,
            col.y1 = "black", col.y2 = col.y1,
            cex.lab = par("cex.lab"),
            y1lim = range(y1, na.rm = TRUE, finite=TRUE),
@@ -31,7 +31,7 @@ longtsPlot(y1, y2 = NULL,
                              c(0,0,2,0) else par("oma"),
            xpd = par("xpd"), cex = par("cex"),
            type1 = "s", type2 = type1,
-           pch1 = 46, pch2 = pch1, pt.cex1 = 2, pt.cex2 = pt.cex1,
+           pch1 = 46, pch2 = pch1, cex.pt1 = 2, cex.pt2 = cex.pt1,
            slide = FALSE, each.fig = 1,
            filename = NULL, extension = NULL, filetype = NULL, ...)
 }
@@ -64,6 +64,7 @@ longtsPlot(y1, y2 = NULL,
   \item{xlab}{ Label for x-axis. }
   \item{y1lab, y2lab}{ Labels for y-axes on the left and on the right
     end of the figure. }
+  \item{las}{ Cf. \code{\link[graphics]{par}}. }
   \item{col.y1, col.y2}{ Colors for left and right axis respectively. }
   \item{cex.lab}{ cex of labels. }
   \item{y1lim, y2lim}{ Limits for left and right axis respectively. }
@@ -92,7 +93,7 @@ longtsPlot(y1, y2 = NULL,
   \item{cex}{ Cf. \code{\link[graphics]{par}}. }
   \item{type1, type2}{ For plotting lines or
     points. Cf. \code{\link[graphics]{plot}}. }
-   \item{pch1, pch2, pt.cex1, pt.cex2}{Plotting symbols and there sizes
+   \item{pch1, pch2, cex.pt1, cex.pt2}{Plotting symbols and there sizes
      when 'type1' or 'type2' = "p"}
   \item{slide}{ Logical. When \code{FALSE}, the first page (screen) is
     plotted only. When \code{TRUE}, user may leaf through the pages

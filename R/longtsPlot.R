@@ -9,6 +9,7 @@ longtsPlot <- function(y1, y2 = NULL,
                        y2.at = NULL, y2.ann = NULL, y2.tick = NULL,
                        nx.ann = 10, ny.ann = 3, cex.ann = par("cex.axis"),
                        xlab = "", y1lab = "", y2lab = "",
+                       las = 0,
                        col.y1 = "black", col.y2 = col.y1,
                        cex.lab = par("cex.lab"),
                        y1lim = range(y1, na.rm=TRUE, finite=TRUE),
@@ -29,12 +30,12 @@ longtsPlot <- function(y1, y2 = NULL,
                        cex = par("cex"),
                        type1 = "s", type2 = type1,
                        pch1 = 46, pch2 = pch1,
-                       pt.cex1 = 2, pt.cex2 = pt.cex1,
+                       cex.pt1 = 2, cex.pt2 = cex.pt1,
                        slide = FALSE, each.fig = 1,
                        filename = NULL, extension = NULL,
                        filetype = NULL, ...) {
     ## Author:  Rene Locher
-    ## Version: 2011-09-28
+    ## Version: 2011-10-10
 
     if (is.null(names1)) {
         names1 <- deparse(substitute(y1))
@@ -153,7 +154,8 @@ longtsPlot <- function(y1, y2 = NULL,
                       y1.at = y1.at, y1.ann = y1.ann, y1.tick = y1.tick,
                       y2.at = y2.at, y2.ann = y2.ann, y2.tick = y2.tick,
                       ny.ann=ny.ann, cex.ann=cex.ann,
-                      xlab=xlab, y1lab=y1lab, y2lab=y2lab, col.y1=col.y1, col.y2=col.y2,
+                      xlab=xlab, y1lab=y1lab, y2lab=y2lab, las = las,
+                      col.y1=col.y1, col.y2=col.y2,
                       cex.lab=cex.lab,
                       y1lim=y1lim, y2lim=y2lim,
                       lty1=lty1, lty2=lty2, lwd1=lwd1, lwd2=lwd2, col1=col1, col2=col2,
@@ -166,7 +168,7 @@ longtsPlot <- function(y1, y2 = NULL,
                       cex.main=cex.main,
                       mgp=mgp, xpd=xpd, cex=cex,
                       type1=type1, type2=type2, pch1=pch1, pch2=pch2,
-                      pt.cex1=pt.cex1, pt.cex2=pt.cex2)
+                      cex.pt1=cex.pt1, cex.pt2=cex.pt2)
             if (!is.null(filename)){
                 fn <- paste(filename, formatC(nr,format = "d", width=3, flag=0),
                             extension, sep="")
@@ -186,7 +188,7 @@ longtsPlot <- function(y1, y2 = NULL,
                       y1.at = y1.at, y1.ann = y1.ann, y1.tick = y1.tick,
                       y2.at = y2.at, y2.ann = y2.ann, y2.tick = y2.tick,
                       ny.ann=ny.ann, cex.ann=cex.ann,
-                      xlab=xlab, y1lab=y1lab, y2lab=y2lab,
+                      xlab=xlab, y1lab=y1lab, y2lab=y2lab, las = las,
                       col.y1=col.y1, col.y2=col.y2, cex.lab=cex.lab,
                       y1lim=y1lim, y2lim=y2lim,
                       lty1=lty1, lty2=lty2, lwd1=lwd1, lwd2=lwd2,
@@ -202,7 +204,7 @@ longtsPlot <- function(y1, y2 = NULL,
                       cex.main=cex.main,
                       mgp=mgp, xpd=xpd, cex=cex,
                       type1=type1, type2=type2, pch1=pch1, pch2=pch2,
-                      pt.cex1=pt.cex1, pt.cex2=pt.cex2)
+                      cex.pt1=cex.pt1, cex.pt2=cex.pt2)
         if (!is.null(filename)){
             if (Sys.info()["sysname"]=="Windows")
                 savePlot(filename=paste(filename,extension,sep=""),

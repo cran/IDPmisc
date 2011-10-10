@@ -7,18 +7,17 @@ plot.page <- function(y1, y2, names1, names2,
                       y1.at, y1.ann, y1.tick,
                       y2.at, y2.ann, y2.tick,
                       ny.ann, cex.ann,
-                      xlab, y1lab, y2lab, col.y1, col.y2,
-                      y2.lab, cex.lab,
+                      xlab, y1lab, y2lab, las, col.y1, col.y2, cex.lab,
                       y1lim, y2lim,
                       lty1, lty2, lwd1, lwd2, col1, col2,
                       leg, y1nam.leg, y2nam.leg,
                       ncol.leg, cex.leg=1.5,
                       h1, h2, col.h1, col.h2,
                       mgp, main, cex.main, xpd, cex,
-                      type1, type2, pch1, pch2, pt.cex1, pt.cex2){
+                      type1, type2, pch1, pch2, cex.pt1, cex.pt2){
     ## internal function
     ## Author:  Rene Locher
-    ## Version: 2011-09-28
+    ## Version: 2011-10-07
 
     on.exit(options(warn=options()$warn, add=TRUE))
     options(warn=-1)
@@ -26,22 +25,22 @@ plot.page <- function(y1, y2, names1, names2,
     ## preparing arguments for plotting depending on type
     Nmax <- max(length(type1),length(pch1),
                 length(lwd1),length(lty1),
-                length(pt.cex1),length(col1))
+                length(cex.pt1),length(col1))
     type1 <- rep(type1,Nmax)[1:Nmax]
     lwd1 <- rep(lwd1,Nmax)[1:Nmax]
     lty1 <- rep(lty1,Nmax)[1:Nmax]
     pch1 <- rep(pch1,Nmax)[1:Nmax]
-    pt.cex1 <- rep(pt.cex1,Nmax)[1:Nmax]
+    cex.pt1 <- rep(cex.pt1,Nmax)[1:Nmax]
     col1 <- rep(col1,Nmax)[1:Nmax]
 
     Nmax <- max(length(type2),length(pch2),
                 length(lwd2),length(lty2),
-                length(pt.cex2),length(col2))
+                length(cex.pt2),length(col2))
     type2 <- rep(type2,Nmax)[1:Nmax]
     lwd2 <- rep(lwd2,Nmax)[1:Nmax]
     lty2 <- rep(lty2,Nmax)[1:Nmax]
     pch2 <- rep(pch2,Nmax)[1:Nmax]
-    pt.cex2 <- rep(pt.cex2,Nmax)[1:Nmax]
+    cex.pt2 <- rep(cex.pt2,Nmax)[1:Nmax]
     col2 <- rep(col2,Nmax)[1:Nmax]
 
     for (ff in 0:(fpp-1)) {
@@ -72,7 +71,7 @@ plot.page <- function(y1, y2, names1, names2,
             for (ii in 1:ncol(y1)) {
                 lines(window(y1[,ii], start = st1, end = ee1),
                       col = col1[ii], lty = lty1[ii], lwd = lwd1[ii],
-                      pch = pch1[ii], cex = pt.cex1[ii],
+                      pch = pch1[ii], cex = cex.pt1[ii],
                       type=type1[ii])
             }
 
@@ -90,7 +89,7 @@ plot.page <- function(y1, y2, names1, names2,
                         lines(window(y2[,ii],start=st2,end=ee2),
                               col=col2[ii], lty=lty2[ii], lwd=lwd2[ii],
                               type=type2[ii], pch=pch2[ii],
-                              cex=pt.cex2[ii])
+                              cex=cex.pt2[ii])
                     }
                     par(opar)
                 }
@@ -98,24 +97,26 @@ plot.page <- function(y1, y2, names1, names2,
             }
 
             if (!is.null(x.tick))
-                axis(1,at=x.tick,labels=FALSE,tcl=-0.3, xpd=FALSE)
-            axis(1, at = x.at, labels = x.ann, tcl = -0.5,
-                 cex.axis = cex.ann, xpd = FALSE)
+                axis(1,at=x.tick,labels=FALSE,tcl=-0.3, xpd=FALSE, las=las)
+            axis(1, at = x.at, labels = x.ann,
+                 cex.axis = cex.ann, tcl = -0.5, xpd = FALSE, las=las)
 
             if (!is.null(y1.tick))
                 axis(2, y1.tick, labels = FALSE, col.axis = col.y1,
-                     tcl=-0.3, xpd=FALSE)
+                     tcl=-0.3, xpd=FALSE, las=las)
             axis(2, at = y1.at, labels = y1.ann, col.lab = col.y1,
-                 col.axis = col.y1, cex.axis = cex.ann, xpd = FALSE)
+                 col.axis = col.y1, cex.axis = cex.ann, tcl=-0.5,
+                 xpd = FALSE, las=las)
             mtext(text = y1lab, side = 2, line = mgp[1],
                   col = col.y1, cex = cex.lab)
 
             if (!is.null(y2)) {
                 if (!is.null(y2.tick))
                     axis(4, y2.tick, labels=FALSE, col.axis=col.y2,
-                         tcl=-0.3, xpd=FALSE)
+                         tcl=-0.3, xpd=FALSE, las=las)
                 axis(4, at=y2.at, labels=y2.ann, col.lab=col.y2,
-                     col.axis=col.y2, cex=cex.lab, tcl=-0.5, xpd=FALSE)
+                     col.axis=col.y2, cex.axis=cex.ann, tcl=-0.5, xpd=FALSE,
+                     las=las)
                 mtext(text=y2lab, side=4, line=mgp[1], col=col.y2,
                       cex=cex.lab)
             }
@@ -144,7 +145,7 @@ plot.page <- function(y1, y2, names1, names2,
             if (is.null(ncol.leg)) ncol.leg <- ncol(y1)
             le <- legend(0.5,0.5, legend=names1,
                          col=col1, lwd=lwd1, lty=lty1,
-                         pch=pch1, pt.cex=pt.cex1,
+                         pch=pch1, pt.cex=cex.pt1,
                          ncol=ncol.leg, xjust=0.5, yjust=0.5, cex=cex.leg,
                          bty="n",plot=FALSE)
             if (is.null(y1nam.leg)) ## without axis title in legend
@@ -157,7 +158,7 @@ plot.page <- function(y1, y2, names1, names2,
                            le <- legend(0.5, le$rect$h,
                                         legend=names1,
                                         col=col1, lwd=lwd1, lty=lty1,
-                                        pch=pch1, pt.cex=pt.cex1,
+                                        pch=pch1, pt.cex=cex.pt1,
                                         ncol=ncol.leg,
                                         xjust=0.5, yjust=1, cex=cex.leg,
                                         bty="n")
@@ -172,12 +173,12 @@ plot.page <- function(y1, y2, names1, names2,
 
             le1 <- legend(0.5,0.5,legend=names1,
                           col=col1,lwd=lwd1,lty=lty1,
-                          pch=pch1, pt.cex=pt.cex1,
+                          pch=pch1, pt.cex=cex.pt1,
                           ncol=ncol.leg, xjust=0.5, yjust=1, cex=cex.leg,
                           bty="n", text.width=text.w, plot=FALSE)
             le2 <- legend(0.5,0.5, legend=names2,
                           col=col2,lwd=lwd2,lty=lty2,
-                          pch=pch2, pt.cex=pt.cex2,
+                          pch=pch2, pt.cex=cex.pt2,
                           ncol=ncol.leg, xjust=0.5, yjust=1, cex=cex.leg,
                           bty="n", text.width=text.w, plot=FALSE)
 
@@ -186,13 +187,13 @@ plot.page <- function(y1, y2, names1, names2,
             le1 <- legend(0.5-leg.w/2, le1$rect$h+le2$rect$h-2*cH,
                           legend=names1,
                           col=col1, lwd=lwd1, lty=lty1,
-                          pch=pch1, pt.cex=pt.cex1,
+                          pch=pch1, pt.cex=cex.pt1,
                           ncol=ncol.leg, xjust=0, yjust=1, cex=cex.leg,
                           bty="n", text.width=text.w)
             le2 <- legend(0.5-leg.w/2, le2$rect$h-cH,
                           legend=names2,
                           col=col2, lwd=lwd2, lty=lty2,
-                          pch=pch2, pt.cex=pt.cex2,
+                          pch=pch2, pt.cex=cex.pt2,
                           ncol=ncol.leg, xjust=0, yjust=1, cex=cex.leg,
                           bty="n", text.width=text.w)
 

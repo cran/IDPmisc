@@ -175,7 +175,7 @@
 2007-02-19 Rene Locher
 	IDPmisc V0.9.1
 	* longts.plot
-	  New arguments 'cex.axis', 'mar', 'filename', 'extension', 
+	  New arguments 'cex.axis', 'mar', 'filename', 'extension',
 	  'filetype'.
 	  Spacing between individual figures has been optimized.
 	  Automatic constructed and manually defined titles
@@ -399,14 +399,28 @@
 	* plot.page.R
 	  New arguments 'type1', 'type2', 'pch1', 'pch2', 'cex1', 'cex2'.
 
-2011-09-28 Rene Locher	
+2011-09-28 Rene Locher
 	IDPmisc V1.1.12
-	* longtsPlot: Arguments 'cex1', 'cex2' renamed to 
+	* longtsPlot: Arguments 'cex1', 'cex2' renamed to
 	  'pt.cex1', 'pt.cex2'
 	  Data.frame for y2 did not work.
-	* plot.page.R: Arguments 'cex1', 'cex2' renamed to 
+	* plot.page: Arguments 'cex1', 'cex2' renamed to
 	  'pt.cex1', 'pt.cex2'
 	  'pt.cex1' and 'pt.cex2' now only used for size of symbols!
 	  Legend plot adapted to different 'pt.cex1' and 'pt.cex2'
 	  Lines arguments corrected.
-	
+
+2011-10-09 Rene Locher
+	IDPmisc V1.1.13
+	* longtsPlot: Arguments 'pt.cex1', 'pt.cex2' renamed to
+	  'cex.pt1', 'cex.pt2' for consistency reasons.
+	  New argument 'las'.
+	* plot.page Arguments 'pt.cex1', 'pt.cex2' renamed to
+	  'cex.pt1', 'cex.pt2' for consistency reasons.
+	  New argument 'las'. Unused argument 'y2.lab' removed.
+	  Minor corrections when drawing axes.
+
+2011-10-10 Rene Locher
+	IDPmisc V1.1.14
+	* longtsPlot: Default of argument 'las' set to 0.
+
