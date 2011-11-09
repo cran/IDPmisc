@@ -424,3 +424,13 @@
 	IDPmisc V1.1.14
 	* longtsPlot: Default of argument 'las' set to 0.
 
+2011-11-08 Rene Locher
+	IDPmisc V1.1.15
+	* cart2clock, clock2cart: details section added.
+	* cart2clock: comment in examples improved.
+	  Error when argument y=0 corrected.
+
+2011-11-09 Rene Locher
+	IDPmisc V1.1.16
+	* MS: size of data reduced to about half by better compression
+

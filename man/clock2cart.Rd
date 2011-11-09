@@ -5,7 +5,7 @@
 \title{ Convert Clock Coordinates to Cartesian Coordinates }
 \description{
   Converts clock coordinates (\code{rho}, \code{phi}) to cartesian
-  coordinates (\code{x}, \code{y}.
+  coordinates (\code{x}, \code{y}).
 }
 \usage{
 clock2cart(rho, phi, circle)
@@ -18,10 +18,11 @@ clock2cart(rho, phi, circle)
   \item{circle}{ Defines the full circle in the units of \code{phi}. }
 }
 
-%% \details{
-%%   ~~ If necessary, more details than the __description__  above ~~
-%% }
-%%
+\details{
+  Be aware that in clock coordinates and polar coordinate the angle phi
+  is differently defined!
+}
+
 
 \value{
   Data frame with

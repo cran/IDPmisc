@@ -17,9 +17,10 @@ cart2clock(x, y, circle)
   \item{circle}{  Defines the full circle in the units of \code{phi}. }
 }
 
-%% \details{
-%%   ~~ If necessary, more details than the __description__  above ~~
-%% }
+\details{
+  Be aware that in clock coordinates and polar coordinate the angle phi
+  is differently defined!
+}
 
 \value{
 Data frame with
@@ -37,10 +38,10 @@ Data frame with
 \seealso{ \code{\link{clock2cart}}, \code{\link{rose-class}} }
 
 \examples{
-## convert polar coordinates to cartesian coordinates
+## convert clock coordinates to cartesian coordinates
 xy <- clock2cart(rho=rep(1,33),phi=seq(0,to=360,length.out=33),circle=360)
 
-## convert the cartesian coordinates back to polar coordinates
+## convert the cartesian coordinates back to clock coordinates
 rhophi <- cart2clock(xy$x,xy$y,circle=360)
 
 round(clock2cart(rhophi,circle=360)-xy)

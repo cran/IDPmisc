@@ -1,7 +1,7 @@
 \name{NaRV.omit}
 \alias{NaRV.omit}
 
-\title{Omits Observations with NA, NaN, Inf and -Inf Values}
+\title{Omit Observations with NA, NaN, Inf and -Inf Values}
 \description{
   Omits observations with values which a not regular (=Not a Regular
   Value) when object is a vector, a factor, a data.frame or a matrix. 
