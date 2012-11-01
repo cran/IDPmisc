@@ -434,3 +434,7 @@
 	IDPmisc V1.1.16
 	* MS: size of data reduced to about half by better compression
 
+2012-11-01 Rene Locher
+	IDPmisc V1.1.17
+	* plotdat: Partial argument match removed
+
