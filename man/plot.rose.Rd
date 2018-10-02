@@ -110,7 +110,7 @@ windrose <- rose(dat[,c("A")],
                  include.lowest = TRUE, dig.lab = 4,
                  FUN = function(x) sum(!is.na(x)))
 
-grid.newpage()
+grid::grid.newpage()
 plot(mean.dayrose,
      general = general.control(
        mar = rep(1,4),
@@ -128,10 +128,10 @@ plot(mean.dayrose,
      key = key.control(title = "Mean",
                        between = 0))
 
-grid.newpage()
+grid::grid.newpage()
 plot(quant.windrose)
 
-grid.newpage()
+grid::grid.newpage()
 plot(windrose,
      general = general.control(
        stacked = TRUE,
@@ -162,7 +162,7 @@ if (require(SwissAir)){
                    cyclVar = dat$WD, n.cyclVar = 32, circle = 360,
                    FUN = function(x) sum(!is.na(x)))
 
-  grid.newpage()
+  grid::grid.newpage()
   plot(windrose,
        general =
        general.control(lwd = 2),
@@ -178,7 +178,7 @@ if (require(SwissAir)){
                       FUN=median, na.rm=TRUE)
 
   ## line type version of rose
-  grid.newpage()
+  grid::grid.newpage()
   plot(med.dayrose,
        general = general.control(lwd=2, type="l"),
        grid =
@@ -195,7 +195,7 @@ if (require(SwissAir)){
                         subset= dat$month>4 & dat$month<10,
                         cyclVar=dat$hour, n.cyclVar=24, circle=24,
                         FUN=quantile, na.rm=TRUE)
-  grid.newpage()
+  grid::grid.newpage()
   plot(quant.dayrose,
        general =
        general.control(mar = c(0.3, 0.3, 0.3, 2),

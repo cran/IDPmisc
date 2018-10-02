@@ -1,5 +1,25 @@
-##useDynLib(IDPmisc)
-import(graphics,grid,lattice)
+useDynLib(IDPmisc, .registration = TRUE)
+importFrom("grDevices", "col2rgb", "dev.print", "hsv", "n2mfrow",
+           "postscript", "rgb2hsv", "savePlot")
+importFrom("methods", "is", "new")
+importFrom("stats", "aggregate", "approx", "density", "end", "formula",
+           "frequency", "is.ts", "mad", "median", "model.frame",
+           "na.omit", "naresid", "predict", "residuals", "sd", "start",
+           "ts", "window")
+importFrom("graphics", "abline", "axis", "box", "frame", "image",
+           "legend", "locator", "layout", "lcm", "lines",
+           "mtext", "par", "plot.default", "plot.new", "plot.window", "points",
+           "polygon", "segments", "rect", "strheight", "strwidth",
+           "text", "title", "xyinch")
+importFrom("grid", "circleGrob", "convertHeight", "convertWidth",
+           "convertX", "convertY", "frameGrob", "gpar",
+           "gList","gTree", "grid.draw", "grid.layout", "grid.newpage",
+           "grobHeight", "grobWidth", "is.unit",
+           "linesGrob", "placeGrob", "pointsGrob", "polygonGrob",
+           "popViewport", "pushViewport", "rectGrob", "segmentsGrob",
+           "stringHeight", "stringWidth", "textGrob",
+           "unit", "unit.c", "upViewport", "viewport")
+importFrom("lattice","trellis.par.get")
 export(Arrows,poster.plot,zoom)
 export(data.sheet,NaRV.omit,ok)
 export(col2hsv,IDPcolorRamp,showColors)

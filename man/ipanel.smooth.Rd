@@ -48,19 +48,16 @@ ipanel.smooth(x, y = NULL, pixs = 1, zmax = NULL,
 \seealso{ \code{\link[stats]{lowess}} }
 \examples{
 r.lm <- lm(Sepal.Length~Sepal.Width+Petal.Length+Petal.Width+Species,
-           data=iris)
-par(mfrow=c(2,2),pty="s")
-itermplot(r.lm, se = TRUE, partial.res=TRUE, smooth=ipanel.smooth,
-          lwd.smth = 3, pixs = 2, ask=FALSE)
+           data = iris)
+par(mfrow = c(2,2), pty = "s")
+itermplot(r.lm, se = TRUE, partial.res = TRUE, smooth = ipanel.smooth,
+          lwd.smth = 3, pixs = 2, ask = FALSE)
 
 if (require(SwissAir)) {
-  par(mfrow=c(1,1))
-  dat <- AirQual[,c("ad.O3","ad.NOx","ad.T","ad.Td","ad.WS")]
-  dat$ad.O3 <- log(dat$ad.O3)
-  dat$ad.NOx <- log(dat$ad.NOx)
-  dat$ad.WS <- log(dat$ad.WS)
+  par(mfrow = c(1,1))
+  dat <- log(AirQual[,c("ad.O3", "ad.WS")])
   pairs(dat,
-        panel=ipanel.smooth)
+        panel = ipanel.smooth)
 } else print("Package SwissAir is not available")
 
 }

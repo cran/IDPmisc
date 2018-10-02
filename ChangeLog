@@ -438,3 +438,14 @@
 	IDPmisc V1.1.17
 	* plotdat: Partial argument match removed
 
+2018-01-28 Rene Locher
+	IDPmisc V1.1.18
+	* Package: Datasets in help examples downsized to reduce execution time for
+	testing package. Functions are now imported individually in
+	namespace. New link to our institute. C function are now
+	registered and dynamic symbols are used.
+	* lwreg: S.h replaced by R.h and code adapted correspondingly.
+	* iplot: Resetting par to previous settings.
+	* rfbaseline: .C calls adapted to registered C function
+
+

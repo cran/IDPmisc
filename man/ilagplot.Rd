@@ -52,7 +52,7 @@ ilagplot(x, set.lags = 1,
   \item{las}{Orientation of labels on axes.}
   \item{border}{Logical. When \code{TRUE}, a border is drawn around the
     individual colors in the legend.}
-  \item{mar, oma}{Margin and outer margin respectively. 
+  \item{mar, oma}{Margin and outer margin respectively.
     Cf. \code{\link{par}}}
   \item{mgp, tcl}{Cf. \code{\link{par}}}
   \item{\dots}{Additional arguments to \code{\link{par}}}
@@ -81,17 +81,17 @@ ilagplot(x, set.lags = 1,
 if(require(SwissAir)) {
   data(AirQual)
 
-  ## low correlation
-  ilagplot(AirQual[,c("ad.O3")],set.lags = 1:9,
-         ztransf=function(x){x[x<1] <- 1; log2(x)})
+  ilagplot(AirQual[,c("ad.O3")],set.lags = 1:4,
+           ztransf = function(x){x[x<1] <- 1; log2(x)},
+           main = "Low correlation")
 
-  ## high correlation
   Ox <- AirQual[,c("ad.O3","lu.O3","sz.O3")]+
     AirQual[,c("ad.NOx","lu.NOx","sz.NOx")]-
       AirQual[,c("ad.NO","lu.NO","sz.NO")]
   names(Ox) <- c("ad","lu","sz")
-  ilagplot(Ox$ad,set.lags = 1:9,
-           ztransf=function(x){x[x<1] <- 1; log2(x)})
+  ilagplot(Ox$ad,set.lags = 1:4,
+           ztransf = function(x){x[x<1] <- 1; log2(x)},
+           main = "High correlation")
 
   ## cf. ?AirQual for the explanation of the physical
   ## and chemical background

@@ -70,7 +70,7 @@ ipairs(x,
   than the squares used here.  Nevertheless squares are, contrary to
   hexagons, invariant to reflexions at the x- \emph{and} y-axis and
   therefore better suited for scatter plot matrices and also for
-  plotting factors. 
+  plotting factors.
 
   The code is based on R function \code{\link{pairs}} V1.7.
 }
@@ -103,27 +103,28 @@ ipairs(AQ, pixs=2, zmax=zmax, main="Air Quality",border=TRUE)
 ipairs(iris,pixs=2)
 
 ## a really huge dataset
-if(require(SwissAir)) {
-  data(AirQual)
+\dontrun{
+  if(require(SwissAir)) {
+    data(AirQual)
 
-  ## low correlation
-  ipairs(AirQual[,c("ad.O3","lu.O3","sz.O3")],
-         ztransf=function(x){x[x<1] <- 1; log2(x)})
+    ## low correlation
+    ipairs(AirQual[,c("ad.O3","lu.O3","sz.O3")],
+    ztransf=function(x){x[x<1] <- 1; log2(x)})
 
-  ipairs(AirQual[,c("ad.NO","lu.NO","sz.NO")],
-         ztransf=function(x){x[x<1] <- 1; log2(x)})
+    ipairs(AirQual[,c("ad.NO","lu.NO","sz.NO")],
+    ztransf=function(x){x[x<1] <- 1; log2(x)})
 
-  ## high correlation
-  Ox <- AirQual[,c("ad.O3","lu.O3","sz.O3")]+
+    ## high correlation
+    Ox <- AirQual[,c("ad.O3","lu.O3","sz.O3")]+
     AirQual[,c("ad.NOx","lu.NOx","sz.NOx")]-
-      AirQual[,c("ad.NO","lu.NO","sz.NO")]
-  names(Ox) <- c("ad","lu","sz")
-  ipairs(Ox, ztransf=function(x){x[x<1] <- 1; log2(x)})
+    AirQual[,c("ad.NO","lu.NO","sz.NO")]
+    names(Ox) <- c("ad","lu","sz")
+    ipairs(Ox, ztransf=function(x){x[x<1] <- 1; log2(x)})
 
-  ## cf. ?AirQual for the explanation of the physical and
-  ## chemical background
-} else print("Package SwissAir is not available")
-
+    ## cf. ?AirQual for the explanation of the physical and
+    ## chemical background
+  } else print("Package SwissAir is not available")
+}
 }
 
 \keyword{hplot}

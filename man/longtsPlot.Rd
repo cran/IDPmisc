@@ -119,11 +119,11 @@ longtsPlot(y1, y2 = NULL,
     \emph{On non Windows operating systems}: A device
     function (e.g., x11, postscript,...). The filetype
     defaults to \code{postscript} , with the extension
-    \code{".ps"}. Cf. \code{\link[grDevices]{dev.print}}
+    \code{".ps"}. Cf. \code{\link{dev.print}}
   }
   \item{...}{Additional arguments to
-    \code{\link[grDevices]{savePlot}} and
-    \code{\link[grDevices]{dev.print}} respectively.
+    \code{\link{savePlot}} and
+    \code{\link{dev.print}} respectively.
   }
 }
 \details{
@@ -182,10 +182,10 @@ y2 <- ts(100*x,start=100,frequency=13)+10*rnorm(len)
 longtsPlot(y1,y2)
 
 ## plot your own legend
-longtsPlot(sunspots,upf=ceiling((end(sunspots)-start(sunspots))[1]/5),
-           fpp=1, leg=FALSE)
-legend(1750,260,legend="Monthly Sunspot Numbers",col="blue",lwd=1,
-       bty="n")
+longtsPlot(sunspots, upf = ceiling((end(sunspots)-start(sunspots))[1]/5),
+           fpp = 1, leg = FALSE)
+legend(1750, 260, legend = "Monthly Sunspot Numbers", col = "blue", lwd = 1,
+       bty = "n")
 }
 
 \keyword{ hplot }

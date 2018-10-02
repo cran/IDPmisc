@@ -3,11 +3,11 @@
 \alias{IDPmisc}
 \docType{package}
 
-\title{Utilities of Institute of Data Analyses and Process Design (www.idp.zhaw.ch)
+\title{Utilities of Institute of Data Analyses and Process Design (www.zhaw.ch/idp)
 }
 
 \description{
-  The IDPmisc package contains different high-level graphics functions
+  Different high-level graphics functions
   for displaying large datasets, displaying circular data in a very
   flexible way, finding local maxima, brewing color ramps, drawing nice
   arrows, zooming 2D-plots, creating figures with differently colored
@@ -20,19 +20,17 @@
 }
 
 \details{
-\tabular{ll}{
-  Package: \tab IDPmisc\cr
-  Type: \tab Package\cr
-  Version: \tab 1.1.17\cr
-  Date: \tab 2012-11-01\cr
-  License: \tab  GPL (>= 3) (GNU Public Licence)\cr
-}
-
+  \tabular{ll}{
+    Package: \tab IDPmisc\cr
+    Type: \tab Package\cr
+    Version: \tab 1.1.18\cr
+    Date: \tab 2018-10-02\cr
+    License: \tab  GPL (>= 3) (GNU Public Licence)\cr
+  }
 }
 
 \author{
 Rene Locher, Andreas Ruckstuhl et al.
-
 Maintainer: Rene Locher <rene.locher@zhaw.ch>
 }
 

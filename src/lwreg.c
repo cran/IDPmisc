@@ -1,17 +1,16 @@
-/* 
- * This is a C-program called by R. It is the core piece in a lowess-like 
- * smoothing procedure. The idea is borrowed from Cleveland's FORTRAN 
- * implementaion (see lowess.f on STATLIB). 
+/*
+ * This is a C-program called by R. It is the core piece in a lowess-like
+ * smoothing procedure. The idea is borrowed from Cleveland's FORTRAN
+ * implementaion (see lowess.f on STATLIB).
  *
  * ARu, April 1999; modified April 2004
  *
- * Complile by Rcmd SHLIB locreg.c (2004)
+ * Compiled by R CMD SHLIB locreg.c (2004)
  */
 
 /* -----------------------  Some definitions  --------------------------- */
 
-#include <S.h>     /* R header; includes <math.h>,<stdio.h> among others  */
-
+#include <R.h>     /* R header  */
 
 #define	min(a, b)	( ((a) < (b)) ? (a) : (b) )
 #define	max(a, b)	( ((a) > (b)) ? (a) : (b) )
@@ -21,36 +20,36 @@
 
 /*       Purpose
  *
- *       LWREG computes the smooth of a scatterplot of Y  against X  using  
- *       locally  weighted regression, where the weights may include robust 
- *       weights.  Fitted values, yfit, are computed at each of the  values  
+ *       LWREG computes the smooth of a scatterplot of Y  against X  using
+ *       locally  weighted regression, where the weights may include robust
+ *       weights.  Fitted values, yfit, are computed at each of the  values
  *       of  the  horizontal axis in x.
 
  *   Parameter - passing:
- *       x = Input; abscissas of the points on the scatterplot; 
+ *       x = Input; abscissas of the points on the scatterplot;
  *           the values in X must be ordered from smallest to largest.
  *       y = Input; ordinates of the points on the scatterplot.
  *       n = Input; dimension of x, y, ow, and yfit.
- *       f = Input; specifies the amount of smoothing; f is the number of 
+ *       f = Input; specifies the amount of smoothing; f is the number of
  *           points used to compute each fitted value.
- *   delta = Input; nonnegative parameter which may be used to save 
+ *   delta = Input; nonnegative parameter which may be used to save
  *           computations.
- *      ow = Input; Weights; ow(i) is the weight given to the point 
- *           (x(i), y(i)); if neither robustness nor heteroscedasticy is 
+ *      ow = Input; Weights; ow(i) is the weight given to the point
+ *           (x(i), y(i)); if neither robustness nor heteroscedasticy is
  *           considered, these weights are all 1.
  *    yfit = Output; fitted values; yfit(i) is the fitted value at x(i).
- * 
+ *
  */
 
-
-void lwreg(double x[], double y[], int *n, int *f, double *delta, 
-	    double ow[], double yfit[])
+void lwreg(double x[], double y[], int *n, int *f, double *delta,
+	   double ow[], double yfit[])
 
 {
   int nleft, nright, nrt, last, icp, j;
   double range, d1, d2, denom, sow, a, b, c, r, cut, h, h9, h1, *w;
 
-  w = Salloc(*n, double);  /* adjusted 2004*/ 
+  /* w = Salloc(*n, double); */
+  w = (double *) R_alloc(*n, sizeof(double));
 
 /* ------------------------------ body ---------------------------------- */
 
@@ -72,7 +71,7 @@ void lwreg(double x[], double y[], int *n, int *f, double *delta,
       nright = nright+1;
     }
 
-    /* The  fitted  value, yfit[i], is computed  at  the  value,  x[i],  
+    /* The  fitted  value, yfit[i], is computed  at  the  value,  x[i],
      * of  the   horizontal   axis.                                   */
     h = max(x[icp] - x[nleft],x[nright] - x[icp]);
     h9 = .999*h;
@@ -88,7 +87,7 @@ void lwreg(double x[], double y[], int *n, int *f, double *delta,
 	w[j] = ow[j]*w[j];
 	sow = sow + w[j];
       }
-      else{ 
+      else{
 	if(x[j] > x[icp]) break;   /* get out at first zero wt on right */
       }
     }
@@ -98,12 +97,12 @@ void lwreg(double x[], double y[], int *n, int *f, double *delta,
     for(j = nleft; j <= nrt; j++) w[j] = w[j]/sow; /* make sum of w[j] == 1 */
     if (h > 0.0) { /* use linear fit */
       a = 0.0;
-      for(j = nleft; j <= nrt; j++) 
+      for(j = nleft; j <= nrt; j++)
 	a = a+w[j]*x[j];   /* weighted center of x values */
       b = x[icp] - a;
       c = 0.0;
       for(j = nleft; j <= nrt; j++) c = c + w[j]*(x[j]-a)*(x[j]-a);
-      if(sqrt(c)>.001*range) { 
+      if(sqrt(c)>.001*range) {
 	/*  points are spread out enough to compute slope  */
 	b = b/c;
 	for(j = nleft; j <= nrt; j++) w[j] = w[j]*(1.0+b*(x[j]-a));
@@ -112,7 +111,7 @@ void lwreg(double x[], double y[], int *n, int *f, double *delta,
     yfit[icp] = 0.0;
     for(j = nleft; j <= nrt; j++) yfit[icp] = yfit[icp]+w[j]*y[j];
   }
-    
+
     /* Move forward */
     if (last < icp-1) { /* skipped points -- interpolate */
       denom = x[icp] - x[last];    /* non-zero - proof? */
@@ -130,11 +129,9 @@ void lwreg(double x[], double y[], int *n, int *f, double *delta,
 	last = icp;
       }
     }
-    icp = max(last+1,icp-1);  /* back 1 point so interpolation within delta, 
+    icp = max(last+1,icp-1);  /* back 1 point so interpolation within delta,
                                  but always go forward                      */
   } while(last < (*n - 1));   /* end of repeat-until loop */
-
-             /* free memory  -- not needed 2004*/
 
   return;
 }

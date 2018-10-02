@@ -34,11 +34,11 @@ iplotLegend(colramp, ncol = NULL,
 
 \examples{
 \dontrun{
-par(oma=rep(2,4))
-layout(matrix(c(1,2),ncol=2),
-      width=c(lcm(par("csi")*5*2.54),1),
-      heights=1)}
-iplotLegend(IDPcolorRamp,ncol=15)
+par(oma = rep(2, 4))
+layout(matrix(c(1, 2), ncol = 2),
+      width = c(lcm(par("csi")*5*2.54), 1),
+      heights = 1)}
+iplotLegend(IDPcolorRamp, ncol = 15)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

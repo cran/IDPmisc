@@ -52,12 +52,6 @@ peaks(x, y = NULL, minPH, minPW, thr, stepF = 0.49)
   In the function, the main selection criterium for the peaks is the
   height of the peaks, the second optional criterium is the width of the
   peaks.
-
-  When the width of different peaks vary not too strongly and the
-  distances between the peaks is not critical, you might use the faster
-  function
-  \code{\link[PROcess]{peaks}} of the bioconductor package
-  \code{PROcess}. 
 }
 
 %% \seealso{  }
@@ -88,13 +82,6 @@ MS1 <- log10(MS[MS$mz>12000&MS$mz<1e5,])
 P <- peaks(MS1, minPH=0.02, minPW=0.001)
 plot(MS1, type="l", xlab="log10(mz)", ylab="log10(I)")
 points(P,col="blue",cex=1.6)
-
-## compare to
-if (require(PROcess)) {
-  ii <- peaks(MS1$I,span=300)
-  detach("package:PROcess")
-  points(MS1$mz[ii],MS1$I[ii],col="darkgreen",cex=1.2)
-} else print("Package Process not available!")
 
 }
 
