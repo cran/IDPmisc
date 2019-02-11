@@ -438,7 +438,7 @@
 	IDPmisc V1.1.17
 	* plotdat: Partial argument match removed
 
-2018-01-28 Rene Locher
+2018-10-02 Rene Locher
 	IDPmisc V1.1.18
 	* Package: Datasets in help examples downsized to reduce execution time for
 	testing package. Functions are now imported individually in
@@ -448,4 +448,7 @@
 	* iplot: Resetting par to previous settings.
 	* rfbaseline: .C calls adapted to registered C function
 
+2019-02-11 Rene Locher
+	IDPmisc V1.1.19
+	* New functions for converting humidity measures added
 

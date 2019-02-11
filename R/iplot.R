@@ -1,5 +1,3 @@
-### iplot.R
-
 iplot <- function(x,
                   y = NULL,
                   pixs = 1,

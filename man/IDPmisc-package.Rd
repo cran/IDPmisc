@@ -7,24 +7,15 @@
 }
 
 \description{
-  Different high-level graphics functions
-  for displaying large datasets, displaying circular data in a very
-  flexible way, finding local maxima, brewing color ramps, drawing nice
-  arrows, zooming 2D-plots, creating figures with differently colored
-  margin and plot region. In addition, the package contains auxiliary
-  functions for data manipulation like omitting observations with
-  irregular values or selecting data by logical vectors, which include
-  NAs. Other functions are especially useful in spectroscopy and
-  analyses of environmental data: robust baseline fitting, finding peaks
-  in spectra, plotting wind roses.
+  Different high-level graphics functions for displaying large datasets, displaying circular data in a very flexible way, finding local maxima, brewing color ramps, drawing nice arrows, zooming 2D-plots, creating figures with differently colored margin and plot region.  In addition, the package contains auxiliary functions for data manipulation like omitting observations with irregular values or selecting data by logical vectors, which include NAs. Other functions are especially useful in spectroscopy and analyses of environmental data: robust baseline fitting, finding peaks in spectra, converting humidity measures.
 }
 
 \details{
   \tabular{ll}{
     Package: \tab IDPmisc\cr
     Type: \tab Package\cr
-    Version: \tab 1.1.18\cr
-    Date: \tab 2018-10-02\cr
+    Version: \tab 1.1.19\cr
+    Date: \tab 2019-02-11\cr
     License: \tab  GPL (>= 3) (GNU Public Licence)\cr
   }
 }
@@ -39,6 +30,7 @@ Maintainer: Rene Locher <rene.locher@zhaw.ch>
 %%
 
 \keyword{ package }
+\keyword{ arith }
 \keyword{ dplot }
 \keyword{ hplot }
 \keyword{ manip }
