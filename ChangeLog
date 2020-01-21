@@ -452,3 +452,7 @@
 	IDPmisc V1.1.19
 	* New functions for converting humidity measures added
 
+2020-01-21 Rene Locher
+	IDPmisc V1.1.2o
+	* showColors: Link to DAAG package removed
+
