@@ -20,17 +20,17 @@ general.control(stacked = FALSE,
 
 \arguments{
   \item{stacked}{ \code{stacked = FALSE}: For each point
-    \code{(x@rho[i,j], x@cyclVar[i])} with \code{x} equal to a
-    \code{\link{rose}} object, the radius is \code{x@rho[i,j]} -
+    \code{(object@rho[i,j], object@cyclVar[i])} with \code{x} equal to a
+    \code{\link{rose}} object, the radius is \code{object@rho[i,j]} -
       \code{ray.lim[1]} as defined in \code{\link{grid.control}}.  Points
       with identical \code{j} are connected by a colored line.
       \cr \code{stacked = TRUE}: For each point
-      \code{(x@rho[i,j], x@cyclVar[i])},
-      the radius is \code{sum(x@rho[1:i,j])}.  No negative values are
+      \code{(object@rho[i,j], object@cyclVar[i])},
+      the radius is \code{sum(object@rho[1:i,j])}.  No negative values are
       allowed in the stacked case as this feature makes sense only for
       variables like proportions, counts or concentrations.  Areas
       between two adjacent \code{j} are filled by color.
-      \cr \code{NA} values in \code{x@rho} are interpreted as \code{0}
+      \cr \code{NA} values in \code{object@rho} are interpreted as \code{0}
       and a warning is issued.}
   \item{rose.rad, rose.x, rose.y}{ Approximate length of radius, x- and
     y-position of rose.  Default units are mm but any valid grid unit
@@ -43,7 +43,7 @@ general.control(stacked = FALSE,
   \item{mar}{ Margin around the plotting area. Default units are
   \code{grid.control(cyclVar.cex)}. Other units can be defined by
   \code{\link[grid]{unit}}.}
-  \item{rev.col}{ \code{= TRUE}: Ordering of the columns of \code{x@rho}
+  \item{rev.col}{ \code{= TRUE}: Ordering of the columns of \code{object@rho}
     is reversed. }
   \item{shift}{ Shifts the plot in clockwise direction by this
     angle.  Units of \code{shift} must be identical with units of

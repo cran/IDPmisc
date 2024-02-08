@@ -108,17 +108,20 @@ ipairs(iris,pixs=2)
     data(AirQual)
 
     ## low correlation
+    dev.new()
     ipairs(AirQual[,c("ad.O3","lu.O3","sz.O3")],
     ztransf=function(x){x[x<1] <- 1; log2(x)})
-
+    
+    dev.new()
     ipairs(AirQual[,c("ad.NO","lu.NO","sz.NO")],
     ztransf=function(x){x[x<1] <- 1; log2(x)})
-
+    
     ## high correlation
     Ox <- AirQual[,c("ad.O3","lu.O3","sz.O3")]+
     AirQual[,c("ad.NOx","lu.NOx","sz.NOx")]-
     AirQual[,c("ad.NO","lu.NO","sz.NO")]
     names(Ox) <- c("ad","lu","sz")
+    dev.new()
     ipairs(Ox, ztransf=function(x){x[x<1] <- 1; log2(x)})
 
     ## cf. ?AirQual for the explanation of the physical and

@@ -1,20 +1,20 @@
 ### Arrows.R
 
 Arrows <- function (x1, y1, x2, y2,
-                    size= 1,
-                    width= 1.2/4/cin,
-                    open=TRUE,
-                    sh.adj=0.1,
-                    sh.lwd=1,
-                    sh.col=if(is.R()) par("fg") else 1,
-                    sh.lty=1,
-                    h.col=sh.col,
-                    h.col.bo=sh.col,
-                    h.lwd=sh.lwd,
-                    h.lty=sh.lty,
-                    verbose=FALSE)
+                    size = 1,
+                    width = 1.2/4/cin,
+                    open = TRUE,
+                    sh.adj = 0.1,
+                    sh.lwd = 1,
+                    sh.col = par("fg"),
+                    sh.lty = 1,
+                    h.col = sh.col,
+                    h.col.bo = sh.col,
+                    h.lwd = sh.lwd,
+                    h.lty = sh.lty,
+                    verbose = FALSE)
   ## Author: Andreas Ruckstuhl, refined by Rene Locher
-  ## Version: 2007-05-28
+  ## Version: 2024-02-06
 {
   arr <- ((x2-x1)^2+(y2-y1)^2) > (10*.Machine$double.eps)
   if (any(!arr)) {
@@ -26,9 +26,7 @@ Arrows <- function (x1, y1, x2, y2,
   }
 
   cin <- size * par("cin")[2]
-  uin <- if (is.R())
-    1/xyinch()
-  else par("uin")
+  uin <- 1/xyinch()
   x <- sqrt(seq(0, cin^2, length.out = floor(35 * cin) + 2))
   delta <-  sqrt(h.lwd)*par("cin")[2]*0.005
   x.arr <- c(-rev(x), -x)

@@ -1,7 +1,10 @@
 \name{internals}
 \alias{rose.grob}
 \alias{plotdat}
-\alias{plot.page}
+\alias{plotPage}
+\alias{iplotMain}
+\alias{segments.circle}
+\alias{griddat}
 
 \title{Internal Functions}
 \description{
@@ -11,18 +14,18 @@
 
 iplotMain(main, cex.main, cex)
 
-plot.page(y1, y2, names1, names2,
-          startP, upf, fpp, overlap,
-          x.at, x.ann, x.tick,
-          y1.at, y1.ann, y1.tick,
-          y2.at, y2.ann, y2.tick,
-          ny.ann, cex.ann, xlab, y1lab, y2lab, las,
-          col.y1, col.y2,
-          cex.lab, y1lim, y2lim, lty1, lty2, lwd1, lwd2, col1, col2,
-          leg, y1nam.leg, y2nam.leg, ncol.leg, cex.leg = 1.5,
-          h1, h2, col.h1, col.h2,
-          mgp, main, cex.main, xpd, cex,
-          type1, type2, pch1, pch2, cex.pt1, cex.pt2)
+plotPage(y1, y2, names1, names2,
+         startP, upf, fpp, overlap,
+         x.at, x.ann, x.tick,
+         y1.at, y1.ann, y1.tick,
+         y2.at, y2.ann, y2.tick,
+         ny.ann, cex.ann, xlab, y1lab, y2lab, las,
+         col.y1, col.y2,
+         cex.lab, y1lim, y2lim, lty1, lty2, lwd1, lwd2, col1, col2,
+         leg, y1nam.leg, y2nam.leg, ncol.leg, cex.leg = 1.5,
+         h1, h2, col.h1, col.h2,
+         mgp, main, cex.main, xpd, cex,
+         type1, type2, pch1, pch2, cex.pt1, cex.pt2)
 
 rose.grob(rho, cyclVar, circle, transf, general, grid, title, gdat)
 

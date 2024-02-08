@@ -12,7 +12,7 @@
 
 \usage{
 Arrows(x1, y1, x2, y2, size = 1, width = 1.2/4/cin, open = TRUE,
-       sh.adj = 0.1, sh.lwd = 1, sh.col = if (is.R()) par("fg") else 1,
+       sh.adj = 0.1, sh.lwd = 1, sh.col = par("fg"),
        sh.lty = 1,
        h.col = sh.col, h.col.bo = sh.col, h.lwd = sh.lwd, h.lty = sh.lty,
        verbose = FALSE)

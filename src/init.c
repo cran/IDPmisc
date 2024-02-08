@@ -2,7 +2,7 @@
 #include <R_ext/Rdynload.h>
 
 /* .C calls */
-void lwreg(double *, double *, int *, int *, double *, double *, double *);
+extern void lwreg(double *, double *, int *, int *, double *, double *, double *);
 
 static const R_CMethodDef CEntries[] = {
     {"lwreg", (DL_FUNC) &lwreg, 7},
